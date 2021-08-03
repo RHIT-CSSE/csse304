@@ -1,0 +1,121 @@
+---
+- type: class_session
+  class_num: 1
+  date: 2018-08-30 08:00
+- type: class_session
+  class_num: 2
+  date: 2018-08-31 08:00
+- type: class_session
+  class_num: 3
+  date: 2018-09-03 08:00
+- type: class_session
+  class_num: 4
+  date: 2018-09-04 08:00
+- type: class_session
+  class_num: 5
+  date: 2018-09-06 08:00
+- type: class_session
+  class_num: 6
+  date: 2018-09-07 08:00
+- type: class_session
+  class_num: 7
+  date: 2018-09-10 08:00
+- type: class_session
+  class_num: 8
+  date: 2018-09-11 08:00
+- type: class_session
+  class_num: 9
+  date: 2018-09-13 08:00
+- type: class_session
+  class_num: 10
+  date: 2018-09-14 08:00
+- type: class_session
+  class_num: 11
+  date: 2018-09-17 08:00
+- type: class_session
+  class_num: 12
+  date: 2018-09-18 08:00
+- type: class_session
+  class_num: 13
+  date: 2018-09-20 08:00
+- type: class_session
+  class_num: 14
+  date: 2018-09-21 08:00
+- type: class_session
+  class_num: 15
+  date: 2018-09-24 08:00
+- type: class_session
+  class_num: 16
+  date: 2018-09-25 08:00
+- type: class_session
+  class_num: 17
+  date: 2018-09-27 08:00
+- type: class_session
+  class_num: 18
+  date: 2018-09-28 08:00
+- type: class_session
+  class_num: 19
+  date: 2018-10-01 08:00
+- type: class_session
+  class_num: 20
+  date: 2018-10-02 08:00
+- type: class_session
+  class_num: 21
+  date: 2018-10-04 08:00
+- type: class_session
+  class_num: 22
+  date: 2018-10-05 08:00
+- type: class_session
+  class_num: 23
+  date: 2018-10-08 08:00
+- type: class_session
+  class_num: 24
+  date: 2018-10-09 08:00
+- type: class_session
+  class_num: 25
+  date: 2018-10-15 08:00
+- type: class_session
+  class_num: 26
+  date: 2018-10-16 08:00
+- type: class_session
+  class_num: 27
+  date: 2018-10-18 08:00
+- type: class_session
+  class_num: 28
+  date: 2018-10-19 08:00
+- type: class_session
+  class_num: 29
+  date: 2018-10-22 08:00
+- type: class_session
+  class_num: 30
+  date: 2018-10-23 08:00
+- type: class_session
+  class_num: 31
+  date: 2018-10-25 08:00
+- type: class_session
+  class_num: 32
+  date: 2018-10-26 08:00
+- type: class_session
+  class_num: 33
+  date: 2018-10-29 08:00
+- type: class_session
+  class_num: 34
+  date: 2018-10-30 08:00
+- type: class_session
+  class_num: 35
+  date: 2018-11-01 08:00
+- type: class_session
+  class_num: 36
+  date: 2018-11-02 08:00
+- type: class_session
+  class_num: 37
+  date: 2018-11-05 08:00
+- type: class_session
+  class_num: 38
+  date: 2018-11-06 08:00
+- type: class_session
+  class_num: 39
+  date: 2018-11-08 08:00
+- type: class_session
+  class_num: 40
+  date: 2018-11-09 08:00

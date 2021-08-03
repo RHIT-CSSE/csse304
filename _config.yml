@@ -1,0 +1,4 @@
+theme: minima
+title: CSSE304 Programming Languages & Compilers 
+layouts_dir: .internal/layouts
+include: ['.internal']
