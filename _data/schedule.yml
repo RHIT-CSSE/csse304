@@ -1,0 +1,207 @@
+1:
+  reading:
+  topics:
+  materials: SchemeIntro
+  other: 
+2:
+  reading:
+  topics:
+  materials: Lambda
+  other: 
+3:
+  reading:
+  topics:
+  materials: IntroToOS
+  other:
+4:
+  reading:
+  topics:
+  materials: CourseIntro
+  other:
+5:
+  reading:
+  topics:
+  materials: MapApply
+  other:
+6:
+  reading:
+  topics:
+  materials: OddsAndEnds
+  other:
+7:
+  reading:
+  topics:
+  materials: GrammarAndLanguages
+  other:
+8:
+  reading:
+  topics:
+  materials: ProgramsAboutSlists
+  other:
+9:
+  reading:
+  topics:
+  materials: OOP
+  other:
+
+10:
+  reading:
+  topics: 
+  materials: ProceduralAbstraction
+  other:
+11:
+  reading:
+  topics:
+  materials: ListRecur
+  other:
+12:
+  reading:
+  topics:
+  materials: OccursBound
+  other:
+13:
+  reading:
+  topics:
+  materials: DefineSyntax
+  other:
+14:
+  reading:
+  topics:
+  materials: SyntaxExpansion
+  other:
+
+15:
+  reading:
+  topics:
+  materials: DatatypesParsing
+  other:
+16:
+  reading:
+  topics:
+  materials: 
+  other:
+17:
+  reading: 
+  topics: 
+  materials: EvironmentsAndClosures
+  other:
+18:
+  reading:
+  topics:
+  materials: EnvironmentsAndClosures2
+  other:
+19:
+  reading: 
+  topics: 
+  materials: EnvironmentsAndClosures3
+  other:
+20:
+  reading:
+  topics:
+  materials: AddLetIfLambda
+  other:
+21:
+  reading: 
+  topics:
+  materials: Continuations
+  other:
+22:
+  reading: 
+  topics:
+  materials: CPSValues
+  other:
+23:
+  reading:
+  topics:
+  materials: CPSProcedures
+  other:
+24:
+  reading:  
+  topics: 
+  materials: CPSMore1
+  other:
+25:
+  reading:
+  topics:
+  materials: CPSMore2
+  other:
+26:
+  reading:
+  topics:
+  materials: CPSFinal
+  other:  
+27:
+  reading: 
+  topics: 
+  materials: CallCC1
+  other:
+  
+28:
+  reading:
+  topics:
+  materials: CallCC2
+  other:  
+29:
+  reading:
+  topics:
+  materials: CallCC3
+  other:
+30:
+  reading:
+  topics: EXAM
+  materials: 
+  other:
+31:
+  reading:
+  topics:
+  materials: CPSDatatypesInterpreter
+  other:  
+32:
+  reading:
+  topics:
+  materials: CPSDatatypesInterpreter
+  other:  
+33:
+  reading:
+  topics:
+  materials: CPSDatatypesInterpreter
+  other:  
+34:
+  reading:
+  topics:
+  materials: ImperativeForm
+  other:
+  
+35:
+  reading:
+  topics:
+  materials: Engines1
+  other:  
+
+36:
+  reading:
+  topics: 
+  materials: Engines2
+  other:  
+
+37:
+  reading:
+  topics:
+  materials: RefParamsCoroutines
+  other:  
+38:
+  reading:
+  topics:
+  materials: ExamPreview
+  other:  
+39:
+  reading:
+  topics:
+  materials: 39
+  other:
+
+40:
+  reading:
+  topics:
+  materials: 40
+  other:  

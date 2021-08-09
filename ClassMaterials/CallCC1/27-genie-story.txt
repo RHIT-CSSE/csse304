@@ -1,0 +1,31 @@
+Imagine that we are in a lovely cafe in Paris.  
+With us we have a  genie who takes photographs of the things that are happening. 
+ 
+Here we are ordering our food.  
+And in this one we are eating a delicious dessert.  
+Now we are payig the bill. 
+
+Later, when we are remembering that wonderful night, we can ask the 
+genie to rub a magic liquid on one of the protographs, and we will be 
+back there in that cafe.  
+The waiter may be a bit older, we may be a lot heavier, but otherwise 
+things are as they were before.
+When we have finished our meal, we can spend the rest of the eveing 
+wandering through the streets of Paris as we did before, or 
+we can ask the genie to rub another photograph
+to take us somewhere else.
+
+What if the Genie rubbed the wrong prhotograph and took us back to 
+when we were paying the bill and leaving the restaurant?  
+What a shame to have to pay for a meal that we never got to enjoy?
+
+A Scheme interpreter is like a genie.  It can remember where it is
+and go back there.  It doesn't photograph everything, but only the 
+things we tell it to photograph.
+
+It has a special "take a photograph" procedure 
+named call-with-current-continuatin."
+
+Applying call/cc produces a photograph (continuation) that we
+can rub (apply) whenever we want to escape to that point
+in the computation.
