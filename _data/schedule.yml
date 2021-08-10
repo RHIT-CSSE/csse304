@@ -5,203 +5,311 @@
   other: 
 2:
   reading:
+    - TSPL Ch. 1, 2.1-2.2
   topics:
+    - lambda
+    - recursive procedures
+    - if, cond, case
+    - offline testing & submission
   materials: Lambda
   other: 
 3:
   reading:
+    - TSPL Section 2.2-2.8
+    - EOPL-1 2-29
   topics:
+    - cons, list, append
+    - other list topics
+    - let and let*
+    - more recursive procedures
   materials: IntroToOS
   other:
 4:
   reading:
+    - TSPL sections 3.2, 4.1-4.4, 6.1-6.4
+    - EOPL-1 67-74
   topics:
-  materials: CourseIntro
+    - map apply
+    - insertion sort
+  materials: MapApply 
   other:
 5:
   reading:
+    - TSPL 5.1-5.4
+    - EoPL Forward & Preface
   topics:
-  materials: MapApply
+    - course intro
+  materials: CourseIntro
   other:
 6:
   reading:
+    - EoPL Section 1.1
   topics:
+    - andmap, ormap, vectors
+    - list sharing and mutation
   materials: OddsAndEnds
   other:
 7:
   reading:
+    - EoPL Section 1.2 1.2.1
+    - Re-read TSPL 4.1-4.4 (you'll probably get more out of it on a second reading)
   topics:
+    - BNF Grammar Specification
+    - s-lists
   materials: GrammarAndLanguages
   other:
 8:
   reading:
+    - EoPL Section 1.2.2-1.2.4
   topics:
+    - Exam 1 specification
+    - s-list procedures
   materials: ProgramsAboutSlists
   other:
 9:
   reading:
+    - EoPL Section 1.3, 1.4
+    - TSPL Sections 2.9 and 3.5 (you can skip the parts that use define-syntax for now)
   topics:
+    - compose
+    - case-lambda
+    - OO behavior
   materials: OOP
   other:
-
 10:
-  reading:
-  topics: 
+  reading: EoPL 2.1
+  topics:
+    - procedural abstraction
+    - list-recur
   materials: ProceduralAbstraction
   other:
 11:
   reading:
   topics:
+    - More about Exam 1
+    - More on list-recur
+    - lambda calculus
   materials: ListRecur
   other:
 12:
   reading:
+    - EoPL 2.2
   topics:
+    - code for occurs-bound?
+    - efficient reverse and reverse!
+    - efficient rotate
   materials: OccursBound
   other:
 13:
   reading:
+    - review for exam
   topics:
+    - lexical-address exercise - examine the answer together
+    - syntactic extension definition, examples in other languages
   materials: DefineSyntax
   other:
 14:
   reading:
+    - TSPL 3.1
   topics:
+    - Possibly canceled for exam
   materials: SyntaxExpansion
   other:
 
 15:
   reading:
+    - EoPL 2.3
   topics:
+    - abstract datatypes
+    - composite datatypes
+    - define datatype
   materials: DatatypesParsing
   other:
 16:
   reading:
+    - EoPL 2.4
   topics:
-  materials: 
+    - more on define datatype
+    - parsing LcExpressions
+    - global environments, local environments
+  materials: DatatypesParsing
   other:
 17:
-  reading: 
-  topics: 
+  reading:
+    - Catch up on any reading assignments you're behind
+  topics:
+    - lambdas, procedures and closures
+    - environments and closures
   materials: EvironmentsAndClosures
   other:
 18:
-  reading:
+  reading: EoPL 2.5
   topics:
+    - environments and closure examples
+    - environment ADT specification
   materials: EnvironmentsAndClosures2
   other:
 19:
-  reading: 
-  topics: 
+  reading: EoPL 3.1, 3.2
+  topics:
+    - Environment ADT implementation
+    - interpreter starting code overview
   materials: EnvironmentsAndClosures3
   other:
 20:
-  reading:
+  reading: TSPL 5.7 (skip call/cc parts)
   topics:
+    - Interpreter initial framework
+    - let, if, lambda
   materials: AddLetIfLambda
   other:
 21:
-  reading: 
+  reading:
+    - EoPL 6.1 (skim to get the basic ideas, don't get too bogged down)
   topics:
+    - Intro to continuations and CPS
   materials: Continuations
   other:
 22:
   reading: 
   topics:
+    - Memoization
+    - Multiple return values in scheme
+    - More CPS
   materials: CPSValues
   other:
 23:
   reading:
   topics:
+    - E & C EXAM
   materials: CPSProcedures
   other:
 24:
-  reading:  
-  topics: 
+  reading:
+    - EoPL 3.3, 3.4
+  topics:
+    - Continuations as data structures
   materials: CPSMore1
   other:
 25:
   reading:
+    - EoPL 3.5, 3.6
+    - Skim EoPL 6.2, 6.3
   topics:
+    - add letrec to interpreted language
+    - (if not done day 24) CPS pitfalls
   materials: CPSMore2
   other:
 26:
   reading:
+    - EoPL 4.1-4.3
   topics:
+    - Exam Specification
+    - add set! to interpreter
+    - References apply-env-ref and implementations
+    - cells
+    - rib-cage approach to references
+    - memory model (basic idea, no details)
+    - Differences between set! and define.
+    - call/cc warm-up (if we have time)
   materials: CPSFinal
   other:  
 27:
-  reading: 
-  topics: 
+  reading:
+    - EoPL 4.1-4.3
+  topics:
+    - Receivers
+    - Escape Procedures
+    - def of call/cc
+    - call/cc examples
   materials: CallCC1
   other:
   
 28:
   reading:
+    - EoPL 5.1, 5.2
   topics:
+    - call/cc examples
   materials: CallCC2
   other:  
 29:
   reading:
+    - TSPL 3.3, 3.4
   topics:
+    - call/cc examples
   materials: CallCC3
   other:
 30:
   reading:
-  topics: EXAM
+  topics: EXAM 2
   materials: 
   other:
 31:
   reading:
   topics:
+    - interpreter in CPS form
   materials: CPSDatatypesInterpreter
   other:  
 32:
   reading:
   topics:
+    - example fact with call/cc
+    - Add call/cc to interpreted language
   materials: CPSDatatypesInterpreter
   other:  
 33:
   reading:
   topics:
+    - to be decided
   materials: CPSDatatypesInterpreter
   other:  
 34:
   reading:
   topics:
+    - imperative form
   materials: ImperativeForm
   other:
   
 35:
   reading:
+    - TSPL Section 12.11
   topics:
+    - reference params example
+    - final exam preview
+    - engines
   materials: Engines1
   other:  
 
 36:
   reading:
-  topics: 
+  topics:
+    - more engine stuff
   materials: Engines2
   other:  
 
 37:
   reading:
   topics:
+    - ref params
+    - coroutines
   materials: RefParamsCoroutines
   other:  
 38:
   reading:
   topics:
+    - exam prep
   materials: ExamPreview
   other:  
 39:
   reading:
   topics:
+    - to be decided
   materials: 39
   other:
 
 40:
   reading:
   topics:
+    - to be decided
   materials: 40
   other:  
