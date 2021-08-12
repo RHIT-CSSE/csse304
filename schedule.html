@@ -30,7 +30,7 @@ layout: default
           </td>
           <td>
               {% for material in event.materials %}
-              <a href="{{ site.github.repository_url }}/tree/master/ClassMaterials/{{ material }}">{{event.materials}}</a><br/>
+              <a href="{{ site.github.repository_url }}/tree/main/ClassMaterials/{{ material }}">{{event.materials}}</a><br/>
               {% endfor %}
               {{event.other | join: "<br/>"}}
           </td>
@@ -49,7 +49,7 @@ layout: default
       {% else %}
             <tr bgcolor="#ddf" >
         <td colspan="4">
-          <a href="{{ site.github.repository_url }}/tree/master/Homework/{{ session.dirname }}">{{session.name}}</a> DUE {{ session.date | date: "%a %d %b %Y %l:%M %P" }}
+          <a href="{{ site.github.repository_url }}/tree/main/Homework/{{ session.dirname }}">{{session.name}}</a> DUE {{ session.date | date: "%a %d %b %Y %l:%M %P" }}
         </td>
       </tr>
 

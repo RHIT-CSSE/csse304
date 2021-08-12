@@ -1,24 +1,24 @@
 name,dirname,date
-Assignment 0,PrologPathFinder,2021-09-02 23:55
-Assignment 1,PrologWordFind,2021-09-03 23:55
-Assignment 2,PrologNLP,2021-09-06 23:55
-Assignment 3,PrologNLP,2021-09-07 23:55
-Assignment 4,ErlangListProbs,2021-09-09 23:55
-Assignment 5,ErlangMergeSort,2021-09-10 23:55
-Assignment 6,ErlangRaft,2021-09-13 23:55
-Assignment 7,ErlangRaft,2021-09-14 23:55
-Assignment 8,HaskellHighOrder,2021-09-17 23:55
-Assignment 9,HaskellADTAndTypeclasses,2021-09-21 23:55
-Assignment 10,HaskellPong,2021-09-27 23:55
-Assignment 11a (probs 1-3),HaskellVideoGame,2021-09-30 23:55
-Assignment 11b (prob 4),HaskellVideoGame,2021-10-04 23:55
-Assignment 12,FinalProject,2021-10-06 23:55
-Assignment 13,FinalProject,2021-10-08 23:55
-Assignment 14,SmalltalkMinesweeper,2021-10-12 23:55
-Assignment 15,LuaInheritance,2021-10-19 23:55
-Assignment 16,,2021-10-22 23:55
-Assignment 17a,,2021-10-29 23:55
-Assignment 17b,,2021-11-01 23:55
-Assignment 18a,,2021-11-04 23:55
-Assignment 18b,,2021-11-08 23:55
-Assignment 19,,2021-11-12 23:55
+Assignment 0,Assignment_0,2021-09-02 23:55
+Assignment 1,Assignment_01,2021-09-03 23:55
+Assignment 2,Assignment_02,2021-09-06 23:55
+Assignment 3,Assignment_03,2021-09-07 23:55
+Assignment 4,Assignment_04,2021-09-09 23:55
+Assignment 5,Assignment_05,2021-09-10 23:55
+Assignment 6,Assignment_06,2021-09-13 23:55
+Assignment 7,Assignment_07,2021-09-14 23:55
+Assignment 8,Assignment_08,2021-09-17 23:55
+Assignment 9,Assignment_09,2021-09-21 23:55
+Assignment 10,Assignment_10,2021-09-27 23:55
+Assignment 11a (probs 1-3),Assignment_11,2021-09-30 23:55
+Assignment 11b (prob 4),Assignment_11,2021-10-04 23:55
+Assignment 12,Assignment_12,2021-10-06 23:55
+Assignment 13,Assignment_13,2021-10-08 23:55
+Assignment 14,Assignment_14,2021-10-12 23:55
+Assignment 15,Assignment_15,2021-10-19 23:55
+Assignment 16,Assignment_16,2021-10-22 23:55
+Assignment 17a,Assignment_17,2021-10-29 23:55
+Assignment 17b,Assignment_17b,2021-11-01 23:55
+Assignment 18a,Assignment_18,2021-11-04 23:55
+Assignment 18b,Assignment_18,2021-11-08 23:55
+Assignment 19,Assignment_19,2021-11-12 23:55
