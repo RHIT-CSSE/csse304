@@ -47,7 +47,7 @@ layout: default
       </tr>
       {% endif %}
       {% else %}
-            <tr bgcolor="#ddf" >
+            <tr {% if session.bgcolor %} bgcolor="#{{session.bgcolor}}" {% else %} bgcolor="#ddf" {% endif %} >
         <td colspan="4">
           <a href="{{ site.github.repository_url }}/tree/main/Homework/{{ session.dirname }}">{{session.name}}</a> DUE {{ session.date | date: "%a %d %b %Y %l:%M %P" }}
         </td>
