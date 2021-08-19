@@ -2,7 +2,20 @@
   reading:
   topics:
   materials: SchemeIntro
-  other: 
+  other:
+  videos:
+    - name: Zoom 1
+      id: 4a93370d-63eb-4022-96ab-ac830135248f
+    - name: Intro-1 numbers
+      id: 7a4bf126-37ab-48cb-a1fd-aab900f4673e
+    - name: Intro-2 symbols and strings
+      id: 411f321a-da33-48db-b7b9-aab900f584cf
+    - name: Intro-3 lists pairs begin
+      id: 5afcad26-2c29-41b2-942b-aabc013bdf95
+    - name: Intro-4 defining procedures trace
+      id: 113e2fa0-673a-42bd-a048-aabc013e7dd9
+    - name: Intro-5 local variables recursive procedures
+      id: 330e7a63-48e4-448e-b577-aabc014061fa
 2:
   reading:
     - TSPL Ch. 1, 2.1-2.2
@@ -12,7 +25,14 @@
     - if, cond, case
     - offline testing & submission
   materials: Lambda
-  other: 
+  other:
+  videos:
+    - name: Zoom 2
+      id: 56b7c65a-6ca9-4144-9019-ac84014ca8a2
+    - name: Second live demo
+      id: 69e44e66-2221-4204-951b-ac2b00272027
+    - name: Lambda the Magnificent
+      id: 8f703bee-313e-4890-88e1-ac2b00b86b7e
 3:
   reading:
     - TSPL Section 2.2-2.8
@@ -24,6 +44,15 @@
     - more recursive procedures
   materials: IntroToOS
   other:
+  videos:
+    - name: Zoom 3
+      id: 04ba6d1d-8c37-42c4-b72f-ac8601669b46
+    - name: cons_list_append
+      id: f1b58b71-4e04-4b88-81d8-ac2c00e67b83
+    - name: write some recursive procedures
+      id: ea91a9b7-4d5f-4738-b1e1-ac2d01405ef8
+    - name: Part left out in sections 2 and 3
+      id: 0166d443-57a1-407d-aa9b-ac2f014d2983
 4:
   reading:
     - TSPL sections 3.2, 4.1-4.4, 6.1-6.4
@@ -33,6 +62,13 @@
     - insertion sort
   materials: MapApply 
   other:
+  videos:
+    - name: Zoom 4
+      id: d69064e7-13bc-401e-8afa-ac8701168955
+    - name: procedures with variable numbers of arguments
+      id: 6862e757-b97f-46ab-93d8-ac2f00057967
+    - name: map-apply procedures
+      id: d4d7ee56-df85-4acd-96b9-ac2f014dec91
 5:
   reading:
     - TSPL 5.1-5.4
@@ -41,6 +77,13 @@
     - course intro
   materials: CourseIntro
   other:
+  videos:
+    - name: Zoom 5
+      id: cbca6330-a112-4eb6-8693-ac8a014796e7
+    - name: andmap ormap
+      id: 6a682d3c-8416-45f2-9f3c-ac3101238524
+    - name: some prob solutions
+      id: dc10d3f8-0efc-4ece-b830-ac31010e2aa2
 6:
   reading:
     - EoPL Section 1.1
@@ -49,6 +92,13 @@
     - list sharing and mutation
   materials: OddsAndEnds
   other:
+  videos:
+    - name: vectors
+      id: 6f0fa604-43a5-4e0e-a717-ac32014c3e13
+    - name: list sharing and mutation
+      id: 2e5b457f-242c-41b6-a3b4-ac33010cdc86
+    - name: two more recursive procedures
+      id: 8906b276-3287-4473-83d0-ac35015870cd
 7:
   reading:
     - EoPL Section 1.2 1.2.1
@@ -58,6 +108,13 @@
     - s-lists
   materials: GrammarAndLanguages
   other:
+  videos:
+    - name: Zoom 7
+      id: d977ef6c-c00a-4d03-9a6a-ac8d018302d9
+    - name: largest-in-lists
+      id: c1b0633f-e2b5-47ad-a2e1-ac3500fbfc03
+    - name: some prob solutions
+      id: cfb94c2b-3791-46bf-ad55-ac3501431213
 8:
   reading:
     - EoPL Section 1.2.2-1.2.4
@@ -66,6 +123,9 @@
     - s-list procedures
   materials: ProgramsAboutSlists
   other:
+  videos:
+    - name: Zoom 8
+      id : c78b5944-0c9f-43a7-b382-ac8e011f6983
 9:
   reading:
     - EoPL Section 1.3, 1.4
@@ -76,6 +136,11 @@
     - OO behavior
   materials: OOP
   other:
+  videos:
+    - name: Zoom 9
+      id: b738039b-67a3-4670-9fc8-ac910123405a
+    - name: compose and case lambda
+      id: d96be7f2-f7cc-4d1c-9450-ac370172a2a8
 10:
   reading: EoPL 2.1
   topics:
@@ -83,6 +148,9 @@
     - list-recur
   materials: ProceduralAbstraction
   other:
+  videos:
+    - name: Zoom 10
+      id: 82dcfab6-ec40-4e0a-b569-ac920170ad89
 11:
   reading:
   topics:
@@ -91,6 +159,9 @@
     - lambda calculus
   materials: ListRecur
   other:
+  videos:
+    - name: Zoom 11
+      id: 74e2a17f-ea9a-4ad7-ba41-ac940125026a
 12:
   reading:
     - EoPL 2.2
@@ -100,6 +171,9 @@
     - efficient rotate
   materials: OccursBound
   other:
+  videos:
+    - name: Zoom 12
+      id: bb5fd4a6-6c70-465c-accc-ac9800ce5431
 13:
   reading:
     - review for exam
@@ -108,6 +182,9 @@
     - syntactic extension definition, examples in other languages
   materials: DefineSyntax
   other:
+  videos:
+    - name: Zoom 13
+      id: a019f00c-50ed-4636-a1b9-ac980157ca53
 14:
   reading:
     - TSPL 3.1
@@ -115,6 +192,9 @@
     - Possibly canceled for exam
   materials: SyntaxExpansion
   other:
+  videos:
+    - name: define syntax
+      id: ee6ab990-802d-4c77-aec1-ac41015ebee7
 
 15:
   reading:
@@ -125,6 +205,9 @@
     - define datatype
   materials: DatatypesParsing
   other:
+  videos:
+    - name: Zoom 15
+      id: f709e5ff-ecd2-4ac8-93b2-acaa00d01ad4
 16:
   reading:
     - EoPL 2.4
@@ -134,6 +217,9 @@
     - global environments, local environments
   materials: DatatypesParsing
   other:
+  videos:
+    - name: Zoom 16
+      id: 884e5e76-08b8-4622-8e0b-acaa0134e2f6
 17:
   reading:
     - Catch up on any reading assignments you're behind
@@ -142,6 +228,9 @@
     - environments and closures
   materials: EvironmentsAndClosures
   other:
+  videos:
+    - name: Zoom 17
+      id: cd1c5ec8-12cc-4eea-a83e-acad01209e57
 18:
   reading: EoPL 2.5
   topics:
@@ -149,6 +238,11 @@
     - environment ADT specification
   materials: EnvironmentsAndClosures2
   other:
+  videos:
+    - name: Zoom 18
+      id: cc7f2699-d226-45b8-9945-acaf014980fe
+    - name: complex e and c example
+      id: 607c0767-0bb5-4d3f-8de8-ac4700be7a2f
 19:
   reading: EoPL 3.1, 3.2
   topics:
@@ -156,6 +250,9 @@
     - interpreter starting code overview
   materials: EnvironmentsAndClosures3
   other:
+  videos:
+    - name: Zoom 19
+      id: b2affba4-d3a5-4b9b-b7d6-acb10065dbed
 20:
   reading: TSPL 5.7 (skip call/cc parts)
   topics:
@@ -163,6 +260,9 @@
     - let, if, lambda
   materials: AddLetIfLambda
   other:
+  videos:
+    - name: Zoom 20
+      id: f6a7120b-6adf-41a7-848f-acb1015b6eb4
 21:
   reading:
     - EoPL 6.1 (skim to get the basic ideas, don't get too bogged down)
@@ -170,6 +270,9 @@
     - Intro to continuations and CPS
   materials: Continuations
   other:
+  videos:
+    - name: Zoom 21
+      id: 6d151b5a-2410-46bc-b26d-acb40141532f
 22:
   reading: 
   topics:
@@ -178,12 +281,17 @@
     - More CPS
   materials: CPSValues
   other:
+  videos:
+    - name: Zoom 22
+      id: 67ab0a50-2608-4a33-b716-acb501809eb1
+    - name: CPS Implementation 
 23:
   reading:
   topics:
     - E & C EXAM
   materials: CPSProcedures
   other:
+  videos:
 24:
   reading:
     - EoPL 3.3, 3.4
@@ -191,6 +299,9 @@
     - Continuations as data structures
   materials: CPSMore1
   other:
+  videos:
+    - name: Zoom 24
+      id: 1a6f5dc9-c3ea-431f-ad22-acb8012e4578
 25:
   reading:
     - EoPL 3.5, 3.6
@@ -200,6 +311,9 @@
     - (if not done day 24) CPS pitfalls
   materials: CPSMore2
   other:
+  videos:
+    - name: Zoom 25
+      id: 7048d7e9-f114-4a14-a2d7-acbc011d05cf
 26:
   reading:
     - EoPL 4.1-4.3
@@ -213,7 +327,10 @@
     - Differences between set! and define.
     - call/cc warm-up (if we have time)
   materials: CPSFinal
-  other:  
+  other:
+  videos:
+    - name: Zoom 26
+      id: 520fabc0-50fd-4bda-931a-acbc01295d4
 27:
   reading:
     - EoPL 4.1-4.3
@@ -224,6 +341,9 @@
     - call/cc examples
   materials: CallCC1
   other:
+  videos:
+    - name: Zoom 27
+      id: c89f6577-8afa-48a6-8a98-acbe0130f272
   
 28:
   reading:
@@ -231,7 +351,10 @@
   topics:
     - call/cc examples
   materials: CallCC2
-  other:  
+  other:
+  videos:
+    - name: Zoom 28
+      id: d8598cd5-f46f-40ca-b376-acbf01244121
 29:
   reading:
     - TSPL 3.3, 3.4
@@ -239,6 +362,9 @@
     - call/cc examples
   materials: CallCC3
   other:
+  videos:
+    - name: Zoom 29
+      id: 82606a4d-c7a2-4460-ab6f-acc201343176
 30:
   reading:
   topics: Cancelled for Exam 2
@@ -249,14 +375,26 @@
   topics:
     - interpreter in CPS form
   materials: CPSDatatypesInterpreter
-  other:  
+  other:
+  videos:
+    - name: Zoom 31
+      id: 6208d3c8-3e10-4e61-8093-acc50159d22e
 32:
   reading:
   topics:
     - example fact with call/cc
     - Add call/cc to interpreted language
   materials: CPSDatatypesInterpreter
-  other:  
+  other:
+  videos:
+    - name: Zoom 32
+      id: 95c83579-9fc9-4c8d-b0ef-acc900bc953a
+    - name: which procedures are substantial?
+      id: 228bf192-c1d6-4bbf-b014-ac6400ff76fa
+    - name: Add call/cc to our interprerter
+      id: 103df8b9-ec49-4a02-9d45-ac64013b8248
+    - name: factorial with call/cc
+      id: 1b6faaf7-511d-46f7-844a-ac65010cb06f
 33:
   reading:
   topics:
@@ -269,7 +407,9 @@
     - imperative form
   materials: ImperativeForm
   other:
-  
+  videos:
+    - name: Zoom 34
+      id: 6675b717-b026-484a-8b26-acca011516df
 35:
   reading:
     - TSPL Section 12.11
@@ -278,14 +418,17 @@
     - final exam preview
     - engines
   materials: Engines1
-  other:  
+  other:
+  videos:
+    - name: Zoom 35
+      id: 498f188b-388c-489a-9ded-accc015ed0ec
 
 36:
   reading:
   topics:
     - more engine stuff
   materials: Engines2
-  other:  
+  other:
 
 37:
   reading:
@@ -294,12 +437,15 @@
     - coroutines
   materials: RefParamsCoroutines
   other:  
+  videos:
+    - name: Zoom 37
+      id: a8863f1e-4a87-4e08-9e04-acd0012d7827
 38:
   reading:
   topics:
     - exam prep
   materials: ExamPreview
-  other:  
+  other:
 39:
   reading:
   topics:
@@ -313,3 +459,6 @@
     - to be decided
   materials: 40
   other:  
+  videos:
+    - name: Zoom 40
+      id: 2ffd21f9-6da5-4ff9-93c6-acd4012e72bc

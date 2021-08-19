@@ -4,10 +4,23 @@ layout: default
 ---
 
 <h1>Schedule</h1>
+
+<p>
+Note that the videos linked in the video section are from Claude
+Anderson's (older) version of the class.  Content-wise, this class
+should be pretty similar (though I don't promise things will be
+exactly the same).
+</p>
+<p>
+Details of due dates, exams, etc. are probably different.  So use
+Claude's videos as a supplement to the in-class lectures, not a
+replacement.
+</p>
+
 <table>
     <thead>
         <tr>
-            <td>Session</td><td>Reading</td><td>Topics</td><td>Materials</td>
+            <td>Session</td><td>Reading</td><td>Topics</td><td>Materials</td><td>Videos</td>
         </tr>
     </thead>
     <tbody>
@@ -34,7 +47,15 @@ layout: default
               {% endfor %}
               {{event.other | join: "<br/>"}}
           </td>
+        <td>
+          {% for video in event.videos %}
+          <a href="https://rose-hulman.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{video.id}}">{{video.name}}</a>
+          <br>
+          {% endfor %}
 
+        </td>
+
+          
       </tr>
       {% else %} <!-- we have a class but it's not is schedule.yml -->
       <tr>
@@ -48,7 +69,7 @@ layout: default
       {% endif %}
       {% else %}
             <tr {% if session.bgcolor %} bgcolor="#{{session.bgcolor}}" {% else %} bgcolor="#ddf" {% endif %} >
-        <td colspan="4">
+        <td colspan="5">
           <a href="{{ site.github.repository_url }}/tree/main/Homework/{{ session.dirname }}">{{session.name}}</a> DUE {{ session.date | date: "%a %d %b %Y %l:%M %P" }}
         </td>
       </tr>
