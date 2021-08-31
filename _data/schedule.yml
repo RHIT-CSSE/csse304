@@ -12,6 +12,8 @@
       id: 411f321a-da33-48db-b7b9-aab900f584cf
     - name: Intro-3 lists pairs begin
       id: 5afcad26-2c29-41b2-942b-aabc013bdf95
+    - name: Intro-3b more lists
+      id: 975f96ea-4f26-4226-8f5b-ad95010b9c18
     - name: Intro-4 defining procedures trace
       id: 113e2fa0-673a-42bd-a048-aabc013e7dd9
     - name: Intro-5 local variables recursive procedures
