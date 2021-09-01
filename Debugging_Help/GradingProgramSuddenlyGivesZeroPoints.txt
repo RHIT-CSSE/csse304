@@ -1,0 +1,25 @@
+What if code seems to work on your computer, but the grading server gives you no points?
+
+0. How to see the same thing offline that you see on the server.
+Quit scheme, restart, load your code and the test code, and run the test that failed on the server.
+ 
+1.  What is the most common cause of this problem?  
+Your code defines a helper function that has the same name as a built-in Chez Scheme procedure, and you load code that applies that procedure before you load the code that defines it.  
+	
+2. Why does this happen?
+The Scheme interpreter sees the application and says "This is using a built-in procedure," because it has not yet seen your definition of a procedure with the same name.  It tries to optimize by "hard-wiring" the call to that procedure when it compiles the procedure that applies it.  When you redefine the helper procedure later, it does not go back and "fix" the compiled version of the procedure that called it.
+	
+3. How to check to see if a procedure name is pre-defined?
+ Restart Scheme, enter the name of the procedure that you suspect may be pre-defined. Press enter, and if you do not get an error, it is pre-defined. Or look for that name in the Chez Scheme Users Guide summary of forms, linked from Day 1 on the schedule page.  
+   
+4. Fixing the problem.  
+ Either rename your helper procedure, move your helper procedures's definition before the definition of the procedure that uses it, or use letrec or named let to make your helper procedure be local.
+	
+5. Once upon a time, 
+the server would give zero points for a test case but also give no feedback (neither wrong answers nor error messages).   We think that has been fixed.  If the "zero points but no message" ever happens to you, please email me your code with a message about what happened.
+
+
+IF YOU ARE USING VERSION 8.4 (for example, using SWL) OF CHEZ SCHEME ON YOUR COMPUTER
+The server is based on version 9.5.  You should try running your code in version 9.5.  Perhaps you'll get the same error that the server gives you.
+	
+	

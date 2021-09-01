@@ -1,0 +1,257 @@
+                  Debugging in Chez Scheme
+
+This is a quick description of some of the debugging facilities in Chez
+Scheme.  Thanks to Richard Kelsey for writing Part 1.
+
+****************************************************************
+
+Part 1:  The first things to try...
+
+If an error occurs, you will see a message like this one:
+
+  Error: variable make-tkoen is not bound.
+  Type (debug) to enter the debugger.
+  > 
+
+At this point, (DEBUG) will enter the debugger.  Some errors may automatically
+drop you into the debugger; I'm not sure just which ones.
+
+Once in the debugger, enter ? to get a list of possible debugger commands.
+The most useful ones are e to exit and i (inspect) to inspect the return
+stack.  A sample inspector session may be found below.
+
+There are several ways to get information from a running program.  One is
+to trace procedures.
+
+> (define fact                      ; recursive factorial
+  (lambda (n)
+    (if (<= n 1)
+	1
+	(* n (fact (- n 1))))))
+> (fact 3)                          ; (fact 3) = 6
+6
+> (trace fact)                      ; start tracing the procedure fact
+(fact)
+> (fact 3)
+(fact 3)                            ; printed by the tracer
+|  (fact 2)                         ; indenting shows recursive depth
+|  |  (fact 1)
+|  |  1                             ; results are also printed
+|  2
+6                                   ; final result printed by tracer
+6                                   ; final result printed when returned
+> (untrace fact)                    ; stop tracing fact
+(fact)
+>
+
+LAMBDA can be replaced by TRACE-LAMBDA.  This is useful for LAMBDA's that are
+internal to other procedures.
+
+> (define fact
+   (trace-lambda fact2 (n)           ; fact2 is what the tracer will print out
+    (if (<= n 1)
+	1
+	(* n (fact (- n 1))))))
+> (fact 3)
+(fact2 3)                             ; same as before.
+|  (fact2 2)
+|  |  (fact2 1)
+|  |  1
+|  2
+6
+6
+> 
+
+Finally, you can always print out your own debugging information.  This
+is useful when procedures take large arguments.  For example, many of the
+procedures in the scanner take an automaton as an argument, and tracing them
+results in the automaton being printed out on every call.
+
+Use printf to print debugging information.  printf is much like printf in C,
+except that it uses ~ instead of %.
+
+> (define ifact
+  (lambda (n r)
+	(printf  "ifact: n = ~S r = ~S~%" n r)
+    (if (<= n 1)
+	r
+	(ifact (- n 1) (* n r)))))
+> (ifact 3 1)
+ifact: n = 3 r = 1
+ifact: n = 2 r = 3
+ifact: n = 1 r = 6
+6
+> 
+
+Here are some of the format directives:
+~S  prints the argument
+~D  displays the argument (strings are printed without quotation marks)
+~%  prints a newline
+See the Dybvig book for more details.
+
+****************************************************************
+
+Part 2:  Using the debugger and inspector.
+
+I don't use the debugger much-- I prefer to use the facilities above.  But
+some people may like stack-based debuggers.  Here's a transcript of a sample
+session with the debugger.  The debugger itself doesn't do much-- mostly it's
+used as a gateway to the inspector.  The inspector will let you look at the
+stack and give you at least a rough idea of where you were when things broke.
+My comments on the transcript are in <<....>> brackets.
+
+
+Chez Scheme Version 4.1
+Copyright (c) 1991 Cadence Research Systems
+
+> (define fact
+    (lambda (n)
+      (if (<= n 1)
+	  (/ n 0)		<<force an error>>
+	(* n (fact (- n 1))))))
+> (fact 3)
+
+Error in /: undefined for 0.
+Type (debug) to enter the debugger.
+> (debug)
+debug> ?
+
+Type e to exit interrupt handler and continue  <<used for breakpoints>>
+     r to reset scheme
+     a to abort scheme		<<this EXITS FROM SCHEME-- BEWARE!>>
+     n to enter new cafe
+     i to inspect current continuation
+     s to display statistics
+
+	<<OK, let's enter the inspector and look at the stack>>
+debug> i
+#<system continuation in error>                                   : sf
+  0: #<system continuation in error>
+  1: #<system continuation in #/>
+  2: #<continuation in fact>
+  3: #<continuation in fact>
+  4: #<top level continuation>
+#<system continuation in error>                                   : s
+	<<let's look at it>>
+  continuation:          #<system continuation in #/>
+  free variables:
+  0: (0)
+  1: "undefined for ~s"
+  2: /
+  3: #<system procedure error>
+	<<OK, it was called from somewhere in the #/ (division)
+	  routine, and it has 4 variables of some sort.  Let's
+	  go down the stack and see look at the place it was
+	  called from>>
+#<system continuation in error>                                   : d
+#<system continuation in #/>                                      : s
+  continuation:          #<continuation in fact>
+  free variables:
+  0: 0
+  1: 1
+  2: /
+  3: #<system procedure #/>
+	<<OK, we were someplace in #/.  Looks like we were dividing
+          1 by 0.  Why were we doing this? It was called from
+	  somewhere in fact.  Let's go down the stack some
+	  more>>
+#<system continuation in #/>                                      : d
+#<continuation in fact>                                           : s
+  continuation:          #<continuation in fact>
+  procedure code:        (lambda (n) (if (<= n 1) (/ n 0) (* n (fact (...)))))
+  call code:             (fact (- n 1))
+  free variables:
+  0. n:                  2
+  	<<OK, we were in fact, with n=2, and we called (fact (- n 1)).
+	  The call to (fact 1) doesn't show as a separate stack frame
+	  because the call (/ n 0) is in tail position; you'll learn
+	  about that soon.  Just for fun, let's continue to
+	  explore the stack>>
+#<continuation in fact>                                           : d
+#<continuation in fact>                                           : s
+  continuation:          #<top level continuation>
+  procedure code:        (lambda (n) (if (<= n 1) (/ n 0) (* n (fact (...)))))
+  call code:             (fact (- n 1))
+  free variables:
+  0. n:                  3
+#<continuation in fact>                                           : d
+#<top level continuation>                                         : q
+	<<exit the inspector, now exit the debugger and resume Scheme>>
+debug> r
+> 
+
+****************
+
+Now, what did all that mean?
+
+The inspector allows you to inspect an object (initially the continuation
+(stack frame) where the error occurred.  Typing "?" gives you commands
+pertinent to the kind of object you're looking at.  
+
+1.  For a continuation (stack frame), the choices include:
+
+   show(s) ............. show code and free variables 
+   ref(r) .............. inspect [nth] frame element
+   down(d) ............. inspect [nth] next frame
+   call ................ inspect the expanded code for the pending call
+   code(c) ............. inspect the expanded code for the pending procedure
+   show-frames(sf) ..... show the next [n] frames
+
+So "d" enables you to explore the continuation of the current frame, "r0"
+inspects the 0-th variable, etc.  When you are done looking at an object, "u"
+[up] gets you back to the preceding object.
+
+"sf" shows you a summary of the entire continuation stack (starting at the
+current continuation).  Typical printout might be:
+
+#<system continuation in error>                                   : sf
+  0: #<system continuation in error>
+  1: #<system continuation in #/>
+  2: #<continuation in foo>
+  3: #<continuation in foo>
+  4: #<continuation in foo>
+  5: #<top level continuation>
+
+You can then say "d4" to look at frame #4, and go "d" and "u" the stack from
+there. 
+
+2.  Looking at a list structure, the commands are:
+
+   print(p) ............ pretty-print object   <<this one isn't shown by "?",
+						 but it's probably the most
+						 useful of the lot!-(>>
+   car ................. inspect car of pair
+   cdr ................. inspect cdr of pair
+   ref(r) .............. inspect [nth] car
+   tail ................ inspect [nth] cdr
+   show(s) ............. show [n] elements of list
+   length(l) ........... display list length
+
+3.  For closures (procedures), the commands are:
+
+   show(s) ............. show code and free variables
+   code(c) ............. inspect the expanded code for the procedure
+   ref(r) .............. inspect [nth] free variable
+   length(l) ........... display number of free variables
+
+4.  There may be other inspector modes, for other data types, that I haven't
+found yet.
+
+5.  In addition to these object-specific commands, there are general
+navigation commands, which you can list with the command "??".  These are:
+
+   up(u) ............... return to [nth] previous level
+   top(t) .............. return to initial object
+   forward(f) .......... move to [nth] next expression
+   back(b) ............. move to [nth] previous expression
+   => .................. send object to procedure
+   mark(m) ............. mark location [with symbolic mark]
+   goto(g) ............. go to marked location [mark]
+   new-cafe(n) ......... enter a new cafe
+   quit(q) ............. exit inspector
+   help(h) ............. help
+
+Happy hacking!
+
+
+

@@ -1,0 +1,270 @@
+		      CHEZ SCHEME ERROR MESSAGES
+				 AND
+			 WHAT THEY MIGHT MEAN
+
+				  by
+
+			   Gary T. Leavens
+	Department of Computer Science, Iowa State University
+		     $Date: 1993/10/06 02:50:44 $
+
+The following is an attempt to explain what the error messages
+that Chez Scheme produces might mean.  Of course, to really understand
+what the error messages mean, you would have to know what the error is
+that you made, but then, that is what you are trying to find out!
+To help, this note gives an example that causes each error; you will
+have to look for an analogous error in your code.
+
+1. HOW TO READ AN ERROR MESSAGE.
+
+Let's consider the typical Chez Scheme error message
+
+	Error in +: () is not a number.
+	Type (debug) to enter the debugger.
+	>
+
+This has several parts.  First, ignore the line
+	Type (debug) to enter the debugger.
+This doesn't tell you anything, it's there in all the error messages.
+The significant line is the first one, starting with the word error:
+	Error in +: () is not a number.
+Here you will see two kinds of messages.  Ones like the above,
+having "in <name>:" following the word Error, and ones like
+	Error: attempt to apply non-procedure x.
+having a colon following the word "Error".
+
+An error message like:
+	Error in +: () is not a number.
+means that the procedure named + (in this case) found something wrong.
+That is, there was a call to the procedure +, but + wasn't happy with it.
+Often, like this, it is a type error; + expects arguments of a certain type
+(numbers) but got something else (the empty list).
+
+An error message like:
+	Error: attempt to apply non-procedure x.
+without the phrase "in <name>:" is a message from the Scheme system.
+You are trying to violate the rules of the language in a fundamental way.
+These are often syntax errors.
+
+For both kinds of error messages, look at the part following the colon.
+It tells you what happened.  If you can focus on that, and use the information
+about what procedure is unhappy (in the first kind of error message),
+you can often find out the problem.
+
+
+2. EXAMPLE ERROR MESSAGES AND WHAT THEY MEAN
+
+Error: attempt to apply non-procedure x.
+Error: attempt to apply non-procedure #f.
+Error: attempt to apply non-procedure 3, etc.
+   1. You tried to call a symbol or number as a procedure.
+      All of the following cause this error.
+	> ('x)
+	> (3)
+	> (3 4)
+        > ((null? '(a b)) 3)
+
+   2. You have an extra parenthesis in your code, which causes scheme
+      to try to call some value as a procedure.
+		 (define snoc
+		  (lambda (ls item)
+		    (if (null? ls)
+		        (cons (item '()))    ;;;;; oops!
+		        (cons (car ls)
+		              (snoc (cdr ls) item)))))
+		The line marked oops! should be (cons item '()),
+		The parenthesis in Scheme means that the value of the next
+		thing should be called as a procedre.  Thus the parenthesis
+		before the name "item" on the oops! line tries to call
+		the value of item, in this case the symbol x, or the number 3.
+		These result from calls of the form
+			(snoc '(a b c) 'x)
+			(snoc '(a b c) '3)
+   3. you left out "(cond".
+      For example when you call the following
+		(define remove-1st-oops
+		  (lambda (item ls)
+		      ((null? ls) '())		;;; whoa!
+		      ((equal? (car ls) item) (cdr ls))
+		      (else (cons (car ls) (remove-1st-oops item (cdr ls))))))
+		This is hard to see, but similar to the above.
+		The line marked whoa! is producing the problem,
+		because ((null? ls) '()) is calling (null? ls), which returns
+		#f, and that is trying to be called as a procedure.
+		What makes it hard to see and understand is thath this is
+		a syntax error.  On the line before whoa! should be
+		    (cond
+		-here's another way to do this...
+			(define remove-1st
+			  (lambda (item ls)
+			    (if                ;;;; should be cond
+			     ((null? ls) '())
+			     ((equal? (car ls) item) (cdr ls))
+			     (else (cons (car ls)
+				         (remove-1st item (cdr ls)))))))
+
+
+Error: incorrect number of arguments to #<system procedure cons>.
+Error: incorrect number of arguments to #<procedure snoc>.
+   1. You didn't give it enough arguments.  All the following cause this error
+	> (cons)
+	> (cons 3)
+	> (cons ls)
+	> (cons 1 2 3)
+   2. The code for snoc has a recursive call without enough arguments
+		(define snoc
+		  (lambda (ls item)
+		    (if (null? ls)
+		        (cons item '())
+		        (cons (car ls)
+		              (snoc (cdr ls))))))
+		                            ^
+		needs another argument here-|
+		Even though item does not change in the recursion,
+		snoc takes 2 arguments (because of the (lambda (ls item) ...)),
+		so each time you call it, you need to pass it 2 arguments,
+		including the recursive calls.
+
+Error: variable x is not bound.
+  1. Consider the following, which all make this error:
+	> x
+	> (+ 3 x)
+	> (define foo
+	    (lambda (y)
+	      (+ 3 x)))
+	> (foo 4)
+
+	(If x is "chez" see the next one error.)
+	Somewhere in the expression you typed, is the variable name x.
+	It needs a definition.  
+	This can be a simple misspelling.  Scheme is very picky about
+	misspellings.  Or perhaps you are trying to use a variable
+	that is a parameter to another procedure.
+
+  2. If the variable is "chez" you may be trying to load a transcript.
+	When you get this after loading a file:
+		(load "yoadize.ss")
+	then check to see if your file yodaize.ss is a transcript file,
+	which looks like:	
+
+	        Chez Scheme Version 4.1
+	        Copyright (c) 1991 Cadence Research Systems
+	        ...
+	        (define yodaize
+	           ...)
+	        ...
+	What scheme does with this is it tries to evaluate each expression
+	in sequence, starting with the first.  So the first one is...
+        	Chez
+	which produces the error message.  (After that, it would try to
+	evaluate the expression Scheme...)
+
+	Put your code and transcripts in different files.
+
+   3. You misspelled lambda!  For example,
+		(define remove-1st
+		  (lamdba (item ls)
+		    (if
+		     ((null? ls) '())
+		     ((equal? (car ls) item) (cdr ls))
+		     (else (cons (car ls) (remove-1st item (cdr ls)))))))
+
+Error: variable chez is not bound.
+   1. see "Error: variable x is not bound.", part 2
+
+Error: variable ls is not bound.
+   2. see "Error: variable x is not bound.", part 3
+
+Error in car: () is not a pair.
+Error in cdr: () is not a pair, etc.
+   1. The following expressions cause this to occur.
+	> (car '())
+	> (cdr '())
+   2. Yes, you *are* trying to take the car or cdr of the empty list.
+      Most likely you left off the base case of a recursion,
+      for example:
+		(define remove-1st
+		  (lambda (item ls)
+		    (cond
+		     ((equal? (car ls) item) (cdr ls))
+		     (else (cons (car ls)
+			         (remove-1st item (cdr ls)))))))
+
+Error in car: x is not a pair.
+Error in car: -5 is not a pair.
+   1. The following expressions cause this to occur.
+	> (car 'x)
+	> (car -5)
+   2. Yes, you *are* trying to take the car or cdr of a symbol, number, etc.
+      This often happens in tree recursion.  For example:
+		(define sum-all-pos
+		  ; TYPE: (-> ((tree number)) number)
+		  (lambda (ton)
+		    ; ENSURES: result is the sum of
+		    ;    all the postive numbers in ton
+		    (cond
+		     ((null? ton) 0)
+		     ((and (number? (car ton)) (positive? (car ton)))
+		      (+ (car ton) (sum-all-pos (cdr ton))))
+		     (else (+ (sum-all-pos (car ton))
+			      (sum-all-pos (cdr ton)))))))
+      A call such as (sum-all-pos '((3 4 (-5 6)) 2)) gives the error
+      Error in car: -5 is not a pair.
+      The problem is an incomplete case analysis.  When the else is reached
+      one knows that ton is not null and that (car ton) is either not a number
+      or that it is negative.  But this leads to calling
+      (sum-all-pos (car ton)) when (car ton) is negative (as in -5).
+
+Error in +: () is not a number.
+   1. The following expressions cause this.
+	> (+ 3 '())
+	> (+ '() 3)
+   2. You are trying to add the empty list to a number.
+      Most likely you have a procedure that is supposed to return a number,
+      but in the base case returns a list.  Like this:
+	 (define add-list
+	    (lambda (ls)
+	      (if (null? ls)
+	          '()             ;;; should be 0
+	          (+ (car ls) (add-list (cdr ls))))))
+
+Error in open-input-file: error opening "junky.ss": No such file or directory.
+   1. you typed the name of the file wrong, try (load "junk.ss")
+      or whatever the file name is.
+   2. you are in the wrong directory.  Try typing
+		(load "~/junky.ss")
+      if it's in your directory, or
+	  	(load "/home/cs227/lib/ch3.ss")
+      if it's in the class library.
+
+Error in open-input-file: error opening "junk.ss": Too many open files
+   1. the file named "junk.ss" loads itself.  That is, it has
+      a line in it of the form:
+		(load "junk.ss")
+
+Error in read: unexpected end-of-file on #<input port prob2.ss>.
+   1. the file prob2.ss has a missing right parenthesis `)',
+   2. the file prob2.ss has a missing double quote "
+
+
+This list is undoubtedly incomplete.  If you have an error message that
+you don't understand, send me mail with it and your code.  If it's not
+in here already, I'll add it to the list.
+
+
+3. WHAT IF THAT DOESN'T HELP
+
+Use emacs to indent your code.  (See /home/cs227/doc/running-scheme.txt
+for details.)  Look to see if any of the indentation doesn't look right.
+That may give you a clue.
+
+Another thing you can do is to use the Chez Scheme debugger to get more
+information.  See the file /home/cs227/doc/debugging-chez-scheme.txt
+for how to use that.
+
+If none of the above works, ask a member of the course staff,
+but be sure to send:
+	* your error message,
+	* the scheme code, and
+	* your test case.
+These will help us find out what the problem is.

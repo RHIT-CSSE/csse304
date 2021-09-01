@@ -14,6 +14,7 @@ you doing this - it's academic misconduct.
 * [Assignment 0](Homework/Assignment_0) - details on how to configure your computer with scheme and an editor
 * [Moodle](https://moodle.rose-hulman.edu/course/view.php?id=84861) - grades, etc
 * [Piazza](https://moodle.rose-hulman.edu/mod/forum/view.php?id=2902249) - ok, it's not really Piazza, but its still a place for you to post your questions
+* [Debugging Help](Debugging_Help/)
 
 # Textbooks
 
