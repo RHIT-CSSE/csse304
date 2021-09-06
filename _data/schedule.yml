@@ -40,11 +40,9 @@
     - TSPL Section 2.2-2.8
     - EOPL-1 2-29
   topics:
-    - cons, list, append
-    - other list topics
-    - let and let*
-    - more recursive procedures
-  materials: IntroToOS
+    - course intro
+    - assorted scheme topics
+  materials: CourseIntro
   other:
   videos:
     - name: Zoom 3
