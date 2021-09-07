@@ -58,9 +58,9 @@
     - TSPL sections 3.2, 4.1-4.4, 6.1-6.4
     - EOPL-1 67-74
   topics:
-    - map apply
+    - let & and ist many flavors
     - insertion sort
-  materials: MapApply 
+  materials: LetVariants
   other:
   videos:
     - name: Zoom 4
@@ -74,8 +74,8 @@
     - TSPL 5.1-5.4
     - EoPL Forward & Preface
   topics:
-    - course intro
-  materials: CourseIntro
+    - Map & Apply
+  materials: MapApply
   other:
   videos:
     - name: Zoom 5
