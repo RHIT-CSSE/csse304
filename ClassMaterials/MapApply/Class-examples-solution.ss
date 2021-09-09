@@ -77,5 +77,7 @@
       (if 
         (null? nonempty-lists)
         #f
-        (list-max (map list-max nonempty-lists)))))
+        (list-max (map list-max nonempty-lists))))))
+
+(largest-in-lists '((1) (2 3) () () (9 5) ())) ;; 9
 

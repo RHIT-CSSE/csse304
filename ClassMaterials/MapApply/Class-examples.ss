@@ -75,3 +75,5 @@
     '()
   ))
 
+(largest-in-lists '((1) (2 3) () () (9 5) ())) ;; 9
+(largest-in-lists '(()())) ;; #f
