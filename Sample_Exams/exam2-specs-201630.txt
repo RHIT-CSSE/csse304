@@ -1,0 +1,32 @@
+Exam 2   Fall, 2015
+
+Coverage:
+   Lectures 12-27
+   HW 7-16
+   Reading assignments through session 27
+   
+   Written part:  Closed book and notes. 
+   Computer part: THe usual references are allowed.
+   
+Possible topics:
+	grammars and derivations
+	s-lists
+	procedural abstraction including list-recur, sn-list-recur, bt-recur
+	persistent data and creating procedures that behave like objects
+	case-lambda (you are allowed, but not required, to use it)
+	free and bound occurrences of variables
+	lexical address (lexical depth and lexical position)
+	syntactic extension vs. procedure definition
+	define-syntax
+	abstract data types: interface, representation, implementation
+	representation-independent interface
+	define-datatype
+	parse and unparse
+	environment and closure diagrams (on in-class part of the exam)
+	environment ADT and our various representations/implementations
+	make simple modifications to your interpreter:  Add something new and simple to the interpreted language.
+	continuations and writing code in CPS.
+	
+	
+	
+   

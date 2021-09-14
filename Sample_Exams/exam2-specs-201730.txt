@@ -1,0 +1,36 @@
+Exam 2   Spring, 2017
+
+Coverage:
+   Lectures 12-27
+   HW 8-16
+   Reading assignments through session 28 (or whenever we finish letrec and named let implementations)
+   
+   Written part:  Closed book and notes. 
+   Computer part: The usual references are allowed.
+   
+Possible topics:
+	programming with lists (and nested lists)
+	grammars and derivations
+	s-lists
+	procedural abstraction including list-recur, sn-list-recur, bt-recur
+	curried procedures
+	(Know what set!, set-cdr!, set-car!, and vector-set! do)
+	persistent data and creating procedures that behave like objects
+	memoization
+	case-lambda 
+	free and bound occurrences of variables
+	lexical address (lexical depth and lexical position)
+	know the difference between syntactic extension and procedure definition
+	define-syntax
+	abstract data types: interface, representation, implementation
+	representation-independent interface
+	define-datatype
+	parse and unparse
+	environment and closure diagrams (on earlier in-class part of the exam)
+	environment ADT and our various representations/implementations
+	make simple modifications to your interpreter:  Add something new to the interpreted language.
+	continuations, write code in CPS.
+	
+	
+	
+   

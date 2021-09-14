@@ -1,0 +1,28 @@
+Exam 2   Spring, 2015
+
+Coverage:
+   Lectures 7-23
+   HW 7-13
+   EoPL Sections 1.2-3.3
+   
+Possible topics:
+	grammars and derivations
+	s-lists
+	procedural abstraction including list-recur, sn-list-recur, bt-recur
+	persistent data and creating procedures that behave like objects
+	case-lambda (you are allowed, but not required, to use it)
+	free and bound occurrences of variables
+	lexical address (lexical depth and lexical position)
+	syntactic extension vs. procedure definition
+	define-syntax
+	abstract data types: interface, representation, implementation
+	representation-independent interface
+	define-datatype
+	parse and unparse
+	environment and closure diagrams
+	environment ADT and various representations/implementations
+	make simple modifications to your interpreter:  Add something new to the interpreted language.
+	
+	
+	
+   

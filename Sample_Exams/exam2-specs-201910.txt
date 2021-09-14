@@ -1,0 +1,47 @@
+Exam 2 
+
+In-class Portion: Tuesday, Oct 9
+	One E&C problem
+	I'll give you code; you draw the E&C diagram.
+   
+
+
+
+Evening parts  Oct 16, 2018  -- 7:00 PM
+
+Coverage:
+   Lectures 8-21
+   HW 7-14
+   Reading assignments through session 21 
+   
+   Written part:  Closed book and notes. 
+   Computer part: The usual references are allowed.
+   
+Possible topics:
+	programming with lists (and nested lists)
+	grammars and derivations
+	s-lists
+	procedural abstraction including list-recur, sn-list-recur, bt-recur, or a new recursion pattern
+	curried procedures
+	(Know what set!, set-cdr!, set-car!, and vector-set! do)
+	persistent data and creating procedures that behave like objects
+	memoization   - for final, not exam 2
+        multiple-value returns  - for final, not exam 2
+	case-lambda 
+	free and bound occurrences of variables
+	lexical address (lexical depth and lexical position)
+	know the difference between syntactic extension and procedure definition
+	define-syntax
+	abstract data types: interface, representation, implementation
+	representation-independent interfaces
+	define-datatype
+	parse and unparse
+	environment and closure diagrams (on earlier in-class part of the exam)
+	environment ADT and our various representations/implementations
+	make simple modifications to your interpreter:  Add something new to the interpreted language.
+	You should bring your working A14 code (If you don't get it working before the A14 due date, do so before the exam.
+	
+	
+	
+	
+   

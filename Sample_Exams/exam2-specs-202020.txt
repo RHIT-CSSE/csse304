@@ -1,0 +1,45 @@
+Exam 2 
+
+Previously done:  One E&C problem.
+
+Evening parts  Feb 5, 2020
+
+Coverage:
+   Lectures 8-26
+   HW 8-16
+   Reading assignments through session 26
+   
+   Written part:  Closed book and notes. 
+   Computer part: The usual references are allowed.
+   
+Possible topics:
+	programming with lists (and nested lists)
+	grammars and derivations
+	s-lists
+	procedural abstraction including list-recur, sn-list-recur, bt-recur, or a new recursion pattern
+	curried procedures
+	define, set!, set-cdr!, set-car!, and vector-set! (in code, and in your interpreted language)
+	persistent data and creating procedures that behave like objects
+	case-lambda 
+	free and bound occurrences of variables
+	lexical address (lexical depth and lexical position)
+	know the difference between syntactic extension and procedure definition
+	define-syntax
+	abstract data types: interface, representation, implementation
+	representation-independent interfaces
+	define-datatype
+	parse and unparse
+	environment and closure diagrams (on earlier in-class part of the exam.  I may give you my solution to that problem and ask a question about it)
+	environment ADT and our various representations/implementations
+	make simple modifications to your interpreter:  Add something new to the interpreted language.
+	memoization   
+    multiple-value returns  
+    CPS - both continuation representations
+	interpreter with letrec and named let.  Know the three main approaches to letrec implementation that we discussed in class.
+	interpreter with define and set!
+
+	
+	
+	
+	
+   
