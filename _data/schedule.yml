@@ -226,7 +226,7 @@
   topics:
     - lambdas, procedures and closures
     - environments and closures
-  materials: EvironmentsAndClosures
+  materials: EnvironmentsAndClosures
   other:
   videos:
     - name: Zoom 17
