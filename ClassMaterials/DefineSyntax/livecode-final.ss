@@ -1,3 +1,9 @@
+(define-syntax my-let
+ (syntax-rules ()
+   [(_ ((x v) ...) e1 e2 ...)
+    ((lambda (x ...) e1 e2 ...) 
+     v ...)]))
+
 (define-syntax my-if
   (syntax-rules (then else)
     [(_ e1 then e2 else e3) ; pattern
