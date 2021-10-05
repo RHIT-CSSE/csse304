@@ -3,21 +3,32 @@
 
 (load "chez-init.ss") 
 
-
-
 ;-------------------+
 ;                   |
 ;    DATATYPES      |
 ;                   |
 ;-------------------+
 
+; parsed expression.  You'll probably want to replace this 
+; code with your expression datatype from A11b
 
-
-;; Parsed expression datatypes
-
-(define-datatype expression expression?
+(define-datatype expression expression?  
   [var-exp        ; variable references
    (id symbol?)]
+
+  [let-exp  ;; these are simplified so as not worry about variant
+            ;; forms.  You'll need more complex versions.
+   (vars (list-of symbol?))
+   (var-exps (list-of expression?))
+   (bodies (list-of expression?))]
+  [lambda-exp
+   (vars (list-of symbol?))
+   (bodies (list-of expression?))]
+  [if-exp
+   (test-exp expression?)
+   (then-exp expression?)
+   (else-exp expression?)]
+
   [lit-exp        ; "Normal" data.  Did I leave out any types?
    (datum
     (lambda (x)
@@ -28,73 +39,29 @@
    (rator expression?)
    (rands (list-of expression?))]  
   )
-
 	
+
+;; environment type definitions
+
+(define scheme-value?
+  (lambda (x) #t))
+  
+(define-datatype environment environment?
+  [empty-env-record]
+  [extended-env-record
+   (syms (list-of symbol?))
+   (vals (list-of scheme-value?))
+   (env environment?)])
+
+
 ; datatype for procedures.  At first there is only one
 ; kind of procedure, but more kinds will be added later.
 
 (define-datatype proc-val proc-val?
   [prim-proc
    (name symbol?)])
-	 
-	 
-	 
-	
-;; environment type definitions
 
-(define scheme-value?
-  (lambda (x) #t))
-
-(define-datatype environment environment?
-  (empty-env-record)
-  (extended-env-record
-   (syms (list-of symbol?))
-   (vals (list-of scheme-value?))
-   (env environment?)))
-;; Parsed expression datatypes
-
-(define-datatype expression expression?
-  [var-exp        ; variable references
-   (id symbol?)]
-  [lit-exp        ; "Normal" data.  Did I leave out any types?
-   (datum
-    (lambda (x)
-      (ormap 
-       (lambda (pred) (pred x))
-       (list number? vector? boolean? symbol? string? pair? null?))))]
-  [app-exp        ; applications
-   (rator expression?)
-   (rands (list-of expression?))]  
-  )
-
-	
-; datatype for procedures.  At first there is only one
-; kind of procedure, but more kinds will be added later.
-
-(define-datatype proc-val proc-val?
-  [prim-proc
-   (name symbol?)])
-	 
-	 
-	 
-	
-;; environment type definitions
-
-(define scheme-value?
-  (lambda (x) #t))
-
-(define-datatype environment environment?
-  (empty-env-record)
-  (extended-env-record
-   (syms (list-of symbol?))
-   (vals (list-of scheme-value?))
-   (env environment?)))
-
-
-
-
-
-
+  
 ;-------------------+
 ;                   |
 ;    PARSER         |
@@ -102,7 +69,7 @@
 ;-------------------+
 
 
-; This is a parser for simple Scheme expressions, such as those in EOPL, 3.1 thru 3.3.
+; This is a parser for simple Scheme expressions, such as those in EOPL 3.1 thru 3.3.
 
 ; You will want to replace this with your parser that includes more expression types, more options for these types, and error-checking.
 
@@ -110,6 +77,9 @@
 (define 1st car)
 (define 2nd cadr)
 (define 3rd caddr)
+(define 4th cadddr)
+
+; Again, you'll probably want to use your code form A11b
 
 (define parse-exp         
   (lambda (datum)
@@ -117,8 +87,21 @@
      [(symbol? datum) (var-exp datum)]
      [(number? datum) (lit-exp datum)]
      [(pair? datum)
-      (cond
-       
+      (case (car datum)
+        [(let)
+         (let ([var-pairs (2nd datum)]
+               [bodies (cddr datum)])
+           (let-exp (map 1st var-pairs)
+                    (map parse-exp (map 2nd var-pairs))
+                    (map parse-exp bodies)))]
+                      
+        [(lambda)
+         (lambda-exp (2nd datum) (map parse-exp (cddr datum)))]
+        [(if)
+         (if-exp
+          (parse-exp (2nd datum))
+          (parse-exp (3rd datum))
+          (parse-exp (4th datum)))]
        [else (app-exp (parse-exp (1st datum))
 		      (map parse-exp (cdr datum)))])]
      [else (eopl:error 'parse-exp "bad expression: ~s" datum)])))
@@ -140,7 +123,8 @@
 
 
 
-; Environment definitions for CSSE 304 Scheme interpreter.  Based on EoPL section 2.3
+; Environment definitions for CSSE 304 Scheme interpreter.  
+; Based on EoPL sections 2.2 and 2.3
 
 (define empty-env
   (lambda ()
@@ -152,34 +136,21 @@
 
 (define list-find-position
   (lambda (sym los)
-    (list-index (lambda (xsym) (eqv? sym xsym)) los)))
-
-(define list-index
-  (lambda (pred ls)
-    (cond
-     ((null? ls) #f)
-     ((pred (car ls)) 0)
-     (else (let ((list-index-r (list-index pred (cdr ls))))
-	     (if (number? list-index-r)
-		 (+ 1 list-index-r)
-		 #f))))))
-
+    (let loop ([los los] [pos 0])
+      (cond [(null? los) #f]
+	    [(eq? sym (car los)) pos]
+	    [else (loop (cdr los) (add1 pos))]))))
+	    
 (define apply-env
-  (lambda (env sym succeed fail) ; succeed and fail are procedures applied if the var is or isn't found, respectively.
-    (cases environment env
-      (empty-env-record ()
-        (fail))
-      (extended-env-record (syms vals env)
+  (lambda (env sym) 
+    (cases environment env 
+      [empty-env-record ()      
+        (eopl:error 'env "variable ~s not found." sym)]
+      [extended-env-record (syms vals env)
 	(let ((pos (list-find-position sym syms)))
       	  (if (number? pos)
-	      (succeed (list-ref vals pos))
-	      (apply-env env sym succeed fail)))))))
-
-
-
-
-
-
+	      (list-ref vals pos)
+	      (apply-env env sym)))])))
 
 
 ;-----------------------+
@@ -188,24 +159,22 @@
 ;                       |
 ;-----------------------+
 
+; To be added in assignment 14.
 
+;--------------------------------------+
+;                                      |
+;   CONTINUATION DATATYPE and APPLY-K  |
+;                                      |
+;--------------------------------------+
 
-; To be added later
-
-
-
-
-
-
-
+; To be added in assignment 18a.
 
 
 ;-------------------+
 ;                   |
-;   INTERPRETER    |
+;   INTERPRETER     |
 ;                   |
 ;-------------------+
-
 
 
 ; top-level-eval evaluates a form in the global environment
@@ -222,11 +191,7 @@
     (cases expression exp
       [lit-exp (datum) datum]
       [var-exp (id)
-				(apply-env init-env id; look up its value.
-      	   (lambda (x) x) ; procedure to call if id is in the environment 
-           (lambda () (eopl:error 'apply-env ; procedure to call if id not in env
-		          "variable not found in environment: ~s"
-			   id)))] 
+	(apply-env init-env id)]
       [app-exp (rator rands)
         (let ([proc-value (eval-exp rator)]
               [args (eval-rands rands)])
@@ -248,7 +213,7 @@
     (cases proc-val proc-value
       [prim-proc (op) (apply-prim-proc op args)]
 			; You will add other cases
-      [else (error 'apply-proc
+      [else (eopl:error 'apply-proc
                    "Attempt to apply bad procedure: ~s" 
                     proc-value)])))
 
@@ -276,7 +241,7 @@
       [(=) (= (1st args) (2nd args))]
       [else (error 'apply-prim-proc 
             "Bad primitive procedure name: ~s" 
-            prim-op)])))
+            prim-proc)])))
 
 (define rep      ; "read-eval-print" loop.
   (lambda ()

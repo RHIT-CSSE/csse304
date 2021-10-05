@@ -158,7 +158,7 @@
 
 ; eval-exp is the main component of the interpreter
 
-(define eval-exp
+(definse eval-exp
   (lambda (exp)
     (cases expression exp
       [lit-exp (datum) datum]
