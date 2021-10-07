@@ -273,18 +273,19 @@
   videos:
     - name: Zoom 21
       id: 6d151b5a-2410-46bc-b26d-acb40141532f
+    - name: CPS Implementation
+      id: d49bf1c9-ca45-4668-971e-ac5200b3bae4
 22:
   reading: 
   topics:
     - Memoization
     - Multiple return values in scheme
-    - More CPS
-  materials: CPSValues
+    - A little more CPS
+  materials: Memoization
   other:
   videos:
     - name: Zoom 22
       id: 67ab0a50-2608-4a33-b716-acb501809eb1
-    - name: CPS Implementation 
 23:
   reading:
   topics:
