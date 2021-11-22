@@ -13,8 +13,8 @@
 
 (define test (make-test
   (fact equal?
-    ((fact 0) 1 1)
+    ((fact 0) 1 2)
     ((fact 4) 24 1)
-    ((fact 6) 720 1)
+    ((fact 6) 720 2)
   )
 ))
