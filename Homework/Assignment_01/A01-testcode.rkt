@@ -56,23 +56,23 @@
   )
 
   (make-vec-from-points equal?
-    [(make-vec-from-points '(1 3 4) '(3 6 2)) '(2 3 -2) 1]
-    [(make-vec-from-points '(-1 3 4) '(3 -6 2)) '(4 -9 -2) 1]
+    [(make-vec-from-points '(1 3 4) '(3 6 2)) '(2 3 -2) 3]
+    [(make-vec-from-points '(-1 3 4) '(3 -6 2)) '(4 -9 -2) 2]
   )
 
   (dot-product equal?
-    [(dot-product '(1 -3 5) '(2 4 7)) 25 1]
-    [(dot-product '(1 5 3) '(3 3 -6)) 0 1]
+    [(dot-product '(1 -3 5) '(2 4 7)) 25 3]
+    [(dot-product '(1 5 3) '(3 3 -6)) 0 2]
   )
 
   (vector-magnitude equal?
-    [(vector-magnitude '(3 -4 12)) 13 1]
-    [(vector-magnitude '(0 0 0)) 0 1]
+    [(vector-magnitude '(3 -4 12)) 13 3]
+    [(vector-magnitude '(0 0 0)) 0 2]
   )
 
   (distance equal?
-    [(distance '(4 7 8) '(7 11 -4) ) 13 1]
-    [(distance '(3 1 2) '(15 -15 23)) 29 1]
+    [(distance '(4 7 8) '(7 11 -4) ) 13 2]
+    [(distance '(3 1 2) '(15 -15 23)) 29 2]
     [(distance '(4 7 8) '(4 7 8)) 0 1]
   )
 ))
