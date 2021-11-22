@@ -1,21 +1,21 @@
 #lang racket
 
-(provide make-test run-all r run-test individual-test get-weights)
+(provide make-test run-all r run-test individual-test get-weights get-names)
 
 ;;--------  Procedures used by the testing mechanism   ------------------
 
 (define-syntax make-test
   (syntax-rules ()
-    ([_ (name testcase ...) ...]
+    ([_ (name equivalent? testcase ...) ...]
      [cons
       (list (syntax->datum #'name) ...)
-      (list (list (make-testcase testcase) ...) ...)])))
+      (list (let ([equiv-proc equivalent?]) (list (make-testcase testcase equiv-proc) ...)) ...)])))
 
 (define-syntax make-testcase
   (syntax-rules ()
-    ([_ (body expected weight)]
-     [make-testcase (body equal? expected weight)])
-    ([_ (body equivalent? expected weight)]
+    ([_ (body expected weight) equivalent?]
+     [make-testcase (body equivalent? expected weight) equivalent?])
+    ([_ (body equivalent? expected weight) overridden]
      [list (lambda () body) equivalent? expected weight (syntax->datum #'body)])))
 
 
@@ -75,7 +75,7 @@
 
 (define get-weights
   (lambda (test)
-    [let loop ([suites-ptr (cdr test)])
+    (let loop ([suites-ptr (cdr test)])
       (if [null? suites-ptr]
           (list)
           (let ([suite (car suites-ptr)] [other (cdr suites-ptr)])
@@ -85,4 +85,8 @@
                    (list)
                    (let ([test (car tests-ptr)] [other-tests (cdr tests-ptr)])
                      (cons (cadddr test) (inner-loop other-tests)))))
-             (loop other))))]))
+             (loop other)))))))
+
+(define get-names
+  (lambda (test)
+    (car test)))
