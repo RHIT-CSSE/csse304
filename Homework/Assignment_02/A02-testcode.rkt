@@ -20,22 +20,22 @@
 (define test (make-test
   (choose equal?
     [(choose 0 0) 1 1]
-    [(choose 3 2) 3 1]
-    [(choose 10 6) 210 1]
+    [(choose 3 2) 3 2]
+    [(choose 10 6) 210 2]
   )
 
   (sum-of-squares equal?
-    [(sum-of-squares '(1 3 5 7)) 84 1]
-    [(sum-of-squares '()) 0 1]
+    [(sum-of-squares '(1 3 5 7)) 84 3]
+    [(sum-of-squares '()) 0 2]
   )
 
   (range equal?
-    [(range 0 0) '() 1]
+    [(range 0 0) '() 2]
     [(range 0 5) '(0 1 2 3 4) 1]
     [(range 5 9) '(5 6 7 8) 1]
     [(range 25 30) '(25 26 27 28 29) 1]
     [(range 31 32) '(31) 1]
-    [(range 7 4) '() 1]
+    [(range 7 4) '() 2]
   )
 
   (set? equal?
@@ -45,20 +45,20 @@
     [(and (not (set? '(1 (2 3) (3 2) 5 (3 2)))) (set? '())) #t 1]
     [(set? '(r o s e - h u l m a n)) #t 1]
     [(set? '(c o m p u t e r s c i e n c e)) #f 1]
-    [(set? '((i) (a m) (a) (s e t))) #t 1]
-    [(set? '((i) (a m) (n o t) (a) (s e t) (a m) (i))) #f 1]
+    [(set? '((i) (a m) (a) (s e t))) #t 2]
+    [(set? '((i) (a m) (n o t) (a) (s e t) (a m) (i))) #f 2]
   )
 
   (union set-equals?
-    [(union '(a b d e f h j) '(f c e g a)) '(a b c d e f g h j) 1]
+    [(union '(a b d e f h j) '(f c e g a)) '(a b c d e f g h j) 2]
     [(union '(a b c) '(d e)) '(a b c d e) 1]
     [(union '(a b c) '()) '(a b c) 1]
     [(union '() '()) '() 1]
   )
 
   (cross-product equal?
-    [(cross-product '(1 3 4) '(3 6 2)) '(-18 10 -3) 1]
-    [(cross-product '(1 2 3) '(2 4 6)) '(0 0 0) 1]
+    [(cross-product '(1 3 4) '(3 6 2)) '(-18 10 -3) 3]
+    [(cross-product '(1 2 3) '(2 4 6)) '(0 0 0) 2]
   )
 
   (parallel? equal?
@@ -70,8 +70,8 @@
   )
 
   (collinear? equal?
-    [(collinear? '(1 2 3) '(4 5 6) '(10 11 12)) #t 1]
-    [(collinear? '(1 2 3) '(4 5 6) '(10 11 13)) #f 1]
+    [(collinear? '(1 2 3) '(4 5 6) '(10 11 12)) #t 3]
+    [(collinear? '(1 2 3) '(4 5 6) '(10 11 13)) #f 2]
   )
 ))
 
