@@ -3,7 +3,7 @@
 (require "../testcode-base.rkt")
 (require "A01.rkt")
 
-(provide get-weights individual-test test)
+(provide get-weights get-names individual-test test)
 
 (define (equal?-or-swapped list1 list2)
   (cond
