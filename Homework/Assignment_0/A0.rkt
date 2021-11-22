@@ -1,3 +1,7 @@
+#lang racket
+
+(provide fact)
+
 ; recursive factorial procedure
 ; parameter n: must be a non-zero integer
 
@@ -6,4 +10,3 @@
     (if (zero? n)
         1
         (* n (fact (- n 1))))))
-
