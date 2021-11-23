@@ -10,12 +10,10 @@ you doing this - it's academic misconduct.
 
 * [Course Schedule](https://rhit-csse.github.io/csse304/schedule.html) course content, due dates, exam dates
 * [Syllabus](syllabus.md) - course policies including lateness, grade calculations
-* [Grading Server](https://plc.csse.rose-hulman.edu/)
+* Most assignments are submitted via the "Gradescope" link on Moodle
 * [Assignment 0](Homework/Assignment_0) - details on how to configure your computer with scheme and an editor
-* [Moodle](https://moodle.rose-hulman.edu/course/view.php?id=84861) - grades, etc
-* [Piazza](https://moodle.rose-hulman.edu/mod/forum/view.php?id=2902249) - ok, it's not really Piazza, but its still a place for you to post your questions
-* [TA Schedule](https://rosehulman-my.sharepoint.com/:w:/g/personal/hewner_rose-hulman_edu/EdDXDQsZO91JhhYDd-lqI4wBxUqMmJVfVgIgYhlCvEAt1g?e=tmNkK0)
-* [Debugging Help](Debugging_Help/)
+* [Moodle](https://moodle.rose-hulman.edu/course/view.php?id=87811) - grades, etc
+* [Piazza](https://moodle.rose-hulman.edu/mod/forum/view.php?id=3113752) - ok, it's not really Piazza, but its still a place for you to post your questions
 
 # Textbooks
 
