@@ -30,21 +30,27 @@
 (define run-suite
   (lambda (name suite)
     (printf "~a: " name)
-    (let loop ([suite-pointer suite] [passed #t] [score 0] [max-score 0])
+    (let loop ([suite-pointer suite] [passed #t] [nyi #f] [score 0] [max-score 0])
       (if [null? suite-pointer]
           (begin (if passed
                      (printf "All correct ~a/~a\n" score max-score)
-                     (printf "~a score: ~a/~a\n" name score max-score))
+                     (when [not nyi]
+                       (printf "~a score: ~a/~a\n" name score max-score)))
                  (cons score max-score))
           (let ([testcase (car suite-pointer)] [other (cdr suite-pointer)])
             (let ([student-answer ((car testcase))] [equivalent? (cadr testcase)] [expected (caddr testcase)] [test-weight (cadddr testcase)] [code (car (cddddr testcase))])
               (if [equivalent? student-answer expected]
-                  (loop other passed (+ score test-weight) (+ max-score test-weight))
-                  (begin
-                    (when passed
-                      (printf "\n~a" suite-separator))
-                    (printf "Test case: ~a\nYours: ~a\nExpected: ~a\n~a" code student-answer expected suite-separator)
-                    (loop other #f score (+ max-score test-weight))))))))))
+                  (loop other passed nyi (+ score test-weight) (+ max-score test-weight))
+                  (if (eq? student-answer 'nyi)
+                      (begin
+                        (when [not nyi]
+                          (printf "Not yet implemented\n"))
+                        (loop other #f #t score (+ max-score test-weight)))
+                      (begin
+                        (when passed
+                          (printf "\n~a" suite-separator))
+                        (printf "Test case: ~a\nYours: ~a\nExpected: ~a\n~a" code student-answer expected suite-separator)
+                        (loop other #f nyi score (+ max-score test-weight)))))))))))
 
 (define-syntax run-all
   (syntax-rules ()
