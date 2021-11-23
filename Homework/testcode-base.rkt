@@ -25,7 +25,20 @@
      [let* ([test-symbol (syntax->datum #'test-name)][suite-index (index-of (car test) test-symbol)])
        (if suite-index
            (begin (run-suite test-symbol (list-ref (cdr test) suite-index)) (void))
-           (printf "Test not found: ~a\n" test-symbol))])))
+           (printf "Test not found: ~a\n" test-symbol))])
+    ([_ test-name test-num]
+     (if [< test-num 1]
+         (printf "Test number ~a too small. Start with 1." test-num)
+         [let* ([test-symbol (syntax->datum #'test-name)] [suite-index (index-of (car test) test-symbol)])
+           (if suite-index
+               (if [<= test-num (length (list-ref (cdr test) suite-index))]
+                   (let ([result (individual-test suite-index (sub1 test-num) test)])
+                     (let ([correct (not (zero? (first result)))] [code (second result)] [yours (third result)] [expected (fourth result)])
+                       (when correct
+                         (printf "Correct!\n"))
+                       (printf "Code: ~a\nYours: ~a\nExpected: ~a\n" code yours expected)))
+                   (printf "Test number ~a too large for suite ~a\n" test-num test-symbol))
+               (printf "Test not found: ~a\n" test-symbol))]))))
 
 (define run-suite
   (lambda (name suite)
