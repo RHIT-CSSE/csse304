@@ -12,19 +12,27 @@
       (list (let ([equiv-proc equivalent?]) (list (make-testcase testcase equiv-proc) ...)) ...)])))
 
 (define-syntax make-testcase
-  (syntax-rules ()
+  (syntax-rules (all-or-nothing)
+    ([_ (all-or-nothing weight testcase ...) equivalent?]
+     [cons (let ([equiv-proc equivalent?]) (list (make-all-or-nothing-testcase testcase equiv-proc) ...)) weight])
     ([_ (body expected weight) equivalent?]
      [make-testcase (body equivalent? expected weight) equivalent?])
     ([_ (body equivalent? expected weight) overridden]
      [list (lambda () body) equivalent? expected weight (syntax->datum #'body)])))
 
+(define-syntax make-all-or-nothing-testcase
+  (syntax-rules ()
+    ([_ (body expected) equivalent?]
+     [make-testcase (body expected 1) equivalent?])
+    ([_ (body expected equivalent?) overridden]
+     [make-testcase (body expected equivalent? 1) overridden])))
 
 (define-syntax run-test
   (syntax-rules ()
     ([_ test-name]
      [let* ([test-symbol (syntax->datum #'test-name)][suite-index (index-of (car test) test-symbol)])
        (if suite-index
-           (begin (run-suite test-symbol (list-ref (cdr test) suite-index)) (void))
+           (begin (run-suite test-symbol suite-index test) (void))
            (printf "Test not found: ~a\n" test-symbol))])
     ([_ test-name test-num]
      (if [< test-num 1]
@@ -41,30 +49,35 @@
                (printf "Test not found: ~a\n" test-symbol))]))))
 
 (define run-suite
-  (lambda (name suite)
+  (lambda (name suite-index test)
     (printf "~a: " name)
-    (let loop ([suite-pointer suite] [passed #t] [nyi #f] [score 0] [max-score 0])
-      (if [null? suite-pointer]
-          (begin (if passed
-                     (printf "All correct ~a/~a\n" score max-score)
-                     (when [not nyi]
-                       (printf "~a score: ~a/~a\n" name score max-score)))
-                 (cons score max-score))
-          (let ([testcase (car suite-pointer)] [other (cdr suite-pointer)])
-            (let ([student-answer ((car testcase))] [equivalent? (cadr testcase)] [expected (caddr testcase)] [test-weight (cadddr testcase)] [code (car (cddddr testcase))])
-              (if [equivalent? student-answer expected]
-                  (loop other passed nyi (+ score test-weight) (+ max-score test-weight))
-                  (if (eq? student-answer 'nyi)
-                      (begin
-                        (when [not nyi]
-                          (printf "Not yet implemented\n"))
-                        (loop other #f #t score (+ max-score test-weight)))
-                      (begin
-                        (when passed
-                          (printf "\n~a" suite-separator))
-                        (printf "Test case: ~a\nYours: ~a\nExpected: ~a\n~a" code student-answer expected suite-separator)
-                        (loop other #f nyi score (+ max-score test-weight)))))))))))
+    (let ([suite-len (length (list-ref (cdr test) suite-index))] [max-score (suite-weight suite-index test)])
+      (let loop ([test-index 0] [passed #t] [nyi #f] [score 0])
+        (if [< test-index suite-len]
+            (let ([testcase-result (individual-test suite-index test-index test)])
+              (let ([test-score (car testcase-result)] [code (cadr testcase-result)] [student-answer (caddr testcase-result)] [expected (car (cdddr testcase-result))])
+                (if [zero? test-score]
+                    (if [eq? student-answer 'nyi]
+                        (begin
+                          (printf "Not yet implemented\n")
+                          (printf "~a score: 0/~a\n" name max-score)
+                          (cons 0 max-score))
+                        (begin
+                          (when passed
+                            (printf "\n~a" suite-separator))
+                          (printf "Test case: ~a\nYours: ~a\nExpected: ~a\n~a" code student-answer expected suite-separator)
+                          (loop (add1 test-index) #f nyi score)))
+                    (loop (add1 test-index) passed nyi (+ score test-score)))))
+            (begin (if passed
+                       (printf "All correct ~a/~a\n" score max-score)
+                       (when [not nyi]
+                         (printf "~a score: ~a/~a\n" name score max-score)))
+                   (cons score max-score)))))))
 
+(define suite-weight
+  (lambda (index test)
+    (apply + (list-ref (get-weights test) index))))
+    
 (define-syntax run-all
   (syntax-rules ()
     ([_]
@@ -75,8 +88,8 @@
     [let ([test-length (length (car my-test))])
       (let loop ([index 0] [score 0] [max-score 0])
         (if [< index test-length]
-            (let ([suite-name (list-ref (car my-test) index)] [test-suite (list-ref (cdr my-test) index)])
-              (let ([suite-scores (run-suite suite-name test-suite)])
+            (let ([suite-name (list-ref (car my-test) index)])
+              (let ([suite-scores (run-suite suite-name index my-test)])
                 (let ([suite-score (car suite-scores)] [suite-max-score (cdr suite-scores)])
                   (loop (add1 index) (+ suite-score score) (+ max-score suite-max-score)))))
             (printf "~aTotal score: ~a/~a" suite-separator score max-score)))]))
@@ -92,9 +105,29 @@
   (lambda (suite-index test-index test)
     [let ([suite-name (list-ref (car test) suite-index)] [suite (list-ref (cdr test) suite-index)])
       (let ([testcase (list-ref suite test-index)])
-        (let ([student-answer ((car testcase))] [equivalent? (cadr testcase)] [expected (caddr testcase)] [test-weight (cadddr testcase)] [code (car (cddddr testcase))])
-          (let ([score (if [equivalent? student-answer expected] test-weight 0)])
-            (list score code student-answer expected))))]))
+        (if [list? testcase]
+            (run-individual-testcase testcase)
+            (run-all-or-nothing-testcases (car testcase) (cdr testcase))))]))
+
+(define run-individual-testcase
+  (lambda (testcase)
+    (let ([student-answer ((car testcase))] [equivalent? (cadr testcase)] [expected (caddr testcase)] [test-weight (cadddr testcase)] [code (car (cddddr testcase))])
+      (let ([score (if [equivalent? student-answer expected] test-weight 0)])
+        (list score code student-answer expected)))))
+
+(define run-all-or-nothing-testcases
+  (lambda (testcases weight)
+    (if [null? testcases]
+        (list weight '() '() '())
+        (let ([my-result (run-individual-testcase (car testcases))])
+          (let ([my-score (car my-result)] [my-code (cadr my-result)] [my-student-answer (caddr my-result)] [my-expected (car (cdddr my-result))])
+            (if [zero? my-score]
+                my-result
+                (let ([other-result (run-all-or-nothing-testcases (cdr testcases) weight)])
+                  (let ([score (car other-result)] [code (cadr other-result)] [student-answer (caddr other-result)] [expected (car (cdddr other-result))])
+                    (if [zero? score]
+                        other-result
+                        (list weight (cons my-code code) (cons my-student-answer student-answer) (cons my-expected expected)))))))))))
 
 (define get-weights
   (lambda (test)
@@ -107,7 +140,9 @@
                (if [null? tests-ptr]
                    (list)
                    (let ([test (car tests-ptr)] [other-tests (cdr tests-ptr)])
-                     (cons (cadddr test) (inner-loop other-tests)))))
+                     (if [list? test]
+                         (cons (cadddr test) (inner-loop other-tests))
+                         (cons (cdr test) (inner-loop other-tests))))))
              (loop other)))))))
 
 (define get-names
