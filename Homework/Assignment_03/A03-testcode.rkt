@@ -95,3 +95,5 @@
     (andmap (lambda (x) (member x s2))
       s1)))
 
+
+(implicit-run test) ; run tests as soon as this file is loaded

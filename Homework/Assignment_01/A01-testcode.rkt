@@ -82,3 +82,5 @@
     [(distance '(4 7 8) '(4 7 8)) 0 1] ; (run-test distance 3)
   )
 ))
+
+(implicit-run test) ; run tests as soon as this file is loaded

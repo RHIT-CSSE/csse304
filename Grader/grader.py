@@ -6,6 +6,14 @@ from datetime import datetime
 timeout = 2
 file_name = sys.argv[1]
 
+# Get rid of implicit run
+test_file = open("source/testcode.rkt", "r")
+test_file_contents = test_file.read().replace("(implicit-run test)", "")
+test_file.close()
+test_file = open("source/testcode.rkt", "w")
+test_file.write(test_file_contents)
+test_file.close()
+
 # Runs at the very start of a student's submission. Parses through their submission to make
 # sure it's well-formed, but doesn't call any tests. Then does the same thing to the test code,
 # this time to make sure there are no duplicated imports (malicous attempt to overwrite tests)

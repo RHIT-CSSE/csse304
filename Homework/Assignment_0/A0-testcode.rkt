@@ -18,3 +18,5 @@
     [(fact 6) 720 2] ; (run-test fact 3)
   )
 ))
+
+(implicit-run test) ; run tests as soon as this file is loaded

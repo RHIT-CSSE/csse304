@@ -58,3 +58,5 @@
     [(pascal-triangle -3) '() 2] ; (run-test pascal-triangle 4)
   )
 ))
+
+(implicit-run test) ; run tests as soon as this file is loaded

@@ -1,6 +1,6 @@
 #lang racket
 
-(provide make-test run-all r run-test individual-test get-weights get-names)
+(provide make-test run-all r run-test individual-test get-weights get-names implicit-run)
 
 ;;--------  Procedures used by the testing mechanism   ------------------
 
@@ -68,14 +68,18 @@
 (define-syntax run-all
   (syntax-rules ()
     ([_]
-     [let ([test-length (length (car test))])
-       (let loop ([index 0] [score 0] [max-score 0])
-         (if [< index test-length]
-             (let ([suite-name (list-ref (car test) index)] [test-suite (list-ref (cdr test) index)])
-               (let ([suite-scores (run-suite suite-name test-suite)])
-                 (let ([suite-score (car suite-scores)] [suite-max-score (cdr suite-scores)])
-                   (loop (add1 index) (+ suite-score score) (+ max-score suite-max-score)))))
-             (printf "~aTotal score: ~a/~a" suite-separator score max-score)))])))
+     [implicit-run test])))
+
+(define implicit-run
+  (lambda (my-test)
+    [let ([test-length (length (car my-test))])
+      (let loop ([index 0] [score 0] [max-score 0])
+        (if [< index test-length]
+            (let ([suite-name (list-ref (car my-test) index)] [test-suite (list-ref (cdr my-test) index)])
+              (let ([suite-scores (run-suite suite-name test-suite)])
+                (let ([suite-score (car suite-scores)] [suite-max-score (cdr suite-scores)])
+                  (loop (add1 index) (+ suite-score score) (+ max-score suite-max-score)))))
+            (printf "~aTotal score: ~a/~a" suite-separator score max-score)))]))
 
 (define-syntax r
   (syntax-rules ()
@@ -86,11 +90,11 @@
 
 (define individual-test
   (lambda (suite-index test-index test)
-     [let ([suite-name (list-ref (car test) suite-index)] [suite (list-ref (cdr test) suite-index)])
-       (let ([testcase (list-ref suite test-index)])
-         (let ([student-answer ((car testcase))] [equivalent? (cadr testcase)] [expected (caddr testcase)] [test-weight (cadddr testcase)] [code (car (cddddr testcase))])
-           (let ([score (if [equivalent? student-answer expected] test-weight 0)])
-             (list score code student-answer expected))))]))
+    [let ([suite-name (list-ref (car test) suite-index)] [suite (list-ref (cdr test) suite-index)])
+      (let ([testcase (list-ref suite test-index)])
+        (let ([student-answer ((car testcase))] [equivalent? (cadr testcase)] [expected (caddr testcase)] [test-weight (cadddr testcase)] [code (car (cddddr testcase))])
+          (let ([score (if [equivalent? student-answer expected] test-weight 0)])
+            (list score code student-answer expected))))]))
 
 (define get-weights
   (lambda (test)
