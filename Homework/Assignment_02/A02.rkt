@@ -1,6 +1,6 @@
 #lang racket
 
-(provide choose sum-of-squares range set? union cross-product parallel? collinear?)
+(provide choose sum-of-squares range my-set? union cross-product parallel? collinear?)
 
 (define choose
   (lambda (a b)
@@ -14,7 +14,7 @@
   (lambda (a b)
     'nyi))
 
-(define set?
+(define my-set?
   (lambda (a)
     'nyi))
 

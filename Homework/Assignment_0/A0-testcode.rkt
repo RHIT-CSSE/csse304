@@ -11,10 +11,10 @@
 (require "A0.rkt")
 (provide get-weights get-names individual-test test)
 
-(define test (make-test
-  (fact equal?
-    ((fact 0) 1 2)
-    ((fact 4) 24 1)
-    ((fact 6) 720 2)
+(define test (make-test ; (r)
+  (fact equal? ; (run-test fact)
+    [(fact 0) 1 2] ; (run-test fact 1)
+    [(fact 4) 24 1] ; (run-test fact 2)
+    [(fact 6) 720 2] ; (run-test fact 3)
   )
 ))

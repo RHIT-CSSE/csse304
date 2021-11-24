@@ -17,61 +17,61 @@
         #f
         (not (not (and (is-a-subset? s1 s2) (is-a-subset? s2 s1)))))))
 
-(define test (make-test
-  (choose equal?
-    [(choose 0 0) 1 1]
-    [(choose 3 2) 3 2]
-    [(choose 10 6) 210 2]
+(define test (make-test ; (r)
+  (choose equal? ; (run-test choose)
+    [(choose 0 0) 1 1] ; (run-test choose 1)
+    [(choose 3 2) 3 2] ; (run-test choose 2)
+    [(choose 10 6) 210 2] ; (run-test choose 3)
   )
 
-  (sum-of-squares equal?
-    [(sum-of-squares '(1 3 5 7)) 84 3]
-    [(sum-of-squares '()) 0 2]
+  (sum-of-squares equal? ; (run-test sum-of-squares)
+    [(sum-of-squares '(1 3 5 7)) 84 3] ; (run-test sum-of-squares 1)
+    [(sum-of-squares '()) 0 2] ; (run-test sum-of-squares 2)
   )
 
-  (range equal?
-    [(range 0 0) '() 2]
-    [(range 0 5) '(0 1 2 3 4) 1]
-    [(range 5 9) '(5 6 7 8) 1]
-    [(range 25 30) '(25 26 27 28 29) 1]
-    [(range 31 32) '(31) 1]
-    [(range 7 4) '() 2]
+  (range equal? ; (run-test range)
+    [(range 0 0) '() 2] ; (run-test range 1)
+    [(range 0 5) '(0 1 2 3 4) 1] ; (run-test range 2)
+    [(range 5 9) '(5 6 7 8) 1] ; (run-test range 3)
+    [(range 25 30) '(25 26 27 28 29) 1] ; (run-test range 4)
+    [(range 31 32) '(31) 1] ; (run-test range 5)
+    [(range 7 4) '() 2] ; (run-test range 6)
   )
 
-  (set? equal?
-    [(and (set? '()) (not (set? '(1 1)))) #t 1]
-    [(and (set? '(1 2 3) ) (not (set? '(1 2 1)))) #t 1]
-    [(and (set? '(1 (2 3) (3 2) 5)) (not (set? '(1 3 1 2)))) #t 1]
-    [(and (not (set? '(1 (2 3) (3 2) 5 (3 2)))) (set? '())) #t 1]
-    [(set? '(r o s e - h u l m a n)) #t 1]
-    [(set? '(c o m p u t e r s c i e n c e)) #f 1]
-    [(set? '((i) (a m) (a) (s e t))) #t 2]
-    [(set? '((i) (a m) (n o t) (a) (s e t) (a m) (i))) #f 2]
+  (my-set? equal? ; (run-test my-set?)
+    [(and (set? '()) (not (set? '(1 1)))) #t 1] ; (run-test my-set? 1)
+    [(and (set? '(1 2 3) ) (not (set? '(1 2 1)))) #t 1] ; (run-test my-set? 2)
+    [(and (set? '(1 (2 3) (3 2) 5)) (not (set? '(1 3 1 2)))) #t 1] ; (run-test my-set? 3)
+    [(and (not (set? '(1 (2 3) (3 2) 5 (3 2)))) (set? '())) #t 1] ; (run-test my-set? 4)
+    [(set? '(r o s e - h u l m a n)) #t 1] ; (run-test my-set? 5)
+    [(set? '(c o m p u t e r s c i e n c e)) #f 1] ; (run-test my-set? 6)
+    [(set? '((i) (a m) (a) (s e t))) #t 2] ; (run-test my-set? 7)
+    [(set? '((i) (a m) (n o t) (a) (s e t) (a m) (i))) #f 2] ; (run-test my-set? 8)
   )
 
-  (union set-equals?
-    [(union '(a b d e f h j) '(f c e g a)) '(a b c d e f g h j) 2]
-    [(union '(a b c) '(d e)) '(a b c d e) 1]
-    [(union '(a b c) '()) '(a b c) 1]
-    [(union '() '()) '() 1]
+  (union set-equals? ; (run-test union)
+    [(union '(a b d e f h j) '(f c e g a)) '(a b c d e f g h j) 2] ; (run-test union 1)
+    [(union '(a b c) '(d e)) '(a b c d e) 1] ; (run-test union 2)
+    [(union '(a b c) '()) '(a b c) 1] ; (run-test union 3)
+    [(union '() '()) '() 1] ; (run-test union 4)
   )
 
-  (cross-product equal?
-    [(cross-product '(1 3 4) '(3 6 2)) '(-18 10 -3) 3]
-    [(cross-product '(1 2 3) '(2 4 6)) '(0 0 0) 2]
+  (cross-product equal? ; (run-test cross-product)
+    [(cross-product '(1 3 4) '(3 6 2)) '(-18 10 -3) 3] ; (run-test cross-product 1)
+    [(cross-product '(1 2 3) '(2 4 6)) '(0 0 0) 2] ; (run-test cross-product 2)
   )
 
-  (parallel? equal?
-    [(parallel? '(1 3 4) '(3 6 2)) #f 1]
-    [(parallel? '(1 2 3) '(2 4 6)) #t 1]
-    [(parallel? '(1 2 0) '(2 4 0)) #t 1]
-    [(parallel? '(0 0 1) '(0 0 3)) #t 1]
-    [(parallel? '(0 1 0) '(0 0 1)) #f 1]
+  (parallel? equal? ; (run-test parallel?)
+    [(parallel? '(1 3 4) '(3 6 2)) #f 1] ; (run-test parallel? 1)
+    [(parallel? '(1 2 3) '(2 4 6)) #t 1] ; (run-test parallel? 2)
+    [(parallel? '(1 2 0) '(2 4 0)) #t 1] ; (run-test parallel? 3)
+    [(parallel? '(0 0 1) '(0 0 3)) #t 1] ; (run-test parallel? 4)
+    [(parallel? '(0 1 0) '(0 0 1)) #f 1] ; (run-test parallel? 5)
   )
 
-  (collinear? equal?
-    [(collinear? '(1 2 3) '(4 5 6) '(10 11 12)) #t 3]
-    [(collinear? '(1 2 3) '(4 5 6) '(10 11 13)) #f 2]
+  (collinear? equal? ; (run-test collinear?)
+    [(collinear? '(1 2 3) '(4 5 6) '(10 11 12)) #t 3] ; (run-test collinear? 1)
+    [(collinear? '(1 2 3) '(4 5 6) '(10 11 13)) #f 2] ; (run-test collinear? 2)
   )
 ))
 
@@ -79,3 +79,4 @@
   (lambda (s1 s2)
     (andmap (lambda (x) (member x s2))
       s1)))
+
