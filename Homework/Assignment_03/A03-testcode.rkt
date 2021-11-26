@@ -60,16 +60,39 @@
   )
 
   (multi-set? equal? ; (run-test multi-set?)
-    [(and (multi-set? '()) (not (multi-set? '(a b)))) #t 2] ; (run-test multi-set? 1)
-    [(and (multi-set? '((a 2))) (not (multi-set? '((a -1))))) #t 1] ; (run-test multi-set? 2)
-    [(and (multi-set? '((a 2)(b 3))) (not (multi-set? '((a 2) (a 3))))) #t 1] ; (run-test multi-set? 3)
-    [(and (not (multi-set? '(a b))) (not (multi-set? '((a 3) b)))) #t 1] ; (run-test multi-set? 4)
-    [(and (not (multi-set? '((a 2) (2 3)))) (multi-set? '((a 2))) (not (multi-set? '(#(a 3))))) #t 1] ; (run-test multi-set? 5)
-    [(and (multi-set? '()) (not (multi-set? '((a 3) b)))) #t 1] ; (run-test multi-set? 6)
-    [(and (multi-set? '()) (not (multi-set? '((a 3.7))))) #t 1] ; (run-test multi-set? 7)
-    [(and (multi-set? '()) (not (multi-set? 5)) (not (multi-set? '((a 2) (b 3) (a 1))))) #t 1] ; (run-test multi-set? 8)
-    [(and (multi-set? '()) (not (multi-set? (list (cons 'a 2)))) (not (multi-set? '((a 2) (a 3))))) #t 1] ; (run-test multi-set? 9)
-    [(and (multi-set? '((a 3))) (not (multi-set? '((a b) (c d))))) #t 1] ; (run-test multi-set? 10)
+    [all-or-nothing 2 ; (run-test multi-set? 1)
+      ((multi-set? '()) #t)
+      ((multi-set? '(a b)) #f)]
+    [all-or-nothing 1 ; (run-test multi-set? 2)
+      ((multi-set? '((a 2))) #t)
+      ((multi-set? '((a -1))) #f)]
+    [all-or-nothing 1 ; (run-test multi-set? 3)
+      ((multi-set? '((a 2)(b 3))) #t)
+      ((multi-set? '((a 2) (a 3))) #f)]
+    [all-or-nothing 1 ; (run-test multi-set? 4)
+      ((multi-set? '(a b)) #f)
+      ((multi-set? '((a 3) b)) #f)]
+    [all-or-nothing 1 ; (run-test multi-set? 5)
+      ((multi-set? '((a 2) (2 3))) #f)
+      ((multi-set? '((a 2))) #t)
+      ((multi-set? '(#(a 3))) #f)]
+    [all-or-nothing 1 ; (run-test multi-set? 6)
+      ((multi-set? '()) #t)
+      ((multi-set? '((a 3) b)) #f)]
+    [all-or-nothing 1 ; (run-test multi-set? 7)
+      ((multi-set? '()) #t)
+      ((multi-set? '((a 3.7))) #f)]
+    [all-or-nothing 1 ; (run-test multi-set? 8)
+      ((multi-set? '()) #t)
+      ((multi-set? 5) #f)
+      ((multi-set? '((a 2) (b 3) (a 1))) #f)]
+    [all-or-nothing 1 ; (run-test multi-set? 9)
+      ((multi-set? '()) #t)
+      ((multi-set? (list (cons 'a 2))) #f)
+      ((multi-set? '((a 2) (a 3))) #f)]
+    [all-or-nothing 1 ; (run-test multi-set? 10)
+      ((multi-set? '((a 3))) #t)
+      ((multi-set? '((a b) (c d))) #f)]
   )
 
   (ms-size equal? ; (run-test ms-size)

@@ -35,8 +35,12 @@
   )
 
   (exists? eq? ; (run-test exists?)
-    [(and (exists? symbol? (quote (1 2 3 a 5))) (not (exists? not (quote (#t #t #t #t))))) #t 3] ; (run-test exists? 1)
-    [(and (exists? null? '(1 2 () 3)) (not (exists? null? '()))) #t 2] ; (run-test exists? 2)
+    [all-or-nothing 3 ; (run-test exists? 1)
+      ((exists? symbol? (quote (1 2 3 a 5))) #t)
+      ((exists? not (quote (#t #t #t #t))) #f)]
+    [all-or-nothing 2 ; (run-test exists? 2)
+      ((exists? null? '(1 2 () 3)) #t)
+      ((exists? null? '()) #f)]
   )
 
   (product set-equals? ; (run-test product)

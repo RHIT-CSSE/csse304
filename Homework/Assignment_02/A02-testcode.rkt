@@ -39,10 +39,18 @@
   )
 
   (my-set? equal? ; (run-test my-set?)
-    [(and (my-set? '()) (not (my-set? '(1 1)))) #t 1] ; (run-test my-set? 1)
-    [(and (my-set? '(1 2 3) ) (not (my-set? '(1 2 1)))) #t 1] ; (run-test my-set? 2)
-    [(and (my-set? '(1 (2 3) (3 2) 5)) (not (my-set? '(1 3 1 2)))) #t 1] ; (run-test my-set? 3)
-    [(and (not (my-set? '(1 (2 3) (3 2) 5 (3 2)))) (my-set? '())) #t 1] ; (run-test my-set? 4)
+    [all-or-nothing 1 ; (run-test my-set? 1)
+      ((my-set? '()) #t)
+      ((my-set? '(1 1)) #f)]
+    [all-or-nothing 1 ; (run-test my-set? 2)
+      ((my-set? '(1 2 3) ) #t)
+      ((my-set? '(1 2 1)) #f)]
+    [all-or-nothing 1 ; (run-test my-set? 3)
+      ((my-set? '(1 (2 3) (3 2) 5)) #t)
+      ((my-set? '(1 3 1 2)) #f)]
+    [all-or-nothing 1 ; (run-test my-set? 4)
+      ((my-set? '(1 (2 3) (3 2) 5 (3 2))) #f)
+      ((my-set? '()) #t)]
     [(my-set? '(r o s e - h u l m a n)) #t 1] ; (run-test my-set? 5)
     [(my-set? '(c o m p u t e r s c i e n c e)) #f 1] ; (run-test my-set? 6)
     [(my-set? '((i) (a m) (a) (s e t))) #t 2] ; (run-test my-set? 7)
