@@ -4,43 +4,36 @@
 
 (define intersection
   (lambda (a b)
-    (nyi)))
+    'nyi))
 
 (define subset?
   (lambda (a b)
-    (nyi)))
+    'nyi))
 
 (define relation?
   (lambda (a)
-    (nyi)))
+    'nyi))
 
 (define domain
   (lambda (a)
-    (nyi)))
+    'nyi))
 
 (define reflexive?
   (lambda (a)
-    (nyi)))
+    'nyi))
 
 (define multi-set?
   (lambda (a)
-    (nyi)))
+    'nyi))
 
 (define ms-size
   (lambda (a)
-    (nyi)))
+    'nyi))
 
 (define last
   (lambda (a)
-    (nyi)))
+    'nyi))
 
 (define all-but-last
   (lambda (a)
-    (nyi)))
-
-;;--------  Used by the testing mechanism   ------------------
-
-(define-syntax nyi
-  (syntax-rules ()
-    ([_]
-     [error "nyi"])))
+    'nyi))

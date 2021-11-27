@@ -4,27 +4,20 @@
 
 (define minimize-interval-list
   (lambda (a)
-    (nyi)))
+    'nyi))
 
 (define exists?
   (lambda (a b)
-    (nyi)))
+    'nyi))
 
 (define product
   (lambda (a b)
-    (nyi)))
+    'nyi))
 
 (define replace
   (lambda (a b c)
-    (nyi)))
+    'nyi))
 
 (define remove-last
   (lambda (a b)
-    (nyi)))
-
-;;--------  Used by the testing mechanism   ------------------
-
-(define-syntax nyi
-  (syntax-rules ()
-    ([_]
-     [error "nyi"])))
+    'nyi))

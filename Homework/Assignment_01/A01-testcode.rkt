@@ -77,7 +77,7 @@
   )
 
   (distance equal? ; (run-test distance)
-    [(distance '(4 7 8) '(7 11 -4)) 13 2] ; (run-test distance 1)
+    [(distance '(4 7 8) '(7 11 -4) ) 13 2] ; (run-test distance 1)
     [(distance '(3 1 2) '(15 -15 23)) 29 2] ; (run-test distance 2)
     [(distance '(4 7 8) '(4 7 8)) 0 1] ; (run-test distance 3)
   )

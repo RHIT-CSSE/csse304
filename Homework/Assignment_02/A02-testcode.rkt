@@ -43,7 +43,7 @@
       ((my-set? '()) #t)
       ((my-set? '(1 1)) #f)]
     [all-or-nothing 1 ; (run-test my-set? 2)
-      ((my-set? '(1 2 3)) #t)
+      ((my-set? '(1 2 3) ) #t)
       ((my-set? '(1 2 1)) #f)]
     [all-or-nothing 1 ; (run-test my-set? 3)
       ((my-set? '(1 (2 3) (3 2) 5)) #t)
