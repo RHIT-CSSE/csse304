@@ -7,7 +7,7 @@
 (define-syntax make-test
   (syntax-rules ()
     ([_ (name equivalent? testcase ...) ...]
-     [cons
+     [list
       (list (syntax->datum #'name) ...)
       (list (let ([equiv-proc equivalent?]) (list (make-testcase testcase equiv-proc) ...)) ...)])))
 
@@ -39,7 +39,7 @@
          (printf "Test number ~a too small. Start with 1." test-num)
          [let* ([test-symbol (syntax->datum #'test-name)] [suite-index (index-of (car test) test-symbol)])
            (if suite-index
-               (if [<= test-num (length (list-ref (cdr test) suite-index))]
+               (if [<= test-num (length (list-ref (second test) suite-index))]
                    (let ([result (individual-test suite-index (sub1 test-num) test)])
                      (let ([correct (not (zero? (first result)))] [code (second result)] [yours (third result)] [expected (fourth result)])
                        (when correct
@@ -51,13 +51,13 @@
 (define run-suite
   (lambda (name suite-index test)
     (printf "~a: " name)
-    (let ([suite-len (length (list-ref (cdr test) suite-index))] [max-score (suite-weight suite-index test)])
+    (let ([suite-len (length (list-ref (second test) suite-index))] [max-score (suite-weight suite-index test)])
       (let loop ([test-index 0] [passed #t] [nyi #f] [score 0])
         (if [< test-index suite-len]
             (let ([testcase-result (individual-test suite-index test-index test)])
               (let ([test-score (car testcase-result)] [code (cadr testcase-result)] [student-answer (caddr testcase-result)] [expected (car (cdddr testcase-result))])
                 (if [zero? test-score]
-                    (if [eq? student-answer 'nyi]
+                    (if [eq? 'nyi student-answer]
                         (begin
                           (printf "Not yet implemented\n")
                           (printf "~a score: 0/~a\n" name max-score)
@@ -85,10 +85,10 @@
 
 (define implicit-run
   (lambda (my-test)
-    [let ([test-length (length (car my-test))])
+    [let ([test-length (length (first my-test))])
       (let loop ([index 0] [score 0] [max-score 0])
         (if [< index test-length]
-            (let ([suite-name (list-ref (car my-test) index)])
+            (let ([suite-name (list-ref (first my-test) index)])
               (let ([suite-scores (run-suite suite-name index my-test)])
                 (let ([suite-score (car suite-scores)] [suite-max-score (cdr suite-scores)])
                   (loop (add1 index) (+ suite-score score) (+ max-score suite-max-score)))))
@@ -101,13 +101,19 @@
 
 (define suite-separator "----------\n")
 
+(define exn:nyi?
+  (lambda (e)
+    [and (exn? e) (equal? "nyi" (exn-message e))]))
+
 (define individual-test
   (lambda (suite-index test-index test)
-    [let ([suite-name (list-ref (car test) suite-index)] [suite (list-ref (cdr test) suite-index)])
+    [let ([suite-name (list-ref (first test) suite-index)] [suite (list-ref (second test) suite-index)])
       (let ([testcase (list-ref suite test-index)])
-        (if [list? testcase]
-            (run-individual-testcase testcase)
-            (run-all-or-nothing-testcases (car testcase) (cdr testcase))))]))
+        (with-handlers
+            ([exn:nyi? (lambda (e) (list 0 (fifth testcase) 'nyi (third testcase)))])
+          (if [list? testcase]
+              (run-individual-testcase testcase)
+              (run-all-or-nothing-testcases (car testcase) (cdr testcase)))))]))
 
 (define run-individual-testcase
   (lambda (testcase)
@@ -131,7 +137,7 @@
 
 (define get-weights
   (lambda (test)
-    (let loop ([suites-ptr (cdr test)])
+    (let loop ([suites-ptr (second test)])
       (if [null? suites-ptr]
           (list)
           (let ([suite (car suites-ptr)] [other (cdr suites-ptr)])
@@ -147,4 +153,4 @@
 
 (define get-names
   (lambda (test)
-    (car test)))
+    (first test)))
