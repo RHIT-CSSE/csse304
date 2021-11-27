@@ -4,40 +4,47 @@
 
 (define interval-contains?
   (lambda (a b)
-    'nyi))
+    (nyi)))
 
 (define interval-intersects?
   (lambda (a b)
-    'nyi))
+    (nyi)))
 
 (define interval-union
   (lambda (a b)
-    'nyi))
+    (nyi)))
 
 (define my-first
   (lambda (a)
-    'nyi))
+    (nyi)))
 
 (define my-second
   (lambda (a)
-    'nyi))
+    (nyi)))
 
 (define my-third
   (lambda (a)
-    'nyi))
+    (nyi)))
 
 (define make-vec-from-points
   (lambda (a b)
-    'nyi))
+    (nyi)))
 
 (define dot-product
   (lambda (a b)
-    'nyi))
+    (nyi)))
 
 (define vector-magnitude
   (lambda (a)
-    'nyi))
+    (nyi)))
 
 (define distance
   (lambda (a b)
-    'nyi))
+    (nyi)))
+
+;;--------  Used by the testing mechanism   ------------------
+
+(define-syntax nyi
+  (syntax-rules ()
+    ([_]
+     [error "nyi"])))

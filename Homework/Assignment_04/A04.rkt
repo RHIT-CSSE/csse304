@@ -4,24 +4,31 @@
 
 (define matrix-ref
   (lambda (a b c)
-    'nyi))
+    (nyi)))
 
 (define matrix?
   (lambda (a)
-    'nyi))
+    (nyi)))
 
 (define matrix-transpose
   (lambda (a)
-    'nyi))
+    (nyi)))
 
 (define filter-in
   (lambda (a b)
-    'nyi))
+    (nyi)))
 
 (define invert
   (lambda (a)
-    'nyi))
+    (nyi)))
 
 (define pascal-triangle
   (lambda (a)
-    'nyi))
+    (nyi)))
+
+;;--------  Used by the testing mechanism   ------------------
+
+(define-syntax nyi
+  (syntax-rules ()
+    ([_]
+     [error "nyi"])))
