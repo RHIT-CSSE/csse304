@@ -3,6 +3,7 @@
   topics:
   materials: SchemeIntro
   other:
+    - <a href="https://www.youtube.com/watch?v=-yNJZnZ6Nnw">YouTube video showing how to use trace in Racket</a>
   videos:
     - name: Zoom 1
       id: 4a93370d-63eb-4022-96ab-ac830135248f
