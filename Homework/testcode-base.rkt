@@ -109,10 +109,12 @@
   (lambda (suite-index test-index test)
     [let ([suite-name (list-ref (first test) suite-index)] [suite (list-ref (second test) suite-index)])
       (let ([testcase (list-ref suite test-index)])
-        (with-handlers
-            ([exn:nyi? (lambda (e) (list 0 (fifth testcase) 'nyi (third testcase)))])
-          (if [list? testcase]
-              (run-individual-testcase testcase)
+        (if [list? testcase]
+            (with-handlers
+                ([exn:nyi? (lambda (e) (list 0 (fifth testcase) 'nyi (third testcase)))])
+              (run-individual-testcase testcase))
+            (with-handlers
+                ([exn:nyi? (lambda (e) (list 0 (fifth (caar testcase)) 'nyi (third (caar testcase))))])
               (run-all-or-nothing-testcases (car testcase) (cdr testcase)))))]))
 
 (define run-individual-testcase
