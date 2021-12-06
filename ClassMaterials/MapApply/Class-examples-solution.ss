@@ -1,8 +1,10 @@
+#lang racket
+
 ; firsts 
 
-(define firsts
-  (lambda (lol)
-    (if (null? lol) '() (cons (caar lol) (firsts (cdr lol))))))
+;(define firsts
+;  (lambda (lol)
+;    (if (null? lol) '() (cons (caar lol) (firsts (cdr lol))))))
 
 ; Map unary
 
@@ -33,7 +35,7 @@
 (sum-pairs '((1 2) (3 4))) ;; should yield (3 7)
 
 ;; take a list of numbers, and halve all the even ones
-;; note that in scheme the % operator is called mod
+;; note that in scheme the % operator is called modulo
 (define halve-evens
   (lambda (lon)
     (map (lambda (num) (if (even? num) (/ num 2) num)) lon))) 
@@ -48,7 +50,7 @@
 ;; divisible by a given value
 (define remove-divisible-by 
   (lambda (num list)
-    (filter (lambda (testnum) (not (zero? (mod testnum num)))) list)))
+    (filter (lambda (testnum) (not (zero? (modulo testnum num)))) list)))
 
 (remove-divisible-by 3 '(1 2 3 4 5 6)) ;; should yield (1 2 4 5)
 

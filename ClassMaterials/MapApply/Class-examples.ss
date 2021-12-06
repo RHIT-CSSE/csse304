@@ -1,3 +1,5 @@
+#lang racket
+
 ; firsts 
 
 (define firsts
@@ -33,7 +35,7 @@
 (sum-pairs '((1 2) (3 4))) ;; should yield (3 7)
 
 ;; take a list of numbers, and halve all the even ones
-;; note that in scheme the % operator is called mod
+;; note that in scheme the % operator is called modulo
 (define halve-evens
   (lambda (pairlist)
     '() ;; NYI
