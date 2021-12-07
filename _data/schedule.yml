@@ -59,7 +59,7 @@
     - TSPL sections 3.2, 4.1-4.4, 6.1-6.4
     - EOPL-1 67-74
   topics:
-    - let & and ist many flavors
+    - let & and its many flavors
     - insertion sort
   materials: LetVariants
   other:
@@ -89,8 +89,8 @@
   reading:
     - EoPL Section 1.1
   topics:
-    - andmap, ormap, vectors
-    - list sharing and mutation
+    - box and pointer diagrams
+    - list mutation
   materials: OddsAndEnds
   other:
   videos:

@@ -1,3 +1,4 @@
+#lang racket
 
 (define myvar 3)
 
@@ -18,14 +19,14 @@
 
 ;; (delete this to display list examples)
 
-(define mylist '(1 2 3))
-(define mylist2 (cons 4 mylist))
-(set-car! mylist 99)
+(define mylist (mcons 1 (mcons 2 (mcons 3 '()))))
+(define mylist2 (mcons 4 mylist))
+(set-mcar! mylist 99)
 (display mylist)
 (display mylist2)
 (newline)
 
-(set-cdr! mylist 100)
+(set-mcdr! mylist 100)
 (display mylist)
 (display mylist2)
 (newline)
