@@ -1,6 +1,6 @@
 #lang racket
 
-(provide define-datatype cases isa)
+(provide define-datatype isa cases list-of? always?)
 
 ;; Nathan Hurtig: modified 12/08/2021 to convert from Scheme to Racket
 
@@ -355,7 +355,7 @@
 (define always?
   (lambda (x) #t))
 
-(define list-of
+(define list-of?
   (lambda (pred . l)
     (let ((all-preds (cons pred l)))
       (lambda (obj)
