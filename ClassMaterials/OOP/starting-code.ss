@@ -1,3 +1,5 @@
+#lang racket
+
 ; A Java-like ArrayList class. constructors include:
 ;   (make-array-list) makes an array-list with size 0 and capacity 3
 ;   (make-array-list cap) makes an array-list with size 0 and capacity cap
@@ -16,16 +18,19 @@
 	     (set! v (car L))
 	     (set! capacity (vector-length (car L)))
 	     (set! size capacity)]
-	    [else (errorf 'array-list-constructor "initial arguments")])
+	    [else (error 'array-list-constructor "initial arguments")])
       (letrec  ; helper procedures. We will add some!
-	  ()
+	  ([ensure-capacity (lambda (size)
+                              'nyi
+                              )
+                            ])
 	(lambda (method . args) ; This is the actual array-list object.
 	  (case method
 	    [(add)
 	     (ensure-capacity (+ 1 size)) 
 	     (if (null? (cdr args))
 		 (vector-set! v size (car args))
-		 'You-will-add-the-other-case))) ; to do
+		 'You-will-add-the-other-case) ; to do
 	     (set! size (+ size 1))]
 	    [(show) `((size ,size) (capacity ,capacity) (v ,v))]))))))
 
@@ -62,7 +67,7 @@
   (al 'add 5)  ; add at end
   (al 'add 4)
   (al 'add 3)
-  (a1 'add 2)
+  (al 'add 2)
   (al 'add 7 1); add at index 1
   (al 'add 10 3)
   (display (al 'remove 3)) (newline)
