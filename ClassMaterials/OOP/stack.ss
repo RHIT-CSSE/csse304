@@ -1,3 +1,5 @@
+#lang racket
+
 (define make-stack  ; this file has an intentional error that 
  (lambda ()         ; we will correct in class.
    (lambda (msg  . args ) 
@@ -8,4 +10,4 @@
          [(pop)    (let ([top (car stk)])
                       (set! stk (cdr stk))
                       top)]
-         [else (errorf 'stack "illegal message to stack object: ~a" msg)])))))
+         [else (error 'stack "illegal message to stack object: ~a" msg)])))))

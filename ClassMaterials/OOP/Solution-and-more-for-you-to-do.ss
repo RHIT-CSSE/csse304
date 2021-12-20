@@ -1,3 +1,5 @@
+#lang racket
+
 ; This is working code from the Day 9 class.
 
 ; SECTION 1:  All I did after class is get all of the parentheses to match, and then it worked.
@@ -25,11 +27,13 @@
 	     (set! v (car L))
 	     (set! capacity (vector-length (car L)))
 	     (set! size capacity)]
-	    [else (errorf 'array-list-constructor "initial arguments")])
+	    [else (error 'array-list-constructor "initial arguments")])
       (letrec  ; helper procedures. We will add some!
 	  ([ensure-capacity (lambda (new-capacity)
 			      (if (> new-capacity capacity)
-				  (double-capacity)))]
+				  (double-capacity)
+                                  'no-double-needed
+                                  ))]
 	   [double-capacity (lambda ()
 			       (let ([temp v])
 				 (set! capacity (* 2 capacity))
@@ -39,7 +43,9 @@
 			    (if (>= last 0)
 				(begin
 				  (vector-set! to-vec last (vector-ref from-vec last))
-				  (copy-contents from-vec to-vec (- last 1)))))])
+				  (copy-contents from-vec to-vec (- last 1)))
+                                  'copy-complete
+                                ))])
 	(lambda (method . args) ; This is the actual array-list object.
 	  (case method
 	    [(add)
@@ -83,7 +89,7 @@
   (al 'add 5)  ; add at end
   (al 'add 4)
   (al 'add 3)
-  (a1 'add 2)
+  (al 'add 2)
   (al 'add 7 1); add at index 1
   (al 'add 10 3)
   (display (al 'remove 3)) (newline)
