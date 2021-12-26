@@ -72,7 +72,7 @@
     [(eval-one-exp ' (let ((a 3)(b 5)) (+ a b))) 8 3] ; (run-test let 1)
     [(eval-one-exp ' (let ((a 3)) (let ((b 2) (c (+ a 3)) (a (+ a a))) (+ a b c)))) 14 5] ; (run-test let 2)
     [(eval-one-exp ' (let ((a 3)) (let ((a (let ((a (+ a a))) (+ a a)))) (+ a a)))) 24 6] ; (run-test let 3)
-    [(eval-one-exp ' (let ((a 3) (b 5)) (set! a 2) (set! b 4) (cons a b))) '(2 . 4) 6] ; (run-test let 4)
+    [(eval-one-exp ' (let ((a (vector 0 1 2 3))) (vector-set! a 1 38) (vector-set! a 2 (vector-ref a 1)) (vector-ref a 2))) 38 6] ; (run-test let 4)
     [(eval-one-exp '(let ([compose2 (lambda (f g) (lambda (x) (f (g x))))]) (let ([h  (let ([g (lambda (x) (+ 1 x))] [f (lambda (y) (* 2 y))]) (compose2 g f))]) (h 4)))) 9 6] ; (run-test let 5)
   )
 
