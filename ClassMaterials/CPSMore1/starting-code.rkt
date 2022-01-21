@@ -1,4 +1,6 @@
-(load "chez-init.ss")
+#lang racket
+
+(require "chez-init.rkt")
 
 (define apply-k (lambda (k v) (k v)))
 (define make-k (lambda (v) v))

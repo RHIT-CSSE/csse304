@@ -1,7 +1,9 @@
-(load "chez-init.ss")
+#lang racket
 
-(define apply-k (lambda (k v) (k v)))
-(define make-k (lambda (v) v))
+(require "chez-init.rkt")
+
+; (define apply-k (lambda (k v) (k v)))
+; (define make-k (lambda (v) v))
 
 (define-datatype continuation continuation?
   [init-k]
