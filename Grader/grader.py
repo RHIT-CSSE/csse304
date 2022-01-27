@@ -3,7 +3,7 @@ import json
 import sys
 from datetime import datetime
 
-timeout = 2
+timeout = 3
 file_name = sys.argv[1]
 
 # Get rid of implicit run
@@ -19,11 +19,13 @@ test_file.close()
 # this time to make sure there are no duplicated imports (malicous attempt to overwrite tests)
 def test_user_code():
     try:
-        result = subprocess.run(["racket", f'source/{file_name}'], capture_output=True, timeout=timeout)
+        start = datetime.now()
+        result = subprocess.run(["racket", f'source/{file_name}'], capture_output=True, timeout=(timeout * 5))
+        print(f"Initial pass of your submission took {(datetime.now() - start).total_seconds()} seconds")
     except subprocess.TimeoutExpired:
         return "Timed out while parsing your code."
     if result.returncode == 0:
-        result = subprocess.run(["racket", 'source/testcode.rkt'], capture_output=True, timeout=timeout)
+        result = subprocess.run(["racket", 'source/testcode.rkt'], capture_output=True, timeout=(timeout * 5))
         if result.returncode == 0:
             return None
         else:
