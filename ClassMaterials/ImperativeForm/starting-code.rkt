@@ -1,23 +1,26 @@
+#lang racket
+
 ; -- Convert to imperative form ----------------------
 ; -- This puts it into a form where all of the ---------
 ; -- recursion can be replaced by assignments and "goto"s
 
-(load "chez-init.ss")
+(require "chez-init.ss")
+
 (define any? (lambda (x) #t))
 
 (define-datatype continuation continuation?  ; no changes
   [init-k]
   [append-k (a any?) (k continuation?)]
   [rev1-k (car-L any?) (k continuation?)]
-  [rev2-k (reversed-cdr (list-of any?)) (k continuation?)])
+  [rev2-k (reversed-cdr (list-of? any?)) (k continuation?)])
 
 ; global variables take the place of parameters of
 ; substantial procedures.
-(define L)  ; current list
-(define k)  ; current continuation
-(define a)  ; used for append
-(define b)  ; used for append
-(define v)  ; 2nd parameter of apply-k application
+(define L 'nothing)  ; current list
+(define k 'nothing)  ; current continuation
+(define a 'nothing)  ; used for append
+(define b 'nothing)  ; used for append
+(define v 'nothing)  ; 2nd parameter of apply-k application
 
 ; The next 3 procedures are from the previous file. 
 ; Convert them.
@@ -54,9 +57,9 @@
   (lambda (slist)
     (set! L slist)
     (set! k (init-k))
-    (reverse*-cps)))
+    (reverse*-cps L k))) ;FIXME
 
-'(test-reverse
+(test-reverse
   '(1 ((2 3) () (((4))))))
 
 (define *tracing* #f)
