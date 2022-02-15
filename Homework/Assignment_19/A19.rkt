@@ -27,18 +27,18 @@
 (require "../chez-init.rkt")
 (provide set!-slist set!-k id-k list-k length-k sum-cps flatten-cps)
 
-(define set!-slist (lambda (new-slist) (set! slist new-slist)))
-(define set!-k (lambda (new-k) (set! k new-k)))
+; TODO: Convert lambda cps below to define-datatype CPS. Since the goal
+; is imperative form, the continuation datatypes shouldn't have fields.
+(define make-k
+  (lambda (k) k))
+
+(define id-k (make-k (lambda (v) v)))
+(define list-k (make-k list))
+(define length-k (make-k length))
 
 (define apply-k
   (lambda (k args)
     (k args)))
-
-(define make-k
-  (lambda (k) k))
-	
-(define identity (lambda (v) v))
-
 
 (define cps-snlist-recur
   (lambda (base car-item-proc-cps car-list-proc-cps)
@@ -128,6 +128,5 @@
 ;-----------------------------------------------
 ;  Used by the tests.
 
-(define id-k (make-k (lambda (v) v)))
-(define list-k (make-k list))
-(define length-k (make-k length))
+(define set!-slist (lambda (new-slist) (set! slist new-slist)))
+(define set!-k (lambda (new-k) (set! k new-k)))
