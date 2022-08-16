@@ -116,3 +116,22 @@ course - even for one assignment, even one time.
 All academic dishonesty will also be reported to the dean of students
 through the normal Rose-Hulman process which may level further
 penalties.
+
+# Course Outcomes
+
+Course Outcomes
+
+1. Design, implement, debug and test complex programs in a functional programming language. 
+2. Design, implement, debug and test a complex interpreter.
+3. Explain the process of interpreting a program, in part by drawing “environments and closures diagrams” that show what happens during their execution.
+4. Demonstrate (through implementation) an understanding of the relationship between syntax specification and the implementation of corresponding semantics.
+5. Explain (and in most cases use in code): 
+   * First-class procedures
+   * BNF Syntax specification and related language properties
+   * The relationship between syntax and semantics 
+   * The use of Environments and Closures
+   * Static vs. Dynamic typing and binding 
+   * The differences between how macros and procedures work.
+   * Abstraction (data and procedural) 
+   * Continuations as a basis for control flow
+                        
