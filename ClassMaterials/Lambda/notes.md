@@ -44,3 +44,27 @@ vertically aligned with each other.
 
 An even more common structure - break the cases into a big cond, base
 cases first, then varied recursive cases.
+
+# Lambda
+
+An example:
+
+    (define median-of-three
+      (lambda (a b c)
+          (- (+ a b c) (max a b c) (min a b c))))
+          
+          
+Note that the define is not part of the lambda.
+
+lambda is a function that returns a procedure.  The body of the lambda
+does not execute when the lambda itself is run, rather it runs (maybe
+many times) when the procedure returned from lambda is invoked.
+
+We will usually use define to associate the newly created procedure
+with a name we can call later.  But not always:
+
+    ((lambda (x y)  (+ x y)) 1 2)
+
+# Main Class Activity
+
+Solve the remainder of the in class problems in groups
