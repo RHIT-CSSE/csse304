@@ -56,54 +56,6 @@
     [(bound-vars (quote ((lambda (y) (lambda (y) y)) (lambda (x) (z (lambda (x) x)))))) '(y x) 1] ; (run-test bound-vars 7)
   )
 
-  (occurs-free? equal? ; (run-test occurs-free?)
-    [(occurs-free? (quote x) (quote (lambda (a b x) x))) #f 1] ; (run-test occurs-free? 1)
-    [(occurs-free? (quote x) (quote (lambda () (x)))) #t 1] ; (run-test occurs-free? 2)
-    [(occurs-free? (quote x) (quote (x (lambda (y x z) x)))) #t 1] ; (run-test occurs-free? 3)
-    [(occurs-free? (quote x) (quote (lambda (a b) (if (x a b) a b)))) #t 1] ; (run-test occurs-free? 4)
-    [(occurs-free? (quote a) (quote (lambda (a b) (if (x a b) a b)))) #f 1] ; (run-test occurs-free? 5)
-    [(occurs-free? (quote x) (quote (let ((x n)) ((lambda (y) (+ y x)) z)))) #f 2] ; (run-test occurs-free? 6)
-    [(occurs-free? (quote x) (quote (let ((w a) (y x)) ((lambda (y) (+ y x)) z)))) #t 2] ; (run-test occurs-free? 7)
-    [(occurs-free? (quote x) (quote (let* ((x a) (y x)) (y)))) #f 2] ; (run-test occurs-free? 8)
-    [(occurs-free? (quote b) (quote (let* ((y a) (x b)) ((x y) z)))) #t 1] ; (run-test occurs-free? 9)
-    [(occurs-free? (quote set!) (quote (lambda (x) (set! x y)))) #f 1] ; (run-test occurs-free? 10)
-    [(occurs-free? (quote x) (quote (lambda () (let* ((x a) (y x)) (if (y z) (lambda () x) (lambda () y)))))) #f 1] ; (run-test occurs-free? 11)
-    [(occurs-free? (quote x) (quote (lambda () (let ((x a) (y x)) (if (y z) (lambda () x) (lambda () y)))))) #t 2] ; (run-test occurs-free? 12)
-    [(occurs-free? (quote y) (quote (let ((y ((lambda (x) (+ x y)) z))) (+ y y)))) #t 2] ; (run-test occurs-free? 13)
-    [(occurs-free? (quote z) (quote (let ((y ((lambda (x) (+ x y)) z))) (+ y y)))) #t 1] ; (run-test occurs-free? 14)
-    [(occurs-free? 'x '(set! x y)) #f 1] ; (run-test occurs-free? 15)
-    [(occurs-free? 'y '(set! x y)) #t 1] ; (run-test occurs-free? 16)
-  )
-
-  (occurs-bound? equal? ; (run-test occurs-bound?)
-    [all-or-nothing 1 ; (run-test occurs-bound? 1)
-      ((occurs-bound? (quote x) (quote (lambda (a b x) x))) #t)
-      ((occurs-bound? (quote y) (quote (lambda (x a b) y))) #f)]
-    [all-or-nothing 1 ; (run-test occurs-bound? 2)
-      ((occurs-bound? (quote x) (quote (x (lambda (y x z) x)))) #t)
-      ((occurs-bound? (quote x) (quote (lambda (a b) (if (x a b) a b)))) #f)]
-    [(occurs-bound? (quote x) (quote (let ((x n)) ((lambda (y) (+ y x)) z)))) #t 1] ; (run-test occurs-bound? 3)
-    [(occurs-bound? (quote x) (quote (let ((w a) (y x)) ((lambda (y) (+ y x)) z)))) #f 1] ; (run-test occurs-bound? 4)
-    [(occurs-bound? (quote x) (quote (let* ((x a) (y x)) (y)))) #t 1] ; (run-test occurs-bound? 5)
-    [(occurs-bound? (quote b) (quote (let* ((y a) (x b)) ((x y) z)))) #f 1] ; (run-test occurs-bound? 6)
-    [(occurs-bound? (quote a) (quote (let* ((a x) (b c) (c b)) c))) #f 1] ; (run-test occurs-bound? 7)
-    [(occurs-bound? (quote b) (quote (let* ((a x) (b c) (c b)) c))) #t 1] ; (run-test occurs-bound? 8)
-    [(occurs-bound? (quote c) (quote (let* ((a x) (b c) (c b)) c))) #t 1] ; (run-test occurs-bound? 9)
-    [(occurs-bound? (quote set!) (quote (lambda (x) (set! x y)))) #f 1] ; (run-test occurs-bound? 10)
-    [(occurs-bound? (quote x) (quote (lambda (x) (x)))) #t 1] ; (run-test occurs-bound? 11)
-    [(occurs-bound? (quote x) (quote (lambda () x))) #f 1] ; (run-test occurs-bound? 12)
-    [(occurs-bound? (quote x) (quote (lambda () (let* ((x a) (y x)) (if (y z) (lambda () x) (lambda () y)))))) #t 1] ; (run-test occurs-bound? 13)
-    [(occurs-bound? (quote z) (quote (lambda () (let* ((x a) (y x)) (if (y z) (lambda () x) (lambda () y)))))) #f 1] ; (run-test occurs-bound? 14)
-    [(occurs-bound? (quote y) (quote (let ((y ((lambda (x) (+ x y)) z))) (+ y y)))) #t 1] ; (run-test occurs-bound? 15)
-    [(occurs-bound? (quote z) (quote (let ((y ((lambda (x) (+ x y)) z))) (+ y y)))) #f 1] ; (run-test occurs-bound? 16)
-    [all-or-nothing 1 ; (run-test occurs-bound? 17)
-      ((occurs-bound? 'x '(lambda (x) (set! y x))) #t)
-      ((occurs-bound? 'y '(lambda (x) (set! y x))) #f)]
-    [all-or-nothing 2 ; (run-test occurs-bound? 18)
-      ((occurs-bound? 'x '(if y x (lambda (x) (lambda (y) x)))) #t)
-      ((occurs-bound? 'y '(if y x (lambda (x) (lambda (y) x)))) #f)]
-  )
-
 
   (convert-multip-calls equal?
                         [(convert-multip-calls '(a b c)) '((a b) c) 3]
@@ -135,7 +87,19 @@
                           [(convert-multip-calls 'x) 'x 1]
                           )
 
-  
+
+  (convert-ifs equal?
+               [(convert-ifs '(#f #t))
+                '((lambda (thenval elseval) elseval) (lambda (thenval elseval) thenval)) 3]
+               [(convert-ifs '(lambda (input) (if input #f #t)))
+                '(lambda (input) (input (lambda (thenval elseval) elseval) (lambda (thenval elseval) thenval))) 4]
+               [(convert-ifs '(lambda (a b) (if a (if b #t #f) #f)))
+                '(lambda (a b)
+                   (a (b (lambda (thenval elseval) thenval) (lambda (thenval elseval) elseval)) (lambda (thenval elseval) elseval))) 4]
+               [(convert-ifs '(lambda (a b) (if a #t b)))
+                '(lambda (a b) (a (lambda (thenval elseval) thenval) b)) 4]
+               )
+   
   
   (lexical-address equal? ; (run-test lexical-address)
     [(lexical-address (quote x)) '(: free x) 1] ; (run-test lexical-address 1)
