@@ -20,11 +20,7 @@ valid LcExp but will confuse most student parsers).
 Given a LcExp e, (free-vars e) returns the set of all variables that
 occur free in e.  bound-vars is similar.  Write these procedures
 directly; do not use occurs-free or occurs-bound in your definitions.
-Your code only needs to process the simple lambda-calculus expressions
-from the grammar from EoPL, not the extended expressions from problem
-3 and 4 of this assignment.  By set, we mean a list of symbols with no
-duplicates, as in previous assignments.  The order of the symbols in
-the return value does not matter.
+The order of the symbols in the return value does not matter.
 
     > (free-vars   '((lambda (x) (x y)) (z (lambda (y) (z y)))))
     (y z)
@@ -57,7 +53,7 @@ But not more powerful doesn't make our new language bad.  Actually
 code in LcExprMultiP is way easier to understand.  And because its not
 more powerful, we can write our code in LcExprMultiP and then easily
 convert it to LcExp.  You'll do this a lot on the interpreter project
-to build nice to have features like let* without making things too
+to build nice-to-have features like let* without making things too
 complex.
 
 What I'd like you to do in this problem is write a converter that
@@ -101,13 +97,10 @@ For those of you concerned with ambiguity edge cases, lets add the
 stipulation that lambda, if, #f, #t are not valid identifiers in this
 language.
 
-Note that this if is a function-style if - it does not have short
-circuiting.  Instead, it merely returns the value of either the 2nd or
-3rd expression, depending on the value of the first.  The first
-expression must evaluate to either #t or #f otherwise the program is
-invalid.  This is sufficient in a language like LcExp but it wouldn't
-be in a language like Scheme - feel free to come by office hours and
-ask why if you're curious.
+This if is a function-style if - it does not have short circuiting.
+Instead, it merely returns the value of either the 2nd or 3rd
+expression, depending on the value of the first.  The first expression
+must evaluate to either #t or #f otherwise the program is invalid.
 
 So you may have already guessed that IfExp is not more powerful than
 LcExprMultiP but you may not have figured out how to do the
@@ -123,8 +116,8 @@ things in this particular way lets LcExprMultiP correctly implement
 the if semantics.  It should feel pretty wild - here we have a
 language with nothing but lambda (like literally no other constructs
 but lambda) and we can build our own if statements.  I won't show you
-how but hopefully can see how from there things like not and or are
-very straightforward.
+how but hopefully can see how other boolean functions (e.g. and or)
+are possible once if exists.
 
 
 Ok now write a function (convert-ifs IfExp) that converts an
@@ -135,28 +128,20 @@ expression in IfExp to LcExprMultiP.
     '(lambda (input) (input (lambda (thenval elseval) elseval) (lambda (thenval elseval) thenval)))
 
 
-#3 (40 points) Expand occurs-free? and occurs-bound?  (written in class and in the textbook for basic lambda-calculus expressions) to incorporate the following language features into your code.  You can find the original occurs-free? and occurs-bound? from the textbook at
+#4 (30 points).  lexical-address.
 
-http://www.rose-hulman.edu/class/csse/csse304/202110/Resources/Code-from-Textbook/1.scm
+Lets further expand our language, getting it kinda close to regular scheme
 
-a) Scheme lambda expressions (abstractions) may now have more than one (or zero) parameters, and Scheme procedure calls (applications) may have more than one (or zero) arguments.  Modify the formal definitions of occurs-free? and occurs-bound? to allow lambda expressions with any number of parameters and procedure calls with any number of arguments.  Then modify the procedures occurs-free? and occurs-bound? to include these new definitions. 
-
-b) Extend the formal definitions of occurs-free? and occurs-bound? to include if expressions, and implement these in your code.  You are only required to handle “two-armed” if expressions that have both a "then" part and an "else" part.
-
-c) Extend the formal definitions of occurs-free? and occurs-bound? to include Scheme let and let* expressions (you are not required to do “named let”), and implement these in your code.
-
-d) Extend the formal definitions of occurs-free? and occurs-bound? to include Scheme set! expressions, and implement these in your code.  Note that set! does not bind any variables.
-
-    (occurs-bound? 'x '(lambda (y) (set! x y)))  	      ==> #f
-    (occurs-free?  'y '(lambda (x a b) y))       	==> #t
-    (occurs-free? 'b '(let* ((y a) (x b)) ((x y) z))) 	==> #t
-    (occurs-free? 'set! '(lambda (x) (set! x y)))	==> #f  ; set! is Scheme syntax, not a variable
-    (occurs-bound? 'z '(lambda () (let* ((x a) (y x)) (if (y z) (lambda () x) (lambda () y))))) ==> #f
+    <SchemeliteExpr> ::= <identifier> |
+                 (lambda (<identifier>+) <SchemeliteExp>) |
+                 ( <SchemeliteExp> <SchemeliteExp>+ ) |
+                 #f | #t |
+                 (if <SchemeliteExp> <SchemeliteExp> <SchemeliteExp>) |
+                 (let ((<identifier <SchemeliteExp>)+) <SchemeliteExp>)
 
 
-See the test cases for additional examples.
 
-#4 (30 points).  lexical-address.  Write a procedure lexical-address that takes an expression like those from the previous problem (except that you are not required to do let* expressions for this problem) and returns a copy of the expression with every bound occurrence of a variable v replaced by a list (: d p).  The two numbers d and p are the lexical depth and position of that variable occurrence.  If the variable occurrence v is free, produce the following list instead: (: free xyz) To produce the symbols : and free, use the code  ': and 'free.
+Write a procedure lexical-address that takes an expression as above and returns a copy of the expression with every bound occurrence of a variable v replaced by a list (: d p).  The two numbers d and p are the lexical depth and position of that variable occurrence.  If the variable occurrence v is free, produce the following list instead: (: free xyz) To produce the symbols : and free, use the code  ': and 'free.
 
 Hint:  It may be easiest to do this with a recursive helper procedure that keeps track of bound variables and their levels as it descends into various levels of the expression.  Note that this is very similar to the depth variable that we used in writing the notate-depth procedure during the live coding on Day 8.
 
@@ -217,7 +202,7 @@ Examples:
             (c (: 0 0)))
         ((: free +) (: 0 0) (: 1 1) (: 0 1))))
 
-#4 (30 points). un-lexical-address.  Its input will be in the form of the output from lexical-address, as described in the previous problem. In the test-cases, we will evaluate 
+#4 (25 points). un-lexical-address.  Its input will be in the form of the output from lexical-address, as described in the previous problem. In the test-cases, we will evaluate 
    (un-lexical-address (lexical-address <some-expression>)) 
 and test whether this returns something that is equal? to the original expression.  You cannot get any credit for this problem unless you also get a significant number of the points for lexical-address.  
 
