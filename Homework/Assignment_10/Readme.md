@@ -116,7 +116,7 @@ and #t.
 
     #t => (lambda (thenval elseval) thenval)
     #f => (lambda (thenval elseval) elseval)
-    (if x y z) => (lambda (boollambda thenval elseval) (boollambda thenval elseval))
+    (if x y z) => (x y z)
     
 Play with this in your head a bit and try to figure out why mapping
 things in this particular way lets LcExprMultiP correctly implement
@@ -141,9 +141,9 @@ http://www.rose-hulman.edu/class/csse/csse304/202110/Resources/Code-from-Textboo
 
 a) Scheme lambda expressions (abstractions) may now have more than one (or zero) parameters, and Scheme procedure calls (applications) may have more than one (or zero) arguments.  Modify the formal definitions of occurs-free? and occurs-bound? to allow lambda expressions with any number of parameters and procedure calls with any number of arguments.  Then modify the procedures occurs-free? and occurs-bound? to include these new definitions. 
 
-b) Extend the formal definitions of occurs-free? and occurs-bound? to include if expressions, and implement these in your code.  You are only required to handle ìtwo-armedî if expressions that have both a "then" part and an "else" part.
+b) Extend the formal definitions of occurs-free? and occurs-bound? to include if expressions, and implement these in your code.  You are only required to handle ‚Äútwo-armed‚Äù if expressions that have both a "then" part and an "else" part.
 
-c) Extend the formal definitions of occurs-free? and occurs-bound? to include Scheme let and let* expressions (you are not required to do ìnamed letî), and implement these in your code.
+c) Extend the formal definitions of occurs-free? and occurs-bound? to include Scheme let and let* expressions (you are not required to do ‚Äúnamed let‚Äù), and implement these in your code.
 
 d) Extend the formal definitions of occurs-free? and occurs-bound? to include Scheme set! expressions, and implement these in your code.  Note that set! does not bind any variables.
 
