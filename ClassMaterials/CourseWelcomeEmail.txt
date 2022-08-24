@@ -1,0 +1,17 @@
+Future CSSE304 Students -
+
+Welcome!  I am Buffalo and I will be your CSSE304 instructor this coming term.  I'm looking forward to seeing you in a week and teaching you what hopefully will be some really interesting stuff.
+
+You may have heard that CSSE304 is taught in the programming language scheme.  Actually we'll be using a language called Racket which is 99% Scheme but slightly different.  We use Racket mostly because it has a nice pre-built editor with nice error messages and debugging.  One thing I'd like you to before class is install Racket on your computer - you can find it here https://download.racket-lang.org/ .  Once it is installed DrRacket will bring up the fancy editing environment.
+
+The first few weeks of the course will focus a lot on Scheme and getting you up to speed programming well.  As usual in an advanced CS class, I'll focus on the interesting stuff in my lectures and rely on you to figure out the more straightforward details of the language via the web (or Racket's very nice detailed online help documents).  But on the first day, you'll probably be lost if you don't have few basics under your belt.
+
+For that reason, I'd like you to watch a series of intro videos that talk about the basics BEFORE the first day of class.  Most of these were made by Claude (my predecessor) and use Chez Scheme but what you see should work in Racket too (and feel free to try it out and play).  The videos altogether are about 1-hour.  You can find the videos on the first day of the schedule page: https://rhit-csse.github.io/csse304/schedule.html.  Watch Intro1-5 and the YouTube link about using trace in Racket (it works slightly differently than Claude shows in the intro lectures).  Don't watch Zoom 1 - that is the recorded day 1 lecture.
+
+If you are trapped someplace and have no way to watch something online until the start of classes, you can do it day one it'll just make things extra busy for you at the start of the term.
+
+If you have any questions post on the course message board in Moodle.
+
+Buffalo
+
+PS If you've heard CSSE304 is hard and you're a bit worried, you can't go wrong by practicing scheme coding a bit before classes start.  You can see most of the homework assignments here https://github.com/RHIT-CSSE/csse304/tree/main/Homework
