@@ -1,6 +1,6 @@
 #lang racket
 
-(provide free-vars bound-vars occurs-free? occurs-bound? lexical-address un-lexical-address)
+(provide free-vars bound-vars lexical-address un-lexical-address convert-multip-calls convert-multip-lambdas convert-ifs)
 
 (define free-vars
   (lambda (a)
@@ -10,13 +10,21 @@
   (lambda (a)
     (nyi)))
 
-(define occurs-free?
-  (lambda (a b)
+
+(define convert-multip-calls
+  (lambda (lcexp)
     (nyi)))
 
-(define occurs-bound?
-  (lambda (a b)
+
+(define convert-multip-lambdas
+  (lambda (lcexp)
     (nyi)))
+
+(define convert-ifs
+  (lambda (exp)
+    (nyi)))
+
+
 
 (define lexical-address
   (lambda (a)
