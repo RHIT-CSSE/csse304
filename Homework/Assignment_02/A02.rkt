@@ -1,6 +1,6 @@
 #lang racket
 
-(provide choose sum-of-squares range my-set? union cross-product parallel? collinear?)
+(provide choose sum-of-squares range my-set? union more-positives? nearest-pair)
 
 (define choose
   (lambda (a b)
@@ -21,18 +21,15 @@
 (define union
   (lambda (a b)
     (nyi)))
-
-(define cross-product
-  (lambda (a b)
+    
+(define more-positives?
+  (lambda (lon)
     (nyi)))
 
-(define parallel?
-  (lambda (a b)
-    (nyi)))
-
-(define collinear?
-  (lambda (a b c)
-    (nyi)))
+(define nearest-pair
+  (lambda (lon)
+    (nyi)))          
+           
 
 ;;--------  Used by the testing mechanism   ------------------
 

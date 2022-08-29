@@ -64,23 +64,20 @@
     [(union '() '()) '() 1] ; (run-test union 4)
   )
 
-  (cross-product equal? ; (run-test cross-product)
-    [(cross-product '(1 3 4) '(3 6 2)) '(-18 10 -3) 3] ; (run-test cross-product 1)
-    [(cross-product '(1 2 3) '(2 4 6)) '(0 0 0) 2] ; (run-test cross-product 2)
+  (more-positives equal? ; (run-test more-positives)
+    [(more-positives? '(1 2 -3)) #t 1] ; (run-test more-positives 1)
+    [(more-positives? '(-1 -2 300)) #f 1] ; (run-test more-positives 2)
+    [(more-positives? '(1 2 3 -3 -4 -5 6)) #t 1] ; (run-test more-positives 3)
+    [(more-positives? '(1 2 3 -3 -4 -5)) #f 1] ; (run-test more-positives 4)
+    [(more-positives? '()) #f 1] ; (run-test more-positives 5)    
   )
-
-  (parallel? equal? ; (run-test parallel?)
-    [(parallel? '(1 3 4) '(3 6 2)) #f 1] ; (run-test parallel? 1)
-    [(parallel? '(1 2 3) '(2 4 6)) #t 1] ; (run-test parallel? 2)
-    [(parallel? '(1 2 0) '(2 4 0)) #t 1] ; (run-test parallel? 3)
-    [(parallel? '(0 0 1) '(0 0 3)) #t 1] ; (run-test parallel? 4)
-    [(parallel? '(0 1 0) '(0 0 1)) #f 1] ; (run-test parallel? 5)
-  )
-
-  (collinear? equal? ; (run-test collinear?)
-    [(collinear? '(1 2 3) '(4 5 6) '(10 11 12)) #t 3] ; (run-test collinear? 1)
-    [(collinear? '(1 2 3) '(4 5 6) '(10 11 13)) #f 2] ; (run-test collinear? 2)
-  )
+  (nearest-pair equal?
+                [(nearest-pair '(1 5 10 12 17 21)) '(10 . 12) 2]
+                [(nearest-pair '(1 5 10 12 17 21 2)) '(1 . 2) 2]
+                [(nearest-pair '(2 5 10 12 17 21 1)) '(1 . 2) 2]
+                [(nearest-pair '(2 5 30 31 12 17 21 0 )) '(30 . 31) 2]
+                 [(nearest-pair '(2 19 5 31 12 17 21 0 )) '(30 . 31) 2]
+                )
 ))
 
 (define is-a-subset?
