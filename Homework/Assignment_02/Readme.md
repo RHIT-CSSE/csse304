@@ -13,18 +13,20 @@ Assume valid inputs.  As in assignment 1, you do not have to check for illegal a
 fact:  NonNegativeInteger -> Integer
 
 Examples:
-   (fact 0) ->     1
-   (fact 1) ->     1
-   (fact 5) -> 120
+
+    (fact 0) ->     1
+    (fact 1) ->     1
+    (fact 5) -> 120
 
 (b) (5) Write the procedure (choose n k) which returns the number of different subsets of k items that can be chosen from a set of n distinct items.  This is also known as the binomial coefficient.  If you’ve forgotten the formula for this, a Google search for “Binomial Coefficient” should be helpful.  
 
 choose:  NonNegativeInteger x NonNegativeInteger -> NonNegativeInteger  (examples on next page)
  
 Examples:
-   (choose 0 0)  ->     1
-   (choose 5 1)  ->     5
-   (choose 10 5) -> 252 
+
+    (choose 0 0)  ->     1
+    (choose 5 1)  ->     5
+    (choose 10 5) -> 252 
 
 ## Q2 (5 points) 
 
@@ -33,8 +35,9 @@ Write a procedure (sum-of-squares lon) that takes a (single-level) list of numbe
 sum-of-squares:  Listof(Number) -> Number
 
 Examples:
-  (sum-of-squares '(1 3 5 7)) -> 84
-  (sum-of-squares '())        -> 0
+
+    (sum-of-squares '(1 3 5 7)) -> 84
+    (sum-of-squares '())        -> 0
 
 
 ## Q3 (8 points) 
@@ -44,10 +47,11 @@ Write the procedure (range m n) that returns the ordered list of integers starti
 range:  Integer x Integer -> Listof(Integer)
 
 Examples:
-   (range 5 10) ->  (5 6 7 8 9)
-   (range 5 6)  -> (5)
-   (range 5 5)  -> ( )
-   (range 5 3)  -> ( )
+
+    (range 5 10) ->  (5 6 7 8 9)
+    (range 5 6)  -> (5)
+    (range 5 5)  -> ( )
+    (range 5 3)  -> ( )
 
 ## Q4 (10 points)
 
@@ -56,10 +60,11 @@ In mathematics, we informally define a set to be a collection of items with no d
 set? : list -> Boolean
 
 Examples:
-     (set? '())                              -> #t         ; empty set
-     (set? '(1 (2 3) (3 2) 5))               -> #t         ; (2 3) and (3 2) are not equal?
-     (set? '(r o s e - h u l m a n))         -> #t
-     (set? '(c o m p u t e r s c i e n c e)) -> #f         ; duplicates
+
+    (set? '())                              -> #t         ; empty set
+    (set? '(1 (2 3) (3 2) 5))               -> #t         ; (2 3) and (3 2) are not equal?
+    (set? '(r o s e - h u l m a n))         -> #t
+    (set? '(c o m p u t e r s c i e n c e)) -> #f         ; duplicates
 
 ## Q5 (5 points) 
 
@@ -68,8 +73,9 @@ The union of two sets is the set of all items that occur in either or both sets 
 union:  Set x Set -> Set
 
 Examples:
-   (union '(a f e h t b) '(g c e a b)) -> (a f e h t b g c)  ; (or some permutation of it)
-   (union '(2 3 4) '(1 a b 2))         -> (2 3 4 1 a b)      ; (or some permutation of it)
+
+    (union '(a f e h t b) '(g c e a b)) -> (a f e h t b g c)  ; (or some permutation of it)
+    (union '(2 3 4) '(1 a b 2))         -> (2 3 4 1 a b)      ; (or some permutation of it)
 
 ## Q6 (5 points)
 
@@ -80,9 +86,10 @@ hint: you might need to write a recursive helper function with a different retur
 more-positives: Listof(Integer) -> Boolean
 
 Examples:
-   (more-positives '(1 2 -1)) -> #t
-   (more-positives '(10 -2 -1)) -> #f
-   (more-positives '(10 0)) -> #f
+
+    (more-positives '(1 2 -1)) -> #t
+    (more-positives '(10 -2 -1)) -> #f
+    (more-positives '(10 0)) -> #f
 
 ## Q7 (10 points)
 
