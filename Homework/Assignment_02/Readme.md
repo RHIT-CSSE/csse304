@@ -81,7 +81,10 @@ Examples:
 
 Write a procedure (more-positives? lon) that return true if the list has more positive numbers than non-positive numbers.
 
-hint: you might need to write a recursive helper function with a different return type
+hint: you might need to write a recursive helper function with a
+different return type or different parameters.  This one is
+straightforward to solve with tail recursion, but we won't require
+that.
 
 more-positives: Listof(Integer) -> Boolean
 
@@ -96,6 +99,8 @@ Examples:
 Write a procedure (nearest-pair lon) that returns a scheme Pair of the two integers from the list that are numerically closet to each other, in sorted order.  You can assume that that there is one unique closest pair (i.e. dont have to consider when there are two pairs with the same smallest distance).  You can assume the list has 2 elements at least.
 
 hint: it might be handy to search racket's built in help for "sort" as part of solving this problem
+
+nearest-pair: ListOf(Integer) -> Pair(Integer)
 
 Examples:
 

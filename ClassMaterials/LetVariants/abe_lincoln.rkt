@@ -1,5 +1,8 @@
+#lang racket
 ;; The previous examples are from a previous class (Day 4?)
 ;; Original version of factorial function:
+(require racket/trace)
+
 
 (define fact     ; standard factorial function.
   (lambda (n)
@@ -27,48 +30,45 @@
 
 (f 5)
 
-(define fact
+(set! fact
    (lambda (n) 
       "Abe Lincoln elected President"))
 
 (fact 1860)
 
-(f 1860)
+; (f 1860)
 
 
 ; We'd like to write fact so that we can rename it safely:
 ;   (defnie g fact)
 ;   (define fact whatever) and still have g work.
-; It would also be nice to add the efficiency-enhancing acccumulator
 
-; How about this?
+;(define fact2
+;  (let ([fact-tail2 (lambda (n accum)
+;                     (if (zero? n)
+;                         accum
+;                         (fact-tail2 (- n 1) (* n accum))))])
+;    (lambda (n) (fact-tail2 n 1))))
 
-(define fact
-  (let ([fact-tail (lambda (n accum)
-                     (if (zero? n)
-                         accum
-                         (fact-tail (- n 1) (* n accum))))])
-    (lambda (n) (fact-tail n 1))))
+; (fact2 5)
 
-(fact 5)
-
-; Solution?
-
-(define fact 
-  (letrec ([fact-tail 
+(define fact3 
+  (letrec ([fact-tail3 
             (lambda (n prod)
               (if (zero? n)
                   prod
-                  (fact-tail (sub1 n) 
+                  (fact-tail3 (sub1 n) 
                          (* n prod))))])
-    (lambda (n)  (fact-tail n 1))))
+    (lambda (n)  (fact-tail3 n 1))))
 
-
+;(define f3 fact3)
+;(set! fact3 "abe again")
+;(f3 5)
 
 ; another letrec example
 
 (define odd?
-  (letrec ([odd? (lambda (n) 
+  (letrec ([odd? (lambda (n) ; HINT replace lambda with trace-lambda and see what happens
 		   (if (zero? n) 
 		       #f 
 		       (even? (sub1 n))))]
@@ -81,27 +81,25 @@
 
 (odd? 6)
 
-; trace-lambda can be useful
-
 ;; Named let version of fact
 
-(define fact
+(define fact4
   (lambda (n)
-    (let fact-tail ([x n] [prod 1])
+    (let fact-tail4 ([x n] [prod 1])
       (if (zero? x)
 	  prod
-	  (fact-tail (sub1 x) (* prod x))))))
+	  (fact-tail4 (sub1 x) (* prod x))))))
 
 ; This is a shorthand for :
-(define fact
+(define fact5
   (lambda (n)
-    (letrec ([fact-tail
+    (letrec ([fact-tail5
               (lambda (x prod)
 		(if (zero? x)
                     prod
-                    (fact-tail (sub1 x) 
+                    (fact-tail5 (sub1 x) 
                                    (* x prod))))])
-       (fact-tail n 1))))
+       (fact-tail5 n 1))))
 
 ; Note that let and named-let have the same name
 ; but very different semantics.
@@ -113,6 +111,4 @@
 
 ;  Think of it as initializing x by n and prod by 1,
 ; then ececuting the body (in this case, the "if").
-
-
 
