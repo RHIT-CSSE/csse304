@@ -16,6 +16,7 @@
     [(not (list? list1)) #f]
     [(not (= (length list1) (length list2))) #f]
     [(equal? list1 list2) #t]
+    [(null? (cdr list2)) #f] ; you don't match and there's only one interval
     [else (equal? list1 (list (cadr list2) (car list2)))]))
 
 (define test (make-test ; (r)
