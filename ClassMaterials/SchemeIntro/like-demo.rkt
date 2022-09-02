@@ -1,12 +1,12 @@
-; First show the use of SWL.
+#lang racket
 
 ; Draw pictures for the following:
 (define a '(3 4 5))
 (cdr a)
 (cddr a)
 (cdddr a)
-(cddddr a)
-(cdddddr a)
+;(cddddr a)
+;(cdddddr a)
 (define b (cons 2 a))
 (define c (cons a b))
 (define d (list a b))
@@ -16,18 +16,17 @@ c
 d
 e
 ; Procedures are not "operators" in Scheme.
-(/ 4 5)
-/
+;(/ 4 5)
+;/
 (define /
   (lambda (x y) (* x (+ 1 y))))
 (/ 4 5) ; Not a good idea, but it illustrates what / is.
 ; A useful procedure
 (max 4 8 2 7 3)
-(Max 3 2 1)
+;(Max 3 2 1)
 (max a)
 (apply max a)
 
-(mod 19 4)
 
 (define t 6) ; what does it return?
 (void)
@@ -55,15 +54,9 @@ e
 
 ; End of Day 1
 
-(define letter-to-number
-  (lambda (letter)
-    (cond [(eq? letter 'A) 4.0]
-	  [(eq? letter 'B+) 3.5]
-	  [else 3.0])))
 	  
 
-
-(define letter-to-number
+(define letter-to-number2
   (lambda (letter)
     (case letter
       [(A) 4.0]
@@ -81,7 +74,7 @@ e
 (define largest-in-list
   (lambda (lon)
     (if (null? lon)
-	(errorf 'largest-in-list "list is empty")
+	(error 'largest-in-list "list is empty")
 	(largest-non-empty (car lon) (cdr lon)))))
 
 (define largest-non-empty
@@ -127,7 +120,7 @@ add5
 	   (+ 1 (count-reflexive-pairs (cdr rel)))]
 	  [else (count-reflexive-pairs (cdr rel))])))
 
-(define count-reflexive-pairs
+(define count-reflexive-pairs2
   (lambda (rel)
     (if (null? rel)
 	0
@@ -136,7 +129,7 @@ add5
 	      (+ 1 cdr-refl-count)
 	      cdr-refl-count)))))
 
-(define count-reflexive-pairs
+(define count-reflexive-pairs3
   (lambda (rel)
     (if (null? rel)
 	0
