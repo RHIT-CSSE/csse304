@@ -8,15 +8,15 @@
 ; You can run a specific group of tests using (run-tests group-name)
 
 (require "testcode-base.rkt")
-(require "starting-code.rkt")
+(require "inclass-code.rkt")
 (provide get-weights get-names individual-test test)
 
 (define test (make-test ; (r)
    (median-of-three equal? ; (run-test median-of-three)
     [(median-of-three 3 2 6) 3 1] ; (run-test  median-of-three 1)
     [(median-of-three 1 2 3) 2 1] ; (run-test  median-of-three 2)
-    [(median-of-three 3 2 1) 2 1] ; (run-test  median-of-three 2)
-    [(median-of-three 1 2 1) 1 1] ; (run-test  median-of-three 1)
+    [(median-of-three 3 2 1) 2 1] ; (run-test  median-of-three 3)
+    [(median-of-three 1 2 1) 1 1] ; (run-test  median-of-three 4)
   )
 
   (add-n-to-each equal? ; (run-test add-n-to-each)
