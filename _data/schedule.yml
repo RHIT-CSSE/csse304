@@ -80,7 +80,7 @@
   other:
   videos:
     - name: Zoom 5
-      id: cbca6330-a112-4eb6-8693-ac8a014796e7
+      id: d4d7ee56-df85-4acd-96b9-ac2f014dec91
     - name: andmap ormap
       id: 6a682d3c-8416-45f2-9f3c-ac3101238524
     - name: some prob solutions
@@ -94,6 +94,8 @@
   materials: OddsAndEnds
   other:
   videos:
+    - name: Zoom 6
+      id: cbca6330-a112-4eb6-8693-ac8a014796e7
     - name: vectors
       id: 6f0fa604-43a5-4e0e-a717-ac32014c3e13
     - name: list sharing and mutation
