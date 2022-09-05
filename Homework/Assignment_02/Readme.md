@@ -8,7 +8,7 @@ Assume valid inputs.  As in assignment 1, you do not have to check for illegal a
 
 ## Q1 (5 points) 
 
-(a) Write the procedure (fact n) which takes a non-negative integer n and returns n factorial.  You can just copy this procedure from Assignment 0, and call it from your choose procedure from part (b).
+(a) Copy the procedure (fact n) from Assignment 0, and call it from your choose procedure from part (b).
 
 fact:  NonNegativeInteger -> Integer
 
@@ -55,16 +55,18 @@ Examples:
 
 ## Q4 (10 points)
 
-In mathematics, we informally define a set to be a collection of items with no duplicates.  In Scheme, we could represent a set by a (single-level) list.  We say that a list is a set if and only if it contains no duplicates.  We say that two objects o1 and o2 are duplicates if (equal? o1 o2).  Write the predicate (set? list), that takes any list as an argument and determines whether it is a set.
+In mathematics, we informally define a set to be a collection of items with no duplicates.  In Scheme, we could represent a set by a (single-level) list.  We say that a list is a set if and only if it contains no duplicates.  We say that two objects o1 and o2 are duplicates if (equal? o1 o2).  Write the predicate (my-set? list), that takes any list as an argument and determines whether it is a set.
 
-set? : list -> Boolean
+Do not use the built in set when solving this problem.
+
+my-set? : list -> Boolean
 
 Examples:
 
-    (set? '())                              -> #t         ; empty set
-    (set? '(1 (2 3) (3 2) 5))               -> #t         ; (2 3) and (3 2) are not equal?
-    (set? '(r o s e - h u l m a n))         -> #t
-    (set? '(c o m p u t e r s c i e n c e)) -> #f         ; duplicates
+    (my-set? '())                              -> #t         ; empty set
+    (my-set? '(1 (2 3) (3 2) 5))               -> #t         ; (2 3) and (3 2) are not equal?
+    (my-set? '(r o s e - h u l m a n))         -> #t
+    (mt-set? '(c o m p u t e r s c i e n c e)) -> #f         ; duplicates
 
 ## Q5 (5 points) 
 
