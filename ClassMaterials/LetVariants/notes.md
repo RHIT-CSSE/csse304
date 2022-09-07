@@ -1,3 +1,9 @@
+# From last class
+
+I ended up not having enough time to the in class coding tail recursion 
+problems from last class, so I had the students do that work in the first 
+10 minutes instead of insertion sort.
+
 # Live coding
 
 We'll start with live coding insertion sort (see the solution if you

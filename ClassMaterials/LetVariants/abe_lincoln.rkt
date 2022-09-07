@@ -36,7 +36,7 @@
 
 (fact 1860)
 
-; (f 1860)
+(f 1860)
 
 
 ; We'd like to write fact so that we can rename it safely:
