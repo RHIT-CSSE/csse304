@@ -63,7 +63,7 @@
     (andmap (lambda (num) (> num 0)) lon)))
 
 (all-positive? '(1 2 3)) ;; yields #t
-(all-positive? '(1 2 3)) ;; yields #f
+(all-positive? '(1 2 -3)) ;; yields #f
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
