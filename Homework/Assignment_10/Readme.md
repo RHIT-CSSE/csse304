@@ -33,11 +33,11 @@ The order of the symbols in the return value does not matter.
 One of the repeated themes of this course is going to be that we can -
 and often want to - translate code between different kinds of
 languages.  Consider this modification of LcExp I call LcExprMultiP
-(MultiP for multiple parameters) - notice the use of plus:
+(MultiP for multiple parameters) - notice the use of {}+:
 
     <LcExprMultiP> ::= <identifier> |
-                 (lambda (<identifier>+) <LcExpr>MultiP) |
-                 ( <LcExprMultiP> <LcExprMultiP>+ )
+                 (lambda ({<identifier>}+) <LcExpr>MultiP) |
+                 ( <LcExprMultiP> {<LcExprMultiP>}+ )
 
 Basically this is just the lambda calculus but with multi parameter
 lambdas (e.g. (lambda (x y z) x) ) and calling (e.g. (myfunc p1 p2 p3)
@@ -89,7 +89,7 @@ silly (LcExprMultopAndIfToo?), let's call this one IfExp:
 
     <IfExp> ::= <identifier> |
                  (lambda (<identifier>+) <IfExpr>) |
-                 ( <IfExpr> <IfExpr>+ ) |
+                 ( <IfExpr> {<IfExpr>}+ ) |
                  #f | #t |
                  (if <IfExpr> <IfExpr> <IfExpr>)
 
@@ -134,10 +134,10 @@ Lets further expand our language, getting it kinda close to regular scheme
 
     <SchemeliteExpr> ::= <identifier> |
                  (lambda (<identifier>+) <SchemeliteExp>) |
-                 ( <SchemeliteExp> <SchemeliteExp>+ ) |
+                 ( <SchemeliteExp> {<SchemeliteExp>}+ ) |
                  #f | #t |
                  (if <SchemeliteExp> <SchemeliteExp> <SchemeliteExp>) |
-                 (let ((<identifier <SchemeliteExp>)+) <SchemeliteExp>)
+                 (let ({(<identifier <SchemeliteExp>)}+) <SchemeliteExp>)
 
 
 
