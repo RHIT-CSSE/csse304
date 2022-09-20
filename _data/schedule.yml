@@ -156,30 +156,27 @@
       id: 82dcfab6-ec40-4e0a-b569-ac920170ad89
 11:
   reading:
-  topics:
-    - More about Exam 1
-    - More on list-recur
-    - lambda calculus
-  materials: ListRecur
-  other:
-  videos:
-    - name: Zoom 11
-      id: 74e2a17f-ea9a-4ad7-ba41-ac940125026a
-12:
-  reading:
     - EoPL 2.2
   topics:
-    - code for occurs-bound?
-    - efficient reverse and reverse!
-    - efficient rotate
+    - snoc and efficient rotate
+    - occurs-bound?
+    - lexical depth and lexical address example
   materials: OccursBound
   other:
   videos:
     - name: Zoom 12
       id: bb5fd4a6-6c70-465c-accc-ac9800ce5431
+12:
+  reading:
+  topics:
+    - Exam 1 topics, maybe some example problems
+  materials: Exam1Prep
+  other:
+  videos:
 13:
   reading:
     - review for exam
+    - TSPL 3.1
   topics:
     - lexical-address exercise - examine the answer together
     - syntactic extension definition, examples in other languages
@@ -190,15 +187,11 @@
       id: a019f00c-50ed-4636-a1b9-ac980157ca53
 14:
   reading:
-    - TSPL 3.1
   topics:
-    - Possibly canceled for exam
-  materials: SyntaxExpansion
+    - Canceled for exam
+  materials:
   other:
   videos:
-    - name: define syntax
-      id: ee6ab990-802d-4c77-aec1-ac41015ebee7
-
 15:
   reading:
     - EoPL 2.3
