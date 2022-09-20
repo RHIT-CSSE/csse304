@@ -162,7 +162,7 @@
     - occurs-bound?
     - lexical depth and lexical address example
   materials: OccursBound
-  other:
+  other: 
   videos:
     - name: Zoom 12
       id: bb5fd4a6-6c70-465c-accc-ac9800ce5431
@@ -171,7 +171,7 @@
   topics:
     - Exam 1 topics, maybe some example problems
   materials: Exam1Prep
-  other:
+  other: <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EQZFUkx7QDhPhanWKIi3LpcBN4o7ujz1pE_jIK1h0MYW4Q?e=pjI4Us">Teams recording of my discussion of Exam</a>
   videos:
 13:
   reading:
