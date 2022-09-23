@@ -83,8 +83,7 @@
                           [(convert-multip-lambdas '((lambda (x y) x) q))
                            '((lambda (x) (lambda (y) x)) q) 3]
                           [(convert-multip-lambdas '(u ((lambda (x y) x) q)))
-                           '(u ((lambda (x) (lambda (y) x)) q)) 1]
-                          [(convert-multip-calls 'x) 'x 1]
+                           '(u ((lambda (x) (lambda (y) x)) q)) 2]
                           )
 
 
