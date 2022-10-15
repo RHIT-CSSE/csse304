@@ -362,11 +362,13 @@
   videos:
     - name: Zoom 29
       id: 82606a4d-c7a2-4460-ab6f-acc201343176
+
 30:
   reading:
   topics: Cancelled for Exam 2
   materials: 
   other:
+
 31:
   reading:
   topics:
@@ -395,39 +397,14 @@
 33:
   reading:
   topics:
-    - work time (no class)
-  materials: 
-  other:  
-34:
-  reading:
-  topics:
     - imperative form
   materials: ImperativeForm
   other:
   videos:
     - name: Zoom 34
-      id: 6675b717-b026-484a-8b26-acca011516df
-35:
-  reading:
-    - TSPL Section 12.11
-  topics:
-    - reference params example
-    - final exam preview
-    - engines
-  materials: Engines1
-  other:
-  videos:
-    - name: Zoom 35
-      id: 498f188b-388c-489a-9ded-accc015ed0ec
+      id: 6675b717-b026-484a-8b26-acca011516df  
 
-36:
-  reading:
-  topics:
-    - more engine stuff
-  materials: Engines2
-  other:
-
-37:
+34:
   reading:
   topics:
     - ref params
@@ -437,25 +414,48 @@
   videos:
     - name: Zoom 37
       id: a8863f1e-4a87-4e08-9e04-acd0012d7827
+
+35:
+  reading:
+  topics:
+    - Type Checking
+  materials:
+  other:
+
+36:
+  reading:
+  topics:
+    - Type Checking 2
+  materials:
+  other:
+
+37:
+  reading:
+  topics:
+    - cancelled (maybe work on 17b)
+  materials:
+  other:
+
 38:
+  reading:
+  topics:
+    - cancelled
+  materials:
+  other:
+
+39:
+  reading:
+    - TSPL Section 12.11
+  topics:
+    - engines
+  materials: Engines1
+  other:
+  videos:
+    - name: Zoom 35
+      id: 498f188b-388c-489a-9ded-accc015ed0ec
+40:
   reading:
   topics:
     - exam prep
   materials: ExamPreview
   other:
-39:
-  reading:
-  topics:
-    - to be decided
-  materials: 39
-  other:
-
-40:
-  reading:
-  topics:
-    - to be decided
-  materials: 40
-  other:  
-  videos:
-    - name: Zoom 40
-      id: 2ffd21f9-6da5-4ff9-93c6-acd4012e72bc
