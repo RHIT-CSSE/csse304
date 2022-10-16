@@ -147,6 +147,7 @@ will be returned after raise evaluates.
 Here's the various kinds of errors the test cases test for:
 
 | symbol to raise  | description of error                                                                            |
+|------------------|-------------------------------------------------------------------------------------------------|
 | unbound-var      | a variable is used in a context where it is not bound                                           |
 | bad-procedure    | an application is attempted on something that is not a procedure type                           |
 | bad-parameter    | an application is attempted but the given parameter does not match the procedure's stated type  |
