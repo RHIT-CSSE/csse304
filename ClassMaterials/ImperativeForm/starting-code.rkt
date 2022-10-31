@@ -5,6 +5,7 @@
 ; -- recursion can be replaced by assignments and "goto"s
 
 (require "chez-init.ss")
+(require racket/trace)
 
 (define any? (lambda (x) #t))
 
@@ -59,20 +60,24 @@
     (set! k (init-k))
     (reverse*-cps L k))) ;FIXME
 
+(trace reverse*-cps append-cps apply-k)
+
 (test-reverse
   '(1 ((2 3) () (((4))))))
 
-(define *tracing* #f)
 
-(define trace-it
-  (lambda (sym)
-    (when *tracing*
-      (printf "~a " sym)
-      (printf "L=~s" L)
-      (printf "  a=~s" a)
-      (printf "  b=~s" b)
-      (printf "  v=~s~%" v)
-      (printf "           k=~s~%" k))))
+
+;(define *tracing* #f)
+
+;(define trace-it
+;  (lambda (sym)
+;    (when *tracing*
+;      (printf "~a " sym)
+;      (printf "L=~s" L)
+;      (printf "  a=~s" a)
+;      (printf "  b=~s" b)
+;      (printf "  v=~s~%" v)
+;      (printf "           k=~s~%" k))))
 
 
 
