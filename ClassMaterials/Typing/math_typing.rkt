@@ -15,11 +15,7 @@
          ; (let pi 3.14 (* 9.9 pi))
          [(let) 'nyi]
          ; example (* 1 (+ 2 3))
-         [(+ *) (let ((a1 (typecheck-math (second exp) ))
-                      (a2 (typecheck-math (third exp) )))
-                  (unless (eqv? a1 a2)
-                    (raise 'mismatched-types))
-                  a1)]
+         [(+ *) 'nyi]
          ; example: (log 1 2)
          [else 'nyi
           ])])))

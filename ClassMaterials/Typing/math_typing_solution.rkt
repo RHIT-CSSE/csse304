@@ -31,6 +31,9 @@
                     (raise 'mismatched-types))
                   a1)]
          [else
+          ;; note that this version expects the return type
+          ;; to be last, which makes the code a little
+          ;; more complicated than the one I did live
           (let* ((all (map (lambda (e) (typecheck-math e tenv))
                              exp))
                  (proc-type (car all))
