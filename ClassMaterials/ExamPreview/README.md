@@ -4,6 +4,8 @@
 
 Students who have extra time stay late
 
+Please wear a mask
+
 ## Practice exams
 
 202210 & 202220 should be close.  No imperative form question for you.
