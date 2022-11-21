@@ -7,7 +7,7 @@ vacation_start = Date.new(2022, 12, 21) #inclusive
 vacation_end = Date.new(2023, 1, 3) # inclusive
 allowed_days_of_week = [1,2,4,5] # monday is 1
 
-generate_yaml = false #we either generate yaml or csv
+generate_yaml = true #we either generate yaml or csv
 
 day_list = []
 current = start_date;
@@ -34,4 +34,4 @@ else
     puts " Day #{class_index} , #{d.to_time().strftime("%Y-%m-%d 23:59")}"
   }
 end
-$stderr.puts "#{day_list.length} days output"
+$stderr.puts "#{day_list.length} days output as #{ generate_yaml ? 'YAML (not csv)' : 'CSV (not YAML)' } "
