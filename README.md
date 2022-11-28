@@ -12,8 +12,6 @@ you doing this - it's academic misconduct.
 * [Syllabus](syllabus.md) - course policies including lateness, grade calculations
 * Most assignments are submitted via the "Gradescope" link on Moodle
 * [Assignment 0](Homework/Assignment_0) - details on how to configure your computer with scheme and an editor
-* [Moodle](https://moodle.rose-hulman.edu/course/view.php?id=87811) - grades, etc
-* [Piazza](https://moodle.rose-hulman.edu/mod/forum/view.php?id=3113752) - ok, it's not really Piazza, but its still a place for you to post your questions
 
 # Textbooks
 
