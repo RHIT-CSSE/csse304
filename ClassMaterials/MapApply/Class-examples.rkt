@@ -118,7 +118,7 @@
 ;
 ; (define limited+ (make-limited +))
 ; (limited+ 1 2) => 3
-; (limited+ 10 20 30) => 30
+; (limited+ 10 20 30) => 60
 ; (limited+ 1 2 3 4) => 'unreasonable
 
 (define make-limited
