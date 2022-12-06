@@ -141,7 +141,7 @@ If you do not remember how QuickSort works, see http://en.wikipedia.org/wiki/Qui
 ## Q11 (15 points)
 
 Write a Scheme procedure (sort-list-of-symbols los) which takes a list of symbols and returns a list of the same symbols sorted as if they were strings. You will probably find the following procedures to be useful:  
-       symbol->string, map, string<?, sort (you can look them up in the Chez Scheme Users' Guide).  Note that we have not covered specifics related to this problem,  It is time for you to read some documentation and figure out how to use things.
+       symbol->string, map, string<?, sort (you can look them up in the Racket guide).  Note that we have not covered specifics related to this problem,  It is time for you to read some documentation and figure out how to use things.
 
 
 
