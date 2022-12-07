@@ -143,6 +143,11 @@ If you do not remember how QuickSort works, see http://en.wikipedia.org/wiki/Qui
 Write a Scheme procedure (sort-list-of-symbols los) which takes a list of symbols and returns a list of the same symbols sorted as if they were strings. You will probably find the following procedures to be useful:  
        symbol->string, map, string<?, sort (you can look them up in the Chez Scheme Users' Guide).  Note that we have not covered specifics related to this problem,  It is time for you to read some documentation and figure out how to use things.
 
+**sort-list-of-symbols**: *ListOf*(*Symbol*) -> *ListOf*(*Symbol*)
+
+Exmaples:
+
+(sort-list-of-symbols '(b c d g ab f b r m)) ->  (ab b b c d f g m r)
 
 
 
