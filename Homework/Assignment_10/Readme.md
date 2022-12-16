@@ -121,7 +121,9 @@ are possible once if exists.
 
 
 Ok now write a function (convert-ifs IfExp) that converts an
-expression in IfExp to LcExprMultiP.
+expression in IfExp to LcExprMultiP.  Note that we're specifically
+*not* augmenting your solution from the previous step, your output
+should have multi-parameter functions.
 
 
     > (convert-ifs '(lambda (input) (if input #f #t)))
