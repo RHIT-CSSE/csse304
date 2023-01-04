@@ -185,6 +185,8 @@
   videos:
     - name: Zoom 13
       id: a019f00c-50ed-4636-a1b9-ac980157ca53
+    - name: More define syntax
+      id: ee6ab990-802d-4c77-aec1-ac41015ebee7
 14:
   reading:
   topics:
