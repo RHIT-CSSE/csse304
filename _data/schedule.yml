@@ -408,14 +408,14 @@
 
 34:
   reading:
+    - TSPL Section 12.11
   topics:
-    - ref params
-    - coroutines
-  materials: RefParamsCoroutines
-  other:  
+    - engines
+  materials: Engines1
+  other:
   videos:
-    - name: Zoom 37
-      id: a8863f1e-4a87-4e08-9e04-acd0012d7827
+    - name: Zoom 35
+      id: 498f188b-388c-489a-9ded-accc015ed0ec
 
 35:
   reading:
@@ -424,6 +424,7 @@
   materials:
   other:
    - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EVpKcsEHCyFLkO43KeCSVEIBg0xyic0G_dvLXF8eKv7lVg?e=cdnlqc">Video</a>
+
 36:
   reading:
   topics:
@@ -442,20 +443,21 @@
 38:
   reading:
   topics:
-    - cancelled
+    - Garbage Collection
   materials:
   other:
 
 39:
   reading:
-    - TSPL Section 12.11
   topics:
-    - engines
-  materials: Engines1
-  other:
+    - ref params
+    - coroutines
+  materials: RefParamsCoroutines
+  other:  
   videos:
-    - name: Zoom 35
-      id: 498f188b-388c-489a-9ded-accc015ed0ec
+    - name: Zoom 37
+      id: a8863f1e-4a87-4e08-9e04-acd0012d7827
+
 40:
   reading:
   topics:
