@@ -421,24 +421,25 @@
   reading:
   topics:
     - Type Checking
-  materials:
+  materials: Typing
   other:
    - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EVpKcsEHCyFLkO43KeCSVEIBg0xyic0G_dvLXF8eKv7lVg?e=cdnlqc">Video</a>
 
 36:
   reading:
   topics:
-    - Type Checking 2
+    - cancelled (maybe work on 17b)
   materials:
   other:
-    - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EeidE7QbsS9PguvsifCA3XwB-NCS5QiYtXOeXos1ShyWrA?e=IltbQm">Video</a>
 
 37:
   reading:
   topics:
-    - cancelled (maybe work on 17b)
-  materials:
+    - Type Checking 2
+  materials: ImplicitTyping
   other:
+    - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EeidE7QbsS9PguvsifCA3XwB-NCS5QiYtXOeXos1ShyWrA?e=IltbQm">Video</a>
+
 
 38:
   reading:
