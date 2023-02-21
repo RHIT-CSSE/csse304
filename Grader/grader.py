@@ -85,12 +85,19 @@ def parse_scheme_list(scheme_list):
                 current_item += char
             if char == '(':
                 parens_depth += 1
+            if char == '{':
+                parens_depth += 1
         else:
             current_item += char
             if char == '(':
                 parens_depth += 1
-            elif char == ')':
+            if char == ')':
                 parens_depth -= 1
+            if char == '{':
+                parens_depth += 1
+            if char == '}':
+                parens_depth -= 1
+
     list_of_items.append(current_item)
     return list_of_items
 
