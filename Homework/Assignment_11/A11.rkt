@@ -1,27 +1,8 @@
 #lang racket
 
 (require "../chez-init.rkt")
-(provide my-let my-or += return-first bintree? leaf-node interior-node bintree-to-list max-interior parse-exp unparse-exp)
+(provide bintree-to-list bintree-add leaf-node interior-node parse-exp unparse-exp)
 
-(define-syntax my-let
-  (syntax-rules ()
-    [(my-let args ...)
-     (nyi)]))
-
-(define-syntax my-or
-  (syntax-rules ()
-    [(my-or args ...)
-     (nyi)]))
-
-(define-syntax +=
-  (syntax-rules ()
-    [(+= args ...)
-     (nyi)]))
-
-(define-syntax return-first
-  (syntax-rules ()
-    [(return-first args ...)
-     (nyi)]))
 
 (define-datatype bintree bintree?
   (leaf-node
@@ -31,12 +12,21 @@
    (left-tree bintree?)
    (right-tree bintree?)))
 
+; I've provide this one as a sample to you.
+; It's used by the testcases though  so don't mess with it.
 (define bintree-to-list
-  (lambda (a)
-    (nyi)))
-
-(define max-interior
-  (lambda (a)
+  (lambda (bt)
+    (cases bintree bt
+      [interior-node (value left right)
+                (list value
+                      (bintree-to-list left)
+                      (bintree-to-list right))]
+      [leaf-node (datum)
+                 datum])))
+                
+; Here's the one you need to solve
+(define bintree-add
+  (lambda (bt num)
     (nyi)))
 
 ; This is a parser for simple Scheme expressions, 

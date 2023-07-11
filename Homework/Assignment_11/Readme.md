@@ -1,71 +1,21 @@
 ## Assignment 11
 
-This assignment has only four problems, but three of them are non-trivial.  Start early! 
-A11a is an individual assignment.  
+**You must work with your Interpreter project partner for A11.  One partner should submit the assignment to the Gradescope server. Make sure to add your partner in Gradescope as you submit.**
 
-**You must work with your Interpreter project partner for A11b.  One partner should submit the assignment to the Gradescope server. Make sure to add your partner in Gradescope as you submit.**
+No mutation is allowed in your code.
 
+## Warm-up - bintree-add (10 points)
 
-No mutation is allowed in your code, except for problem 1c
+This is just a little problem to remind you about define-datatype.
 
-## Q1 (30 points)
+The given code includes a datatype for bintree.  Write a function
+bintree-add that takes a bintree and a number and returns a new
+bintree where all the leaves have that number added.
 
-define-syntax exercises.  Your code may not involve mutation.  But the test cases, may include code that includes mutation
+So adding 3 to bintree (interior-node (leaf-node 0) (interior-node (leaf-node 10) (leaf-node 100)))
+produces (interior-node (leaf-node 3) (interior-node (leaf-node 13) (leaf-node 103)))
 
-(a) Extend the definition of my-let produced in class to include the syntax for named let.  This should be translated into an equivalent letrec expression.  
-
-Example: 
-
-    (my-let fact ([n 5]) 
-         (if (zero? n) 
-            1 
-            (* n (fact (- n 1)))))  -> 120
-
-(b)  Suppose that or was not part of the Scheme language.  Show how we could add it by using define-syntax to define my-or, similar to my-and that we defined in class.  This may be a little bit trickier than my-and; the trouble comes if some of the expressions have side-effects; you want to make sure that no expression gets evaluated twice.  In general, your my-or should behave just like Scheme's or.  You may not use or in your expansion of my-or.  
-
-Example:
-
-        (begin (define a #t) 
-            (define x (my-or #f 
-                              (begin (set! a (not a)) a) 
-                           #t 
-                           (set! a (not a))))
-             (list a x))
-    (#f #t)
-
-(c) Use define-syntax to define += , with behavior that is like += in other languages.  Of course += will do mutation.
-
-Example: 
-
-    (begin (define r 4) 
-                    (define y (+ 6 (+= r 3))) 
-                   (list r y))                    -> (7 13)
-
-(d) Recall that (begin e1 … en) evaluates the expressions e1 … en in order, returning the value of the last expression. It is sometimes useful to have a mechanism for evaluating a number of expressions sequentially and returning the value of the first expression.  I call that syntax return-first.  Use define-syntax to define return-first.
-
-Examples: 
-
-    (define a 3) (begin a 
-                    (set! a (+ 1 a)) 
-                    a)                  -> 4
-    (define a 3) (return-first a 
-                              (set! a (+ 1 a)) 
-                              a)           -> 3
-
-
-A note on testing problem 1 offline.  Defining new syntax is very different than defining a procedure.  Every time you reload your code for problem 1 into Scheme, you must subsequently reload the test code file before running the tests.  Can you see why this is necessary?
-
-
-## Q2 (10 points)
-
-bintree-to-list.  EoPL Exercise 2.24, page 50.   This is a simple introduction to using cases and the bintree datatype (bintree definition is given on page 50).  See notes below on using define-datatype and bintree.
-
-
-## Q3 (40 points)
-
-max-interior.  EoPL Exercise 2.25, page 50.  The algorithm will be the same as in a previous assignment, but you must write it so that it expects its input to be an object of the bintree datatype.  As before, you may not use mutation.  As before, you may not traverse any subtree twice (such as by calling leaf-sum on each interior node).  You may not create an additional non-constant-size data structure that you then traverse to get the answer.  Think about how to return enough info from each recursive call to be able to compute the answer for the parent node without doing another traversal.
-
-## Q4 (85 Points)
+## Parsing Scheme (85 Points)
 
 **HW11b is a with-your-team assignment.  You should not begin it until teams are established.**
 

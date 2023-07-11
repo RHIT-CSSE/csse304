@@ -18,6 +18,13 @@
              (equal? (substring (exn-message e) 0 10) "parse-exp:")))))
 
 (define test (make-test ; (r)
+  (bintree-add equal?
+    [(bintree-to-list (bintree-add (leaf-node 3) 3)) 6 3]
+    [(bintree-to-list (bintree-add (interior-node 'q (leaf-node 3) (leaf-node 4)) 3)) '(q 6 7) 3]
+    [(bintree-to-list (bintree-add (interior-node 'x
+                                    (interior-node 'q (leaf-node 3) (leaf-node 4))
+                                    (interior-node 'v (leaf-node 0) (leaf-node 1))) 1)) '(x (q 4 5) (v 1 2)) 4]
+    )
   (parse-invalid equal? ; (run-test parse-invalid)
     [(with-handlers ([exn:parse? (lambda (e) "parse-error")]) (parse-exp (quote (lambda (a))))) "parse-error" 1] ; (run-test parse-invalid 1)
     [(with-handlers ([exn:parse? (lambda (e) "parse-error")]) (parse-exp (quote (lambda x)))) "parse-error" 1] ; (run-test parse-invalid 2)
