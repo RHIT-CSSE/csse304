@@ -6,7 +6,7 @@
 
 After this assignment  assignment, there will  a brief required participation survey on Moodle, covering A14 and A16.
 
-## Q1 (50 points + 10 extra credit)
+## Q1 (60 points)
 
 Add additional syntax to your interpreted language.
 
@@ -22,5 +22,3 @@ If you did not implement while as a syntax-expansion in A14, you should do so fo
 A17 will be more substantial (add set!, define, reference parameters, and lexical address).  Since this assignment is by far the smallest interpreter assignment, and since both A17 and A18 are much longer and harder, I  suggest that you plan to finish this assignment early and get an early start on the next one.
 
 I also suggest that you begin working together  on this assignment together soon after the finishing A14, and do not wait until after A15 is due.
-
-The subst-leftmost test case is extra credit.  Your team is on your own for debugging it.
