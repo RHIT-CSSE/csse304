@@ -279,8 +279,8 @@
   reading:
     - EoPL 3.3, 3.4
   topics:
-    - Continuations FIXME
-  materials: CPSMore1
+    - Continuations
+  materials: CPS
   other:
   videos:
     - name: Zoom 24
