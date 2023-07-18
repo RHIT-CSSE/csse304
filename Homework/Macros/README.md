@@ -97,11 +97,7 @@ structure that indicates where we expect variables to in the
 structured list *value*.
 
 A few details:
-
-* This let only does one assignment, rather than a list - although
-  that single assignment can do many mappings.  Allowing vars value
-  pairs just further muddies things though, so I'm restricting it to
-  just one.
+            
 
 * The usual form like this:
 
@@ -124,7 +120,25 @@ A few details:
   called.  Your generated code should generate cars and cdrs as
   appropriate to destructure the input assuming it is a value of the
   expected form.
-  
+
+* To simplify the problem, you don't have to worry about potential
+  side effects of evaluating the value expression more than once
+  E.g. how do ensure we don't call my-cool-funct (above) more than one
+  time?  In my test cases, you can call it many times and it won't
+  error.  This is something we would have to solve before we would
+  really want to use let-destruct (easiest way is just a introduce a
+  little helper define-syntax "procedure").
+
+* Be a little careful with the syntax.  This is not legal:
+
+        (let-destruct ([(a b) '(1 2)]
+               [(c d) '(3 4)]) ; this c d line is not allowed
+              bodies ...)
+              
+  even though that is arguably more consistent with other let forms.
+  Only one pairing of var names to structure is allowed per
+  let-destruct used, which makes parsing it easier.
+
 
 * These are a valid:
 
@@ -136,7 +150,7 @@ A few details:
 
 * This is valid too:
 
-        (let-destruct () () 'foo)
+        (let-destruct () '() 'foo)
         
   And that is a useful base case.
 
@@ -152,6 +166,13 @@ A few details:
 
 * Recursion is your friend.  let-destructs mostly expand to other let
   destructs, except in a few cases.
+  
+  <details>     
+      <summary> A more detailed hint for the really stuck </summary>
+  
+  In my solution, the initial breakdown of (let-destruct ((a b) c d) cool-var bodies)
+  transforms into 2 let destructs.  The outer one is (let-destruct (a b) (car cool-var) ???).  
+  </details>
 
 ## ifelse
 
@@ -175,9 +196,11 @@ least one of each.  else is a special keyword that separates thenexps
 from elseexps.  It acts like an normal if with then statements and
 else statements in begin blocks.
 
-Interestingly, this problem can not be solved using syntax case
-templates (at least as far as I know).  Instead, handle the
-transformation directly using syntax->datum and datum->syntax.
+This problem can be solved with syntax-cases, BUT to do so requires
+far more trickiness than the problem deserves.  Instead, use
+syntax->datum to turn the input code into a list, transform it, and
+then use datum->syntax to convert it back again.
+
 
 ## Methods with Fields
 

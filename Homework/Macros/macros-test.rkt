@@ -7,8 +7,8 @@
 ; If you find errors in your code, fix them, save your file, click the "Run" button again, and type (r)
 ; You can run a specific group of tests using (run-tests group-name)
 
-(require "../testcode-base.rkt")
-(require "macros.rkt")
+(require "testcode-base.rkt")
+(require "macros-solution.rkt")
 (provide get-weights get-names individual-test test)
 
 (define test (make-test ; (r)
@@ -41,15 +41,16 @@
                                               (< (* 2 score-increment) (/ x 2))
                                               (else x))))) 
        (map adjustment '(5 16 25))) '(0 8 25) 8]
-    [(letrec ((getvalue (lambda ()
-                          (set! getvalue (lambda () (error "dont call me twice")))
-                          3)))
-       (range-cases (getvalue)
-                    (< 1 'tiny)
-                    (< 2 'small)
-                    (< 3 'medium)
-                    (< 4 'large)
-                    (else 'huge))) 'large 6]
+    [(with-handlers ([symbol? (lambda (s) s)] )
+       (letrec ((getvalue (lambda ()
+                            (set! getvalue (lambda () (raise 'dont-call-me-twice)))
+                            3)))
+         (range-cases (getvalue)
+                      (< 1 'tiny)
+                      (< 2 'small)
+                      (< 3 'medium)
+                      (< 4 'large)
+                      (else 'huge)))) 'large 6]
     )
             
   (let-destruct equal? ; (run-test let-destruct)          
