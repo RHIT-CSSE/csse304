@@ -19,6 +19,26 @@ You may implement letrec either (your choice)
 
 If you did not implement while as a syntax-expansion in A14, you should do so for this assignment.
 
-A17 will be more substantial (add set!, define, reference parameters, and lexical address).  Since this assignment is by far the smallest interpreter assignment, and since both A17 and A18 are much longer and harder, I  suggest that you plan to finish this assignment early and get an early start on the next one.
+## The Y Combinator (1 point)
 
-I also suggest that you begin working together  on this assignment together soon after the finishing A14, and do not wait until after A15 is due.
+There is actually a 3rd way to implement letrec that we did not
+discuss in class, because it's much more conceptually difficult.  It
+involves using something call the Y combinator, which is a famous CS
+idea.  Using the Y combinator, we can implement letrec in terms of let
+(i.e. letrec simply becomes a syntax expansion involving let apply and
+some ordinary lambdas).  However the syntax expansion is complicated
+enough I wouldn't recommend actually doing it in your interpreter.
+
+It is definitely doable in standard racket though, using define-syntax
+macros.  I made a video that explains the idea and walks you through
+a basic letrec form implemented using the y combinator:
+
+https://rose-hulman.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=94797972-3c2d-4a3c-9d12-b04c012e945b
+
+Your challenge is to generalize that form to arbitrary letrecs.  It
+is tricky to do.  How tricky?  Let me put it this way: if you do it,
+don't just take your 1 point.  Come by my office and show me your
+solution.  I will reward you with a card that says you are a cool
+person.
+
+Feel free to come by my office to get help if you wish as well.
