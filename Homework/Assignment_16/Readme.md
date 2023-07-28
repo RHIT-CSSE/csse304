@@ -35,8 +35,13 @@ a basic letrec form implemented using the y combinator:
 
 https://rose-hulman.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=94797972-3c2d-4a3c-9d12-b04c012e945b
 
-Your challenge is to generalize that form to arbitrary letrecs.  It
-is tricky to do.  How tricky?  Let me put it this way: if you do it,
+Your challenge is to generalize that form to arbitrary letrecs.  I've includes unit test for
+a y2 combinator that should be a mostly straightforward expansion of what I gave you
+and the advanced-letrec syntax that can generate y combinators of any needed size.
+
+Of course don't use letrec or named let or any unusual racket features in your solution.
+
+It is tricky to do.  How tricky?  Let me put it this way: if you do it,
 don't just take your 1 point.  Come by my office and show me your
 solution.  I will reward you with a card that says you are a cool
 person.
