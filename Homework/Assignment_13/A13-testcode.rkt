@@ -83,6 +83,18 @@
     [(eval-one-exp ' (((lambda (f) ((lambda (x) (f (lambda (y) ((x x) y)))) (lambda (x) (f (lambda (y) ((x x) y)))))) (lambda (g) (lambda (n) (if (zero? n) 1 (* n (g (- n 1))))))) 6)) 720 11] ; (run-test lambda 4)
     [(eval-one-exp ' (let ((Y (lambda (f) ((lambda (x) (f (lambda (y) ((x x) y)))) (lambda (x) (f (lambda (y) ((x x) y))))))) (H (lambda (g) (lambda (x) (if (null? x) '() (cons (procedure? (car x)) (g (cdr x)))))))) ((Y H) (list list (lambda (x) x) 'list)))) '(#t #t #f) 11] ; (run-test lambda 5)
   )
+
+  (lexical-depth equal?
+                 [(eval-one-exp '(let ((x 10) (y 2)) ((: free -) (: 0 0) (: 0 1)))) 8 0.25]
+                 [(eval-one-exp '((lambda (x y) ((: free -) (: 0 0) (: 0 1))) 4 3)) 1 0.25]
+                 [(eval-one-exp '(let ((a 1) (b 2))
+                                   (let ((c 3) (d 4))
+                                     (let ((e 5) (f 6) (g 7))
+                                       ((: free list) (: 2 0) (: 2 1) (: 1 0) (: 1 1)
+                                                      (: 0 0) (: 0 1) (: 0 2))))))
+                  '(1 2 3 4 5 6 7) 0.25]                                     
+                 [(eval-one-exp '(((lambda (z) (lambda (x y) ((: free -) (: 0 0) (: 0 1) (: 1 0)))) 1) 4 3)) 0 0.25]
+                 )
 ))
 
 (implicit-run test) ; run tests as soon as this file is loaded

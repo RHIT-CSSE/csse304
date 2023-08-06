@@ -92,11 +92,3 @@ The following code samples might illuminate the meaning of (ref x):
 
 I do not plan to spend class time on this aspect of the interpreter.  I want your group to read about it and be creative in figuring out how to implement it.  
 
-## Part b2 Lexical address 
-
-Modify your parser so it generates lexical-address information for local variable uses and references. Modify apply-env for local environments so that it uses this lexical address info to efficiently go to the location of a local variable without having to actually compare the variable to symbols in the environment. This should make the lookup time for a local variable be Θ(lexical depth), since once we get to the correct local environment, the lookup of the value in the vector will be constant time when we already know the position.  The original apply-env implementation is Θ(number of variables in all local envs).  
-
-Suggested order of procedure calls: (eval-exp (lexical-address (syntax-expand (parse-exp source-exp))).
-
-**Submission**: There are three A17 assignments on Gradescope.  The first has tests for A17a’s new syntax.  The second has tests for A17b1’s reference parameters. The third has tests similar to A17a’s, but you are required to implement lexical addressing..  In order to actually earn the points the server gives you for A17b2, you must correctly use lexical address in your interpreter. We will determine this by checking your code by hand.
-

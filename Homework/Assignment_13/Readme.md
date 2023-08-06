@@ -1,19 +1,39 @@
 ## Assignment 13
 
-**Deliverables** : Your code (submit to PLC server).  When you submit, include teammates’ usernames. A13 participation survey (on Moodle, due the day after the A13 late day date).  
+**Deliverables** : Your code (submit to Gradescope).  When you submit, include teammates’ usernames. 
 
 
-This is a **team assignment** (possibly with a few solo or pair groups).  My intention (for this and other interpreter assignments) is not that you will divide-and-conquer, but that you will instead get together to do the work (i.e., pair/trio programming) so that everyone is involved in the solutions of all parts, and everyone understands all of it.  I expect everyone to understand all of the code that your team submits, and that you will do your part to make sure that all team members understand it.  
+This is a **team assignment** .  My intention (for this and other interpreter assignments) is not that you will divide-and-conquer, but that you will instead get together to do the work (i.e., pair/trio programming) so that everyone is involved in the solutions of all parts, and everyone understands all of it.  I expect everyone to understand all of the code that your team submits, and that you will do your part to make sure that all team members understand it.  
 
-*For some of the interpreter assignments, including this one, there will be a brief survey on Moodle in which you will be asked to verify that this is the case. If you have taken this course before, you are not allowed to use code that you wrote with a different partner in a previous term.  And of course you are not allowed to submit code that was written by someone who is not in your group.*
+If you have taken this course before, you are not allowed to use code that you wrote with a different partner in a previous term.  And of course you are not allowed to submit code that was written by someone who is not in your group.
 
 ## Programming Problem (120 points)
 
-This assignment is not conceptually difficult, but there are many details to understand and to implement.  The simple parser and interpreter presented in class can be obtained from [here](http://www.rose-hulman.edu/class/csse/csse304/202110/Homework/Assignment_13/all.ss) 
+This assignment is not conceptually difficult, but there are many
+details to understand and to implement.  I've included the simple
+parser for class here to get you started.
 
-Your first job is to understand the given code, and then you will add features to the given parser and interpreter.  You should substitute part or all of your own A11 parser for the simple parser that I provided.  Some of the code that you need to add to your interpreter will be done in class or is in the EoPL book. Don't just blindly add it to your code; instead be sure that you understand everything as you are adding it.
+Your first job is to understand the given code, and then you will add
+features to the given parser and interpreter.  You should substitute
+part or all of your own A11 parser for the simple parser that I
+provided.  Some of the code that you need to add to your interpreter
+will be done in class or is in the EoPL book. Don't just blindly add
+it to your code; instead be sure that you understand everything as you
+are adding it.
 
-**The interpreted language**:  The textbook describes an alternate, Pascal-like syntax for the interpreted language.  The authors' rationale is that you are less likely to get confused between the interpreted language and the implementation language (Scheme) in which you implement the interpreter.  However, I think you can handle interpreting Scheme-like syntax without much confusion, and the benefits of writing a Scheme-like interpreter outweigh the disadvantages.  For one thing, you can be sure that your interpreter is getting the correct answer for most expressions, because you can simply input the same expressions directly into Petite Chez Scheme and see what Scheme returns.  Thus, whenever an exercise in the book describes a different syntax, you should use standard Scheme syntax instead.
+**The interpreted language**: The textbook describes an alternate,
+Pascal-like syntax for the interpreted language.  The authors'
+rationale is that you are less likely to get confused between the
+interpreted language and the implementation language (Scheme) in which
+you implement the interpreter.  However, I think you can handle
+interpreting Scheme-like syntax without much confusion, and the
+benefits of writing a Scheme-like interpreter outweigh the
+disadvantages.  For one thing, you can be sure that your interpreter
+is getting the correct answer for most expressions, because you can
+simply input the same expressions directly into Petite Chez Scheme and
+see what Scheme returns.  Thus, whenever an exercise in the book
+describes a different syntax, you should use standard Scheme syntax
+instead.
 
 **Summary**:  The major features that you are to add to the interpreted language in this assignment are:
 - additional primitive procedures (the ones that are needed in order to evaluate the A13 test cases)
@@ -22,7 +42,7 @@ Your first job is to understand the given code, and then you will add features t
     - Boolean constants #t, and #f 
     - quoted values, such as '( ) ,  '(a b c) , '(a b . (c)) , '#(2 5 4)
     - string literals, such as "abc"
-- if  two-armed only: i.e., (if test-exp then-exp else-exp).  You’ll add one-armed if later.
+- if  two-armed only: i.e., (if test-exp then-exp else-exp).  You’ll add one-armed if (i.e. when) later.
 - let (not let* or named let yet; those will appear in later assignments; don't remove them from your parser, though)
 - lambda  (just the normal lambda with a proper list of arguments);  variable-argument lambda gets added later.
 - rep and eval-one-exp  (two alternative interfaces to your interpreter, described below)
@@ -35,7 +55,8 @@ For each feature in this and subsequent interpreter assignments, the syntax and 
 Add the Boolean constants #t, and #f to the interpreted language, along with quoted data, such as lists and vectors.  Also add string literals such as "abcd". You do not need to add any string-manipulation procedures yet, but it will be nice to at least be able to use strings for output messages.  Add vector literals (as with strings, Scheme will do the "real" parsing; your parse-exp simply needs to call vector? to see if an expression is a vector).
 		
 Add if expressions to the interpreted language.  Most of the code is in the textbook, but you will have to adapt it to recognize and use Boolean and other literal values–– in addition to the numeric values.  In the book's interpreted language, the authors represent true and false by numbers. In Scheme (and thus in your interpreter), any non-false value should be treated as true.  The number 0 is a true value in Scheme (and in your interpreted language), but 0 is the false value in the textbook's language). 	
-	Note: Recall that if has two forms, with and without an "else" expression.  Your interpreter must eventually support both, but for this assignment only the "with" version (i.e., “two-armed” if) is required for this assignment.
+	
+Note: Classic (i.e. not Racket) if has two forms, with and without an "else" expression.  Your interpreter must eventually support both, but for this assignment only the "with" version (i.e., “two-armed” if) is required for this assignment.
 
 Add several primitive procedures including  +, -, *, /, add1, sub1, zero?,  not, = and < (and the other numeric comparison operators), and also cons, car, cdr, list, null?, assq, eq?, equal?, atom?, length,  list->vector, list?, pair?,  procedure?, vector->list, vector, make-vector, vector-ref, vector?, number?, symbol?, vector-set!,  display , newline to your interpreter.   Add the c**r and c***r procedures (where each "*" stands for an "a" or "d"). 
 	Note: You may use built-in Scheme procedures in your implementation of most of the primitive procedures, as I do in the starting code that is provided for you.  At least one of the above procedures has a much simpler implementation, and at least one cannot be implemented by using the corresponding Scheme procedure.  You may want to enhance the prim-proc mechanism from the provided code so that a prim-proc knows how many arguments it is allowed to take, and it reports an error if the interpreted code attempts to apply it with an incorrect number of arguments. Otherwise, this incorrect code will default to a Scheme error message such as "Exception in cadr", which will make no sense to the author of the interpreted code.  However, the official test cases should only test code that has no errors.
@@ -115,3 +136,76 @@ In addition to the (rep) interactive interface, you must provide the procedure e
     2.	If each step in the trace includes a printout of the entire global environment, it may take a long time for your machine to display the trace, and an even longer time for you to scroll back and find the part of the trace that you are looking for.
     3.	If you come to me for debugging help, I will probably ask you to show me a trace.  If I see the above phenomenon, it is likely that I will ask you to fix it by separating the global environment form the local environments, then come back to me for help after it is fixed.
 5.	**Bottom line**:  My simple advice on having local environments extend the global environment:  Don’t do it!  When you make a top-level call to eval-exp, you should pass the empty environment, not the global environment.  This may require changing some of the code that I gave you, but it will be worth it in the long run!
+
+# Lexical Depth (1 point)
+
+This is worth very little credit, so it is for those teams looking for
+additional fun.  My recommendation is that you save your existing
+interpreter before you attempt this part, and use that as your
+starting point in later milestones.  There's nothing about lexical
+depth that makes it incompatible with future work, but it makes
+debugging a bit harder sometimes and makes a little more work as you
+add new constructs like named let etc.  Of course, if you want to be
+hardcore and push lex depth through the whole project I won't stand in
+your way.
+
+You've seen lexical depth in earlier homeworks, but here's where we do
+it for real.  The basic idea is that making variable lookups require a
+O(number of variables in scope) linked list traversal is uhh...not
+great.  In this new world, lookups will be a O(depth) linked list
+traversal by precomputing where in an environment we expect a variable
+to be.
+
+## Lexical Depth Step 1
+
+To get you warmed up, make two changes
+
+1. Make your environments store values in vector form rather than as a
+    list
+
+2. Make your interpreter support variables in lexical-depth form we
+   used in the earlier homeworks:
+
+        (let ((x 10) (y 2))
+            ((: free -) (: 0 0) (: 0 1)))
+            
+  This will require adding some new constructs to your parse tree.
+  Evaluating these expressions should be comparatively easier due to
+  the new vector form - but you'll need a new variant of apply-env to
+  do it.
+  
+If you do this you will pass the test cases.  However, you are not
+done (and you won't get credit).
+
+## Lexical Depth Step 2
+
+Go into your eval-exp and in the case for var-exps, change it to this:
+
+      [var-exp (id)
+               (error "we should never do this")]
+               
+You should never evaluate a var expression directly because var
+expressions should be transformed into lexical depth expressions.
+Here's how my top-level-eval looks:
+
+    (define top-level-eval
+        (lambda (parsed-code)
+            (eval-exp (empty-env-record) (lexical-depth '() parsed-code))))
+            
+You can see that my lexical depth procedure takes a parsed abstract
+syntax tree and returns a new abstract syntax tree where all var-exps
+have been removed.  It also takes an additional parameter representing
+the current scope - I'll let you decide on the details of that.
+
+In theory, if you wanted to reuse your existing lexical-depth
+solution, you could do the transformation earlier - transform the
+input scheme code before parsing it.  I won't stop you from this
+approach - it is uglier and more error prone (because lexical-depth is
+doing its own parsing before your real parse-exp).  As a general rule,
+we want all code transformations to occur on the abstract syntax tree
+representation - but in the end it's up to you.
+
+Once your have this working, all the A13 test cases should pass
+despite the error in your var expression.  You can now even go further
+and remove the old apply-env and remove the variable names from your
+environments.  Woo!  Much more efficient!
