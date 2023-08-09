@@ -383,14 +383,27 @@
 33:
   reading:
   topics:
+    - Garbage Collection 1
+  materials:
+  other:
+
+34:
+  reading:
+  topics:
+    - Garbage Collection 2
+  materials:
+  other:  
+
+35:
+  reading:
+  topics:
     - imperative form
   materials: ImperativeForm
   other:
   videos:
     - name: Zoom 34
       id: 6675b717-b026-484a-8b26-acca011516df  
-
-34:
+36:
   reading:
     - TSPL Section 12.11
   topics:
@@ -401,7 +414,7 @@
     - name: Zoom 35
       id: 498f188b-388c-489a-9ded-accc015ed0ec
 
-35:
+37:
   reading:
   topics:
     - Type Checking
@@ -409,14 +422,7 @@
   other:
    - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EVpKcsEHCyFLkO43KeCSVEIBg0xyic0G_dvLXF8eKv7lVg?e=cdnlqc">Video</a>
 
-36:
-  reading:
-  topics:
-    - cancelled (maybe work on 17b)
-  materials:
-  other:
-
-37:
+38:
   reading:
   topics:
     - Type Checking 2
@@ -425,17 +431,9 @@
     - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EeidE7QbsS9PguvsifCA3XwB-NCS5QiYtXOeXos1ShyWrA?e=IltbQm">Video</a>
 
 
-38:
-  reading:
-  topics:
-    - Garbage Collection
-  materials:
-  other:
-
 39:
   reading:
   topics:
-    - ref params
     - coroutines
   materials: RefParamsCoroutines
   other:  

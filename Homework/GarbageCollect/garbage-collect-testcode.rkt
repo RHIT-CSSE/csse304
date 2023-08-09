@@ -5,7 +5,7 @@
 (require "gc-interpret.rkt")
 
 
-; this type is actually defined in gc-play3
+; this type is actually defined in garbage-collect.rkt
 ; but I use it here
 ;
 ; (define-memstruct test-type ptrs: (p1 p2) vals: (v1))
