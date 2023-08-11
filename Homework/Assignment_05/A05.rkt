@@ -1,7 +1,9 @@
 #lang racket
 
-(provide minimize-interval-list exists? product replace remove-last)
+(provide minimize-interval-list exists? product best remove-last)
 
+; this first one is probably the hardest in the set
+; so if you get stuck I'd try the later ones
 (define minimize-interval-list
   (lambda (a)
     (nyi)))
@@ -10,12 +12,12 @@
   (lambda (a b)
     (nyi)))
 
-(define product
-  (lambda (a b)
+(define best
+  (lambda (proc lst)
     (nyi)))
 
-(define replace
-  (lambda (a b c)
+(define product
+  (lambda (a b)
     (nyi)))
 
 (define remove-last

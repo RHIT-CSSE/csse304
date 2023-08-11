@@ -43,18 +43,19 @@
       ((exists? null? '()) #f)]
   )
 
+  (best equal? 
+    [(best (lambda (x) x) '(-1 2 0 3 -6 5)) 5 2] 
+    [(best abs '(-1 2 0 3 -6 5)) -6 2]
+    [(best length '((1) (3 4) (5))) '(3 4) 2]
+    [(best length '((1) (3) (5))) '(1) 2]
+    [(best (lambda (x) (if (eqv? x 'a) 3 0)) '(f o o b a r)) 'a 2]
+  )
+  
   (product set-equals? ; (run-test product)
     [(product (quote ()) (quote ())) '() 2] ; (run-test product 1)
     [(product (quote (x y z)) (quote ())) '() 1] ; (run-test product 2)
     [(product (quote ()) (quote (a b c))) '() 1] ; (run-test product 3)
     [(product (quote (x y)) (quote (a b c))) '((x a) (x b) (x c) (y a) (y b) (y c)) 6] ; (run-test product 4)
-  )
-
-  (replace equal? ; (run-test replace)
-    [(replace 5 7 '()) '() 2] ; (run-test replace 1)
-    [(replace 5 7 '(1 5 2 5 4)) '(1 7 2 7 4) 2] ; (run-test replace 2)
-    [(replace 5 7 '(7 5 7 5 7)) '(7 7 7 7 7) 3] ; (run-test replace 3)
-    [(replace 5 7 '(1 3 2 6 4)) '(1 3 2 6 4) 3] ; (run-test replace 4)
   )
 
   (remove-last equal? ; (run-test remove-last)

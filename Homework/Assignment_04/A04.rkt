@@ -1,29 +1,22 @@
 #lang racket
 
-(provide matrix-ref matrix? matrix-transpose filter-in invert pascal-triangle)
+(provide pop-song? running-sum invert combine-consec)
 
-(define matrix-ref
-  (lambda (a b c)
+(define pop-song?
+  (lambda (lst)
     (nyi)))
 
-(define matrix?
-  (lambda (a)
+(define running-sum
+  (lambda (lst)
     (nyi)))
 
-(define matrix-transpose
-  (lambda (a)
-    (nyi)))
-
-(define filter-in
-  (lambda (a b)
-    (nyi)))
 
 (define invert
-  (lambda (a)
+  (lambda (lst)
     (nyi)))
 
-(define pascal-triangle
-  (lambda (a)
+(define combine-consec
+  (lambda (lst)
     (nyi)))
 
 ;;--------  Used by the testing mechanism   ------------------

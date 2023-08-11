@@ -2,9 +2,6 @@
 
 **Assume that all arguments have the correct format. Restrictions on Mutation continues.**
 
-Some practice problems. Some of these may eventually become assigned problems.  
-All from EoPL:  Exercises 1.15, 1.17, 1.18, 1.20, 1.22, 1.24, 1.26, 1.28, 1.32, 1.35
-
 
 Problem 1 uses the definitions and representations of *intervals* that are described in assignment 1
 
@@ -43,25 +40,39 @@ Examples:
     (exists? number? '(a b c d e)) -> #f
 
 
-## Q3 (10 points)
+## Q4 (10 points)
 
-Write the procedure (product set1 set2) that returns a list of 2-lists (lists of length 2) that represents the Cartesian product of the two sets.  The 2-lists may appear in any order, but each 2-list must be in the correct order.
+Write (best proc lst) where the type of each element of the list lst
+is appropriate for an application of the rating function.  The rating
+function returns an integer rating for each input.  The function
+returns the value for which the rating is the highest.  If multiple
+values have the highest rating it returns the earliest in the list.
+You can assume the list has at least one element.
+
+**best**: *Procedure* X *List* -> *List*
+
+Examples:
+
+    (best (lambda (x) x)  '(-1 2 0 3 -6 5)) -> 5
+    (best abs '(-1 2 0 3 -6 5)) -> -6
+    (best length '((1) (3 4) (5))) -> (3 4)
+    (best length '((1) (3) (5))) -> (1)
+
+## Q4 (10 points)
+
+Write the procedure (product set1 set2) that returns a list of 2-lists
+that represents the Cartesian product of the two sets.  The 2-lists
+may appear in any order, but each 2-list must be in the correct order.
+
+Helper functions, named lets, or even careful use of map and apply can
+be useful in this problem.  Any approach is allowed - just stay off
+stack overflow.
 
 **product**: *set* X *set* -> *set of 2-lists*
 
 Examples:
 
     (product '(a b c) '(x y))) -> ((a x) (a y) (b x) (b y) (c x) (c y))
-
-
-## Q4 (10 points)
-
-replace Write a recursive Scheme procedure (replace old new ls) which takes two numbers, one to be replaced and one new value, as well as a simple list of numbers. It returns a copy of ls with all occurrences of old replaced by new.
-
-Examples: 
-
-    (replace 5 7 '(1 5 2 5 7))	-> (1 7 2 7 7)
-    (replace 5 7 '())		    -> ()
 
 
 ## Q5 (15 points) 
