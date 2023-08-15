@@ -12,6 +12,7 @@
 (provide get-weights get-names individual-test test)
 
 (define test (make-test ; (r)
+             
   (primitive-procedures equal? ; (run-test primitive-procedures)
     [(eval-one-exp ' (list (procedure? +) (not (procedure? (+ 3 4))))) '(#t #t) 2] ; (run-test primitive-procedures 1)
     [(eval-one-exp ' (list (procedure? procedure?) (procedure? (lambda(x) x)) (not (procedure? '(lambda (x) x))))) '(#t #t #t) 2] ; (run-test primitive-procedures 2)
@@ -61,6 +62,42 @@
   (one-armed-if equal? ; (run-test one-armed-if)
     [(eval-one-exp '(let ((x (vector 7))) (if (< 4 5) (vector-set! x 0 (+ 3 (vector-ref x 0)))) (if (< 4 2) (vector-set! x 0 (+ 6 (vector-ref x 0)))) (vector-ref x 0))) 10 5] ; (run-test one-armed-if 1)
   )
+
+  (quasiquote equal?
+              [(begin (quasiquote-enabled?)
+                      (eval-one-exp '`,(+ 1 2))) 3 .1]
+              [(eval-one-exp '(let ((var 'val))
+                                `(foo ,(cons 2 '()) () (,var var)))) '(foo (2) () (val var)) .1]
+              [(eval-one-exp '`(1 ,@(list 2 3) 4)) '(1 2 3 4) .1]
+              [(eval-one-exp '(let ((var (list 1 2)))
+                                `(,@var a ,var b ,@var (c ,@var)))) '(1 2 a (1 2) b 1 2 (c 1 2)) .1]
+              [(eval-one-exp '(let ((stx '(let ((x 1) (y 2)) x y (+ x y))))
+                                `((lambda ,(map car (cadr stx)) ,@(cddr stx)) ,@(map cadr (cadr stx)))))
+               '((lambda (x y) x y (+ x y)) 1 2) .1]
+              
+              )
+
+  (add-macro-interpreter equal?
+                         [(begin
+                            (add-macro-interpreter 'varpair '(lambda (stx) `(list (quote ,(cadr stx)) ,(cadr stx))))
+                            (eval-one-exp '(let ((x 3))
+                                             (varpair x)))) '(x 3) .1]
+                         [(begin
+                            (add-macro-interpreter 'let2
+                                                   '(lambda (stx) `((lambda ,(map car (cadr stx)) ,@(cddr stx)) ,@(map cadr (cadr stx)))))
+                            (eval-one-exp '(let2 ((x 1) (y 2)) (+ x y)))) 3 .1]
+                         [(eval-one-exp '(begin
+                                           (define-syntax varpair2 (lambda (stx) `(list (quote ,(cadr stx)) ,(cadr stx))))
+                                           (let ((y 3))
+                                             (varpair2 y)))) '(y 3) .1]
+                         [(eval-one-exp '(begin
+                                           (define-syntax varpair3 (lambda (stx) `(list (quote ,(cadr stx)) ,(cadr stx))))
+                                           (define-syntax let3 (lambda (stx) `((lambda ,(map car (cadr stx)) ,@(cddr stx)) ,@(map cadr (cadr stx)))))
+                                           (let3 ((y 4))
+                                             (varpair3 y)))) '(y 4) .2]
+                         )
+
+
 ))
 
 (implicit-run test) ; run tests as soon as this file is loaded
