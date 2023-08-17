@@ -11,6 +11,23 @@
 (require "A02.rkt")
 (provide get-weights get-names individual-test test)
 
+(define eval-string
+  (lambda (str)
+    (let ((outp (open-output-string)))
+      (parameterize ([current-output-port outp])
+        (printf "~s" (eval (read (open-input-string str)) (make-base-namespace))))
+      (get-output-string outp))))
+
+(define is-quine-string?
+ (lambda (str)
+   (let ((result (eval-string str)))
+     (if (equal? result str)
+         #t
+         (begin
+           (printf "NOT QUINE~nIn : ~s~nOut: ~s" str result)
+           #f)))))
+
+
 (define set-equals?  ; are these list-of-symbols equal when
   (lambda (s1 s2)    ; treated as sets?
     (if (or (not (list? s1)) (not (list? s2)))
@@ -18,11 +35,6 @@
         (not (not (and (is-a-subset? s1 s2) (is-a-subset? s2 s1)))))))
 
 (define test (make-test ; (r)
-  (choose equal? ; (run-test choose)
-    [(choose 0 0) 1 1] ; (run-test choose 1)
-    [(choose 3 2) 3 2] ; (run-test choose 2)
-    [(choose 10 6) 210 2] ; (run-test choose 3)
-  )
 
   (sum-of-squares equal? ; (run-test sum-of-squares)
     [(sum-of-squares '(1 3 5 7)) 84 3] ; (run-test sum-of-squares 1)
@@ -59,7 +71,7 @@
 
   (union set-equals? ; (run-test union)
     [(union '(a b d e f h j) '(f c e g a)) '(a b c d e f g h j) 2] ; (run-test union 1)
-    [(union '(a b c) '(d e)) '(a b c d e) 1] ; (run-test union 2)
+    [(union '(a b c) '(d e)) '(a b c d e) 2] ; (run-test union 2)
     [(union '(a b c) '()) '(a b c) 1] ; (run-test union 3)
     [(union '() '()) '() 1] ; (run-test union 4)
   )
@@ -68,16 +80,35 @@
     [(more-positives? '(1 2 -3)) #t 1] ; (run-test more-positives 1)
     [(more-positives? '(-1 -2 300)) #f 1] ; (run-test more-positives 2)
     [(more-positives? '(1 2 3 -3 -4 -5 6)) #t 1] ; (run-test more-positives 3)
-    [(more-positives? '(1 2 3 -3 -4 -5)) #f 1] ; (run-test more-positives 4)
+    [(more-positives? '(1 2 3 -3 -4 -5)) #f 2] ; (run-test more-positives 4)
     [(more-positives? '()) #f 1] ; (run-test more-positives 5)    
   )
-  (nearest-pair equal?
-                [(nearest-pair '(1 5 10 12 17 21)) '(10 . 12) 2]
-                [(nearest-pair '(1 5 10 12 17 21 2)) '(1 . 2) 2]
-                [(nearest-pair '(2 5 10 12 17 21 1)) '(1 . 2) 2]
-                [(nearest-pair '(2 5 30 31 12 17 21 0 )) '(30 . 31) 2]
-                [(nearest-pair '(70 25 10 20 40 50 60 )) '(20 . 25) 2]
-                )
+
+  (add-quotes equal?
+              [(add-quotes (list 1 2 3) 0) '(1 2 3) 1]
+              [(add-quotes (list 1 2 3) 1) ''(1 2 3) 1]
+              [(add-quotes (list 1 2 3) 2) '''(1 2 3) 1]
+              [(add-quotes 'foo 2) '''foo 1]
+              [(add-quotes ''foo 2) ''''foo 1]
+    
+  )
+
+  (quine equal?
+         [(let ((result (get-304-quine)))
+                (if (not (is-quine-string? result))
+                    'not-quine
+                    (if (not (string-contains? result "304")) ; I'll give you some credit if you can get it anywhere
+                        'no-304
+                        'great))) 'great 0.5]
+         [(let ((result (get-304-quine)))
+                (if (not (is-quine-string? result))
+                    'not-quine
+                    (if (not (string-contains? result " 304 ")) ; but more if you can it standing alone by itself
+                        'no-304
+                        'great))) 'great 0.5]
+                     )
+
+  
 ))
 
 (define is-a-subset?

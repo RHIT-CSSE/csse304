@@ -1,10 +1,6 @@
 #lang racket
 
-(provide choose sum-of-squares range my-set? union more-positives? nearest-pair)
-
-(define choose
-  (lambda (a b)
-    (nyi)))
+(provide sum-of-squares range my-set? union more-positives? add-quotes get-304-quine)
 
 (define sum-of-squares
   (lambda (a)
@@ -26,10 +22,31 @@
   (lambda (lon)
     (nyi)))
 
-(define nearest-pair
-  (lambda (lon)
-    (nyi)))          
+(define add-quotes
+  (lambda (val num)
+    (nyi)))
            
+; Stuff for the final quine problem
+
+(define get-304-quine
+  (lambda ()
+    (nyi)))
+
+(define eval-string
+  (lambda (str)
+    (let ((outp (open-output-string)))
+      (parameterize ([current-output-port outp])
+        (printf "~s" (eval (read (open-input-string str)) (make-base-namespace))))
+      (get-output-string outp))))
+
+(define is-quine-string?
+ (lambda (str)
+   (let ((result (eval-string str)))
+     (if (equal? result str)
+         #t
+         (begin
+           (printf "NOT QUINE~nIn : ~s~nOut: ~s" str result)
+           #f)))))
 
 ;;--------  Used by the testing mechanism   ------------------
 
