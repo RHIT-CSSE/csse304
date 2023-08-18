@@ -62,9 +62,9 @@
   )
 
   (make-c...r equal? ; (run-test make-c...r)
-    [(let ((caddddr (make-c...r "adddd"))) (caddddr '(a (b) (c) (d) (e) (f)))) '(e) 8] ; (run-test make-c...r 1)
-    [(list ((make-c...r "") '(a b c)) ((make-c...r "ddaddd") '(a b c ((d e f g) h i j)))) '((a b c) (i j)) 8] ; (run-test make-c...r 2)
-    [(list ((make-c...r "a") '(a b c)) ((make-c...r "adddddddddd") '(a b c d e f g h i j k l m))) '(a k) 9] ; (run-test make-c...r 3)
+    [(let ((caddddr (make-c...r "adddd"))) (caddddr '(a (b) (c) (d) (e) (f)))) '(e) 5] ; (run-test make-c...r 1)
+    [(list ((make-c...r "") '(a b c)) ((make-c...r "ddaddd") '(a b c ((d e f g) h i j)))) '((a b c) (i j)) 5] ; (run-test make-c...r 2)
+    [(list ((make-c...r "a") '(a b c)) ((make-c...r "adddddddddd") '(a b c d e f g h i j k l m))) '(a k) 5] ; (run-test make-c...r 3)
   )
 ))
 

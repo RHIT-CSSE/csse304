@@ -12,14 +12,6 @@
 (provide get-weights get-names individual-test test)
 
 (define test (make-test ; (r)
-  (vector-append-list equal? ; (run-test vector-append-list)
-    [(vector-append-list (quote #(a b)) (quote (c d))) #(a b c d) 2] ; (run-test vector-append-list 1)
-    [(vector-append-list (quote #(1 2 3 4)) (quote (5 6))) #(1 2 3 4 5 6) 2] ; (run-test vector-append-list 2)
-    [(vector-append-list (quote #(a)) (quote ())) #(a) 2] ; (run-test vector-append-list 3)
-    [(vector-append-list (quote #()) (quote (a))) #(a) 1] ; (run-test vector-append-list 4)
-    [(vector-append-list (quote #()) (quote ())) #() 1] ; (run-test vector-append-list 5)
-    [(vector-append-list (quote #(a b)) (quote ((c d e)))) #(a b (c d e)) 2] ; (run-test vector-append-list 6)
-  )
 
   (group-by-two equal? ; (run-test group-by-two)
     [(group-by-two '()) '() 1] ; (run-test group-by-two 1)

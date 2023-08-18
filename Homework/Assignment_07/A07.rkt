@@ -55,7 +55,7 @@
     (nyi)))
 
 (define make-c...r
-  (lambda (a)
+  (lambda (str)
     (nyi)))
 
 ;;--------  Used by the testing mechanism   ------------------

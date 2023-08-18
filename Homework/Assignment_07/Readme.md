@@ -7,23 +7,9 @@ Abbreviations for the textbooks:
 	EoPL-1	-  Essentials of Programming Languages, 1st Edition (handout)
 
 
+Note Assignment 7a is problems 1-3.  7b is 4-6.
+
 ## Q1 (10 points)
-
-(vector-append-list v ls) returns a new vector with the elements of ls attached to the end of v.  Do this without using vector->list, list->vector, or append.
-For this problem only, you can and should use mutation: namely the vector-set! procedure.  Note that vector-set! does not return a value.
-
-**Hint that I posted on Piazza for a previous term**:
-Try using this code, and writing the two recursive helper procedures.  You are not *required* to use this code.
-
-
-(define vector-append-list
-  (lambda (vec ls)
-    (let ([new-vector (make-vector (+ (vector-length vec) (length ls)))])
-       (copy-from-vector new-vector vec 0)
-       (copy-from-list new-vector ls (vector-length vec))
-       new-vector)))
-
-## Q2 (10 points)
 
 (group-by-two ls) takes a list ls.  It returns a list of lists: the elements of ls in groups of two.  If ls has an *odd number of elements, the last sublist of the return value will have one element*.
 
@@ -45,7 +31,7 @@ Examples:
     ((a b) (c d) (e f) (g h))
 
 
-## Q3 (20 points)
+## Q2 (20 points)
 
 group-by-n ls n) takes a list ls and an integer n (you may assume that n≥2).  Returns a list of lists: the elements of ls in groups of n.  If ls has a number of elements that is not a multiple of n, the length of the last sublist of the return value will be less than n.  **For full credit, your code must run in time O(length (ls)). In particular, this means that no recursive procedure in your code can call (length ls).**
 
@@ -69,7 +55,7 @@ Examples:
     ((a b c d e f g h i j k l m n o p q) (r s t))
 
 
-## Q4 (57 points)
+## Q3 (57 points)
 
 Consider the following syntax definition from page 9 of EoPL:
          `  <bintree> ::= <integer>  | ( <symbol> <bintree> <bintree> )`
@@ -93,12 +79,14 @@ Write the following procedures:
  **Note**:  We will revisit this linear-time bt-max-interior problem several times during this course.  If you do not get this version, the later versions will be harder for you, so you should do what it takes to get this one.
 
 
-## Q5 (50 points)
+## Q4 (50 points)
 
 These s-list procedures have a lot in common with the s-list procedures that we wrote during our Session 8 class.  Recall the extended BNF grammar for s-lists:
 
-`<s-list>       ::= ( {<s-expression>}* )`
-`<s-expression> ::=  <symbol> | <s-list>  `  **FOLLOW THE GRAMMAR!**
+    <s-list>       ::= ( {<s-expression>}* )
+    <s-expression> ::=  <symbol> | <s-list>
+
+**FOLLOW THE GRAMMAR!**
 
 (a)	(slist-map proc slist) applies proc to each element of slist.
           **slist-map**:  *procedure* x *Slist* -> *NestedListOfThingsThatAreInTheRangeOfProcedure*
@@ -144,7 +132,7 @@ These s-list procedures have a lot in common with the s-list procedures that we 
     (slist-symbols-at-depth '(a (b c) d) 3)  -> ()
 
 
-## Q6 (10 points)
+## Q5 (10 points)
 
 (path-to slist sym) produces a list of cars and cdrs that (when read left-to-right) take us to the position of the leftmost occurrence of sym in the s-list slist.  Notice that the returned list contains the symbols 'car and 'cdr, not the *car* and *cdr* procedures.  Return #f if sym is not in slist.   Only traverse as much of slist as is necessary to find sym if it is there.
 
@@ -160,7 +148,7 @@ These s-list procedures have a lot in common with the s-list procedures that we 
     #f
 
 
-## Q7 (25 points)
+## Q6 (15 points)
 
 Predefined Scheme procedures like cadr and cdadr are compositions of up to four cars and cdrs.  You are to write a generalization called make-c...r, which does the composition of any number of cars and cdrs.  It takes one argument, a string of a's and d's, which are used like the a's and d's in the names of the pre-defined c…r functions.  For example, (make-c...r "adddd") is equivalent to (compose car cdr cdr cdr cdr).
 
@@ -176,17 +164,19 @@ Predefined Scheme procedures like cadr and cdadr are compositions of up to four 
     > ((make-c...r "addddddddddd") '(a b c d e f g h i j k l m))
     l
 
-I have provided the code for compose.  We will discuss this solution in class soon.  For now you can just use it here.  For full credit, you should write make-c...r in a functional style that only applies (calls) 
-- built-in procedures (including, car, cdr, map, and apply, of course),
-- anonymous procedures, and 
-- compose (which I am giving you, so it does not count as a self-written recursive procedure)
+[compose](https://docs.racket-lang.org/reference/procedures.html#%28def._%28%28lib._racket%2Fprivate%2Flist..rkt%29._compose%29%29)
+is a key utility in functional style.  It combines any number of
+(usually) one argument functions into a single function.  BTW, another
+really useful one we won't really talk about in class is curry (I
+encourage you to [check it
+out](https://docs.racket-lang.org/reference/procedures.html#%28def._%28%28lib._racket%2Ffunction..rkt%29._curry%29%29).
 
-in your definition of make-c...r.  More precisely, you may not write and call your own recursive procedures
-    (define compose
-    (case-lambda
-    [() (lambda (x) x)]
-    [(first . rest)
-        (let ([composed-rest (apply compose rest)])
-        (lambda (x) (first (composed-rest x))))]))
+I require you to use compose to solve this problem - do NOT build your
+own solution from scratch that calls car and cdr.  The idea is pretty
+simple - compose together the cdr and car functions needed depending
+on the input string (BTW string->list is the way to get the individual
+characters out of the list).  A simple recursion can do it - map makes
+it even easier.
 
-**Hint**:  My solution uses the built-in procedures map, apply, string->list, list->string, string->symbol, and eval; also the character constants #\c and #\r.  You are not required to use these, but you may find them helpful.  I do not assume that you are already familiar with all of them; The Scheme Programming Language contains info on them; my intention is that you demonstrate an ability to look up and use new procedures.  My solution calls map multiple times.
+**Note:** some versions of this assignment suggested using eval.
+Don't use eval - it's unnecessary.
