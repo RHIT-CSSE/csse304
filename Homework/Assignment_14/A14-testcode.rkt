@@ -36,8 +36,6 @@
 
   (lambda-with-variable-args equal? ; (run-test lambda-with-variable-args)
     [(eval-one-exp '((lambda x (car x) (cdr x)) 'a 'b 'c)) '(b c) 5] ; (run-test lambda-with-variable-args 1)
-    [(eval-one-exp '((lambda (x y . z) (cons (+ x y) (cdr z))) 5 4 3 2 1)) '(9 2 1) 4] ; (run-test lambda-with-variable-args 2)
-    [(eval-one-exp ' ((lambda (x y . z) (if (> x y) (car z) (cdr z)) (cadr z)) 5 4 'three 'two 'one)) 'two 4] ; (run-test lambda-with-variable-args 3)
   )
 
   (syntactic-expansion equal? ; (run-test syntactic-expansion)
@@ -49,14 +47,11 @@
     [(eval-one-exp '(or #f #f #f)) #f 1] ; (run-test syntactic-expansion 6)
     [(eval-one-exp '(or)) #f 1] ; (run-test syntactic-expansion 7)
     [(eval-one-exp '(let ((a (vector 5))) (if #t (begin (vector-set! a 0 3) (vector-set! a 0 (+ 3 (vector-ref a 0))) a)))) '#(6) 4] ; (run-test syntactic-expansion 8)
-    [(eval-one-exp '(let ((a (vector 3))) (while (< (vector-ref a 0) 100000) (vector-set! a 0 (* (vector-ref a 0) (vector-ref a 0))) (vector-set! a 0 (quotient (vector-ref a 0) 2))) a)) '#(131072) 3] ; (run-test syntactic-expansion 9)
-    [(eval-one-exp '(let ((a (vector 3))) (while (< (vector-ref a 0) 3) (vector-set! a 0 (* (vector-ref a 0) (vector-ref a 0))) (vector-set! a 0 (quotient (vector-ref a 0) 2))) a)) '#(3) 3] ; (run-test syntactic-expansion 10)
-    [(eval-one-exp '(let ((f (lambda (x) (+ 2 (* 3 x))))) (f (let ((f (lambda (x) (f (* 5 x))))) (f 4))))) 188 8] ; (run-test syntactic-expansion 11)
-    [(eq? (void) (eval-one-exp '(cond ((< 3 3) "this is false") ((< 2 2) "this is false" )))) #t 3] ; (run-test syntactic-expansion 12)
-    [(eval-one-exp '(let* ((x 1) (y (+ x 1))) (if (and (= x 1) (= y 2)) 'correct 'incorrect))) 'correct 3] ; (run-test syntactic-expansion 13)
-    [(eval-one-exp ' (let ((a (vector 4))) (or (begin (vector-set! a 0 (+ 2 (vector-ref a 0))) #f) (begin (vector-set! a 0 (+ 7 (vector-ref a 0))) #t)) a)) '#(13) 3] ; (run-test syntactic-expansion 14)
-    [(eval-one-exp ' (let ((a (vector 5))) (let ((b (begin (vector-set! a 0 7) (list->vector (cons 4 (vector->list a))))) (a 12)) (list->vector (cons a (vector->list b)))))) '#(12 4 7) 5] ; (run-test syntactic-expansion 15)
-    [(eval-one-exp '(let ((a (vector (let ((a 4)) (cond ((negative? 3) (+ a 1)) (else (or #f (+ a 1))))))) (b (vector 0))) (while (positive? (vector-ref a 0)) (vector-set! b 0 (and #t (+ (vector-ref b 0) (vector-ref a 0)))) (vector-set! a 0 (sub1 (vector-ref a 0)))) b)) '#(15) 6] ; (run-test syntactic-expansion 16)
+    [(eval-one-exp '(let ((f (lambda (x) (+ 2 (* 3 x))))) (f (let ((f (lambda (x) (f (* 5 x))))) (f 4))))) 188 8] ; (run-test syntactic-expansion 9)
+    [(eq? (void) (eval-one-exp '(cond ((< 3 3) "this is false") ((< 2 2) "this is false" )))) #t 3] ; (run-test syntactic-expansion 10)
+    [(eval-one-exp '(let* ((x 1) (y (+ x 1))) (if (and (= x 1) (= y 2)) 'correct 'incorrect))) 'correct 3] ; (run-test syntactic-expansion 11)
+    [(eval-one-exp ' (let ((a (vector 4))) (or (begin (vector-set! a 0 (+ 2 (vector-ref a 0))) #f) (begin (vector-set! a 0 (+ 7 (vector-ref a 0))) #t)) a)) '#(13) 3] ; (run-test syntactic-expansion 12)
+    [(eval-one-exp ' (let ((a (vector 5))) (let ((b (begin (vector-set! a 0 7) (list->vector (cons 4 (vector->list a))))) (a 12)) (list->vector (cons a (vector->list b)))))) '#(12 4 7) 5] ; (run-test syntactic-expansion 13)
   )
 
   (one-armed-if equal? ; (run-test one-armed-if)

@@ -16,10 +16,10 @@ To make your interpreter work with the test cases add this to your file:
     (define quasiquote-enabled?
              (lambda () (error "nyi"))) ; make this return 'yes if you're trying quasiquote
 
-## Programming problem (100 points)
+## Programming problem (80 points)
 
 **Summary** : The major features you are to add to the interpreted language (in addition to those you added in A13) are:
-- All of the kinds of arguments (proper list, single variable, improper list) to lambda expressions.
+- The single variable lambda expression (e.g. (lambda args-list blah ...))
 - One-armed if:  (if `<exp> <exp>`). This is similar to Racket’s when.
 - Whatever additional primitive procedures are needed to handle the test cases I give you.  This requirement applies to subsequent interpreter assignments also.
 - syntax-expand allows you (but not necessarily the user of your interpreter) to introduce new syntactic constructs without changing eval-exp. Write syntax-expand and use it to add some syntactic extensions (at least add begin, let*, and, or, cond). 
@@ -60,10 +60,6 @@ Modify your parser and syntax-expand to allow some other syntactic forms, includ
 
 Your version of cond does not need to handle the clauses with the =>  or the clauses with only a test (described in Section 5.3 of TSPL); you only have to interpret clauses of the forms 
 (test exp1 exp2 …) or (else exp1 exp2 …) as described in the same section.  These are the only kinds of cond clauses that I have used in class examples.
-
-Add (to the parser and interpreter) a looping mechanism that is not found in Scheme: 
-       (while test-exp body1 body2 ...)
-first evaluates test-exp.  If the result is not #f, the bodies are evaluated in order, and the test is repeated, just like a while loop in other languages.  We do not care whether while returns a value, since while should never be used in a context where a return value is expected.   For now, you will most likely need to add while as a core form in your eval-exp procedure.
 
 # Macros (1 point)
 
@@ -147,8 +143,8 @@ This won't be quite as hard as it seems because just like quote, these
 symbols are embedded into scheme's interpretation at a very
 fundamental level.
 
-The ` is quasiquote.  The , is unquote.  The ,@ is unquote-splicing.
-So if you evaluate this '`(if ,(cadr stx) (and ,@(cddr stx)) #f) the structure
+The \` is quasiquote.  The , is unquote.  The ,@ is unquote-splicing.
+So if you evaluate this '\`(if ,(cadr stx) (and ,@(cddr stx)) #f) the structure
 that comes out is this:
 
     (quasiquote (if (unquote (cadr stx)) (and (unquote-splicing (cddr stx))) #f))
@@ -164,14 +160,16 @@ You should implement quasiquoting in your interpreter.  You could
 actually implement as a macro rather than a core feature - but take it
 from me - that's painful.
 
-Your implementation though, will actually be mostly a macroy
-approach.  The work for quasiquote will happen in syntax-expand.
-Don't add new entries in your abstract syntax tree type.
+Your implementation though, will actually be mostly a macroy approach.
+The work for quasiquote will happen in parse-exp - don't add new
+entries in your abstract syntax tree type.  OR if you built syntax
+expand in Part 1, you could implement it there (but you will have to
+have ast type entries then).
 
-Instead, when you come across quasiquote it in your parse-exp, expand
-it into literal expressions, applications of the list, cons, and
-append functions, and occasionally arbitrary code you just call
-syntax-expand on.
+When you come across quasiquote it in your parse-exp, expand it into
+literal expressions, applications of the list, cons, and append
+functions, and occasionally arbitrary code you just call syntax-expand
+on.
 
 I'll give you a few small hints:
 
@@ -215,7 +213,7 @@ it matches a macro, use your stored closure to get the appropriate
 transformed system.  Then parse the result.
 
 Note that this means macros cannot be overriden by the local namespace
-(i.e. I can't use let or similar to make "and" a procedure instead of
+(e.g. I can't use let or similar to make "and" a procedure instead of
 syntax).  If we cared, we could make this possible but it's not
 required.
 
@@ -256,9 +254,18 @@ on that.
 This is kind overkill though.  We can parse and evaluate the "phase 1
 stuff" in a single go - I implemented it all in top-level-eval (which
 incidentally now takes code as input and calls the parser internally).
-Because of the begin expression, top-level-eval becomes recursive too.
 
-Handling a define-syntax expression will invoke add-macro-interpreter.
+There are now 3 cases:
+
+1.  A begin expression, which means top level eval recursively calls
+    itself.  Real code is only allowed in the last expression of the
+    outermost begin - you are not required to enforce that rule
+    though, but if its violated your code is allowed to break).
+
+2.  Handling a define-syntax expression will invoke add-macro-interpreter.
+
+3.  Ordinary scheme code in its one allowed spot, indicating we can
+    call parse and eval-exp
 
 The only thing to be careful of is that now, your parser calls
 eval-exp (or one of its subfunctions).  For reasons that will become

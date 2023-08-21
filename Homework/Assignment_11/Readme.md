@@ -17,14 +17,17 @@ produces (interior-node (leaf-node 3) (interior-node (leaf-node 13) (leaf-node 1
 
 ## Parsing Scheme (85 Points)
 
-**HW11b is a with-your-team assignment.  You should not begin it until teams are established.**
+**HW11 is a with-your-team assignment.  You should not begin it until teams are established.**
 
 The given code has a bare-bones parser for the lambda calculus plus numbers.  Your goal will be to expand parse/unparse to accommodante something much closer to a full subset of scheme.  You’ll want to do that step by step, testing each individual construct by hand.  I have a suggested order here.
 
 - Modify the expression datatype, parse-exp, and unparse-exp so that they work for lambdas with multiple parameters and procedure applications with multiple parameters (including 0 parameters).
 - Add basic let, name let, let*, and letrec.  Exactly how you want your abstract syntax trees to handle these multiple similar structures is up to you – the only requirement at this point is that you be able to unpase them correctly.  Many ways will work – just try to avoid code duplication and realize that you might want to change your mind later in the interepreter.
-- Allow multiple bodies for lambda, let (including named let), let*, and letrec expressions. Also allow (lambda x lambda-body …) (note that the x is not in parentheses) or an improper list of arguments in a lambda expression, such as 
-                (lambda (x y . z) …). 
+- Allow multiple bodies for lambda, let (including named let), let*,
+  and letrec expressions. Also allow (lambda x lambda-body …) (note
+  that the x is not in parentheses).  You are NOT required to handle
+  lambdas that take several normal arguments and 1 catch all
+  i.e. (lambda (a b . c) ...) is NOT something you must handle.
 - Add if expressions, with and without the "else" expression;
 - Add set! expressions.  
 - Expand lit-exp, which currently only supports number but will be the parsed form for numbers, strings, quoted lists, symbols, the two Boolean constants #t and #f, and any other expression that evaluates to itself.   Then make parse-exp recognize these literals. 
