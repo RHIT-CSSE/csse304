@@ -23,7 +23,9 @@ Scheme).  We will use the Scheme programming language to provide a
 laboratory environment in which to write the interpreters and to
 illustrate various programming paradigms and concepts.
 
-# Required Texts (all are online and free)
+# Texts (all are online and free)
+
+Texts provide some good background but readings are optional.
 
 - [Excerpts from the 1st Edition of EoPL](https://moodle.rose-hulman.edu/pluginfile.php/3547225/mod_resource/content/0/EoPL-1.pdf). This will 
 be abbreviated in my documents as *EoPL-1*.  The first edition did not assume the reader knew scheme, so this excerpt is an alternate partial introduction to the rest of EoPL.
@@ -33,7 +35,7 @@ Dybvig. This book will be abbreviated as *TSPL*; it serves
 primarily as an introduction to and reference manual for Scheme.
 
 - [Essentials of Programming
-Languages](https://ebookcentral-proquest-com.libproxy.rose-hulman.edu/lib/rosehulman-ebooks/detail.action?docID=3338861)
+Languages](https://ebookcentral.proquest.com/lib/rosehulman-ebooks/detail.action?docID=3338861)
 Now free through the Rose-Hulman library.  This is the main
 textbook. It will be abbreviated as *EoPL*.  This book is terse, so
 you will have to read it carefully.
