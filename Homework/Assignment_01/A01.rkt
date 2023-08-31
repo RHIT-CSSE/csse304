@@ -1,6 +1,6 @@
 #lang racket
 
-(provide interval-contains? interval-intersects? interval-union my-first my-second my-third make-vec-from-points dot-product vector-magnitude distance)
+(provide interval-contains? interval-intersects? interval-union make-vec-from-points dot-product vector-magnitude distance)
 
 (define interval-contains?
   (lambda (a b)
@@ -12,18 +12,6 @@
 
 (define interval-union
   (lambda (a b)
-    (nyi)))
-
-(define my-first
-  (lambda (a)
-    (nyi)))
-
-(define my-second
-  (lambda (a)
-    (nyi)))
-
-(define my-third
-  (lambda (a)
     (nyi)))
 
 (define make-vec-from-points

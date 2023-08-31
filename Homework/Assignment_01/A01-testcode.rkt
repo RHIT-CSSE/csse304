@@ -50,18 +50,6 @@
     [(interval-union '(5 5) '(5 5)) '((5 5)) 1] ; (run-test interval-union 8)
   )
 
-  (my-first equal? ; (run-test my-first)
-    [(my-first '(a b c d e)) 'a 1] ; (run-test my-first 1)
-  )
-
-  (my-second equal? ; (run-test my-second)
-    [(my-second '(a (b c) d e)) '(b c) 1] ; (run-test my-second 1)
-  )
-
-  (my-third equal? ; (run-test my-third)
-    [(my-third '(a b c d e)) 'c 1] ; (run-test my-third 1)
-  )
-
   (make-vec-from-points equal? ; (run-test make-vec-from-points)
     [(make-vec-from-points '(1 3 4) '(3 6 2)) '(2 3 -2) 3] ; (run-test make-vec-from-points 1)
     [(make-vec-from-points '(-1 3 4) '(3 -6 2)) '(4 -9 -2) 2] ; (run-test make-vec-from-points 2)
