@@ -145,6 +145,10 @@ the meanings
 
 3.  '''(1 2 3) is a 2 element list.  The car of this list is the symbol quote.
     The cadr of this list is the symbol quote.
+
+Here's an additional hint: Evaluate this expression and see how it looks 
+
+	(list (quote quote) (list (quote quote) (list 1 2 3)))
     
 ## Quines (1 point)
 
