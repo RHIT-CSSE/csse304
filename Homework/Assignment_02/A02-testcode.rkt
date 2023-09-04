@@ -13,6 +13,7 @@
 
 (define eval-string
   (lambda (str)
+    (unless (string? str) (error "you can only pass strings to eval string"))
     (let ((outp (open-output-string)))
       (parameterize ([current-output-port outp])
         (printf "~s" (eval (read (open-input-string str)) (make-base-namespace))))
@@ -95,19 +96,12 @@
 
   (quine equal?
          [(let ((result (get-304-quine)))
-                (if (not (is-quine-string? result))
-                    'not-quine
-                    (if (not (string-contains? result "304")) ; I'll give you some credit if you can get it anywhere
-                        'no-304
-                        'great))) 'great 0.5]
-         [(let ((result (get-304-quine)))
-                (if (not (is-quine-string? result))
-                    'not-quine
-                    (if (not (string-contains? result " 304 ")) ; but more if you can it standing alone by itself
-                        'no-304
-                        'great))) 'great 0.5]
-                     )
-
+            (cond [(not (is-quine-string? result)) 'not-quine]
+                  [(equal? result "304") 'cop-out] ; you're technically correct which is the best kind of correct
+                                                   ; but you'll need to come up with a non-trival quine to get credit
+                  [(not (string-contains? result "304")) 'no-304]
+                  [else 'great])) 'great 1])
+                        
   
 ))
 
