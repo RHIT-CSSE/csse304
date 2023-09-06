@@ -28,7 +28,7 @@ song according to this algorithm.  Examples:
     '(verse refrain verse refrain refrain) => #t
     '(verse guitar-solo refrain refrain) => #t
     '(verse guitar-solo refrain guitar-solo refrain) => #t
-    '(verse guitar-solo verse guitar-solo guitar-solo refrain refrain) => #t
+    '(verse guitar-solo refrain verse guitar-solo guitar-solo refrain refrain) => #t
     
     '(verse verse refrain refrain) => #f ; not alternating
     '(guitar-solo verse refrain refrain) => #f ; cant start with solo
