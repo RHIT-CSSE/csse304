@@ -49,7 +49,7 @@ returns the value for which the rating is the highest.  If multiple
 values have the highest rating it returns the earliest in the list.
 You can assume the list has at least one element.
 
-**best**: *Procedure* X *List* -> *List*
+**best**: *Procedure* X *List* -> *List Element Type*
 
 Examples:
 
