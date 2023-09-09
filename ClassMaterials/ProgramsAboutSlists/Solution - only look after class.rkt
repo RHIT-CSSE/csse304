@@ -87,19 +87,25 @@
 
 
 ;-------------------------------------------------------------
-; replace each occurrence of symbol s1 in slist by symbol s2
-(define  (subst s1 s2 slist) 
-  (let subst ([slist slist])
-    (cond [(null? slist) '()]
-	   [(symbol? (car slist))
-	    (cons (if (eq? (car slist) s1)
-		      s2
-		      (car slist))
-		  (subst (cdr slist)))]
-	   [else ; car is an s-list
-	   (cons (subst (car slist))
-		 (subst (cdr slist)))])))
-  
+; replace-free
 
-(subst 'a 'b '(() a (c ((a) a) (c (((c a)))))))  ; (() b (c ((b) b) (c (((c b)))))
-  
+(define (replace-free code var value)
+  (cond [(symbol? code) (if (eqv? code var) value code)]
+        [(eqv? (car code) 'lambda)
+         (if (eqv? (caadr code) var)
+             code
+             (list 'lambda
+                   (second code)
+                   (replace-free (third code) var value)))]
+        [else
+         (list
+          (replace-free (first code) var value)
+          (replace-free (second code) var value))]))
+
+(replace-free 'pi 'pi 3.14) ; 3.14
+(replace-free '(y pi) 'pi 3.14) ; (y 3.14)
+
+; these two require explaination
+(replace-free '(lambda (pi) pi) 'pi 3.14) ; (lambda (pi) pi)
+(replace-free '((lambda (pi) pi) (lambda (x) pi)) 'pi 3.14) ; ((lambda (pi) pi) (lambda (x) 3.14))
+

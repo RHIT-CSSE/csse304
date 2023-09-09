@@ -10,10 +10,11 @@
 ;-------------------------------------------------------------
 ; Does slist contain sym (at any level)?
 (define (contains? slist sym)
-  (let in-list? ([slist slist]) ; We'll use named-let a lot today
-    (cond [(null? slist) (nyi)])))
+  (let recurse ([slist slist]) ; We'll use named-let a lot today
+    (cond [(null? slist) 'nyi])))
 
-
+; I'll do this one with you.  Then go on and do either count
+; occurances or flatten yourself
 
 
 (contains? '() 'a)                          ; #f
@@ -27,7 +28,7 @@
 ; how many times does sym occur in slist?
 (define  (count-occurrences slist sym)
   (let count ([slist slist])
-    (cond [(null? slist) (nyi)])))
+    (cond [(null? slist) 'nyi])))
 	  
 
 
@@ -41,8 +42,7 @@
 ; From the s-list produce a sinlge flat list whose symbols are printed
 ; in the same order as the original s-list
 (define  (flatten slist)
-  (let flatten ([slist slist])
-    (cond [(null? slist) (nyi)])))
+  (cond [(null? slist) 'nyi]))
 
 
 
@@ -52,10 +52,12 @@
 
 ;-------------------------------------------------------------
 ; Replace each symbol with a 2-list - that symbol and its depth within slist
+;
+; wont get to this one, but it gets talked about in the video
 (define (notate-depth slist) 
   (let notate ([slist slist]
 	       [depth 1])
-    (cond [(null? slist) (nyi)])))
+    (cond [(null? slist) 'nyi])))
 
 
 
@@ -67,15 +69,32 @@
 
 
 ;-------------------------------------------------------------
-; replace each occurrence of symbol s1 in slist by symbol s2
-(define  (subst s1 s2 slist) 
-  (let subst ([slist slist])
-    (cond [(null? slist) (nyi)])))
-  
+; Ok now lets try one with lambda calculus
+;
+; remember the language
+; LcExp ::= <Identifier> |
+;           (lambda (<Identifier>) <LcExp>) |
+;           (<LcExp> <LcExp>)
+;
+; As to the problem, lets write code that replaces all
+; uses of a free variable var with a particular value.
+; For example, if I replace pi with 3.14 in this expression:
+;
+; (lambda (x) (pi not-pi)) I get (lambda (x) (3.14 not-pi))
+;
+; Note that 3.14 is not a valid lc-expression really, but
+; it makes for easier test cases - it'be more realistic to
+; say replace true with (lambda (a) (lambda (b) a)).
 
-(subst 'a 'b '(() a (c ((a) a) (c (((c a)))))))  ; (() b (c ((b) b) (c (((c b)))))
-  
-(define-syntax nyi
-  (syntax-rules ()
-    ([_]
-     [error "Not yet implemented"])))
+(define (replace-free code var value)
+  'nyi)
+
+; Some examples of output:
+; 
+(replace-free 'pi 'pi 3.14) ; 3.14
+(replace-free '(y pi) 'pi 3.14) ; (y 3.14)
+
+; these two require explaination
+(replace-free '(lambda (pi) pi) 'pi 3.14) ; (lambda (pi) pi)
+(replace-free '((lambda (pi) pi) (lambda (x) pi)) 'pi 3.14) ; ((lambda (pi) pi) (lambda (x) 3.14))
+
