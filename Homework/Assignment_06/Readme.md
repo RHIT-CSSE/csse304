@@ -120,6 +120,21 @@ Examples:
        4 3)
 
 
+## Q9 (10 points) 
+
+Write let*->let which takes a let* expression (represented as a list) and returns the equivalent  nested let expression. This procedure replaces only the top-level let* by an equivalent nested let expression.  You may assume that the let* expression has the proper form.
+
+<b> let*->let:</b>  *SchemeCode* -> *SchemeCode*
+
+Example:
+
+	(let*->let '(let* ([a 3] [b (+ a 4)]) b )) ->
+           
+       (let ([a 3]) 
+     	   (let ([b (+ a 4)])
+        	b))
+
+
 ## Q10 (20 points)
 
 (qsort pred ls) is a Scheme procedure  that you will write whose arguments are
