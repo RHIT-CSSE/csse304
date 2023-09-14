@@ -65,41 +65,35 @@
 ;; STEP 1 first hand code y2
 
 (define y2
-  (basic-letrec y2 (lambda (which f1 f2)
-                     (which (lambda params
-                              (apply (y2 f1 f1 f2) params))
-                            (lambda params
-                              (apply (y2 f2 f1 f2) params))))
-                y2))
+  (lambda (which f1 f2)
+    (nyi)))
+  
+;(define good-odd?
+;  (y2 my-odd? my-odd? my-even?))
 
-(define good-odd?
-  (y2 my-odd? my-odd? my-even?))
-
-(define good-even?
-  (y2 my-even? my-odd? my-even?))
+;(define good-even?
+;  (y2 my-even? my-odd? my-even?))
 
 
 (define-syntax (advanced-letrec stx)
   (syntax-case stx ()
     [(advanced-letrec ((fun-name fun-body)...) letrec-body)
-     #'(basic-letrec y* (lambda (which fun-name ...)
-                          (which (lambda params
-                                   (apply (y* fun-name fun-name ...) params)) ...))
-                     (let ((fun-name (lambda (fun-name ...)
-                                       fun-body)) ...)
-                       (let ((fun-name (y* fun-name fun-name ...)) ...)
-                         letrec-body)))]))
+     #'(error "nyi")]))
 
 ; just an example for you to see advanced letrec in action
 
-(advanced-letrec
- ((odd-last? (lambda (num)
-               (if (zero? num)
-                   #f
-                   (even-last? (sub1 num)))))
-  (even-last? (lambda (num)
-                (if (zero? num)
-                    #t
-                    (odd-last? (sub1 num))))))
- (even-last? 6))
+;(advanced-letrec
+; ((odd-last? (lambda (num)
+;               (if (zero? num)
+;                   #f
+;                   (even-last? (sub1 num)))))
+;  (even-last? (lambda (num)
+;                (if (zero? num)
+;                    #t
+;                    (odd-last? (sub1 num))))))
+; (even-last? 6))
 
+(define-syntax nyi
+  (syntax-rules ()
+    ([_]
+     [error "nyi"])))
