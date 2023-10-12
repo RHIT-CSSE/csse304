@@ -263,7 +263,6 @@
   topics:
     - Memoization
     - Multiple return values in scheme
-    - A little more CPS
   materials: Memoization
   other:
   videos:
@@ -291,8 +290,8 @@
     - EoPL 3.5, 3.6
     - Skim EoPL 6.2, 6.3
   topics:
+    - Another CPS conversion example
     - add letrec to interpreted language
-    - (if not done day 24) CPS pitfalls
   materials: CPSMore2
   other:
   videos:
