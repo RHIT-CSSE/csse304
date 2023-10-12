@@ -1,5 +1,9 @@
 #lang racket
 
+; only functions in racket/base can be used by default in macros
+; this adds some other useful prodcedures
+(require (for-syntax racket/list)) 
+
 (provide my-let my-or let-destruct range-cases ifelse define-object define-method)
 
 (define-syntax (my-let stx)
