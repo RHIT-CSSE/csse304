@@ -282,6 +282,7 @@
     - Continuations
   materials: CPS
   other:
+    -<a href="https://rose-hulman.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0c6c61cb-a984-4415-ab5a-b0a10159a28a">Buffalo Solves a CPS Problem Video</a>
   videos:
     - name: Zoom 24
       id: 1a6f5dc9-c3ea-431f-ad22-acb8012e4578
