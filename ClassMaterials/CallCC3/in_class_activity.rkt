@@ -1,5 +1,25 @@
 #lang racket
 
+;; activity 1
+
+;; continuation loop printing 1 - 5
+
+
+
+;; activity 2
+
+;; fix this using a super-return
+
+(define (list-index item L)
+  (cond 
+    [(null? L) -1]
+    [(eq? (car L) item) 0]
+    [else (+ 1 (list-index item 
+                           (cdr L)))]))
+
+
+
+
 (define throw #f)
 
 (define try
