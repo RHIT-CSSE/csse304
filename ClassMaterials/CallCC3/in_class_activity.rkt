@@ -25,10 +25,7 @@
 
 (define try
   (lambda (code_to_run on_error)
-    (call/cc (lambda (k)
-               (set! throw (lambda (error)
-                             (k (on_error error))))
-               (code_to_run)))))
+    'nyi))
                              
 
 (try (lambda () 4) (lambda (code) 'error))
