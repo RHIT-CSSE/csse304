@@ -22,7 +22,7 @@ To make your interpreter work with the test cases add this to your file:
 - The single variable lambda expression (e.g. (lambda args-list blah ...))
 - One-armed if:  (if `<exp> <exp>`). This is similar to Racket’s when.
 - Whatever additional primitive procedures are needed to handle the test cases I give you.  This requirement applies to subsequent interpreter assignments also.
-- syntax-expand allows you (but not necessarily the user of your interpreter) to introduce new syntactic constructs without changing eval-exp. Write syntax-expand and use it to add some syntactic extensions (at least add begin, let*, and, or, cond). 
+- syntax-expand allows you (but not necessarily the user of your interpreter) to introduce new syntactic constructs without changing eval-exp. Write syntax-expand and use it to add some syntactic extensions (at least add begin, let*, and, or, cond). You do not have to implement “named let” until assignment 16.
 
 I suggest that you thoroughly test each added language feature before adding the next one.  Augmenting unparse-exp whenever you augment parse-exp is a good idea, to help you with debugging.  But be aware that after you have syntax-expanded an expression, unparse-exp will no longer give you back the original, unexpanded expression.  However, unparse-exp  can still be very useful for debugging.
 
@@ -41,7 +41,55 @@ Add one-armed if.  You may find Racket’s void procedure useful in this impleme
 
 Add the primitive procedures that are necessary to handle the assignment's test cases. Implementation of the  map and apply procedures may be slightly more interesting than most of the primitive procedures from the previous assignment. 
 
-Add syntax-expand.  It isn't really necessary for the interpreter to treat let as a core expression, since it can be implemented as an application of lambda. After an expression has been parsed, pass the parsed expression to a new procedure (you must write it) called syntax-expand that replaces each parsed let expression in the abstract syntax tree by the equivalent application of a lambda expression (the idea is similar to let->application from a previous assignment, but this time it is recursive).  You should write syntax-expand in such a way that you can add other expansions later (hint: use cases). One benefit of using syntax-expand rather than interpreting let directly is that this and future versions of eval-exp need not have cases for let, let*, and, etc., so writing eval-exp should be simpler.  Don't forget that syntax-expand will need to expand subexpressions of an expression as well, if those subexpressions also contain syntactic extensions such as let.  You do not have to implement “named let” until assignment 16.
+**Add syntax-expand.**
+
+So here's a bit from my expand syntax.  Note that as your parse tree
+may be slightly different from mine, this code might not work directly
+for you but the basic idea should be very similar.
+
+    (define syntax-expand
+        (lambda (exp)
+            (cases expression exp
+                [var-exp (symbol) exp] ;; do nothing
+                [lit-exp (literal) exp] ;; do nothing
+                [and-exp (exps)
+                        (cond [(null? exps) (lit-exp #t)]
+                              [(null? (cdr exps)) (syntax-expand (car exps))]
+                              [else (if-exp (syntax-expand (car exps))
+                                            (syntax-expand (and-exp (cdr exps)))
+                                            (lit-exp #f))])]
+        ;; so many more cases go here
+
+There are many constructs in our language that don't have to be
+treated as a core expression and implemented in eval-exp.  "let" can be
+implemented in terms of lambda, "and" can be implemented in terms of
+nested-ifs etc.  But how can we avoid implementing them?
+
+We'll write a procedure syntax-expand that replaces each non-core
+expression in the abstract syntax tree by the equivalent in "core"
+syntax (e.g. let becomes lambdas etc.).  One benefit of using
+syntax-expand rather than interpreting let directly is that this and
+future versions of eval-exp need not have cases for let, let*, and,
+etc., so writing eval-exp should be simpler.
+
+Look closely at my implementation of and-exp above and note two things:
+
+1.  Syntax-expand will need to expand subexpressions of an expression
+    as well, because those subexpressions may also contain syntactic
+    extensions such as let.  So you can see I call syntax expand on
+    the car of my expression list before I use it, ensuring that any
+    further expansion that needs to be done there will happen.
+
+2.  When we talked about scheme macros, it was fairly common to have
+    expansions that expanded recusively (e.g. and expanded into and if
+    plus an and expression).  Our syntax expand will only run one
+    time, so we can't do it like Scheme's macro expand which re-runs
+    macros until they can't expand further.  But if we want recursion
+    it's not hard - just create the small and-exp we want and then
+    explicitly call syntax expand on it:
+    
+        (syntax-expand (and-exp (cdr exps)))
+        
 
 You will need to modify eval-one-exp (and perhaps rep as well) to include syntax-expand in the interpretation process. For example, you may have something like:
 
