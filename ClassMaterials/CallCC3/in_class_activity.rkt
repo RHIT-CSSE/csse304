@@ -4,6 +4,7 @@
 
 ;; continuation loop printing 1 - 5
 
+  
 
 
 ;; activity 2
@@ -18,13 +19,17 @@
                            (cdr L)))]))
 
 
-
+;; try/catch
 
 (define throw #f)
 
 (define try
   (lambda (code_to_run on_error)
-    'nyi))
+    (call/cc (lambda (k)
+               (set! throw (lambda (error)
+                             (k (on_error error))))
+               (code_to_run)))))
+                             
 
 (try (lambda () 4) (lambda (code) 'error))
 
