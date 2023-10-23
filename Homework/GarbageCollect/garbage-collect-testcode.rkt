@@ -4,6 +4,7 @@
 (require "garbage-collect.rkt")
 (require "gc-interpret.rkt")
 
+(provide get-weights get-names individual-test test)
 
 ; this type is actually defined in garbage-collect.rkt
 ; but I use it here
