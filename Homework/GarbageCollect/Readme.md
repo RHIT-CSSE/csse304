@@ -330,3 +330,4 @@ On my system this outputs
 # Thats it!
 
 Upload both garbage-collect.rkt and gc-interpret.rkt to Gradescope.
+They must be named exactly that or the tests will not run.
