@@ -251,6 +251,15 @@ If it detects a problem, it errors with a description of the issue.
 * I encourage you to test with you own test structs and cases by hand
   before moving to the given test cases.
 
+* To actually do the data copy I set next index to zero and used
+  write-array!  There are other ways than can work too:
+  
+        (write-array!
+            (append (list (vector-ref memory p))
+                          <rewritten-pointers>
+                          (ptr-values (ptr p)))
+             next-index)
+
 # A Garbage Collected Interpreter
 
 Once you've got working way to garbage collect structures, making a
