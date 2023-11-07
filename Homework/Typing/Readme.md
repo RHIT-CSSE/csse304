@@ -55,7 +55,7 @@ parameter type of the operator's procedure type.  The type of the
 application expression as a whole is the return type of the operator's
 procedure.
 
-There are 2 "built-in" procedures in this language.  iszero? which has
+There are 2 "built-in" procedures in this language.  zero? which has
 a type of (num -> bool).  And a curried style minus which has a type
 (num -> (num -> num)).  You'll want to create your initial type
 environment with these pre-set.
@@ -97,11 +97,11 @@ returns its type.
 
     (typecheck 1) => 'num
     (typecheck '(lambda num (n) #t)) => '(num -> bool)
-    (typecheck '((lambda num (n) (if (iszero? n) 8 9)) 1)) => 'num
+    (typecheck '((lambda num (n) (if (zero? n) 8 9)) 1)) => 'num
 
 Returning the type should not require evaluating the expression
 i.e. we should be able to calculate that the final example above
-returns a num without having an implementation of iszero?.
+returns a num without having an implementation of zero?.
 Calculating the type should be less expensive than evaluating, because
 there should be no need to do aribrary time things like evaluate a
 recursive function multiple types.
