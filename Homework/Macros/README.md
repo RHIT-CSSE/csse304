@@ -1,3 +1,7 @@
+# A Warning About Submitting
+
+So macro code, when implemented incorrectly, has a tendency to crash the grading scripts.  Please do not submit macro code that crashes on gradescope, then email myself or the TAs asking to hand comment out individual testcases so you can get an individual point here or there.  The policy is if your macro crashes gradescope, you do not get partial credit for that macro.  So there is no advantage to submitting a crashing macro implementation - if your macro does not work, replace it with the original NYI version from the repo and submit a version that does not require hand grading.
+
 ## Named My-Let
 
 I've included a basic implementation of let in the starting code,
@@ -260,3 +264,4 @@ lambda that pulls out the various bits and then includes the given
 body code.  I found it handy to use apply & some extra internal
 lambdas for that latter part, but I think there are multiple
 solutions.
+
