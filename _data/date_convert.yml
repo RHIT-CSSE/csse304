@@ -1,121 +1,121 @@
 ---
 - type: class_session
   class_num: 1
-  date: 2023-08-31 08:00
+  date: 2023-11-27 08:00
 - type: class_session
   class_num: 2
-  date: 2023-09-01 08:00
+  date: 2023-11-28 08:00
 - type: class_session
   class_num: 3
-  date: 2023-09-04 08:00
+  date: 2023-11-30 08:00
 - type: class_session
   class_num: 4
-  date: 2023-09-05 08:00
+  date: 2023-12-01 08:00
 - type: class_session
   class_num: 5
-  date: 2023-09-07 08:00
+  date: 2023-12-04 08:00
 - type: class_session
   class_num: 6
-  date: 2023-09-08 08:00
+  date: 2023-12-05 08:00
 - type: class_session
   class_num: 7
-  date: 2023-09-11 08:00
+  date: 2023-12-07 08:00
 - type: class_session
   class_num: 8
-  date: 2023-09-12 08:00
+  date: 2023-12-08 08:00
 - type: class_session
   class_num: 9
-  date: 2023-09-14 08:00
+  date: 2023-12-11 08:00
 - type: class_session
   class_num: 10
-  date: 2023-09-15 08:00
+  date: 2023-12-12 08:00
 - type: class_session
   class_num: 11
-  date: 2023-09-18 08:00
+  date: 2023-12-14 08:00
 - type: class_session
   class_num: 12
-  date: 2023-09-19 08:00
+  date: 2023-12-15 08:00
 - type: class_session
   class_num: 13
-  date: 2023-09-21 08:00
+  date: 2023-12-18 08:00
 - type: class_session
   class_num: 14
-  date: 2023-09-22 08:00
+  date: 2023-12-19 08:00
 - type: class_session
   class_num: 15
-  date: 2023-09-25 08:00
+  date: 2023-12-21 08:00
 - type: class_session
   class_num: 16
-  date: 2023-09-26 08:00
+  date: 2023-12-22 08:00
 - type: class_session
   class_num: 17
-  date: 2023-09-28 08:00
+  date: 2024-01-08 08:00
 - type: class_session
   class_num: 18
-  date: 2023-09-29 08:00
+  date: 2024-01-09 08:00
 - type: class_session
   class_num: 19
-  date: 2023-10-02 08:00
+  date: 2024-01-11 08:00
 - type: class_session
   class_num: 20
-  date: 2023-10-03 08:00
+  date: 2024-01-12 08:00
 - type: class_session
   class_num: 21
-  date: 2023-10-09 08:00
+  date: 2024-01-15 08:00
 - type: class_session
   class_num: 22
-  date: 2023-10-10 08:00
+  date: 2024-01-16 08:00
 - type: class_session
   class_num: 23
-  date: 2023-10-12 08:00
+  date: 2024-01-18 08:00
 - type: class_session
   class_num: 24
-  date: 2023-10-13 08:00
+  date: 2024-01-19 08:00
 - type: class_session
   class_num: 25
-  date: 2023-10-16 08:00
+  date: 2024-01-22 08:00
 - type: class_session
   class_num: 26
-  date: 2023-10-17 08:00
+  date: 2024-01-23 08:00
 - type: class_session
   class_num: 27
-  date: 2023-10-19 08:00
+  date: 2024-01-25 08:00
 - type: class_session
   class_num: 28
-  date: 2023-10-20 08:00
+  date: 2024-01-26 08:00
 - type: class_session
   class_num: 29
-  date: 2023-10-23 08:00
+  date: 2024-01-29 08:00
 - type: class_session
   class_num: 30
-  date: 2023-10-24 08:00
+  date: 2024-01-30 08:00
 - type: class_session
   class_num: 31
-  date: 2023-10-26 08:00
+  date: 2024-02-01 08:00
 - type: class_session
   class_num: 32
-  date: 2023-10-27 08:00
+  date: 2024-02-02 08:00
 - type: class_session
   class_num: 33
-  date: 2023-10-30 08:00
+  date: 2024-02-05 08:00
 - type: class_session
   class_num: 34
-  date: 2023-10-31 08:00
+  date: 2024-02-06 08:00
 - type: class_session
   class_num: 35
-  date: 2023-11-02 08:00
+  date: 2024-02-08 08:00
 - type: class_session
   class_num: 36
-  date: 2023-11-03 08:00
+  date: 2024-02-09 08:00
 - type: class_session
   class_num: 37
-  date: 2023-11-06 08:00
+  date: 2024-02-12 08:00
 - type: class_session
   class_num: 38
-  date: 2023-11-07 08:00
+  date: 2024-02-13 08:00
 - type: class_session
   class_num: 39
-  date: 2023-11-09 08:00
+  date: 2024-02-15 08:00
 - type: class_session
   class_num: 40
-  date: 2023-11-10 08:00
+  date: 2024-02-16 08:00
