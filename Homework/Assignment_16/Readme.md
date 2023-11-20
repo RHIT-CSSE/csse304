@@ -40,10 +40,3 @@ a y2 combinator that should be a mostly straightforward expansion of what I gave
 and the advanced-letrec syntax that can generate y combinators of any needed size.
 
 Of course don't use letrec or named let or any unusual racket features in your solution.
-
-It is tricky to do.  How tricky?  Let me put it this way: if you do it,
-don't just take your 1 point.  Come by my office and show me your
-solution.  I will reward you with a card that says you are a cool
-person.
-
-Feel free to come by my office to get help if you wish as well.

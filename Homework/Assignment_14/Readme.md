@@ -115,10 +115,16 @@ Scheme can't be scheme without the ability to be expanded right?  So
 instead of syntax expansion hard coded into a function like expand
 syntax, we want syntax expansion as a feature we can provide to our
 interepreter's users.  Of course, we can use this same mechanism to
-implement let, and, and all the stuff that outherwise would be in Part
-1.  Diving into the workings of macros will be rewarding; just take
+implement let, and, and all the stuff that outherwise would be in Part 1.
+Diving into the workings of macros will be rewarding; just take
 care - and make sure you have sufficient free time before you attempt
 this.
+
+This optional assignment is tricky.  How tricky?  Let me put it this
+way: if you do it, don't just take your 1 point.  Come by my (Buffalo)
+office or show me after class.  I will reward you with a card that
+says you are a cool person.  Note that you must actually interact with
+me to get your card!
 
 We won't implement the syntax system you're familiar with in Racket.
 Racket Scheme's syntax expansion system is powerful and cool, but we
@@ -308,7 +314,7 @@ There are now 3 cases:
 1.  A begin expression, which means top level eval recursively calls
     itself.  Real code is only allowed in the last expression of the
     outermost begin - you are not required to enforce that rule
-    though, but if its violated your code is allowed to break).
+    though, but if its violated your code is allowed to break.
 
 2.  Handling a define-syntax expression will invoke add-macro-interpreter.
 
