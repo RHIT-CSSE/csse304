@@ -1,13 +1,13 @@
 require 'date'
 require 'yaml'
 
-start_date = Date.new(2023, 8, 31)
-end_date = Date.new(2023, 11, 12)
-vacation_start = Date.new(2023, 10, 5) #inclusive
-vacation_end = Date.new(2023, 10, 6) # inclusive
+start_date = Date.new(2023, 11, 27)
+end_date = Date.new(2024, 02, 18)
+vacation_start = Date.new(2023, 12, 23) #inclusive
+vacation_end = Date.new(2024, 1, 7) # inclusive
 allowed_days_of_week = [1,2,4,5] # monday is 1
 
-generate_yaml = true #we either generate yaml or csv
+generate_yaml = false #we either generate yaml or csv
 
 day_list = []
 current = start_date;
