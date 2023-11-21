@@ -173,14 +173,8 @@
   materials: Exam1Prep
   other: <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EQZFUkx7QDhPhanWKIi3LpcBN4o7ujz1pE_jIK1h0MYW4Q?e=pjI4Us">Teams recording of my discussion of Exam</a>
   videos:
+
 13:
-  reading:
-  topics:
-    - Canceled for exam
-  materials:
-  other:
-  videos:
-14:
   reading:
     - EoPL 2.3
   topics:
@@ -192,7 +186,7 @@
   videos:
     - name: Zoom 15
       id: f709e5ff-ecd2-4ac8-93b2-acaa00d01ad4
-15:
+14:
   reading:
     - EoPL 2.4
   topics:
@@ -204,7 +198,7 @@
   videos:
     - name: Zoom 16
       id: 884e5e76-08b8-4622-8e0b-acaa0134e2f6
-16:
+15:
   reading:
     - Catch up on any reading assignments you're behind
   topics:
@@ -215,7 +209,7 @@
   videos:
     - name: Zoom 17
       id: cd1c5ec8-12cc-4eea-a83e-acad01209e57
-17:
+16:
   reading: EoPL 2.5
   topics:
     - environments and closure examples
@@ -227,6 +221,16 @@
       id: cc7f2699-d226-45b8-9945-acaf014980fe
     - name: complex e and c example
       id: 607c0767-0bb5-4d3f-8de8-ac4700be7a2f
+
+17:
+  reading:
+  topics:
+    - Class cancelled
+  materials:
+  other:
+  videos:
+
+      
 18:
   reading: EoPL 3.1, 3.2
   topics:
@@ -315,7 +319,19 @@
   videos:
     - name: Zoom 26
       id: 520fabc0-50fd-4bda-931a-acbc01295d4c
+
 27:
+  reading:
+  topics:
+    - interpreter in CPS form
+  materials: CPSDatatypesInterpreter
+  other:
+  videos:
+    - name: Zoom 31
+      id: 6208d3c8-3e10-4e61-8093-acc50159d22e
+
+      
+28:
   reading:
     - EoPL 4.1-4.3
   topics:
@@ -328,8 +344,15 @@
   videos:
     - name: Zoom 27
       id: c89f6577-8afa-48a6-8a98-acbe0130f272
-  
-28:
+
+29:
+  reading:
+  topics: Cancelled for Exam 2
+  materials: 
+  other:
+
+      
+30:
   reading:
     - EoPL 5.1, 5.2
   topics:
@@ -339,7 +362,8 @@
   videos:
     - name: Zoom 28
       id: d8598cd5-f46f-40ca-b376-acbf01244121
-29:
+      
+31:
   reading:
     - TSPL 3.3, 3.4
   topics:
@@ -350,21 +374,7 @@
     - name: Zoom 29
       id: 82606a4d-c7a2-4460-ab6f-acc201343176
 
-30:
-  reading:
-  topics: Cancelled for Exam 2
-  materials: 
-  other:
 
-31:
-  reading:
-  topics:
-    - interpreter in CPS form
-  materials: CPSDatatypesInterpreter
-  other:
-  videos:
-    - name: Zoom 31
-      id: 6208d3c8-3e10-4e61-8093-acc50159d22e
 32:
   reading:
   topics:
