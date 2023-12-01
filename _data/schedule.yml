@@ -209,7 +209,16 @@
   videos:
     - name: Zoom 17
       id: cd1c5ec8-12cc-4eea-a83e-acad01209e57
+
 16:
+  reading:
+  topics:
+    - Class cancelled
+  materials:
+  other:
+  videos:
+
+17:
   reading: EoPL 2.5
   topics:
     - environments and closure examples
@@ -221,15 +230,6 @@
       id: cc7f2699-d226-45b8-9945-acaf014980fe
     - name: complex e and c example
       id: 607c0767-0bb5-4d3f-8de8-ac4700be7a2f
-
-17:
-  reading:
-  topics:
-    - Class cancelled
-  materials:
-  other:
-  videos:
-
       
 18:
   reading: EoPL 3.1, 3.2
