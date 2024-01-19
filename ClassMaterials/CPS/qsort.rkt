@@ -3,7 +3,10 @@
 (require "chez-init.rkt")
 (require racket/trace)
 
-
+; this is a helper procedure that divides the list
+; into 2 unsorted lists depending on the pivot
+;
+; initially call it with less and eqOrMore as '()
 (define divide
   (lambda (pivot lst less eqOrMore)
     (if (null? lst)
@@ -12,6 +15,7 @@
             (divide pivot (cdr lst) (cons (car lst) less) eqOrMore)
             (divide pivot (cdr lst) less (cons (car lst) eqOrMore))))))
 
+; a classic qsort implementation
 (define qsort
   (lambda (lst)
     (if (null? lst) '()
@@ -33,7 +37,7 @@
       [init-k () v])))
 
 (define divide-cps
-  (lambda (val lst acc k)
+  (lambda (pivot lst less eqOrMore k)
     'nyi))
 
 (define qsort-cps
