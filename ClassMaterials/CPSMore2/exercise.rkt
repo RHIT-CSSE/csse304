@@ -14,28 +14,20 @@
 
 (define-datatype continuation continuation?
   [init-k]
-  [step1 (lst list?) (k continuation?)]
-  [step2 (old-v list?) (k continuation?)]
   ; more types here 
   )
 
 (define flatten-cps
   (lambda (lst k)
-    (if (null? lst)
-        (apply-k k '())
-        (flatten-cps (cdr lst) (step1 lst k)))))
+    'nyi))
 
+        
+        
 
 (define apply-k
   (lambda (k v)
 	(cases continuation k
-          [init-k () v]
-          [step1 (lst k)
-                 (if (list? (car lst))
-                     (flatten-cps (car lst) (step2 v k))
-                     (apply-k k (cons (car lst) v)))]
-          [step2 (old-v k)
-                 (apply-k k (append v old-v))]
+          [init-k () v]          
           )))
 
 (trace flatten-cps apply-k)
