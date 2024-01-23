@@ -36,9 +36,6 @@
 
 (define-datatype continuation continuation?
   [init-k]
-  [step1 (first number?)
-         (last number?)
-         (k continuation?)]
   ; more types here 
   )
 
@@ -46,29 +43,15 @@
   (lambda (k v)
 	(cases continuation k
           [init-k () v]
-          [step1 (first last k) ; v is comb consec helper on cdr
-                 (apply-k k (cons (list first last) v))]
           ; more code here
           )))
 
-(define (combine-consec lst k)
-  (if (null? lst)
-      (apply-k k '())
-      (combine-consec-helper-cps
-       (car lst)
-       (car lst)
-       (cdr lst)
-       k)))
+(define (combine-consec lst)
+  'nyi)
 
 (define (combine-consec-helper-cps first last lst k)
-  (cond [(null? lst) (apply-k k (list (list first last)))]
-        [(= (add1 last) (car lst))
-         (combine-consec-helper-cps first (add1 last) (cdr lst) k)]
-        [else (combine-consec-helper-cps (car lst)
-                                         (car lst)
-                                         (cdr lst)
-                                         (step1 first last k))]))
+  'nyi)
 
 
 (combine-consec-orig '(1 2 3 6 7 8 13))
-(combine-consec '(1 2 3 6 7 8 13) (init-k))
+(combine-consec '(1 2 3 6 7 8 13))
