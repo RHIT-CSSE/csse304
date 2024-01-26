@@ -10,8 +10,10 @@ After this assignment  assignment, there will  a brief required participation su
 
 Add additional syntax to your interpreted language.
 
-The new features to be added are letrec and named let.
-	
+The new features to be added are letrec and named let.  
+
+Letrec in this case needs to only handle letrecs that are initialized with closures (i.e. you don't need to handle letrecs that can also handle ordinary values like (letrec ((x 7)) ).
+
 You may implement letrec either (your choice)
         *directly in the interpreter* or
         via *syntax-expand*. 
