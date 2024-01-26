@@ -17,8 +17,6 @@ You may implement letrec either (your choice)
         via *syntax-expand*. 
  In class we discussed a way to do letrec without mutation and another way to do it via mutating a ribcage environment; or if you wish, you may instead use a syntax expansion approach that is similar to that of TSPL, near the middle of Section 4.4 in TSPL 4, which I also discussed in class.  But that last approach will require doing part of A17 first.  
 
-If you did not implement while as a syntax-expansion in A14, you should do so for this assignment.
-
 ## The Y Combinator (1 point)
 
 There is actually a 3rd way to implement letrec that we did not
