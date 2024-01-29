@@ -24,6 +24,8 @@ To make your interpreter work with the test cases add this to your file:
 - Whatever additional primitive procedures are needed to handle the test cases I give you.  This requirement applies to subsequent interpreter assignments also.
 - syntax-expand allows you (but not necessarily the user of your interpreter) to introduce new syntactic constructs without changing eval-exp. Write syntax-expand and use it to add some syntactic extensions (at least add begin, let*, and, or, cond). You do not have to implement “named let” until assignment 16.
 
+Note that syntax-expand (as described below) is a REQUIREMENT of this milestone, and more importantly of later steps including Exam 2.  Do not come up with some alterative design that does syntax expansion as a side effect of parsing, especially do not call syntax expand from eval-exp.  Syntax expand should be a function that takes abstract syntax trees from parse-exp, transforms them into other abstract syntax trees that only include "core" forms, and then that result is passed to eval exp.
+
 I suggest that you thoroughly test each added language feature before adding the next one.  Augmenting unparse-exp whenever you augment parse-exp is a good idea, to help you with debugging.  But be aware that after you have syntax-expanded an expression, unparse-exp will no longer give you back the original, unexpanded expression.  However, unparse-exp  can still be very useful for debugging.
 
 **A more detailed description of what you are to do:**
@@ -100,7 +102,7 @@ You will need to modify eval-one-exp (and perhaps rep as well) to include syntax
 
 Look at Flow.png
 
-Note that it is acceptable, and perhaps more efficient, to "mix up" parsing and syntax expansion (having parse-exp call syntax-expand and vice-versa), but this can make debugging harder, so I do not recommend it.  First parse the code, then syntax expand, then evaluate.  This is a suggestion, not a requirement.
+More sophisticated expansions might "mix up" parsing and syntax expansion (having parse-exp call syntax-expand and vice-versa), but I am going to require that you do not use this approach.  First parse the code, then syntax expand, then evaluate. 
 
 *Aside: Think about what the code for syntax-expand would be like if it were written as a pre-processor to the parser, rather than a post-processor as in the above code.  This will increase your appreciation for having the interpreter use abstract syntax trees instead of raw, unparsed expressions!*
 
