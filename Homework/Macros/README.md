@@ -124,7 +124,38 @@ your syntax cases like this:
 This means < and else in patterns only match the literal values "<"
 and "else".
 
-## Destructuring Let
+## ifelse
+
+So this one is simple conceptually
+
+(ifelse testexp thenexps else elseexps)
+
+Example:
+
+    (ifelse 
+        (> (length mylist) 10)
+        (display "the list is very long")
+        (display "more than 10 elements)
+        'biglist
+        else
+        (display "the list is small")
+        'smalllist)
+
+There can be any number of thenexps and elseexps BUT there is always at
+least one of each.  else is a special keyword that separates thenexps
+from elseexps.  It acts like an normal if with then statements and
+else statements in begin blocks.
+
+This problem can be solved with syntax-cases, BUT to do so requires
+far more trickiness than the problem deserves.  Instead, use
+syntax->datum to turn the input code into a list, transform it, and
+then use datum->syntax to convert it back again.
+
+## Destructuring Let (1 point)
+
+This is another bonus question.  It requires no special macro stuff,
+beyond what you've already learned but the recursion is a little less
+straightforward.
 
 Oftentimes in scheme we use complicated list structures to represent
 something.  A circle for drawing might be represented like ((x y)
@@ -221,91 +252,4 @@ A few details:
   In my solution, the initial breakdown of (let-destruct ((a b) c d) cool-var bodies)
   transforms into 2 let destructs.  The outer one is (let-destruct (a b) (car cool-var) ???).  
   </details>
-
-## ifelse
-
-So this one is simple conceptually
-
-(ifelse testexp thenexps else elseexps)
-
-Example:
-
-    (ifelse 
-        (> (length mylist) 10)
-        (display "the list is very long")
-        (display "more than 10 elements)
-        'biglist
-        else
-        (display "the list is small")
-        'smalllist)
-
-There can be any number of thenexps and elseexps BUT there is always at
-least one of each.  else is a special keyword that separates thenexps
-from elseexps.  It acts like an normal if with then statements and
-else statements in begin blocks.
-
-This problem can be solved with syntax-cases, BUT to do so requires
-far more trickiness than the problem deserves.  Instead, use
-syntax->datum to turn the input code into a list, transform it, and
-then use datum->syntax to convert it back again.
-
-
-## Methods with Fields
-
-Note that question is worth a very small amount of credit for its
-difficultly.  I hope your will be interested enough to try it anyway.
-
-Macros are great for utility features like let variants and ifs, but
-their real power is that they let us write code that is really
-different from standard Scheme.
-
-Lets imagine I'd like to do some object oriented programming, but not
-with complicated lambdas like last time.  This time I'm going to
-declare new kinds of objects like this:
-
-    (define-object point x y)
-    
-And the object itself will be represented by a regular list e.g. (1 2)
-represents a point where x = 1 and y = 2.  We could add a constructor
-syntax (e.g. new-point 1 2) but the tests wont bother and just use
-lists directly as objects.
-
-The magic happens when we define a new method:
-
-    (define-method point point.getx ()
-        (printf "calling getx for point ~s ~s" x y)
-        x)
-        
-Which is called like this:
-
-    (point.getx '(1 2)) ; yields 1
-    
-Methods in this system always expect the "object" passed as the first
-parameter.  Then within the body of the method, the entries of the
-list are mapped to the field names.  So the x that is seemly unmapped
-in the point.getx definition is mapped because point is defined to
-have an x and y.
-
-Note that methods can have ordinary non field parameters too:
-
-    (define-method point point.manhat_dist (ox oy)
-        (+ (abs (- x ox)) (abs (- y oy))))
-    
-    (point.manhat_dist '(1 2) 0 0) ; dist to orgin - returns 3
-
-More generally, define-method looks like this:
-
-    (define-method object-type-name method-name (extra_params ...) bodies ...)
-
-Note that although I have named point methods point.somename, that's
-just to make it clear.  I could have called point.getx getx and then
-it would be invoked using the ordinary global name getx.
-
-Any solution to this problem will require the mapping between object
-names and field names to be stored in a global expansion time data
-structure.  Then define method must be turned into a regular define +
-lambda that pulls out the various bits and then includes the given
-body code.  I found it handy to use apply & some extra internal
-lambdas for that latter part, but I think there are multiple
-solutions.
 
