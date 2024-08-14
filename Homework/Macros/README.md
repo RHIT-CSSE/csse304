@@ -19,28 +19,72 @@ example:
 Your solution should expand into a letrec, not the regular named let
 syntax.
 
-## my-or
+## null-let
 
- Suppose that or was not part of the Scheme language. Show how we
- could add it by using define-syntax to define my-or, similar to
- my-and that we defined in class. This may be a little bit trickier
- than my-and; the trouble comes if some of the expressions have
- side-effects; you want to make sure that no expression gets evaluated
- twice. In general, your my-or should behave just like Scheme's
- or. You may not use or in your expansion of my-or.
+Make a version of let called null-let where you don't have to specify
+values for the variables you create.  Instead, each new variable
+should be set to null.
 
-Example:
+    (null-let (a b c)
+          (set! a 'not-null)
+          (list a b c)) yields '(not-null () ())
+          
+null-let is allowed to expand into regular let-expressions.  You might
+find it easier to expand it similarly to let*.  That is allowed even
+though it is arguably needlessly inefficient.
 
-    (begin (define a #t) 
-        (define x (my-or #f 
-                          (begin (set! a (not a)) a) 
-                       #t 
-                       (set! a (not a))))
-         (list a x))
-    > (#f #t)
+## all-equal
 
-One thing you do not have to worry about is variable capture should
-you introduce a let - scheme's namespacing will solve your problem.
+Implement the operation all-equal which is a boolean operation that
+returns true if all the expressions are equal to each other (in terms
+of equal? equality).
+
+    (all-equal (+ 1 2) 3 (- 103 100)) yields #t
+    (all-equal 1 1 1 3) yields #f
+
+all-equal uses "short circuiting" i.e. if two earlier values are
+unequal, later expressions will not be evaluated.  For example:
+
+    (all-equal 7 (display "I print") (display "I dont print"))
+
+This short circuiting behavior means all-equal cannot be implemented
+as a function - it must be a macro.
+
+Note that the smallest all-equal expression is with 2
+terms. (i.e. (all-equal 3) or (all-equal) have no defined meaning).
+
+For full credit, each subexpression in the all equal should only be
+evaluated once.  For example:
+
+    (all-equal (display "a") (display "b") (display "c") (display "d"))
+
+each letter should only print once. 
+
+## begin-unless
+
+Implement the operation begin-unless.  Here's how it looks:
+
+    (let ((myvar #f))
+        (begin-unless myvar
+            (display "prints")
+            (display "also prints")
+            (set! myvar 17)
+            (display "does not print"))) ; returns 17
+
+begin-unless takes a single variable and then a list of bodies.
+Before execuiting each body, it checks to see if the variable is true.
+If the variable is a true value, begin-unless stops executing bodies
+and the begin-unless expression ends.  If the variable is false, the
+next body is executed.  The return result of the whole expression is
+the value of the variable.
+
+begin-unless might seem like an odd operation and it is.  But it
+actually lets us implment a crude type of return semantics.  Imagine a
+little macro that would make (return 17) transform to (set! return-val
+17).  That plus begin-unless would make it possible to return from
+functions...kinda.  This has its problems and we'll find a much better
+way to return once we add continuations to our toolbox.
+
 
 ## Range cases
 

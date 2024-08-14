@@ -4,7 +4,7 @@
 ; this adds some other useful prodcedures
 (require (for-syntax racket/list)) 
 
-(provide my-let my-or let-destruct range-cases ifelse define-object define-method)
+(provide my-let null-let all-equal begin-unless range-cases ifelse let-destruct)
 
 (define-syntax (my-let stx)
   (syntax-case stx ()
@@ -15,11 +15,21 @@
              ; and expand into the expression 'nyi rather than crashing
     ))
 
+(define-syntax (null-let stx)
+   (syntax-case stx ()
+     [(null-let _ ...)
+      #''nyi]))
 
-(define-syntax (my-or stx)
+(define-syntax (all-equal stx)
   (syntax-case stx ()
-    [(my-or _ ...) #''nyi]))
-    
+    [(all-equal _ ...)
+     #''nyi]))
+
+(define-syntax (begin-unless stx)
+  (syntax-case stx ()
+    [(begin-unless _ ...)
+     #''nyi]))
+
              
 (define-syntax (range-cases stx)
   (syntax-case stx (< else)
@@ -33,15 +43,3 @@
 
 (define-syntax (ifelse stx)
   #'(error "nyi"))
-
-
-(define-syntax (define-object stx)
-    #''nyi
-    )
-
-(define-syntax (define-method stx)
-  (syntax-case stx ()
-    [(define-method _ name _ ...)
-     #'(define name (lambda x (error "nyi")))])) ; <- had to do a little more work to prevent the test cases
-                                        ; from failing all the other tests.  You'll have to change this
-                                        ; template quite a bit though.

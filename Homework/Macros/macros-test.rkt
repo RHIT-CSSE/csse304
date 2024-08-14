@@ -21,17 +21,104 @@
     [((lambda (n) (my-let fact2 ((acc 1) (n n)) (if (zero? n) acc (fact2 (* n acc) (sub1 n))))) 4) 24 1]
     )
 
-   (my-or equal? ; (run-test my-or)
-    [(begin (define a #f) (my-or #f (begin (set! a (not a)) a) #f)) #t 1] ; (run-test my-or 1)
-    [(let loop ((L (quote (a b 2 5 #f (a b c) #(2 s c) foo a))) (A (quote ()))) (if (null? L) A (loop (cdr L) (if (my-or (number? (car L)) (vector? (car L)) (char? (car L))) (cons (car L) A) A)))) '(#(2 s c) 5 2) 1] ; (run-test my-or 2)
-    [(let loop ((L (quote (1 2 3 4 5 a 6)))) (if (null? L) #f (my-or (symbol? (car L)) (loop (cdr L))))) #t 1] ; (run-test my-or 3)
-    [(my-or) #f 2] ; (run-test my-or 4)
-    [(let ((x 0)) (if (my-or #f 4 (begin (set! x 12) #t)) (set! x (+ x 1)) (set! x (+ x 3))) x) 1 2] ; (run-test my-or 5)
-    [(my-or #f 4 3) 4 1] ; (run-test my-or 6)
-    [(let ((x 0)) (my-or (begin (set! x (+ 1 x)) x) #f)) 1 2] ; (run-test my-or 7)
-    [(my-or 6) 6 2] ; (run-test my-or 8)
-  ) 
+  (null-let equal?
+            [(null-let (a b) (list a b)) '(() ()) 2]
+            [(null-let (a b c) (set! a 7) (set! b 12) (list a b c)) '(7 12 ()) 2]
+            [(null-let () 'foobar) 'foobar 2]
+            [(null-let (z) (list z (let [(z 3)] z))) '(() 3) 2]
+            [(let ((x 3) (y 4)) (null-let (x) (list x y))) '(() 4) 2])
   
+ (all-equal equal?
+             [(all-equal 1 1 1 1) #t 1]
+             [(all-equal #f #f #f) #t 1]
+             [(all-equal 1 1 1 2) #f 1]
+             [(all-equal (+ 1 1) (- 3 1) (car '(2 3))) #t 1]
+             [(let ((x 1)
+                    (y 2))
+                (all-equal x x y)) #f 1]
+             [(let ((x 1)
+                    (y 1))
+                (all-equal x x y)) #t 1]
+             [(let ((x 1)
+                    (y 2))
+                (all-equal x x y (error "should not get here"))) #f 2]
+
+             [(let* ((calls 0)
+                    (retval (lambda (x) (set! calls (add1 calls)) x)))
+                (list (all-equal (retval 2) (retval 2) (retval 2) (retval 2))
+                      calls)) '(#t 4) 2]
+
+             [(let* ((calls 0)
+                    (retval (lambda (x) (set! calls (add1 calls)) x)))
+                (list (all-equal (retval 1) (retval 2) (retval 2) (retval 3))
+                      calls)) '(#f 2) 1]
+             
+             [(let* ((calls 0)
+                    (retval (lambda (x) (set! calls (add1 calls)) x)))
+                (list (all-equal (retval 1) (retval 1) (retval 2) (retval 3))
+                      calls)) '(#f 3) 1]
+             )
+
+  (begin-unless equal?
+                [(let ((a 0) (b #f))
+                   (list (begin-unless b
+                                       (set! a (+ 1 a))
+                                       (set! a (+ 1 a))                           
+                                       (set! b 99)
+                                       (set! a (+ 1 a)))
+                         a))
+
+                 '(99 2) 2]
+                [(let ((a 0) (b #t))
+                   (list (begin-unless b
+                                       (set! a (+ 1 a))
+                                       (set! a (+ 1 a))                           
+                                       (set! b 99)
+                                       (set! a (+ 1 a)))
+                         a))
+
+                 '(#t 0) 2]
+                [(let ((a 0) (b #f))
+                   (list (begin-unless b
+                                       (set! a (+ 1 a))
+                                       (set! a (+ 1 a))                           
+                                       (set! a (+ 1 a)))
+                         a))
+
+                   '(#f 3) 2]
+                [(let ((a 0) (foo #f) (bar #f))
+                   (list (begin-unless foo
+                                       (set! a (+ 1 a))
+                                       (begin-unless bar
+                                                     (set! a (+ 1 a))
+                                                     (set! bar #t)
+                                                     (set! a (+ 1 a)))
+                                       (set! a (+ 1 a))
+                                       (set! a (+ 1 a))
+                                       (set! foo 'qqq)                                       
+                                       (set! a (+ 1 a)))
+                         a))
+
+                 '(qqq 4) 2]
+                                [(let ((a 0) (foo #f) (bar #f))
+                                   (list (begin-unless foo
+                                                       (set! a (+ 1 a))
+                                                       (begin-unless bar
+                                                                     (set! a (+ 1 a))
+                                                                     (set! foo #t)
+                                                                     (set! a (+ 1 a)))
+                                                       (set! a (+ 1 a))
+                                                       (set! a (+ 1 a))
+                                                       (set! foo 'qqq)                                       
+                                                       (set! a (+ 1 a)))
+                         a))
+
+                   '(#t 3) 2]
+
+
+
+            )
+ 
   (range-cases equal? ; (run-test range-cases)
     [(let ((passed (lambda(x) (range-cases x (< 65 'fail) (else 'pass)))))
        (map passed '(50 65 66))) '(fail pass pass) 6]
@@ -53,19 +140,7 @@
                       (else 'huge)))) 'large 6]
     )
             
-  (let-destruct equal? ; (run-test let-destruct)          
-    [(let-destruct a (+ 1 10) (+ 1 a)) 12 2] ; (run-test let-destruct 1)
-    [(let-destruct () '() 'youll-want-this-base-case) 'youll-want-this-base-case 2]
-    [(let-destruct (a) (list 10) (+ 1 a)) 11 2]
-    [(let-destruct (a b) (cons 1 (cons 2 '())) (cons a b)) '(1 . 2) 2]
-    [(let-destruct ((a) b) '((1) 2) (cons a b)) '(1 . 2) 2]
-    [(let-destruct (a b) '((1) ((2))) (cons a b)) '((1) . ((2))) 2]
-    [(let-destruct ((a) ((b)) (((c)))) '((1) ((2)) (((3)))) (list a b c)) '(1 2 3) 2]
-    [(let-destruct ((a b) c) '((1 2) 3) (list a b c)) '(1 2 3) 2]
-    [(let-destruct ((a b) c) '((1 2) 3) (list a b c) 'body2) 'body2 2]
-    [(let ((myval '((1 2) (3 4) (5 (6)))))
-       (let-destruct ((a b) c (d (e))) myval (list a b c d e))) '(1 2 (3 4) 5 6) 2]
-  )
+
 
   (ifelse equal?
           [(list (ifelse #t 1 else 2) (ifelse #f 1 else 2)) '(1 2) 6]
@@ -73,18 +148,20 @@
           [(let ((v #t)) (list (ifelse v (set! v 1) (set! v (add1 v)) v else 2 6)
                                (ifelse (not v) 1 2 else 3 4 5 6))) '(2 6) 8]
 )
-  (objects equal?
-           [(begin
-              (define-object point x y)
+    (let-destruct equal? ; (run-test let-destruct)          
+    [(let-destruct a (+ 1 10) (+ 1 a)) 12 0.1] ; (run-test let-destruct 1)
+    [(let-destruct () '() 'youll-want-this-base-case) 'youll-want-this-base-case 0.1]
+    [(let-destruct (a) (list 10) (+ 1 a)) 11 0.1]
+    [(let-destruct (a b) (cons 1 (cons 2 '())) (cons a b)) '(1 . 2) 0.1]
+    [(let-destruct ((a) b) '((1) 2) (cons a b)) '(1 . 2) 0.1]
+    [(let-destruct (a b) '((1) ((2))) (cons a b)) '((1) . ((2))) 0.1]
+    [(let-destruct ((a) ((b)) (((c)))) '((1) ((2)) (((3)))) (list a b c)) '(1 2 3) 0.1]
+    [(let-destruct ((a b) c) '((1 2) 3) (list a b c)) '(1 2 3) 0.1]
+    [(let-destruct ((a b) c) '((1 2) 3) (list a b c) 'body2) 'body2 0.1]
+    [(let ((myval '((1 2) (3 4) (5 (6)))))
+       (let-destruct ((a b) c (d (e))) myval (list a b c d e))) '(1 2 (3 4) 5 6) 0.1]
+  )
 
-              (define-method point point.getx
-                () x)
-
-              (define-method point point.manhat_dist (ox oy)
-                (+ (abs (- x ox)) (abs (- y oy))))
-              
-              (list (point.getx '(33 44))
-                    (point.manhat_dist '(1 2) 0 -1))) '(33 4) 1]) 
               
 
   ))
