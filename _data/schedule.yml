@@ -234,8 +234,8 @@
 18:
   reading: EoPL 3.1, 3.2
   topics:
+    - A bit more E&C practice
     - Environment ADT implementation
-    - interpreter starting code overview
   materials: EnvironmentsAndClosures3
   other:
   videos:
@@ -263,6 +263,13 @@
     - expansion variables
   materials: Macros2
 22:
+  reading:
+  topics:
+    - Macros 3
+  materials:
+  other:
+  videos:
+23:
   reading: 
   topics:
     - Memoization
@@ -272,13 +279,6 @@
   videos:
     - name: Zoom 22
       id: 67ab0a50-2608-4a33-b716-acb501809eb1
-23:
-  reading:
-  topics:
-    - E & C EXAM
-  materials:
-  other:
-  videos:
 24:
   reading:
     - EoPL 3.3, 3.4
