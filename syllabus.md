@@ -87,13 +87,13 @@ students to cite any and all sources of help received in completing
 coursework. This practice not only fosters a culture of honesty and
 transparency but also prevents misunderstandings that might otherwise
 escalate to formal proceedings. Students should also be aware of what
-is appropriate help on homework assignments – [see policy here](https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - What Constitutes Misconduct.docx?d=w72d3dc4b233d4df68e10736359a06c80&csf=1&web=1&e=QWvFcM). To
+is appropriate help on homework assignments – <a href="https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - What Constitutes Misconduct.docx?d=w72d3dc4b233d4df68e10736359a06c80&csf=1&web=1&e=QWvFcM">see policy here</a> ). To
 ensure fairness and responsibility, any instances of suspected
 misconduct will be handled through the CSSE Integrity Committee. 
 
 If a case of suspected misconduct arises, it will be submitted to the
-CSSE Integrity Committee for review (see [policies and procedures here](https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - Procedures.docx?d=wf4c70babf3ac434ba29d5518dca9f877&csf=1&web=1&e=1efwlT)
-and [possible penalties here](https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - Penalties %26 Evidence.docx?d=w916e293ca31a4493bdbdd6b78ed2d3dd&csf=1&web=1&e=wCWF2K)). The process includes an initial review
+CSSE Integrity Committee for review (see <a href="https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - Procedures.docx?d=wf4c70babf3ac434ba29d5518dca9f877&csf=1&web=1&e=1efwlT">policies and procedures here</a>
+and <a href="https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - Penalties %26 Evidence.docx?d=w916e293ca31a4493bdbdd6b78ed2d3dd&csf=1&web=1&e=wCWF2K">possible penalties here</a>). The process includes an initial review
 of the evidence by the committee, a time for students to explain or
 admit to potential misconduct, and potentially a hearing to examine
 the circumstances and evidence. Students are encouraged to continue
