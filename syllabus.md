@@ -40,10 +40,6 @@ Now free through the Rose-Hulman library.  This is the main
 textbook. It will be abbreviated as *EoPL*.  This book is terse, so
 you will have to read it carefully.
 
-# Development Environment
-
-We will be using Chez Scheme (note that *chez* is a French word that rhymes with *way*).  Details of the environment setup are in Assignment 0.
-
 # Grades
 
 | Grade Component                                            | Percentage   |
@@ -86,38 +82,54 @@ if you are having problems!
 
 # Academic Honesty
 
-You are encouraged to discuss the problems and general approaches to
-solving them with other students.  But when it comes to writing code,
-it should be your own work (or the work of your pair if it is a
-pair-programming assignment).  Especially if you are having trouble understanding
-how some pre-defined Scheme procedure  works or pinning down a run-time or logic
-error in your program, by all means talk to someone about it.
+It is critical to maintain academic integrity. It is essential for all
+students to cite any and all sources of help received in completing
+coursework. This practice not only fosters a culture of honesty and
+transparency but also prevents misunderstandings that might otherwise
+escalate to formal proceedings. Students should also be aware of what
+is appropriate help on homework assignments – [see policy here](https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - What Constitutes Misconduct.docx?d=w72d3dc4b233d4df68e10736359a06c80&csf=1&web=1&e=QWvFcM). To
+ensure fairness and responsibility, any instances of suspected
+misconduct will be handled through the CSSE Integrity Committee. 
 
-If you use someone else's ideas (including code from a previous term
-PLC course) in your solution (or any other work that you do anywhere),
-you should:
+If a case of suspected misconduct arises, it will be submitted to the
+CSSE Integrity Committee for review (see [policies and procedures here](https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - Procedures.docx?d=wf4c70babf3ac434ba29d5518dca9f877&csf=1&web=1&e=1efwlT)
+and [possible penalties here](https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - Penalties %26 Evidence.docx?d=w916e293ca31a4493bdbdd6b78ed2d3dd&csf=1&web=1&e=wCWF2K)). The process includes an initial review
+of the evidence by the committee, a time for students to explain or
+admit to potential misconduct, and potentially a hearing to examine
+the circumstances and evidence. Students are encouraged to continue
+their studies and engage with the course material and instructor
+normally throughout the investigation.
 
-- give credit to that person in a comment at the beginning of your file
-- be sure that you understand it as well as if it were your own.
+Beyond the policy of this course, the Student Handbook and
+Rose-Hulman’s Academic Rules and Procedures describe penalties and
+processes invoked as a consequence if academic misconduct (such as
+cheating, plagiarizing, or interfering with the academic progress of
+other students) takes place.  It is the responsibility of each student
+to know and follow Rose-Hulman’s rules about academic integrity.
 
-Beginning the process of producing your solution with an electronic
-copy of work done by other students is never appropriate.
 
-<strong> On exams</strong> All work on exams is to be individual.  Of course you may not copy work done by other people who are taking or who have taken that exam.   
 
-<b>Penalties:</b>
+# Instutute Policies
 
-The minimum penalty for a unintentional first homework offense is
-twice the value of the assignment.  Thus if you cheat on an assignment
-that is worth a total of 60 points, your score for that assignment
-will be -60.
+## Students with Accessibility Needs:
 
-If cheating is intentional, the penalty is an immediate F in the
-course - even for one assignment, even one time.
+Rose-Hulman is committed to working with students who have special needs or disabilities.  Visit the Accessibility Services website for more information.  Requests for academic accommodations must be documented with and approved by the Accessibility Services office before they can be implemented in this course.
 
-All academic dishonesty will also be reported to the dean of students
-through the normal Rose-Hulman process which may level further
-penalties.
+## Student Counseling
+
+The Student Counseling Center helps students identify barriers to success, build personal awareness, and develop life skills.  Counseling appointments are free and confidential.
+
+## Diversity Statement
+
+Rose-Hulman Institute of Technology is committed to being an inclusive community in which the multiplicity of values, beliefs, intellectual viewpoints, and cultural perspectives enrich learning and inform scholarship.
+Online Access Requirements:
+
+Rose-Hulman welcomes students from around the world, and encourages faculty, staff and students to travel around the world.  However, geopolitical conditions and compliance with export law and regulations prevent us from delivering certain kinds of educational experiences and/or using certain kinds of Institute technologies in some locations.  For example, students in locations with limited access to the internet in general, or with restricted access to portions of the internet, or which are embargoed by the U.S. Directorate of Defense Trade, may not be able to successfully complete Rose-Hulman courses.
+
+## Emergency Information
+
+To receive email or text messages regarding emergency situations that may impact campus and, possibly, the delivery of classes, register for RAVE alerts and/or follow @Rose-HulmanAlert on Twitter.  Any announcements about the Institute’s ability to offer
+
 
 # Course Outcomes
 
