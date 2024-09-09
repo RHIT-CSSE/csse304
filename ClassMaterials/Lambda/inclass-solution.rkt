@@ -47,7 +47,7 @@
   (lambda (lon)
     (cond [(null? lon) lon]
           [(null? (cdr lon)) lon]
-          [(cons (+ (car lon) (cadr lon)) (sum-pairs (cddr lon)))])))
+          [else (cons (+ (car lon) (cadr lon)) (sum-pairs (cddr lon)))])))
 
 
 ; (compress lst) takes a list and returns a list where repeated equal values
