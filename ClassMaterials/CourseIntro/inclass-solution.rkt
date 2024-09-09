@@ -1,5 +1,6 @@
 #lang racket
 
+(require racket/trace)
 ; num-positive - returns the number of positive elements in a list
 ; implement this in a tail recursive way, similar to fact2
 ;
@@ -24,9 +25,11 @@
 
 (define second-largest
   (lambda (lon)
-    (if (> (first lon) (second lon))
-        (second-largest-recur (first lon) (second lon) (cddr lon))
-        (second-largest-recur (second lon) (first lon) (cddr lon)))))
+    (second-largest-recur (max (first lon)
+                               (second lon))
+                          (min (first lon)
+                               (second lon))
+                          (cddr lon))))
 
 (define second-largest-recur
   (lambda (biggest big lon)
@@ -34,3 +37,5 @@
           [(> (car lon) biggest) (second-largest-recur (car lon) biggest (cdr lon))]
           [(> (car lon) big) (second-largest-recur biggest (car lon) (cdr lon))]
           [else (second-largest-recur biggest big (cdr lon))])))
+
+(trace second-largest-recur)
