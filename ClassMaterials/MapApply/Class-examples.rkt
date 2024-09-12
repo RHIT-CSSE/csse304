@@ -43,7 +43,6 @@
 (sum-pairs '((1 2) (3 4))) ;; should yield (3 7)
 
 ;; take a list of numbers, and halve all the even ones
-;; note that in scheme the % operator is called modulo
 (define halve-evens
   (lambda (pairlist)
     '() ;; NYI
@@ -77,8 +76,10 @@
 
 ;; takes a list of numbers, and removes all members that are evenly 
 ;; divisible by a given value
+;; note that in scheme the % operator is called modulo
+
 (define remove-divisible-by 
-  (lambda (num list)
+  (lambda (num lst)
     '() ;; NYI
   ))
 
