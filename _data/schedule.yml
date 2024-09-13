@@ -89,12 +89,12 @@
   reading:
     - EoPL Section 1.1
   topics:
-    - box and pointer diagrams
+    - Procedures that produce procedures
     - list mutation
-  materials: OddsAndEnds
+  materials: ProcedureProcedures
   other:
   videos:
-    - name: Zoom 6
+    - name: Zoom 6 (kinda outdated, unfortunately)
       id: cbca6330-a112-4eb6-8693-ac8a014796e7
     - name: vectors
       id: 6f0fa604-43a5-4e0e-a717-ac32014c3e13
