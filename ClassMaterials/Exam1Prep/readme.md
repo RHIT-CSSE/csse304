@@ -1,6 +1,6 @@
 # Exam 1 Guide
 
-Updated Fall 2022-2023
+Updated Fall 2024-2025
 
 # Exam Structure
 
@@ -9,8 +9,6 @@ Updated Fall 2022-2023
 * Paper part which you turn in & then start computer part
 
 * Music (via headphones) and quiet drinks/snacks encouraged
-
-* I require masks
 
 # Practice
 
@@ -39,8 +37,6 @@ PreBuffalo exams, I think 202020 is reasonably similar to my approach.
   case.
 
 # Paper part topics
-
-* box and pointer diagrams
 
 * functions that return functions
 
