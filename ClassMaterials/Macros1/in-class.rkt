@@ -88,7 +88,7 @@
 (define-syntax (mywhen stx)
   (syntax-case stx ()
     [(mywhen test thenexps ...)
-     #'(if test (begin thenexps ...) (void))]))
+     #'(quote nyi)]))
 
 ;; EXECISE TOPAIRS
 ;;
