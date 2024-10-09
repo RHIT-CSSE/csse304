@@ -34,7 +34,7 @@
     [(eval-one-exp '(if 2 (if #f 3 4) 6)) 4 1] ; (run-test if 2)
     [(eval-one-exp '(if #f 5 6)) 6 1] ; (run-test if 3)
     [(eval-one-exp '(if 1 2 3)) 2 1] ; (run-test if 4)
-    [(let ((x (if #f 2 3))) (+ x 7)) 10 1] ; (run-test if 5)
+    [(eval-one-exp '(let ((x (if #f 2 3))) (+ x 7))) 10 1] ; (run-test if 5)
   )
 
   (primitive-procedures equal? ; (run-test primitive-procedures)
