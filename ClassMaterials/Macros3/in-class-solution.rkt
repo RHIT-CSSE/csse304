@@ -2,51 +2,6 @@
 
 (require racket/trace)
 
-;; IN CLASS EXAMPLE myand
-
-(define-syntax (myand stx)
-  (syntax-case stx ()
-    [(myand exp) #'exp]
-    [(myand exp exps ...)
-     #'(quote nyi)]))
-
-;; EXERCISE MYLET*
-;; Build an your own implementation of mylet*.
-;; If you want you can build it in terms of built in let.
-;; For slightly more challenge you can build in terms
-;; of lambda.
-
-(define-syntax (mylet* stx)
-  #'(quote nyi))
-
-;; Usage
-;; (mylet* ((a 2) (b (+ 1 a))) (+ a b)) yields 5
-
-;; IN CLASS EXAMPLE REPEAT
-;; 
-;; (repeat 3 (display "hello")) prints hellohellohello
-;;
-;; Note that this implementation is buggy
-
-(define-syntax (repeat stx)
-  (syntax-case stx ()
-    [(_ numExp repeatExp ) #'(let repeatme ((count 0))
-                               (if (= count numExp)
-                                   (void)
-                                   (begin
-                                     repeatExp
-                                     (repeatme (add1 count)))))]))
-
-;; IN CLASS EXERCISE REPEAT
-;; Make a second form of repeat that has variable parameter that you can
-;; use within the body
-;;
-;;  (repeat i 3 (display i)) prints 123
-
-(define-syntax (repeat2 stx)
-  #'(quote nyi))
-
-
 ;; IN CLASS EXAMPLE NUMED-SYMS
 
 (define-syntax numed-syms
@@ -101,7 +56,11 @@
 
 (define-syntax if-it
   (lambda (stx)
-    #'(quote nyi)))
+    (syntax-case stx ()
+      [(if-it test then else)
+       (with-syntax ([local-it (datum->syntax stx 'it)])
+         #'(let ((local-it test))
+             (if local-it then else)))])))
 
 (if-it 3 it 4) ; returns 3
 (if-it #f 5 it) ; returns #f
@@ -126,11 +85,12 @@
 
 ;; IN-CLASS-EXAMPLE get-keys
 
-;; we'll live code this one.
-;; this starting code works but does not use macros
+;; we'll live code this one
+
+(begin-for-syntax
 
 (define key-list '())
-(define get-key
+(define get-key-internal
   (lambda (name)
     (let ((pos (member name key-list)))
       (if pos
@@ -139,28 +99,41 @@
             (set! key-list (cons name key-list))
             (length key-list))))))
 
+)
 
-(define example-list (list (get-key 'a) (get-key 'b) (get-key 'c)))
+(define-syntax get-key
+  (lambda (stx)
+    (syntax-case stx ()
+      [(get-key sym)
+       (datum->syntax stx (get-key-internal (syntax->datum #'sym)))])))
+
+
+(define example-list (list (get-key a) (get-key b) (get-key c)))
 
 (define has-null-keys?
   (lambda (lst)
     (if (null? lst)
         #f
-        (or (= (get-key 'null) (car lst))
+        (or (= (get-key null) (car lst))
             (has-null-keys? (cdr lst))))))
 
-; (trace get-key)
-(has-null-keys? example-list)
 
 (begin-for-syntax
 
   (define LOG-LEVEL 1) ; this needs to be here and not a regular define
-  
+  (define should-log?
+    (lambda (level)
+      (<= level LOG-LEVEL)))
   )
 
 (define-syntax log
   (lambda (stx)
-    #'(quote nyi)))
+    (let ((level (cadr (syntax->datum stx))))
+      (if (should-log? level)
+          (syntax-case stx ()
+            [(log level params ...)
+             #'(printf params ...)])
+          #'(void)))))
 
 (define logging-func
   (lambda (lst)

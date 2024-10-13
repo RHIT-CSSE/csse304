@@ -2,51 +2,6 @@
 
 (require racket/trace)
 
-;; IN CLASS EXAMPLE myand
-
-(define-syntax (myand stx)
-  (syntax-case stx ()
-    [(myand exp) #'exp]
-    [(myand exp exps ...)
-     #'(quote nyi)]))
-
-;; EXERCISE MYLET*
-;; Build an your own implementation of mylet*.
-;; If you want you can build it in terms of built in let.
-;; For slightly more challenge you can build in terms
-;; of lambda.
-
-(define-syntax (mylet* stx)
-  #'(quote nyi))
-
-;; Usage
-;; (mylet* ((a 2) (b (+ 1 a))) (+ a b)) yields 5
-
-;; IN CLASS EXAMPLE REPEAT
-;; 
-;; (repeat 3 (display "hello")) prints hellohellohello
-;;
-;; Note that this implementation is buggy
-
-(define-syntax (repeat stx)
-  (syntax-case stx ()
-    [(_ numExp repeatExp ) #'(let repeatme ((count 0))
-                               (if (= count numExp)
-                                   (void)
-                                   (begin
-                                     repeatExp
-                                     (repeatme (add1 count)))))]))
-
-;; IN CLASS EXERCISE REPEAT
-;; Make a second form of repeat that has variable parameter that you can
-;; use within the body
-;;
-;;  (repeat i 3 (display i)) prints 123
-
-(define-syntax (repeat2 stx)
-  #'(quote nyi))
-
-
 ;; IN CLASS EXAMPLE NUMED-SYMS
 
 (define-syntax numed-syms
