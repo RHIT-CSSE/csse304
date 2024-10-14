@@ -2,6 +2,60 @@
 
 (require racket/trace)
 
+;; IN CLASS EXAMPLE myand
+
+(define-syntax (myand stx)
+  (syntax-case stx ()
+    [(myand exp) #'exp]
+    [(myand exp exps ...)
+     #'(if exp (myand exps ... ) #f)]))
+
+;; EXERCISE MYLET*
+;; Build an your own implementation of mylet*.
+;; If you want you can build it in terms of built in let.
+;; For slightly more challenge you can build in terms
+;; of lambda.
+
+(define-syntax (mylet* stx)
+  (syntax-case stx ()
+    [(mylet* (mapping) bodies ...) #'(let (mapping) bodies ...)]
+    [(mylet* (mapping more-mappings ...) bodies ...)
+     #'(let (mapping) (mylet* (more-mappings ...) bodies ...))]))
+
+;; Usage
+;; (mylet* ((a 2) (b (+ 1 a))) (+ a b)) yields 5
+
+
+;; IN CLASS EXERCISE REPEAT
+;; Make a second form of repeat that has variable parameter that you can
+;; use within the body
+;;
+;;  (repeat i 3 (display i)) prints 123
+
+(define-syntax (repeat2 stx)
+  (syntax-case stx ()
+    [(_ numExp repeatExp ) #'(repeat2 count numExp repeatExp)]
+    [(_ var numExp repeatExp ) #'
+                               (let ((max numExp))
+                                 (let repeatme ((var 1))
+                                   (if (> var max)
+                                       (void)
+                                       (begin
+                                         repeatExp
+                                         (repeatme (add1 var))))))]))
+
+(define-syntax (listlet stx)
+  (syntax-case stx ()
+    [(listlet (a) exp body ...)
+     #'(let ((a (car exp)))
+         body ...)]
+    [(listlet (var vars ...) exp body ...)
+     #'(let* ((lst exp)
+              (var (car lst)))
+         (listlet (vars ...) (cdr lst)
+                  body ...))]))
+
+
 ;; IN CLASS EXAMPLE NUMED-SYMS
 
 (define-syntax numed-syms

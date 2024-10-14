@@ -47,6 +47,28 @@
   #'(quote nyi))
 
 
+;; IN CLASS EXERCISE LIST LET
+;; (listlet (a b c) mylist
+       ;; in the body a is mapped to (car mylist)
+       ;; b is mapped to (cadr mylist)
+       ;; c is mapped to (caddr mylist))
+
+(define-syntax (listlet stx)
+  (syntax-case stx ()
+    [(listlet (a) exp body ...)
+     #'(quote nyi)]
+    [(listlet (var vars ...) exp body ...)
+     #'(quote nyi)]))
+
+ (let ((mylist (list 1 2 3 4)))
+    (listlet (a b c d) mylist (list (+ a b) (+ c d)))) 
+; should yield '(3 7)
+
+ (listlet (a b c) (list (display "x") (display "y") (display "z")) (cons a (cons b c)))
+; should print xyz and return '(#<void> #<void> . #<void>)
+
+
+
 ;; IN CLASS EXAMPLE NUMED-SYMS
 
 (define-syntax numed-syms
