@@ -76,13 +76,7 @@
 ; index 1 etc.  
 (define compact
   (lambda (reachable)
-    (let move-entry ((entry 0))
-      (if (< entry (length reachable))
-          (vector-set! memory entry (vector-ref memory (list-ref reachable entry)))
-          (vector-set! memory entry '()))
-      (if (= 5 entry)
-          (void)
-          (move-entry (add1 entry))))))
+    'nyi))
 
 ; garbage collect is just reachable + compact + rewrite
 ;
