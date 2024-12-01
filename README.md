@@ -8,7 +8,6 @@ you doing this - it's academic misconduct.
 
 # Useful course links
 
-* [Course Schedule](https://rhit-csse.github.io/csse304/schedule.html) course content, due dates, exam dates
 * [Syllabus](syllabus.md) - course policies including lateness, grade calculations
 * Most assignments are submitted via the "Gradescope" link on Moodle
 * [Assignment 0](Homework/Assignment_0) - details on how to configure your computer with scheme and an editor
