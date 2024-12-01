@@ -49,8 +49,7 @@ you will have to read it carefully.
 | Exam 2                                                     | 20%          |
 | Final                                                      | 25%          |
 
-Grade cutoffs start at the usual ones (e.g. 90+ is an A, etc.)  On
-some occasions I revise them downward (e.g. 88+ is an A) after reviewing all grades at the end of the term.  I don't curve individual assignments and I don't decide on the cutoffs until the very end.  Note that 65 is my usual cutoff for an F.
+Grade cutoffs start at the usual ones (e.g. 90+ is an A, etc.)  
 
 I will sometimes adjust grades upward or downward due to specific circumstances - if you have a special situation contact me.
 
