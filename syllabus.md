@@ -1,4 +1,4 @@
-# Compsci 304 Syllabus
+# CSSE 304 Syllabus
 
 # Course Topics
 
