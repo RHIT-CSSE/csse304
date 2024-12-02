@@ -19,9 +19,11 @@ looking at several programming language features "from the outside"
 (only a user's perspective) We will instead get an inside
 view by implementing many of the features ourselves, *via* a
 series of interpreters (the languages will mostly be subsets of
-Scheme).  We will use the Scheme programming language to provide a
+Racket).  We will use the Racket programming language to provide a
 laboratory environment in which to write the interpreters and to
 illustrate various programming paradigms and concepts.
+
+Learning in this course is not a spectator sport. You must engage with all of the class materials and during class. You should start working on the homework assignments early. 
 
 # Texts (all are online and free)
 
@@ -49,7 +51,7 @@ you will have to read it carefully.
 | Exam 2                                                     | 20%          |
 | Final                                                      | 25%          |
 
-Grade cutoffs start at the usual ones (e.g. 90+ is an A, etc.)  
+Grade cutoffs start at the usual ones (e.g. 90+ is an A, etc.)  You must have a passing average on the exams to pass the course.
 
 I will sometimes adjust grades upward or downward due to specific circumstances - if you have a special situation contact me.
 
@@ -86,9 +88,7 @@ students to cite any and all sources of help received in completing
 coursework. This practice not only fosters a culture of honesty and
 transparency but also prevents misunderstandings that might otherwise
 escalate to formal proceedings. Students should also be aware of what
-is appropriate help on homework assignments – <a href="https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - What Constitutes Misconduct.docx?d=w72d3dc4b233d4df68e10736359a06c80&csf=1&web=1&e=QWvFcM">see policy here</a> ). To
-ensure fairness and responsibility, any instances of suspected
-misconduct will be handled through the CSSE Integrity Committee. 
+is appropriate help on homework assignments – <a href="https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - What Constitutes Misconduct.docx?d=w72d3dc4b233d4df68e10736359a06c80&csf=1&web=1&e=QWvFcM">see policy here</a> ). In general, academic misconduct results in negative points on an assignment and an F in the course on exams. All the work you turn in must be your own. You may use appropriate assistance from the instructor and the TAs.
 
 If a case of suspected misconduct arises, it will be submitted to the
 CSSE Integrity Committee for review (see <a href="https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - Procedures.docx?d=wf4c70babf3ac434ba29d5518dca9f877&csf=1&web=1&e=1efwlT">policies and procedures here</a>
