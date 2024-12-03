@@ -29,12 +29,12 @@ Learning in this course is not a spectator sport. You must engage with all of th
 
 Texts provide some good background but readings are optional.
 
-- [Excerpts from the 1st Edition of EoPL](https://moodle.rose-hulman.edu/pluginfile.php/3547225/mod_resource/content/0/EoPL-1.pdf). This will 
-be abbreviated in my documents as *EoPL-1*.  The first edition did not assume the reader knew scheme, so this excerpt is an alternate partial introduction to the rest of EoPL.
+- [Excerpts from the 1st Edition of EoPL](https://moodle.rose-hulman.edu/mod/resource/view.php?id=4670066). This will 
+be abbreviated in my documents as *EoPL-1*.  The first edition did not assume the reader knows Scheme (or Racket,) so this excerpt is an alternate partial introduction to the rest of EoPL.
 
 - [The Scheme Programming Language](http://www.scheme.com/tspl4/) 4th edition by R. Kent
 Dybvig. This book will be abbreviated as *TSPL*; it serves
-primarily as an introduction to and reference manual for Scheme.
+primarily as an introduction to and reference manual for Scheme and to certain degree to Racket.
 
 - [Essentials of Programming
 Languages](https://ebookcentral.proquest.com/lib/rosehulman-ebooks/detail.action?docID=3338861)
