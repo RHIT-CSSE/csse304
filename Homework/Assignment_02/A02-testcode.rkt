@@ -28,12 +28,18 @@
            (printf "NOT QUINE~nIn : ~s~nOut: ~s" str result)
            #f)))))
 
+(define is-a-set?
+  (lambda (lst)
+    (and (list? lst)
+       (= (length (remove-duplicates lst)) (length lst)))))
 
-(define set-equals?  ; are these list-of-symbols equal when
-  (lambda (s1 s2)    ; treated as sets?
-    (if (or (not (list? s1)) (not (list? s2)))
-        #f
-        (not (not (and (is-a-subset? s1 s2) (is-a-subset? s2 s1)))))))
+(define set-equals? 
+  (lambda (s1 s2)
+    (if (not (is-a-set? s1))
+      #f
+      (and (list? s2)
+           (is-a-subset? s1 s2)
+           (is-a-subset? s2 s1)))))
 
 (define test (make-test ; (r)
 
