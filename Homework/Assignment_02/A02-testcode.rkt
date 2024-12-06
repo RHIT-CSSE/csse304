@@ -30,15 +30,16 @@
 
 (define is-a-set?
   (lambda (lst)
-  (and (list? lst)
+    (and (list? lst)
        (= (length (remove-duplicates lst)) (length lst)))))
 
-(define (set-equals? s1 s2)
-  (if (not (is-a-set? s1))
+(define set-equals? 
+  (lambda (s1 s2)
+    (if (not (is-a-set? s1))
       #f
       (and (list? s2)
            (is-a-subset? s1 s2)
-           (is-a-subset? s2 s1))))
+           (is-a-subset? s2 s1)))))
 
 (define test (make-test ; (r)
 
