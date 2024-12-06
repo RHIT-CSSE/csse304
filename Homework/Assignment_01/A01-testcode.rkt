@@ -37,6 +37,7 @@
     [(interval-intersects? '(1 14) '(2 5)) #t 1] ; (run-test interval-intersects? 6)
     [(interval-intersects? '(1 3) '(12 17)) #f 1] ; (run-test interval-intersects? 7)
     [(interval-intersects? '(12 17) '(1 3)) #f 1] ; (run-test interval-intersects? 8)
+    [(interval-intersects? '(5 5) '(5 5)) #t 1] ; (run-test interval-intersects? 9)
   )
 
   (interval-union equal?-or-swapped ; (run-test interval-union)
