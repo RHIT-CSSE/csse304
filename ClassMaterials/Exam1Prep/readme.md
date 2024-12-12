@@ -1,6 +1,6 @@
 # Exam 1 Guide
 
-Updated Fall 2024-2025
+Updated Winter 2024-2025
 
 # Exam Structure
 
