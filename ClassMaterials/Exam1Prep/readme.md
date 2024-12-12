@@ -12,7 +12,8 @@ Updated Fall 2024-2025
 
 # Practice
 
-The best way to prepare for Exam1 is to practice under similar exam
+The best way to prepare for Exam1 is to review the assignments and to 
+practice under similar exam
 conditions.  The SampleExams directory at the root of the repo has
 previous exams.
 
@@ -36,26 +37,7 @@ PreBuffalo exams, I think 202020 is reasonably similar to my approach.
   usually award credit for solutions that attempt to "game" the test
   case.
 
-# Paper part topics
+# Topics
 
-* functions that return functions
-
-* map, filter, apply
-
-* using lambdas to store data
-
-* derivation tree
-
-* free and bound variables
-
-# Computer part topics
-
-* Recursive functions both basic and advanced.  Advanced usually requires helper functions of some sort.
-
-* Building a "data structure" with lambdas
-
-* Dealing with a language and "following the grammar"
-
-* Function transforming functions
-
+The exam will cover the materials from days 1 - 8 and the assignments 0 - 6.
 
