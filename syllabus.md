@@ -129,6 +129,9 @@ Rose-Hulman welcomes students from around the world, and encourages faculty, sta
 
 To receive email or text messages regarding emergency situations that may impact campus and, possibly, the delivery of classes, register for RAVE alerts and/or follow @Rose-HulmanAlert on Twitter.  Any announcements about the Institute’s ability to offer
 
+## Attendance Policy
+
+The <a href="https://www.rose-hulman.edu/campus-life/student-services/registrar/rules-and-procedures/attendance.html">Rose-Hulman attendance policy</a> is in effect for this course.
 
 # Course Outcomes
 
