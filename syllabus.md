@@ -46,7 +46,7 @@ you will have to read it carefully.
 
 | Grade Component                                            | Percentage   |
 | :---------------------------------------                   | :----------- |
-| Homework, quizzes, in-class exercises, interperter project | 40%          |
+| Homework, quizzes, in-class exercises, interpreter project | 40%          |
 | Exam 1                                                     | 15%          |
 | Exam 2                                                     | 20%          |
 | Final                                                      | 25%          |
