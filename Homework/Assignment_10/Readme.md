@@ -27,7 +27,7 @@ The order of the symbols in the return value does not matter.
     > (bound-vars '((lambda (x) (x y)) (z (lambda (y) (z z)))))
     (x)
 
-#4 (30 points).  lexical-address.
+#2 (30 points).  lexical-address.
 
 Lets further expand our language, getting it kinda close to regular scheme
 
@@ -101,7 +101,7 @@ Examples:
             (c (: 0 0)))
         ((: free +) (: 0 0) (: 1 1) (: 0 1))))
 
-#4 (25 points). un-lexical-address.  Its input will be in the form of the output from lexical-address, as described in the previous problem. In the test-cases, we will evaluate 
+#3 (25 points). un-lexical-address.  Its input will be in the form of the output from lexical-address, as described in the previous problem. In the test-cases, we will evaluate 
    (un-lexical-address (lexical-address <some-expression>)) 
 and test whether this returns something that is equal? to the original expression.  You cannot get any credit for this problem unless you also get a significant number of the points for lexical-address.  
 
