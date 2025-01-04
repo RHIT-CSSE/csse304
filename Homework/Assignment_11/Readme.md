@@ -1,23 +1,10 @@
 ## Assignment 11
 
-**You must work with your Interpreter project partner for A11.  One partner should submit the assignment to the Gradescope server. Make sure to add your partner in Gradescope as you submit.**
+** The initial parts of the Interpreter project are individual assignments. Please work on those portions by your self. **
 
 No mutation is allowed in your code.
 
-## Warm-up - bintree-add (10 points)
-
-This is just a little problem to remind you about define-datatype.
-
-The given code includes a datatype for bintree.  Write a function
-bintree-add that takes a bintree and a number and returns a new
-bintree where all the leaves have that number added.
-
-So adding 3 to bintree (interior-node (leaf-node 0) (interior-node (leaf-node 10) (leaf-node 100)))
-produces (interior-node (leaf-node 3) (interior-node (leaf-node 13) (leaf-node 103)))
-
 ## Parsing Scheme (85 Points)
-
-**HW11 is a with-your-team assignment.  You should not begin it until teams are established.**
 
 The given code has a bare-bones parser for the lambda calculus plus numbers.  Your goal will be to expand parse/unparse to accommodante something much closer to a full subset of scheme.  You’ll want to do that step by step, testing each individual construct by hand.  I have a suggested order here.
 
