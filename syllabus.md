@@ -108,7 +108,7 @@ to know and follow Rose-Hulman’s rules about academic integrity.
 
 
 
-# Instutute Policies
+# Institute Policies
 
 ## Students with Accessibility Needs:
 
