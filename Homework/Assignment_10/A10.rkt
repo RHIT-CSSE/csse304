@@ -1,6 +1,6 @@
 #lang racket
 
-(provide free-vars bound-vars lexical-address un-lexical-address convert-ifs)
+(provide free-vars bound-vars lexical-address un-lexical-address)
 
 (define free-vars
   (lambda (a)
@@ -8,10 +8,6 @@
 
 (define bound-vars
   (lambda (a)
-    (nyi)))
-
-(define convert-ifs
-  (lambda (exp)
     (nyi)))
 
 (define lexical-address
