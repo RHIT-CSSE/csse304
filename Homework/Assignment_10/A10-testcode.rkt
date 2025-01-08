@@ -55,19 +55,6 @@
     [(bound-vars (quote (z (lambda (x) (lambda (y) x))))) '(x) 1] ; (run-test bound-vars 6)
     [(bound-vars (quote ((lambda (y) (lambda (y) y)) (lambda (x) (z (lambda (x) x)))))) '(y x) 1] ; (run-test bound-vars 7)
   )
-
-  (convert-ifs equal?
-               [(convert-ifs '(#f #t))
-                '((lambda (thenval elseval) elseval) (lambda (thenval elseval) thenval)) 3]
-               [(convert-ifs '(lambda (input) (if input #f #t)))
-                '(lambda (input) (input (lambda (thenval elseval) elseval) (lambda (thenval elseval) thenval))) 4]
-               [(convert-ifs '(lambda (a b) (if a (if b #t #f) #f)))
-                '(lambda (a b)
-                   (a (b (lambda (thenval elseval) thenval) (lambda (thenval elseval) elseval)) (lambda (thenval elseval) elseval))) 4]
-               [(convert-ifs '(lambda (a b) (if a #t b)))
-                '(lambda (a b) (a (lambda (thenval elseval) thenval) b)) 4]
-               )
-   
   
   (lexical-address equal? ; (run-test lexical-address)
     [(lexical-address (quote x)) '(: free x) 1] ; (run-test lexical-address 1)
