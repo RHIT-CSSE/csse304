@@ -10,10 +10,6 @@
   (lambda (a)
     (nyi)))
 
-(define convert-ifs
-  (lambda (exp)
-    (nyi)))
-
 (define lexical-address
   (lambda (a)
     (nyi)))
