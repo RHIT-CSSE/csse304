@@ -1,33 +1,7 @@
 #lang racket
 
 (require "../chez-init.rkt")
-(provide bintree-to-list bintree-add leaf-node interior-node parse-exp unparse-exp)
-
-
-(define-datatype bintree bintree?
-  (leaf-node
-   (datum number?))
-  (interior-node
-   (key symbol?)
-   (left-tree bintree?)
-   (right-tree bintree?)))
-
-; I've provide this one as a sample to you.
-; It's used by the testcases though  so don't mess with it.
-(define bintree-to-list
-  (lambda (bt)
-    (cases bintree bt
-      [interior-node (value left right)
-                (list value
-                      (bintree-to-list left)
-                      (bintree-to-list right))]
-      [leaf-node (datum)
-                 datum])))
-                
-; Here's the one you need to solve
-(define bintree-add
-  (lambda (bt num)
-    (nyi)))
+(provide parse-exp unparse-exp)
 
 ; This is a parser for simple Scheme expressions, 
 ; such as those in EOPL, 3.1 thru 3.3.
