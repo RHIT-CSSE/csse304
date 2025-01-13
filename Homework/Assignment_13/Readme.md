@@ -4,30 +4,42 @@
 
 ## Programming Problem (120 points)
 
-This is perhaps the most important assignment of the term. The challenge is to understand the set-up of an interpreter, how all the components interact to read, parse, evaluate and return a result.
+This is perhaps the most important assignment of the term. The challenge is to understand the set-up of an interpreter, 
+how all the components interact to read, parse, evaluate and return a result.
 
 Feel free to start with the code that we studied in class.
 
 This is an individual assignment.
 
-I suggest that you thoroughly test each addition before adding the next one. Augmenting unparse whenever you augment parse is a good idea, to help you with debugging.
+I suggest that you thoroughly test each addition before adding the next one. Augmenting unparse whenever you augment parse 
+ is a good idea, to help you with debugging.
 
 **Specification**:  Please implement the following functionality to your interpreter, i.e. parser and interpreter:
 
 - Ensure you use the datatyped ribcage implementation that uses lists of symbols and vectors of values.
-- Add the following literals to your interpreter:
+- Add the following **literals** to your interpreter:
     - numbers
     - Boolean constants #t, and #f 
     - quoted values, such as '( ) ,  '(a b c) , '(a b . (c)) , '#(2 5 4)
     - string literals, such as "abc" You do not need to add any string-manipulation procedures.
     - vectors You do not need to add any vector-manipulation procedures.
-    - if  two-armed only: i.e., (if test-exp then-exp else-exp).  You’ll add one-armed if (i.e. when) later.  Most of the code is in the textbook, but you will have to adapt it to recognize and use Boolean and other literal values–– in addition to the numeric values.  In the book's interpreted language, the authors represent true and false by numbers. In Scheme (and thus in your interpreter), any non-false value should be treated as true.  The number 0 is a true value in Scheme (and in your interpreted language), but 0 is the false value in the textbook's language). 	
-
-- Any primitive procedures that are used to evaluate the A13 test cases, including  +, -, *, /, add1, sub1, zero?,  not, = and < (and the other numeric comparison operators), and also cons, car, cdr, list, null?, assq, eq?, equal?, atom?, length,  list->vector, list?, pair?,  procedure?, vector->list, vector, make-vector, vector-ref, vector?, number?, symbol?, vector-set!,  display , newline to your interpreter.   Add the c**r and c***r procedures (where each "*" stands for an "a" or "d"). Note: You may use built-in Racket procedures in your implementation of most of the primitive procedures, as I do in the starting code that is provided for you.
--  Add lambda expressions of the form (lambda (var ...) body1 body2 ...). See the description of rep (short for "read-eval-print") below for a description of what to print if a closure or primitive procedure is part of the final value of an expression entered interactively in the interpreter.  Section 3.3 of EoPL may be helpful.
-- Add begin to the parser and interpreter. 
-- rep and eval-one-exp  (two alternative interfaces to your interpreter, described below)
-
+- Add two-armed **if** expressions, i.e., (if test-exp then-exp else-exp).  You’ll add one-armed if (i.e. when) later.  
+      Most of the 
+      code is in the textbook, but you will have to adapt it to recognize and use Boolean and other literal values–– in 
+      addition to the numeric values.  In the book's interpreted language, the authors represent true and false by 
+      numbers. In Scheme (and thus in your interpreter), any non-false value should be treated as true.  The number 0 is a 
+      true value in Scheme (and in your interpreted language), but 0 is the false value in the textbook's language). 	
+- Any **primitive procedures** that are used to evaluate the A13 test cases, including  +, -, *, /, add1, sub1, zero?,  
+      not, = and < (and the other numeric comparison operators), and also cons, car, cdr, list, null?, assq, eq?, equal?, 
+      atom?, length,  list->vector, list?, pair?,  procedure?, vector->list, vector, make-vector, vector-ref, vector?, 
+      number?, symbol?, vector-set!,  display , newline to your interpreter.   Add the c**r and c***r procedures (where 
+      each "*" stands for an "a" or "d"). Note: You may use built-in Racket procedures in your implementation of most of 
+      the primitive procedures, as I do in the starting code that is provided for you.
+- Add **lambda expressions** of the form (lambda (var ...) body1 body2 ...). See the description of rep (short for "read- 
+      eval-print") below for a description of what to print if a closure or primitive procedure is part of the final value 
+      of an expression entered interactively in the interpreter.  Section 3.3 of EoPL may be helpful.
+- Add **begin** to the parser and interpreter. 
+- Add two  interfaces to your interpreter: **rep** and **eval-one-exp** as described below).
 
 ## You are to provide two interfaces to your interpreter
 
