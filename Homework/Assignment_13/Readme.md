@@ -1,11 +1,6 @@
 ## Assignment 13
 
-**Deliverables** : Your code (submit to Gradescope).  When you submit, include teammates’ usernames. 
-
-
-This is a **team assignment** .  My intention (for this and other interpreter assignments) is not that you will divide-and-conquer, but that you will instead get together to do the work (i.e., pair/trio programming) so that everyone is involved in the solutions of all parts, and everyone understands all of it.  I expect everyone to understand all of the code that your team submits, and that you will do your part to make sure that all team members understand it.  
-
-If you have taken this course before, you are not allowed to use code that you wrote with a different partner in a previous term.  And of course you are not allowed to submit code that was written by someone who is not in your group.
+**Deliverables** : Your code (submit to Gradescope).  
 
 ## Programming Problem (120 points)
 
