@@ -2,7 +2,7 @@
 
 **Deliverables** : Your code (submit to Gradescope).  
 
-## Programming Problem (120 points)
+## Programming Problem (115 points)
 
 This is perhaps the most important assignment of the term. The challenge is to understand the set-up of an interpreter, 
 how all the components interact to read, parse, evaluate and return a result.
