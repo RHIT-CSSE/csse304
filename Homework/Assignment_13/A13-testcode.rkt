@@ -68,14 +68,6 @@
     [(eval-one-exp ' (list (procedure? list) (procedure? (lambda (x y) (list (+ x y)))) (procedure? 'list))) '(#t #t #f) 3] ; (run-test primitive-procedures 26)
   )
 
-  (let equal? ; (run-test let)
-    [(eval-one-exp ' (let ((a 3)(b 5)) (+ a b))) 8 3] ; (run-test let 1)
-    [(eval-one-exp ' (let ((a 3)) (let ((b 2) (c (+ a 3)) (a (+ a a))) (+ a b c)))) 14 5] ; (run-test let 2)
-    [(eval-one-exp ' (let ((a 3)) (let ((a (let ((a (+ a a))) (+ a a)))) (+ a a)))) 24 6] ; (run-test let 3)
-    [(eval-one-exp ' (let ((a (vector 0 1 2 3))) (vector-set! a 1 38) (vector-set! a 2 (vector-ref a 1)) (vector-ref a 2))) 38 6] ; (run-test let 4)
-    [(eval-one-exp '(let ([compose2 (lambda (f g) (lambda (x) (f (g x))))]) (let ([h  (let ([g (lambda (x) (+ 1 x))] [f (lambda (y) (* 2 y))]) (compose2 g f))]) (h 4)))) 9 6] ; (run-test let 5)
-  )
-
   (lambda equal? ; (run-test lambda)
     [(eval-one-exp '((lambda (x) (+ 1 x)) 5)) 6 5] ; (run-test lambda 1)
     [(eval-one-exp '((lambda (x) (+ 1 x) (+ 2 (* 2 x))) 5)) 12 7] ; (run-test lambda 2)
@@ -83,6 +75,14 @@
     [(eval-one-exp ' (((lambda (f) ((lambda (x) (f (lambda (y) ((x x) y)))) (lambda (x) (f (lambda (y) ((x x) y)))))) (lambda (g) (lambda (n) (if (zero? n) 1 (* n (g (- n 1))))))) 6)) 720 11] ; (run-test lambda 4)
     [(eval-one-exp ' (let ((Y (lambda (f) ((lambda (x) (f (lambda (y) ((x x) y)))) (lambda (x) (f (lambda (y) ((x x) y))))))) (H (lambda (g) (lambda (x) (if (null? x) '() (cons (procedure? (car x)) (g (cdr x)))))))) ((Y H) (list list (lambda (x) x) 'list)))) '(#t #t #f) 11] ; (run-test lambda 5)
   )
+
+  (begin equal? ; (run-test begin)
+    [(eval-one-exp '(begin 1 2 3 4)) 4 3] ; (run-test begin 2)
+    [(eval-one-exp '(begin (lambda (x) 3) (lambda (y) 4)) <interpreter-procedure> 5] ; (run-test begin 2)
+    [(eval-one-exp '(begin 1 (begin 2 (begin 3 4)))) 4 6] ; (run-test begin 3)
+    [(eval-one-exp '((lambda (x) (begin (vector-set! x 1 42)(vector-set! x 1 17) (vector-set! x 1 88) (vector-ref x 1))) (vector 0 1 2 3)))) 88 6] ; (run-test begin 4)
+  )
+
 
   (lexical-depth equal?
                  [(eval-one-exp '(let ((x 10) (y 2)) ((: free -) (: 0 0) (: 0 1)))) 8 0.25]
