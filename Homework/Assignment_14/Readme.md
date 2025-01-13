@@ -1,8 +1,5 @@
 ## Assingment 14
 
-This is a team assignment. Same submission rules/process as for A13.
-Don’t forget to include teammate’s usernames on submission page.
-
 This problem has a harder variant (see details at the bottom) but it
 changes the approach for the earlier part significantly.  So if you
 think you might want to attempt it, be sure to read the document in
