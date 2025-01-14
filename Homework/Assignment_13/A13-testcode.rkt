@@ -78,9 +78,9 @@
 
   (begin equal? ; (run-test begin)
     [(eval-one-exp '(begin 1 2 3 4)) 4 3] ; (run-test begin 2)
-    [(eval-one-exp '(begin (lambda (x) 3) (lambda (y) 4)) <interpreter-procedure> 5] ; (run-test begin 2)
+    [(eval-one-exp '(begin (lambda (x) 3) (lambda (y) 4)) '<interpreter-procedure> 5] ; (run-test begin 2)
     [(eval-one-exp '(begin 1 (begin 2 (begin 3 4)))) 4 6] ; (run-test begin 3)
-    [(eval-one-exp '((lambda (x) (begin (vector-set! x 1 42)(vector-set! x 1 17) (vector-set! x 1 88) (vector-ref x 1))) (vector 0 1 2 3)))) 88 6] ; (run-test begin 4)
+    [(eval-one-exp '((lambda (x) (begin (vector-set! x 1 42)(vector-set! x 1 17) (vector-set! x 1 88) (vector-ref x 1))) (vector 0 1 2 3))) 88 6] ; (run-test begin 4)
   )
 
 
