@@ -1,6 +1,6 @@
 # Racket Macros
 
-This is an individual assignment. In it, you will create syntactic extensions of Racket. You will NOT use youre interpreter to implement this code. 
+This is an individual assignment. In it, you will create syntactic extensions of Racket. You will NOT use youre interpreter to implement this code. For all problems, you must use "syntax-rules" and only syntax-rules to implement the macros. Any other means of implementing the macros will receive zero points.
 
 ## A Warning About Submitting
 
