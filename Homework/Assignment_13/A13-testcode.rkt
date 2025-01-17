@@ -95,13 +95,15 @@
 
 
   (lexical-depth equal?
-                 [(eval-one-exp '(let ((x 10) (y 2)) ((: free -) (: 0 0) (: 0 1)))) 8 0.25]
+                 [(eval-one-exp '((lambda (x y) ((: free -) (: 0 0) (: 0 1))) 10 2 )) 8 0.25]
                  [(eval-one-exp '((lambda (x y) ((: free -) (: 0 0) (: 0 1))) 4 3)) 1 0.25]
-                 [(eval-one-exp '(let ((a 1) (b 2))
-                                   (let ((c 3) (d 4))
-                                     (let ((e 5) (f 6) (g 7))
-                                       ((: free list) (: 2 0) (: 2 1) (: 1 0) (: 1 1)
-                                                      (: 0 0) (: 0 1) (: 0 2))))))
+                 [(eval-one-exp '((lambda (a b)
+                                    ((lambda (c d)
+                                       ((lambda (e f g)
+                                        ((: free list) (: 2 0) (: 2 1) (: 1 0) (: 1 1) (: 0 0) (: 0 1) (: 0 2)))
+                                       5 6 7))
+                                   3 4))
+                                 1 2))
                   '(1 2 3 4 5 6 7) 0.25]                                     
                  [(eval-one-exp '(((lambda (z) (lambda (x y) ((: free -) (: 0 0) (: 0 1) (: 1 0)))) 1) 4 3)) 0 0.25]
                  )
