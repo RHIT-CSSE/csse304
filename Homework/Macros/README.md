@@ -89,16 +89,14 @@ always be present. Please notice that the "<" symbol and the "else" token are ke
 
 Implement a for loop as specified below. 
 
-**(for ("<init-exp>" : '<test-exp> : '<update-exps>) '<body>)**
+**(for ('<init-exp'> : '<test-exp> : '<update-exps>) '<body>)**
 
 Example:
 
+
   (let ([sum 0][i 0])
-  
     (for ((begin (set! sum 0) (set! i 1)) : (< i 10) : (set! i (+ i 1)))
-    
       (set! sum (+ i sum)))
-      
     sum)
     
 returns 45.
