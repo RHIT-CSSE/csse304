@@ -1,24 +1,19 @@
 # Racket Macros
 
-This is an individual assignment. In it, you will create syntactic extensions of Racket. You will NOT use youre interpreter to implement this code. For all problems, you must use "syntax-rules" and only syntax-rules to implement the macros. Any other means of implementing the macros will receive zero points.
+This is an individual assignment. In it, you will create syntactic extensions of Racket. You will NOT use your interpreter to implement this code. For all problems, you must use "syntax-rules" and only "syntax-rules" to implement the macros. Any other means of implementing the macros will receive zero points.
 
 ## A Warning About Submitting
 
 Macro code, when implemented incorrectly, has a tendency to crash the grading scripts.  Please do not submit macro code that crashes on gradescope, then email myself or the TAs asking to hand comment out individual testcases so you can get an individual point here or there.  The policy is if your macro crashes gradescope, you do not get partial credit for that macro. Hence, there is no advantage to submitting a crashing macro implementation - if your macro does not work, replace it with the original NYI version from the repo and submit a version that does not require hand grading.
 
-## null-let
+## init
 
+This macro defines the variable names passed to it and initializes them to zero.
 Make a version of let called null-let where you don't have to specify
 values for the variables you create.  Instead, each new variable
 should be set to null.
 
-    (null-let (a b c)
-          (set! a 'not-null)
-          (list a b c)) yields '(not-null () ())
-          
-null-let is allowed to expand into regular let-expressions.  You might
-find it easier to expand it similarly to let*.  That is allowed even
-though it is arguably needlessly inefficient.
+    (begin (init a b c) (list a b c))  returns '(0 0 0)
 
 ## all-equal
 
@@ -92,3 +87,16 @@ Or general form:
 As with a cond only one body-exp is executed.  For simplictly only 1 body expression is permitted per case. 
 The cutoffs can be assumed to be in increasing order. The value-exp is executed only once. The else expression must
 always be present. Please notice that the "<" symbol and the "else" token are keywords. 
+
+## For-loop
+
+Implement a for loop as specified below. 
+
+**(for (<init-exp> : <test-exp> : <update-exps>) <body>)**
+
+Example:
+
+  (let ([sum 0][i 0])
+    (for ((begin (set! sum 0) (set! i 1)) : (< i 10) : (set! i (+ i 1)))
+      (set! sum (+ i sum)))
+    sum)  returns 45.
