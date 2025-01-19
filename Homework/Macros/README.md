@@ -9,9 +9,6 @@ Macro code, when implemented incorrectly, has a tendency to crash the grading sc
 ## init
 
 This macro defines the variable names passed to it and initializes them to zero.
-Make a version of let called null-let where you don't have to specify
-values for the variables you create.  Instead, each new variable
-should be set to null.
 
     (begin (init a b c) (list a b c))  returns '(0 0 0)
 
@@ -92,7 +89,7 @@ always be present. Please notice that the "<" symbol and the "else" token are ke
 
 Implement a for loop as specified below. 
 
-**(for (<init-exp> : <test-exp> : <update-exps>) <body>)**
+**(for ('<init-exp> : '<test-exp> : '<update-exps>) '<body>)**
 
 Example:
 
