@@ -13,7 +13,13 @@
 
 (define test (make-test ; (r)
 
-;; init
+ (init equal?
+     [(begin (init a) a) 0 2]
+     [(begin (init b c d) (list b c d)) '(0 0 0) 2]
+     [(begin (init x y) (set! x (+ x 1)) (set! y 42) (list x y)) '(1 42) 2]
+     [(begin (define p 42) (init p) ) 0 2]
+     [(let ([r 42]) (init r) r) 0 2]
+     [(begin (init s) (list (let ([s 42]) s) s)) '(42 0) 2])
   
  (all-equal equal?
              [(all-equal 1 1 1 1) #t 1]
@@ -127,7 +133,16 @@
                       (else 'huge)))) 'large 6]
     )
 
-;; for loop
+(for equal?
+    [(let ([sum 0][i 0])
+          (for ((begin (set! sum 0) (set! i 1)) : (< i 10) : (set! i (+ i 1)))
+          (set! sum (+ i sum)))
+      sum) 45 5]
+[(let ([a 1] [ls '()]) (for ((set! a 42) : (< a 45) : (set! a (+ a 1))) 
+                          (set! ls (cons a ls))) ls)
+      '(44 43 42) 5]
+)
+
 
               
 
