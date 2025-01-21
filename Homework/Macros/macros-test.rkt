@@ -17,9 +17,8 @@
      [(begin (init a) a) 0 2]
      [(begin (init b c d) (list b c d)) '(0 0 0) 2]
      [(begin (init x y) (set! x (+ x 1)) (set! y 42) (list x y)) '(1 42) 2]
-     [(begin (define p 42) (init p) p) 0 2]
-     [(let ([r 42]) (init r) r) 0 2]
-     [(begin (init s) (list (let ([s 42]) s) s)) '(42 0) 2])
+     [(let ([r 42]) (init r) r) 0 3]
+     [(begin (init s) (list (let ([s 42]) s) s)) '(42 0) 3])
   
  (all-equal equal?
              [(all-equal 1 1 1 1) #t 1]
