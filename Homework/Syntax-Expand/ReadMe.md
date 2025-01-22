@@ -8,6 +8,6 @@ Implement the following procedures, ensuring they are converted by syntax-expand
 code that your interpreter, i.e. eval-expression can process.
 
 1. Add the following primitives: *map, apply, assq, assv, append,* as well as any that are added as part of this set of test-cases. 
-2. Syntax-expand the following constructs: *let, let\*, begin, cond, and, or, case.* If any of them are already part of your language and are processed by your eval-expression and remove them from eval-expression. You may not use set! to implement those forms.
+2. Syntax-expand the following constructs: *let, let\*, begin, cond, and, or, case.* If any of them are already part of your language and are processed by your eval-expression and remove them from eval-expression. You may not use set! to implement those forms. Please ensure they short-circuit where applicable. 
 3. Add the *(return-first e1 ...)* which operates like "begin," i.e. it evaluates its expression in order, but instead returns the value of the first expression.
 4. Add while loops to your interpreter. The syntax should be: *(while e1 e2 ...)*. It should evaluate e2 ... while e1 evaluates to true. The return value should be void.
