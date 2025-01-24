@@ -12,14 +12,15 @@
 (provide get-weights get-names individual-test test)
 
 (define test (make-test ; (r)
-  (literals equal? ; (run-test literals)
-    [(eval-one-exp ''()) '() 1] ; (run-test literals 1)
-    [(eval-one-exp #t) #t 1] ; (run-test literals 2)
-    [(eval-one-exp #f) #f 1] ; (run-test literals 3)
-    [(eval-one-exp "") '"" 1] ; (run-test literals 4)
-    [(eval-one-exp "test") '"test" 1] ; (run-test literals 5)
-    [(eval-one-exp ''#(a b c)) #(a b c) 1] ; (run-test literals 6)
-    [(eval-one-exp ''#5(a)) #5(a) 1] ; (run-test literals 7)
+  
+  (let equal? ; (run-test literals)
+    [(eval-one-exp '(let () 3)) 3 1] ; (run-test literals 1)
+    [(eval-one-exp '(let () 3 4 5)) 5 1] ; (run-test literals 2)
+    [(eval-one-exp '(let ([x 3]) 5 x)) 3 1] ; (run-test literals 3)
+    [(eval-one-exp '(let ([x 3][y 4]) (list x y))) '(3 4) 1] ; (run-test literals 4)
+    [(eval-one-exp '(let ([x 3][y (let ([z 42]) (+ (- z 1) 1))]) (list x y)))) '(3 42) 2] ; (run-test literals 5)
+    [(eval-one-exp '(let ([x 3][y 42]) (let ([z y]) (+ z 1)) (let ([z x]) (+ z 1) z)))) 3 2] ; (run-test literals 6)
+    [(eval-one-exp ''(let ([x 3][y 42]) (let ([z y]) (let ([z x]) (list z x y)))))) '(3 3 42) 1] ; (run-test literals 7)
   )
 
 ))
