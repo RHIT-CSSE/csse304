@@ -72,6 +72,16 @@
                      (vector 5))) '#(7) 3] ; (run-test literals 5)
   )
 
+  (cond equal? ; (run-test literals)
+    [(eval-one-exp '(cond)) (void) 2] ; (run-test literals 1)
+    [(eval-one-exp '(cond [3 4])) 4 2] ; (run-test literals 2)
+    [(eval-one-exp '(cond [3 4 5])) 5 2] ; (run-test literals 3)
+    [(eval-one-exp '((lambda (x) (cond [(= x 3) (+ x 3)][(= x 7) (+ x 7)][else (+ x 9)][(= x 10)(+ x 10)])) 3)) 6 3]
+    [(eval-one-exp '((lambda (x) (cond [(= x 3) (+ x 3)][(= x 7) (+ x 7)][else (+ x 9)][(= x 10)(+ x 10)])) 7)) 14 3]
+    [(eval-one-exp '((lambda (x) (cond [(= x 3) (+ x 3)][(= x 7) (+ x 7)][else (+ x 9)][(= x 10)(+ x 10)])) 42)) 51 3]
+    [(eval-one-exp '((lambda (x) (cond [(= x 3) (+ x 3)][(= x 7) (+ x 7)][else (+ x 9)][(= x 10)(+ x 10)])) 10)) 19 3]
+  )
+
 ))
 
 (implicit-run test) ; run tests as soon as this file is loaded
