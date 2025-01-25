@@ -64,7 +64,7 @@
   (return-first equal? ; (run-test literals)
     [(eval-one-exp '(return-first)) (void) 1] ; (run-test literals 1)
     [(eval-one-exp '(return-first 3)) 3 1] ; (run-test literals 2)
-    [(eval-one-exp '(return-first 3 4 5)) 5 1] ; (run-test literals 3)
+    [(eval-one-exp '(return-first 3 4 5)) 3 1] ; (run-test literals 3)
     [(eval-one-exp '(return-first (return-first (return-first 3 4 5)))) 3 2] ; (run-test literals 4)
     [(eval-one-exp '((lambda (w) (return-first w
                                                (vector-set! w 0 (+ (vector-ref w 0) 1))
