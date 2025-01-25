@@ -81,7 +81,18 @@
     [(eval-one-exp '((lambda (x) (cond [(= x 3) (+ x 3)][(= x 7) (+ x 7)][else (+ x 9)][(= x 10)(+ x 10)])) 42)) 51 3]
     [(eval-one-exp '((lambda (x) (cond [(= x 3) (+ x 3)][(= x 7) (+ x 7)][else (+ x 9)][(= x 10)(+ x 10)])) 10)) 19 3]
   )
-
+    (case equal? ; (run-test literals)
+    [(eval-one-exp '(case 3)) (void) 2] ; (run-test literals 1)
+    [(eval-one-exp '(case 3 ['(4) 5])) (void) 2] ; (run-test literals 2)
+    [(eval-one-exp '(case 3 ['(3) 4])) 4 2] ; (run-test literals 3)
+    [(eval-one-exp '(case 3 ['(4 5 3) 6])) 6 3]
+    [(eval-one-exp '(case 3 ['(4 5 3) 6 7])) 7 3]
+    [(eval-one-exp '(case 8 ['(4 5 3) 6 7] ['(9 8) 10])) 10 3]
+    [(eval-one-exp '(case 42 ['(4 5 3) 6 7] ['(9 8) 10][else 24])) 24 3]
+    [(eval-one-exp '(case 42 ['(4 5 3) 6 7] ['(9 8) 10][else 24]['(42) 88])) 24 3]
+    [(eval-one-exp '((lambda (x) (case (+ x 2) ['(4 5 3) 6 7] ['(9 8) 10][else 24]['(42) 88])) 2)) 7 3]
+    [(eval-one-exp '((lambda (x) (case (list x 2) ['(4 5 3) 6 7] ['(9 (2 2) 8) 10][else 24]['(42) 88])) 2)) 10 3]
+  )
 ))
 
 (implicit-run test) ; run tests as soon as this file is loaded
