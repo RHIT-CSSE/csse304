@@ -7,7 +7,7 @@
 ; If you find errors in your code, fix them, save your file, click the "Run" button again, and type (r)
 ; You can run a specific group of tests using (run-tests group-name)
 
-(require "testcode-base.rkt")
+(require "../testcode-base.rkt")
 (require "interpreter.rkt")
 (provide get-weights get-names individual-test test)
 
