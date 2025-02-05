@@ -23,14 +23,13 @@ Examples:
 
 #f
 
-2. (10 points) set?-cps. Here is a solution to an exercise from Assignment 2:
+2. (10 points) set?-cps. Here is a solution:
 
 (define set?
   (lambda (ls)
-    (cond
-     [(null? ls) #t]
-     [(member? (car ls) (cdr ls)) #f]
-     [else (set? (cdr ls))])))
+    (cond [(null? ls) #t]
+          [(member? (car ls) (cdr ls)) #f]
+          [else (set? (cdr ls))])))
 
 You are to write set?-cps, a CPS version of set? Since member? is not primitive, you must instead use member?-cps in your solution.
 
