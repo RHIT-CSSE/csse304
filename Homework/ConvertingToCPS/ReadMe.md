@@ -25,11 +25,11 @@ Examples:
 
 2. (10 points) set?-cps. Here is a solution:
 
-(define set?
-  (lambda (ls)
-    (cond [(null? ls) #t]
-          [(member? (car ls) (cdr ls)) #f]
-          [else (set? (cdr ls))])))
+  (define set?
+    (lambda (ls)
+      (cond [(null? ls) #t]
+            [(member? (car ls) (cdr ls)) #f]
+            [else (set? (cdr ls))])))
 
 You are to write set?-cps, a CPS version of set? Since member? is not primitive, you must instead use member?-cps in your solution.
 
@@ -45,21 +45,13 @@ Examples:
 
 3. (10 points) intersection-cps. Here is a solution from an earlier assignment:
  
-(define intersection
-
-  (lambda (los1 los2)
-
-    (cond
-
-     [(null? los1) '()]
-
-     [(member? (car los1) los2)
-     
-      (cons (car los1)
-      
-            (intersection (cdr los1) los2))]
-            
-     [else (intersection (cdr los1) los2)]))) 
+  (define intersection
+    (lambda (los1 los2)
+      (cond
+       [(null? los1) '()]
+       [(member? (car los1) los2)   
+          (cons (car los1) (intersection (cdr los1) los2))]        
+       [else (intersection (cdr los1) los2)]))) 
      
 You are to write intersection-cps, which should of course use member?-cps.
 Examples:
@@ -103,20 +95,13 @@ Examples:
 6. (20 points) Consider the following code.
  
 (define matrix?
-
   (lambda (m)
-  
     (and (list? m)
-    
-         (not (null? m))
-         
-         (not (null? (car m)))
-         
+         (not (null? m))   
+         (not (null? (car m)))   
          (andmap list? m)
-         
-         (andmap (lambda (L) (= (length L) (length (car m))))
-         
-                    (cdr m)))))
+         (andmap (lambda (L) (= (length L) (length (car m))))   
+                 (cdr m)))))
                     
 You are to write matrix?-cps, which should use andmap-cps.
 
