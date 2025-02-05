@@ -16,11 +16,9 @@ In order to receive any credit for each part of this problem, several criteria m
 Examples:
 
 \> (member?-cps 1 '(3 2 4 1 5) (halt-cont))
-
 #t
 
 \> (member?-cps 7 '(3 2 4 1 5) (halt-cont))
-
 #f
 
 2. (10 points) set?-cps. Here is a solution to an exercise from Assignment 2:
@@ -33,7 +31,6 @@ Examples:
 You are to write set?-cps, a CPS version of set? Since member? is not primitive, you must instead use member?-cps in your solution.
 
 Examples:
-
  
 \>  (set?-cps '(a b c b d) (halt-cont))
 #f
@@ -54,10 +51,10 @@ Examples:
 You are to write intersection-cps, which should of course use member?-cps.
 Examples:
 
->(intersection-cps '(a b c d e) '(f e t b c) (halt-cont))
+\> (intersection-cps '(a b c d e) '(f e t b c) (halt-cont))
 (b c e)
 
-> (intersection-cps '(a b c d e) '(f g h i k) (halt-cont))
+\> (intersection-cps '(a b c d e) '(f g h i k) (halt-cont))
 ()
 
 4. (5 points) make-cps. Sometimes, we may want to use a non-CPS procedure in a context where a CPS procedure is expected. Write an adapter procedure called make-cps that takes a one-argument non-cps (primitive) procedure and produces the corresponding two-argument procedure that can be called in a CPS context. This procedure may be helpful in a subsequent part of this exercise.
@@ -70,16 +67,16 @@ Example:
 5. (10 points) Write andmap-cps. Form: (andmap-cps pred-cps list continuation), where pred-cps is a cps version of a predicate. Andmap-cps must short-circuit!
 Examples:
 
-> (andmap-cps (make-cps number?) '(2 3 4 5) (halt-cont))
+\> (andmap-cps (make-cps number?) '(2 3 4 5) (halt-cont))
 #t
 
-> (andmap-cps (make-cps number?) '(2 3 a 5) (halt-cont))
+\> (andmap-cps (make-cps number?) '(2 3 a 5) (halt-cont))
 #f
 
-> (andmap-cps (lambda (L k) (member?-cps 'a L k)) '((b a) (c b a)) (halt-cont))
+\> (andmap-cps (lambda (L k) (member?-cps 'a L k)) '((b a) (c b a)) (halt-cont))
 #t
 
-> (andmap-cps (lambda (L k) (member?-cps 'a L k)) '((b a) (c b)) (halt-cont))
+\> (andmap-cps (lambda (L k) (member?-cps 'a L k)) '((b a) (c b)) (halt-cont))
 #f
 
 6. (20 points) Consider the following code.
@@ -96,14 +93,12 @@ You are to write matrix?-cps, which should use andmap-cps.
 
 For this exercise, I ask you to assume that the length procedure is not primitive, so you must write length-cps. You may use make-cps to define length-cps. Examples:
 
- 
-
-> (matrix?-cps '((1 2) (3 4)) (halt-cont))
+\> (matrix?-cps '((1 2) (3 4)) (halt-cont))
 #t
 
-> (matrix?-cps '((1 2) (3 4 5)) (halt-cont))
+\> (matrix?-cps '((1 2) (3 4 5)) (halt-cont))
 #f
 
-> (matrix?-cps '(()) (halt-cont))
+\> (matrix?-cps '(()) (halt-cont))
 #f
 
