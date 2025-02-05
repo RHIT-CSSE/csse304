@@ -16,9 +16,11 @@ In order to receive any credit for each part of this problem, several criteria m
 Examples:
 
 \> (member?-cps 1 '(3 2 4 1 5) (halt-cont))
+
 #t
 
 \> (member?-cps 7 '(3 2 4 1 5) (halt-cont))
+
 #f
 
 2. (10 points) set?-cps. Here is a solution to an exercise from Assignment 2:
@@ -33,10 +35,10 @@ You are to write set?-cps, a CPS version of set? Since member? is not primitive,
 Examples:
 
  
->  (set?-cps '(a b c b d) (halt-cont))
+\>  (set?-cps '(a b c b d) (halt-cont))
 #f
 
-> (set?-cps '(a b c) (halt-cont))
+\> (set?-cps '(a b c) (halt-cont))
 #t
 
 3. (10 points) intersection-cps. Here is a solution from an earlier assignment:
