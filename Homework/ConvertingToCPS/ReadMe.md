@@ -15,13 +15,13 @@ In order to receive any credit for each part of this problem, several criteria m
 1. (10 points) Write member?-cps. Form: (member?-cps item list continuation). It calculates the same thing as member?
 Examples:
 
-> (member?-cps 1 '(3 2 4 1 5) (halt-cont))
+\> (member?-cps 1 '(3 2 4 1 5) (halt-cont))
 #t
 
-> (member?-cps 7 '(3 2 4 1 5) (halt-cont))
+\> (member?-cps 7 '(3 2 4 1 5) (halt-cont))
 #f
 
-(10 points) set?-cps. Here is a solution to an exercise from Assignment 2:
+2. (10 points) set?-cps. Here is a solution to an exercise from Assignment 2:
 (define set?
   (lambda (ls)
     (cond
@@ -38,7 +38,8 @@ Examples:
 
 > (set?-cps '(a b c) (halt-cont))
 #t
-(10 points) intersection-cps. Here is a solution from an earlier assignment:
+
+3. (10 points) intersection-cps. Here is a solution from an earlier assignment:
  
 (define intersection
   (lambda (los1 los2)
@@ -56,13 +57,15 @@ Examples:
 
 > (intersection-cps '(a b c d e) '(f g h i k) (halt-cont))
 ()
-(5 points) make-cps. Sometimes, we may want to use a non-CPS procedure in a context where a CPS procedure is expected. Write an adapter procedure called make-cps that takes a one-argument non-cps (primitive) procedure and produces the corresponding two-argument procedure that can be called in a CPS context. This procedure may be helpful in a subsequent part of this exercise.
+
+4. (5 points) make-cps. Sometimes, we may want to use a non-CPS procedure in a context where a CPS procedure is expected. Write an adapter procedure called make-cps that takes a one-argument non-cps (primitive) procedure and produces the corresponding two-argument procedure that can be called in a CPS context. This procedure may be helpful in a subsequent part of this exercise.
 Example:
 
 > (let ([car-cps (make-cps car)])
      (car-cps '(1 2 3) (halt-cont)))
 1
-(10 points) Write andmap-cps. Form: (andmap-cps pred-cps list continuation), where pred-cps is a cps version of a predicate. Andmap-cps must short-circuit!
+
+5. (10 points) Write andmap-cps. Form: (andmap-cps pred-cps list continuation), where pred-cps is a cps version of a predicate. Andmap-cps must short-circuit!
 Examples:
 
 > (andmap-cps (make-cps number?) '(2 3 4 5) (halt-cont))
@@ -76,7 +79,8 @@ Examples:
 
 > (andmap-cps (lambda (L k) (member?-cps 'a L k)) '((b a) (c b)) (halt-cont))
 #f
-(20 points) Consider the following code.
+
+6. (20 points) Consider the following code.
  
 (define matrix?
   (lambda (m)
