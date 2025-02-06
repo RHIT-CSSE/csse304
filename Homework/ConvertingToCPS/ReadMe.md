@@ -1,6 +1,6 @@
 # Converting to data-typed continuation-passing style (CPS)
 
-This is an TEAM assignment.
+This is an PAIR assignment. Please work with a partner, on the coding as well as conceptual issues.
 
 In order for a procedure definition to be in CPS, all calls to non-primitive procedures must be in tail position, and any call to a CPS procedure must produce the final answer for the computation that involves that call. That is, the procedure passed as a continuation to any CPS procedure must contain all of the information necessary to complete the computation.
 
