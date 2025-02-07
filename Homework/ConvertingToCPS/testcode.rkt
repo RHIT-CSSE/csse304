@@ -19,7 +19,7 @@
     ; (r)
 
    (member?-cps equal?
-                [(member?-cps 'a '(b c a d) (halt-cont)) '(a d) 5]
+                [(member?-cps 'a '(b c a d) (halt-cont)) #t 5]
                 [(member?-cps 'e '(b c a d) (halt-cont)) #f 5]
                 )
 
