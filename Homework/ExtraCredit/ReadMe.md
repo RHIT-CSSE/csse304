@@ -6,7 +6,7 @@ This is an individual or a team assignment.
 
 2. Add a <b>try-catch</b> construct to your cps
 interpreter. Have a look at how <a
-href="http://www.scheme.com/tspl4/exceptions.html#./exceptions:h1">Scheme
+href="https://docs.racket-lang.org/try-catch/index.html">Racket
 does this</a> or talk to me about the details.
 
 3. Convert your recursive interpreter or the cps part 2 interpreter so that it can interpret itself.
