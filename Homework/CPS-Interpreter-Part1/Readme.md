@@ -2,7 +2,8 @@
 
 This is a pair assignment.
 
-The focus of this assignment are continuations and their use in the interpreter.
+The focus of this assignment are continuations and their use in the interpreter. You must use datatyped 
+continuations.
 
 You do not have to modify the parser, syntax expander and environment. We will test your code with the test cases available through the grading server, however, we will then check them by hand to verify that the code is indeed in CPS form. You need to modify your own interpreter. Notice that we only test items that should be in the interpreter proper, everything else ought to be syntax expanded. Finally, notice that while we make some code available, it is for quidance only. You may use it to modify your own code. You may not turn it in as your own code.
 
