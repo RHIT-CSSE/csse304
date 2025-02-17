@@ -4,7 +4,7 @@ This is a pair assignment.
 
 The focus of this assignment are continuations and their use to
 implement call/cc and an exit procedure. You will expand the language
-of your interpreter.
+of your interpreter. You must use datatyped continuations.
 
 For convenience of testing Add <b>display</b> and <b>newline</b> as
 primitive procedures in your interpreted language.  You may implement
