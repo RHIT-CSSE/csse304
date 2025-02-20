@@ -80,6 +80,14 @@
        [(top-level-eval '(+ 3 (break 42 (break 88) 77) 7)) '(88) 2]
        [(top-level-eval '(let ([a 3][b (break 44)]) (list a b))) '(44) 2]
        )
+
+  (while equal?
+       [(top-level-eval '(while #f 3)) '(void) 4]
+       [(top-level-eval '(let ([c 1]) (begin (while (< c 10) (set! c (+ c 1))) c))) 10 4]
+       [(top-level-eval '(let ([c 1]) (let ([d (begin (while (< c 10) (set! c (+ c 1))) c)])
+                                        (begin (while (< d 20) (set! d (+ d 1))) d)))) 20 4]
+           
+       )
 ))
 
 (implicit-run test) ; run tests as soon as this file is loaded
