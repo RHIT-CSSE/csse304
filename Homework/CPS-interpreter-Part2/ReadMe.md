@@ -35,11 +35,11 @@ It is required for one of our test cases.
 language. Calling (break obj1 . . . ) at any point in the
 user's code causes the pending call to eval-top-level to immediately
 return a list that contains the values of the arguments to "break."
-It does not exit the read-eval-print-loop when the code is run
-interactively.  It simply returns the list of its arguments to be
-printed before the r-e-p loop prompts for the next value.
+For testing purposes, this procedure behaves like "exit." In other words,
+it terminates the computation, whether called in (rep) or by top-level-eval.
+In this context, it leaves the (rep) loop.
 
-6. Add <b>call/cc</b> to the interpreted language.
+7. Add <b>call/cc</b> to the interpreted language.
 Please refer to the TSPL for more details. Recall that:
 <tt>(call/cc receiver)</tt> obtains the current continuation and passes it to
 receiver, which must be a procedure of one argument. As such we create
