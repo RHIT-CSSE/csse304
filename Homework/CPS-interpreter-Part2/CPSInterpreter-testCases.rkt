@@ -74,7 +74,12 @@
 
        ;; while
 
-       ;; break
+    (break equal?
+       [(top-level-eval '(+ 3 (break 42) 7)) '(42) 2]
+       [(top-level-eval '(+ 3 (break 42 45 46) 7)) '(42 45 46) 2]
+       [(top-level-eval '(+ 3 (break 42 (break 88) 77) 7)) '(88) 2]
+       [(top-level-eval '(let ([a 3][b (break 44)]) (list a b))) '(44) 2]
+       )
 ))
 
 (implicit-run test) ; run tests as soon as this file is loaded
