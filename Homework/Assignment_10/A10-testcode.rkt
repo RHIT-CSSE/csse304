@@ -55,6 +55,50 @@
     [(bound-vars (quote (z (lambda (x) (lambda (y) x))))) '(x) 1] ; (run-test bound-vars 6)
     [(bound-vars (quote ((lambda (y) (lambda (y) y)) (lambda (x) (z (lambda (x) x)))))) '(y x) 1] ; (run-test bound-vars 7)
   )
+
+
+  (convert-multip-calls equal?
+                        [(convert-multip-calls '(a b c)) '((a b) c) 3]
+                        [(convert-multip-calls '(a b)) '(a b) 1]
+                        [(convert-multip-calls 'x) 'x 1]                                                
+                        [(convert-multip-calls '(a b c d)) '(((a b) c) d) 3]
+                        [(convert-multip-calls '(a b c d e f)) '(((((a b) c) d) e) f) 4]
+                        [(convert-multip-calls '((a b) (c d))) '((a b) (c d)) 3]
+                        [(convert-multip-calls '((a b c) (e f g) (h i j)))
+                         '((((a b) c) ((e f) g)) ((h i) j)) 4]
+                        [(convert-multip-calls '(lambda (x) (x y z)))
+                         '(lambda (x) ((x y) z)) 3]
+                        [(convert-multip-calls '((lambda (x) ( a b c)) (lambda (x) (e f g))))
+                         '((lambda (x) ((a b) c)) (lambda (x) ((e f) g))) 3]
+
+                        )
+
+  (convert-multip-lambdas equal?
+                          [(convert-multip-lambdas '(lambda (x y) x)) '(lambda (x) (lambda (y) x)) 3]
+                          [(convert-multip-lambdas '(lambda (x) x)) '(lambda (x) x) 1]
+                          [(convert-multip-lambdas '(lambda (x y z) x))
+                           '(lambda (x) (lambda (y) (lambda (z) x))) 3]
+                          [(convert-multip-lambdas '(lambda (x y) (lambda (a b) (a x))))
+                           '(lambda (x) (lambda (y) (lambda (a) (lambda (b) (a x))))) 3]
+                          [(convert-multip-lambdas '((lambda (x y) x) q))
+                           '((lambda (x) (lambda (y) x)) q) 3]
+                          [(convert-multip-lambdas '(u ((lambda (x y) x) q)))
+                           '(u ((lambda (x) (lambda (y) x)) q)) 2]
+                          )
+
+
+  (convert-ifs equal?
+               [(convert-ifs '(#f #t))
+                '((lambda (thenval elseval) elseval) (lambda (thenval elseval) thenval)) 3]
+               [(convert-ifs '(lambda (input) (if input #f #t)))
+                '(lambda (input) (input (lambda (thenval elseval) elseval) (lambda (thenval elseval) thenval))) 4]
+               [(convert-ifs '(lambda (a b) (if a (if b #t #f) #f)))
+                '(lambda (a b)
+                   (a (b (lambda (thenval elseval) thenval) (lambda (thenval elseval) elseval)) (lambda (thenval elseval) elseval))) 4]
+               [(convert-ifs '(lambda (a b) (if a #t b)))
+                '(lambda (a b) (a (lambda (thenval elseval) thenval) b)) 4]
+               )
+   
   
   (lexical-address equal? ; (run-test lexical-address)
     [(lexical-address (quote x)) '(: free x) 1] ; (run-test lexical-address 1)
