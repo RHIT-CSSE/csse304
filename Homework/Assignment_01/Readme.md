@@ -55,7 +55,8 @@ Important: Restriction on Mutation.  One of the main goals of the first several 
 
 Background for problems 1-3 A (closed) interval of real numbers includes all numbers between the endpoints (including the endpoints).  We can represent an interval in Scheme by a list of two numbers ′(first second).  This represents the interval {x :  first ≤  x ≤ second }.  We will not allow empty intervals, so first must always be less than or equal to second.  If first = second, the interval contains exactly one number.  For simplicity, your code may assume that the endpoints of all of our intervals are integers, so that you do not have to worry about floating-point “near equality”.
 
-# 1 (5 points) Write a Scheme procedure (interval-contains? interval number) where interval is an interval and number is an integer.  The procedure returns a Boolean value that indicates whether number is in the closed interval.  
+### 1 (5 points) 
+Write a Scheme procedure (interval-contains? interval number) where interval is an interval and number is an integer.  The procedure returns a Boolean value that indicates whether number is in the closed interval.  
 Scheme forms you are likely to use: define, lambda, if or and, <=, >=
 
 interval-contains?  :  Interval x Integer -> Boolean
@@ -66,7 +67,8 @@ Examples:
  (interval-contains? '(5 8) 4)    => #f
  (interval-contains? '(5 5) 14)   => #f
 
-# 2 (8 points) Write a Scheme procedure (interval-intersects? i1 i2) where i1 and i2 are intervals.  
+### 2 (8 points) 
+Write a Scheme procedure (interval-intersects? i1 i2) where i1 and i2 are intervals.  
 It returns a Boolean value that indicates whether the intervals have a nonempty intersection.  Edge case: If the intersection contains a single number, this procedure should return #t.
 
 interval-intersects?  :  Interval x Interval -> Boolean
@@ -78,7 +80,9 @@ Examples:
  (interval-intersects? '(1 1) '(1 1))	=> #t
  (interval-intersects? '(1 3) '(12 17))	=> #f
 
-# 3 (8 points) The union of two intervals is a list containing 
+### 3 (8 points) 
+
+The union of two intervals is a list containing 
 
 *	both intervals, if the intervals don’t intersect, or
 *	a single,  possibly larger,  interval if the intervals do intersect.
@@ -103,7 +107,9 @@ We will represent a point or a vector by a list of three numbers. For example, t
 Note that Scheme has a built-in vector type and associated procedures to manipulate vectors.  Scheme’s vector type is similar to the Object[] array type in Java. In order to avoid having your code conflict with this built-in type, you should use vec instead of vector in the names of your functions and their arguments.  We could use Scheme’s vector type to represent the vector in this problem, but we use lists instead, so that you will get additional practice with picking out parts of lists. 
 
 
-# 4 (5 points) Write the procedure(make-vec-from-points p1 p2) that returns the vector that goes from the point p1 to the point p2.  
+# 4 (5 points) 
+
+Write the procedure(make-vec-from-points p1 p2) that returns the vector that goes from the point p1 to the point p2.  
 
 make-vec-from-points:  Point x Point -> Vector
 
@@ -111,7 +117,9 @@ Example:
    (make-vec-from-points '(1 3 4) '(3 6 2))  (2 3 -2) 
     
 
-# 5 (5 points) Write the procedure (dot-product v1 v2) that returns the dot-product (scalar product) 
+# 5 (5 points) 
+
+Write the procedure (dot-product v1 v2) that returns the dot-product (scalar product) 
 of the two vectors v1 and v2. 
 
 dot-product:  Vector x Vector -> Number
@@ -119,7 +127,9 @@ dot-product:  Vector x Vector -> Number
 Example:   (dot-product '(1 2 3) '(4 5 6))  32         ;  This is 1*4 + 2*5 + 3*6
 
 
-# 6 (5 points) Write the procedure (vector-magnitude v) that returns the magnitude of the vector v.  So that we do not have to worry about round-off error, the test cases will only use examples where the magnitude of the vector is an integer.
+# 6 (5 points) 
+
+Write the procedure (vector-magnitude v) that returns the magnitude of the vector v.  So that we do not have to worry about round-off error, the test cases will only use examples where the magnitude of the vector is an integer.
 Note that if x is a non-negative integer that is a perfect square, then (sqrt x) returns an integer.
 
 vector-magnitude:  Vector -> Number
@@ -128,7 +138,9 @@ Example:
      (vector-magnitude '(3 4 12))  13
 
 
-# 7 (5 points) Write the procedure (distance p1 p2) that returns the distance from the point p1 to the point p2.   So that we do not have to worry about round-off error, the test cases will only use examples where the returned value is an integer.  [Hint:  You may want to call some previously-defined procedures in your definition.
+# 7 (5 points)
+
+Write the procedure (distance p1 p2) that returns the distance from the point p1 to the point p2.   So that we do not have to worry about round-off error, the test cases will only use examples where the returned value is an integer.  [Hint:  You may want to call some previously-defined procedures in your definition.
 
 distance:  Point x Point -> Number
 
