@@ -1,15 +1,11 @@
 #lang racket
 
-(provide free-vars bound-vars lexical-address un-lexical-address convert-multip-calls convert-multip-lambdas convert-ifs)
+(provide is-shadowed? convert-multip-calls convert-multip-lambdas convert-ifs)
 
-(define free-vars
-  (lambda (a)
+
+(define is-shadowed?
+  (lambda (var lc-exp)
     (nyi)))
-
-(define bound-vars
-  (lambda (a)
-    (nyi)))
-
 
 (define convert-multip-calls
   (lambda (lcexp)
@@ -22,16 +18,6 @@
 
 (define convert-ifs
   (lambda (exp)
-    (nyi)))
-
-
-
-(define lexical-address
-  (lambda (a)
-    (nyi)))
-
-(define un-lexical-address
-  (lambda (a)
     (nyi)))
 
 ;;--------  Used by the testing mechanism   ------------------
