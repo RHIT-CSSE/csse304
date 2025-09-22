@@ -43,7 +43,7 @@
                   [(is-shadowed? 'x '(lambda (x) (lambda (y) (lambda (x) y)))) #t 1]
                   [(is-shadowed? 'y '(lambda (y) (lambda (y) (lambda (x) y)))) #t 1]
                   [(is-shadowed? 'x '(lambda (y) (lambda (x) (lambda (x) y)))) #t 1]
-                  [(is-shadowed? 'x '((lambda (x) (lambda (x) y)))) #t 1]
+                  [(is-shadowed? 'x '(q (lambda (x) (lambda (x) y)))) #t 1]
                   [(is-shadowed? 'x '((lambda (x) x) (lambda (x) (lambda (y) y)))) #f 1]
                   [(is-shadowed? 'x '((lambda (x) x) (lambda (x) (y (lambda (x) y))))) #t 2]
                   )
