@@ -1,3 +1,4 @@
+#lang racket
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; now lets talk about functions that return functions
@@ -14,9 +15,13 @@
 
 (define make-mather
   (lambda (n bool)
+    (display "making a mather")
     (if bool
-        (make-adder n) ; fine if you made the lambda directly but I'm lazy
-        (lambda (input) (- input n)))))
+        (lambda (input) (display "doing addition") (+ input n))
+        (lambda (input) (display "doing subtraction") (- input n)))))
+
+(define add4 (make-mather 4 #t))
+(define sub4 (make-mather 4 #f))
 
 ; a little trickier
 (define loudify-func
@@ -111,7 +116,7 @@
 ; ((make-stackable list 2) '(1 2 3 4)) => (((1 2)) 3 4)
 ;
 ;
-; You may find built in procedures stack and drop useful here.
+; You may find built in procedures take and drop useful here.
 ;
 ; The next part of the problem is solvable without solving this
 ; one, if you get stuck.
