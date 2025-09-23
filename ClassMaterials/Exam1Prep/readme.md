@@ -37,7 +37,3 @@ PreBuffalo exams, I think 202020 is reasonably similar to my approach.
   usually award credit for solutions that attempt to "game" the test
   case.
 
-# Topics
-
-The exam will cover the materials from days 1 - 8 and the assignments 0 - 6.
-
