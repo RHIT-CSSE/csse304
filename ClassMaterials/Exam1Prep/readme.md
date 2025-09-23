@@ -10,6 +10,13 @@ Updated Winter 2024-2025
 
 * Music (via headphones) and quiet drinks/snacks encouraged
 
+You make use on the computer part of the exam:
+
+* Your notes/solutions to homeworks
+* Materials from the course repo
+* The online help of Dr. Racket
+* Your online textbook
+
 # Practice
 
 The best way to prepare for Exam1 is to review the assignments and to 
