@@ -9,7 +9,7 @@ how all the components interact to read, parse, evaluate and return a result.
 
 Feel free to start with the code that we studied in class.
 
-This is an individual assignment.
+This is an interpreter team assignment.
 
 I suggest that you thoroughly test each addition before adding the next one. Augmenting unparse whenever you augment parse 
  is a good idea, to help you with debugging.
@@ -88,77 +88,3 @@ In addition to the (rep) interactive interface, you must provide the procedure e
     >
 
 **Note that** eval-one-exp **does not have to be available to the user when running your interpreter interactively**.  It only has to be available from the normal Scheme prompt.  The interpreter test cases will call this procedure.  Testing of your rep loop will need to be done by hand.
-
-
-# Lexical Depth (1 point)
-
-This is worth very little credit, so it is for those teams looking for
-additional fun.  My recommendation is that you save your existing
-interpreter before you attempt this part, and use that as your
-starting point in later milestones.  There's nothing about lexical
-depth that makes it incompatible with future work, but it makes
-debugging a bit harder sometimes and makes a little more work as you
-add new constructs like named let etc.  Of course, if you want to be
-hardcore and push lex depth through the whole project I won't stand in
-your way.
-
-You've seen lexical depth in earlier homeworks, but here's where we do
-it for real.  The basic idea is that making variable lookups require a
-O(number of variables in scope) linked list traversal is uhh...not
-great.  In this new world, lookups will be a O(depth) linked list
-traversal by precomputing where in an environment we expect a variable
-to be.
-
-## Lexical Depth Step 1
-
-To get you warmed up, make two changes
-
-1. Make your environments store values in vector form rather than as a
-    list
-
-2. Make your interpreter support variables in lexical-depth form we
-   used in the earlier homeworks:
-
-        (let ((x 10) (y 2))
-            ((: free -) (: 0 0) (: 0 1)))
-            
-  This will require adding some new constructs to your parse tree.
-  Evaluating these expressions should be comparatively easier due to
-  the new vector form - but you'll need a new variant of apply-env to
-  do it.
-  
-If you do this you will pass the test cases.  However, you are not
-done (and you won't get credit).
-
-## Lexical Depth Step 2
-
-Go into your eval-exp and in the case for var-exps, change it to this:
-
-      [var-exp (id)
-               (error "we should never do this")]
-               
-You should never evaluate a var expression directly because var
-expressions should be transformed into lexical depth expressions.
-Here's how my top-level-eval looks:
-
-    (define top-level-eval
-        (lambda (parsed-code)
-            (eval-exp (empty-env-record) (lexical-depth '() parsed-code))))
-            
-You can see that my lexical depth procedure takes a parsed abstract
-syntax tree and returns a new abstract syntax tree where all var-exps
-have been removed.  It also takes an additional parameter representing
-the current scope - I'll let you decide on the details of that.
-
-In theory, if you wanted to reuse your existing lexical-depth
-solution, you could do the transformation earlier - transform the
-input scheme code before parsing it.  I won't stop you from this
-approach - it is uglier and more error prone (because lexical-depth is
-doing its own parsing before your real parse-exp).  As a general rule,
-we want all code transformations to occur on the abstract syntax tree
-representation - but in the end it's up to you.
-
-Once your have this working, all the A13 test cases should pass
-despite the error in your var expression.  You can now even go further
-and remove the old apply-env and remove the variable names from your
-environments.  Woo!  Much more efficient!
