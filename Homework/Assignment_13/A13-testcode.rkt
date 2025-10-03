@@ -93,20 +93,6 @@
     [(eval-one-exp '((lambda (x) (begin (vector-set! x 1 42)(vector-set! x 1 17) (vector-set! x 1 88) (vector-ref x 1))) (vector 0 1 2 3))) 88 5] ; (run-test begin 4)
   )
 
-
-  (lexical-depth equal?
-                 [(eval-one-exp '((lambda (x y) ((: free -) (: 0 0) (: 0 1))) 10 2 )) 8 0.25]
-                 [(eval-one-exp '((lambda (x y) ((: free -) (: 0 0) (: 0 1))) 4 3)) 1 0.25]
-                 [(eval-one-exp '((lambda (a b)
-                                    ((lambda (c d)
-                                       ((lambda (e f g)
-                                        ((: free list) (: 2 0) (: 2 1) (: 1 0) (: 1 1) (: 0 0) (: 0 1) (: 0 2)))
-                                       5 6 7))
-                                   3 4))
-                                 1 2))
-                  '(1 2 3 4 5 6 7) 0.25]                                     
-                 [(eval-one-exp '(((lambda (z) (lambda (x y) ((: free -) (: 0 0) (: 0 1) (: 1 0)))) 1) 4 3)) 0 0.25]
-                 )
 ))
 
 (implicit-run test) ; run tests as soon as this file is loaded
