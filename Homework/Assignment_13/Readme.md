@@ -16,7 +16,6 @@ I suggest that you thoroughly test each addition before adding the next one. Aug
 
 **Specification**:  Please implement the following functionality to your interpreter, i.e. parser and interpreter:
 
-- Ensure you use the datatyped ribcage implementation that uses lists of symbols and vectors of values.
 - Add the following **literals** to your interpreter:
     - numbers
     - Boolean constants #t, and #f 
