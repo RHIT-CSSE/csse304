@@ -1,6 +1,7 @@
 # Racket Macros
 
-This is an individual assignment. In it, you will create syntactic extensions of Racket. You will NOT use your interpreter to implement this code. For all problems, you must use "syntax-rules" and only "syntax-rules" to implement the macros. Any other means of implementing the macros will receive zero points.
+This is an individual assignment. In it, you will create syntactic extensions of Racket. You will NOT use your interpreter to implement this code. For these problems, you can use "syntax-rules" or "syntax-cases" if you want to start with the syntax
+cases form, use macros-buffalo.rkt for you code and test it with macros-buffalo-test.rkt.
 
 ## A Warning About Submitting
 
