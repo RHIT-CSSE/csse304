@@ -13,12 +13,14 @@ To make your interpreter work with the test cases add this to your file:
     (define quasiquote-enabled?
              (lambda () (error "nyi"))) ; make this return 'yes if you're trying quasiquote
 
-## Programming problem (80 points)
+## Programming problem
 
 **Summary** : The major features you are to add to the interpreted language (in addition to those you added in A13) are:
 - The single variable lambda expression (e.g. (lambda args-list blah ...))
 - One-armed if:  (if `<exp> <exp>`). This is similar to Racket’s when.
 - Whatever additional primitive procedures are needed to handle the test cases I give you.  This requirement applies to subsequent interpreter assignments also.
+- Syntax-expand the following constructs: *let, let\*, begin, cond, and, or* If any of them are already part of your language and are processed by your eval-expression and remove them from eval-expression. You may not use set! to implement those forms. Please ensure they short-circuit where applicable. 
+
 - syntax-expand allows you (but not necessarily the user of your interpreter) to introduce new syntactic constructs without changing eval-exp. Write syntax-expand and use it to add some syntactic extensions (at least add begin, let*, and, or, cond). You do not have to implement “named let” until assignment 16.
 
 Note that syntax-expand (as described below) is a REQUIREMENT of this milestone, and more importantly of later steps including Exam 2.  Do not come up with some alterative design that does syntax expansion as a side effect of parsing, especially do not call syntax expand from eval-exp.  Syntax expand should be a function that takes abstract syntax trees from parse-exp, transforms them into other abstract syntax trees that only include "core" forms, and then that result is passed to eval exp.
