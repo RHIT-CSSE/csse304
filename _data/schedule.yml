@@ -290,6 +290,10 @@
     - name: Zoom 24
       id: 1a6f5dc9-c3ea-431f-ad22-acb8012e4578
 25:
+  topics:
+    - More CPS
+  materials: CPS
+26:
   reading:
     - EoPL 3.5, 3.6
     - Skim EoPL 6.2, 6.3
@@ -301,7 +305,7 @@
   videos:
     - name: Zoom 25
       id: 7048d7e9-f114-4a14-a2d7-acbc011d05cf
-26:
+27:
   reading:
     - EoPL 4.1-4.3
   topics:
@@ -319,7 +323,7 @@
     - name: Zoom 26
       id: 520fabc0-50fd-4bda-931a-acbc01295d4c
 
-27:
+28:
   reading:
   topics:
     - interpreter in CPS form
@@ -330,7 +334,7 @@
       id: 6208d3c8-3e10-4e61-8093-acc50159d22e
 
       
-28:
+29:
   reading:
     - EoPL 4.1-4.3
   topics:
@@ -343,13 +347,6 @@
   videos:
     - name: Zoom 27
       id: c89f6577-8afa-48a6-8a98-acbe0130f272
-
-29:
-  reading:
-  topics: Cancelled for Exam 2
-  materials: 
-  other:
-
       
 30:
   reading:
@@ -393,31 +390,9 @@
 33:
   reading:
   topics:
-    - Garbage Collection 1
-  materials: GarbageCollection1
-  other:
-    - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EQIJA48wzOxBuK_UDQK-y-0BuFXjMge-LLsMJK1IKcxCeg?e=f7o4B8&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZyIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19">Recorded lecture</a>
-
-34:
-  reading:
-  topics:
-    - Garbage Collection 2
-  materials: GarbageCollection2
-  other:  
-
-35:
-  reading:
-    - TSPL Section 12.11
-  topics:
-    - engines
-  materials: Engines
-  other:
-  videos:
-    - name: Zoom 35
-      id: 498f188b-388c-489a-9ded-accc015ed0ec
-
+    - Call/cc problems
   
-36:
+34:
   reading:
   topics:
     - coroutines
@@ -428,7 +403,7 @@
       id: a8863f1e-4a87-4e08-9e04-acd0012d7827
 
       
-37:
+35:
   reading:
   topics:
     - Type Checking
@@ -436,10 +411,24 @@
   other:
    - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EVpKcsEHCyFLkO43KeCSVEIBg0xyic0G_dvLXF8eKv7lVg?e=cdnlqc">Video</a>
 
-38:
+36:
   reading:
   topics:
     - Type Checking 2
+  materials: ImplicitTyping
+  other:
+    - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EeidE7QbsS9PguvsifCA3XwB-NCS5QiYtXOeXos1ShyWrA?e=IltbQm">Video</a>
+
+   
+37:
+  reading:
+  topics:
+    - Skipped for Exam 2
+   
+38:
+  reading:
+  topics:
+    - Implicit typing
   materials: ImplicitTyping
   other:
     - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EeidE7QbsS9PguvsifCA3XwB-NCS5QiYtXOeXos1ShyWrA?e=IltbQm">Video</a>
