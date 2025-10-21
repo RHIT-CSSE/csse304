@@ -58,8 +58,8 @@ Here is my solution to the free-vars problem from A10, along with some supportin
 	            [else (cons (car los) (remove sym (cdr los)))])))
  
     ; convert this helper to cps
-    (define free-vars ; convert to CPS.  You should first convert 
-        (lambda (exp)   ; union and remove.
+    (define free-vars ; convert to CPS.  You should first convert remove
+        (lambda (exp)
             (cond [(symbol? exp) (list exp)]
 	            [(eq? (1st exp) 'lambda)       
 	            (remove (car (2nd exp)) 
