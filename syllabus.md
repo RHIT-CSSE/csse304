@@ -63,6 +63,8 @@ you will have to read it carefully.
 
 Grade cutoffs start at the usual ones (e.g. 90+ is an A, etc.)  You must have a passing average on the exams to pass the course.
 
+Please not that the written portion of the exams are closed "book." This means that your only resources is one 8.5x11 sheet of paper with anything handwritten on it. For the programming portion you should use your laptop to write the code. You are not permitted to run any other apps, in particualar, you may not visit the web, except for our moodle site. From our moodle site, you may visit any of the resources directly linked from it, i.e. the class materials, such as found on the schedule page. 
+
 I will sometimes adjust grades upward or downward due to specific circumstances - if you have a special situation contact me.
 
 # Deadlines and Late Policy
@@ -116,6 +118,8 @@ processes invoked as a consequence if academic misconduct (such as
 cheating, plagiarizing, or interfering with the academic progress of
 other students) takes place.  It is the responsibility of each student
 to know and follow Rose-Hulman’s rules about academic integrity.
+
+For this course, you may not use any AI tools to develop, test, or debug your code. You may use AI tools to understand concepts developed in class. Please engage with you instructor or the TAs or the SRT assigned to this course for any questions you may have or any help you may need to write the code. 
 
 
 
