@@ -1,29 +1,39 @@
 # CSSE 304 Syllabus
 
-# Course Topics
+# About this Course
+
+This course presents an implementation approach to the study of programming language concepts.  Rather than looking at several programming language features "from the outside" (only a user's perspective) We will instead get an inside view by implementing many of the features ourselves, *via* a
+series of interpreters (the languages will mostly be subsets of Racket).  We will use the Racket programming language to provide a
+laboratory environment in which to write the interpreters and to illustrate various programming paradigms and concepts.
+
+
+## Course Engagement Policy
+
+Learning in this course is not a spectator sport. You must engage with all of the class materials and during class. You should start working on the homework assignments early. You will learn something significant during each class session. As such, attendance is mandatory and will be verified. Please be aware that anyone who misses eight class sessions, whether excused or not will receive an F in the course. For additional information, please see: https://catalog.rose-hulman.edu/rules-procedures/attendance/
+
 
 ## RHIT Catalog Course Description
 
-Syntax and semantics of programming languages. Grammars, parsing, data
-types, control flow, parameter passing, run-time storage management,
-binding times, functional programming and procedural abstraction,
-syntactic extensions, continuations, language design and
-evaluation. Students will explore several language features by writing
-an interpreter that implements them.
+Syntax and semantics of programming languages. Grammars, parsing, data types, control flow, parameter passing, run-time storage management,
+binding times, functional programming and procedural abstraction, syntactic extensions, continuations, language design and evaluation. Students will explore several language features by writing an interpreter that implements them.
 
-## Instructor commentary
+## Course Outcomes
 
-This course presents an implementation
-approach to the study of programming language concepts.  Rather than
-looking at several programming language features "from the outside"
-(only a user's perspective) We will instead get an inside
-view by implementing many of the features ourselves, *via* a
-series of interpreters (the languages will mostly be subsets of
-Racket).  We will use the Racket programming language to provide a
-laboratory environment in which to write the interpreters and to
-illustrate various programming paradigms and concepts.
+Course Outcomes
 
-Learning in this course is not a spectator sport. You must engage with all of the class materials and during class. You should start working on the homework assignments early. 
+1. Design, implement, debug and test complex programs in a functional programming language. 
+2. Design, implement, debug and test a complex interpreter.
+3. Explain the process of interpreting a program, in part by drawing “environments and closures diagrams” that show what happens during their execution.
+4. Demonstrate (through implementation) an understanding of the relationship between syntax specification and the implementation of corresponding semantics.
+5. Explain (and in most cases use in code): 
+   * First-class procedures
+   * BNF Syntax specification and related language properties
+   * The relationship between syntax and semantics 
+   * The use of Environments and Closures
+   * Static vs. Dynamic typing and binding 
+   * The differences between how macros and procedures work.
+   * Abstraction (data and procedural) 
+   * Continuations as a basis for control flow
 
 # Texts (all are online and free)
 
@@ -67,6 +77,7 @@ However we understand that situations can arise. We handle all situations on a c
 * We expect to be notified as soon as is feasible. If you are very ill, we understand that that might be slightly after the assignment due date. For other situations, it’s usually possible to notify us in advance.
 * We keep track of extensions per student and if you seem to be overusing the privilege we will stop allowing extensions.
 * If the reason you are late is because you are having trouble completing the assignment (e.g. a bug you can’t fix or just difficulty understanding) get help from an instructor. Don’t assume that more time will fix the problem; plan to get help.
+
 
 #### Special Arrangements
 
@@ -118,7 +129,7 @@ Rose-Hulman is committed to working with students who have special needs or disa
 
 The Student Counseling Center helps students identify barriers to success, build personal awareness, and develop life skills.  Counseling appointments are free and confidential.
 
-## Diversity Statement
+## Belonging Statement
 
 Rose-Hulman Institute of Technology is committed to being an inclusive community in which the multiplicity of values, beliefs, intellectual viewpoints, and cultural perspectives enrich learning and inform scholarship.
 Online Access Requirements:
@@ -133,21 +144,5 @@ To receive email or text messages regarding emergency situations that may impact
 
 The <a href="https://www.rose-hulman.edu/campus-life/student-services/registrar/rules-and-procedures/attendance.html">Rose-Hulman attendance policy</a> is in effect for this course.
 
-# Course Outcomes
 
-Course Outcomes
-
-1. Design, implement, debug and test complex programs in a functional programming language. 
-2. Design, implement, debug and test a complex interpreter.
-3. Explain the process of interpreting a program, in part by drawing “environments and closures diagrams” that show what happens during their execution.
-4. Demonstrate (through implementation) an understanding of the relationship between syntax specification and the implementation of corresponding semantics.
-5. Explain (and in most cases use in code): 
-   * First-class procedures
-   * BNF Syntax specification and related language properties
-   * The relationship between syntax and semantics 
-   * The use of Environments and Closures
-   * Static vs. Dynamic typing and binding 
-   * The differences between how macros and procedures work.
-   * Abstraction (data and procedural) 
-   * Continuations as a basis for control flow
                         
