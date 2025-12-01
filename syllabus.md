@@ -9,7 +9,7 @@ laboratory environment in which to write the interpreters and to illustrate vari
 
 ## Course Engagement Policy
 
-Learning in this course is not a spectator sport. You must engage with all of the class materials and during class. You should start working on the homework assignments early. You will learn something significant during each class session. As such, attendance is mandatory and will be verified. Please be aware that anyone who misses eight class sessions, whether excused or not will receive an F in the course. For additional information, please see: https://catalog.rose-hulman.edu/rules-procedures/attendance/
+Learning in this course is not a spectator sport. You must engage with all of the class materials and during class. You should start working on the homework assignments early. You will learn something significant during each class session. As such, attendance is mandatory and will be verified. Please be aware that anyone who misses eight class sessions, whether excused or not will receive an F in the course. For additional information, please see: https://catalog.rose-hulman.edu/rules-procedures/attendance/ If your schedule this term is such that you cannot consistenly dedicate significant effort to this course, you should drop it and take sometime in the future. During class time, please place your phone in your backpack. If you have questions or are unsure about any of the materials presented in class, please raise your hand and ask your question.
 
 
 ## RHIT Catalog Course Description
