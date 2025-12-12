@@ -46,6 +46,7 @@ compose.  EoPL-1 Exercise 1.3.7, page 29.  This one will most likely begin
 Examples: 
 
 ((compose list list) 'abc)             ->   ((abc))
+
 ((compose car cdr cdr) '(a b c d))     -> c
 
 
