@@ -9,7 +9,7 @@ how all the components interact to read, parse, evaluate and return a result.
 
 Feel free to start with the code that we studied in class.
 
-This is an interpreter team assignment.
+This is an individual assignment.
 
 I suggest that you thoroughly test each addition before adding the next one. Augmenting unparse whenever you augment parse 
  is a good idea, to help you with debugging.
