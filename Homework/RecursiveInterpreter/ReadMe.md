@@ -7,3 +7,5 @@ For this portion of the interpreter, please add the following functionality:
 6. Add a set! expression. This expression changes the values of local and global variables. 
 7. Add a letrec expression. This expression only has to work for recursive procedures but does not have to
    implement the let* like behavior of the Racket letrec expression.
+
+This is an individual assignment.
