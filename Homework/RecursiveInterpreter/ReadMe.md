@@ -10,6 +10,6 @@ For this portion of the interpreter, please add the following functionality:
    implement the let* like behavior of the Racket letrec expression.
 7. The single variable lambda expression, e.g. (lambda arg-list <bodies>)
 8. One armed if: (if <exp> <exp>)
-9. reset-global-env: This is a regular Racket procedure (not something interpreted by your interpreter). It resets the global environment to what it was when you first started yoru interpreter. In other words, it removes all items added through "define".
+9. reset-global-env: This is a regular Racket procedure (not something interpreted by your interpreter). It resets the global environment to what it was when you first started your interpreter. In other words, it removes all items added through "define".
 
 This is an individual assignment.
