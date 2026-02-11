@@ -26,20 +26,16 @@ it terminates the computation, whether called in (rep) or by top-level-eval.
 In this context, it leaves the (rep) loop.
 
 For example,
+(eval-one-exp  '(+ 4 (- 7 (break 3 5))))
+--> (3 5)
 
-> (eval-one-exp  '(+ 4 (- 7 (break 3 5))))
-(3 5)
+(eval-one-exp '(+ 3 ((lambda (x) (break (list x (list x)))) 5)))
+--> ((5 (5)))
 
-> (eval-one-exp '(+ 3 ((lambda (x) (break (list x (list x)))) 5)))
-((5 (5)))
+(rep)
+(+ 3 (break 5))
+--> (5)
 
-> (rep)
-
---> (+ 3 (break 5))
-
-(5)
-
---> (+ 4 (break 5 (break 6 7)))
-
-(6 7)
+(+ 4 (break 5 (break 6 7)))
+--> (6 7)
 
