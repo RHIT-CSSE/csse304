@@ -12,12 +12,13 @@ You do not have to modify the parser, syntax expander and environment. We will t
 2. Add quote to your interpreter.
 3. Add several primitive procedures including +, -, *, /, add1, sub1, zero?, not, =, and < (and the other comparison operators). Also add the primitive procedures cons, car, cdr, list, null?, eq?, equal?, atom?, length, list->vector, list?, pair?, procedure?, vector->list, vector, make-vector, vector-ref, vector?, number?, symbol?, vector-set! to your interpreter. Add the c**r and c***r procedures where each "*" stands for an "a" or "d". Also add the following primitive procedures: map, apply, assq, assv, append.
 4. Add if-expressions to the interpreter.
+5. Add lambda expressions with multiple bodies and a parameter list. Also add lambda expressions with multibodies but the single, unparenthesized parameter.
+6. Add app expressions that correspond to the lambda expressions of the prior item.
+7. Add <b>set!</b> for local and global variables.
 
-5. Add <b>set!</b> for local and global variables.
+8. Add top-level <b>define</b>, including definitions of recursive procedures. 
 
-6. Add top-level <b>define</b>, including definitions of recursive procedures. 
-
-7. Add an <b>break</b> procedure to the interpreted
+9. Add an <b>break</b> procedure to the interpreted
 language. Calling (break obj1 . . . ) at any point in the
 user's code causes the pending call to eval-top-level to immediately
 return a list that contains the values of the arguments to "break."
