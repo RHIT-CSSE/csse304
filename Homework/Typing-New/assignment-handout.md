@@ -93,9 +93,7 @@ This is the core of the checker.
 
 ```racket
 (check '(fun (x : Num) : Num (+ x 1))) -> (tfun (tnum) (tnum)))
-
 (check '((fun (x : Num) : Num (+ x 1)) 5)) -> (tnum))
-
 (check '((fun (x : Num) : Num (+ x 1)) #t)) -> Error
 (check '(1 2)) -> Error
 ```
@@ -195,13 +193,3 @@ Each case corresponds directly to one of the typing rules above.
 2. **Use `#:transparent` on structs.** This makes types print readably.
 3. **Test in the REPL.** Try `(check '(+ 3 4))` interactively.
 4. **Read the error messages.** Make yours clear enough that a user would know what went wrong.
-
-
-
----
-
-## Resources
-
-- Lecture notes on Types and Type Checking
-- *Programming Languages: Application and Interpretation* (PLAI) by Shriram Krishnamurthi (freely available online)
-- The Racket Guide: https://docs.racket-lang.org/guide/
