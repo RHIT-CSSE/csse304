@@ -74,9 +74,9 @@ Add the `if` expression.
 **Test cases:**
 
 ```racket
-(check-equal? (check '(if #t 1 2)) (tnum))
-(check-exn exn:fail? (λ () (check '(if 1 2 3))))       ; non-bool condition
-(check-exn exn:fail? (λ () (check '(if #t 1 #f))))     ; branch mismatch
+(check '(if #t 1 2)) -> (tnum)
+(check '(if 1 2 3)) -> Error, non-bool condition
+(check '(if #t 1 #f)) -> Error, branch mismatch
 ```
 
 ### Phase 3: Variables, Functions, and Application
@@ -92,14 +92,12 @@ This is the core of the checker.
 **Test cases:**
 
 ```racket
-(check-equal? (check '(fun (x : Num) : Num (+ x 1)))
-              (tfun (tnum) (tnum)))
+(check '(fun (x : Num) : Num (+ x 1))) -> (tfun (tnum) (tnum)))
 
-(check-equal? (check '((fun (x : Num) : Num (+ x 1)) 5))
-              (tnum))
+(check '((fun (x : Num) : Num (+ x 1)) 5)) -> (tnum))
 
-(check-exn exn:fail? (λ () (check '((fun (x : Num) : Num (+ x 1)) #t))))
-(check-exn exn:fail? (λ () (check '(1 2))))             ; applying non-function
+(check '((fun (x : Num) : Num (+ x 1)) #t)) -> Error
+(check '(1 2)) -> Error
 ```
 
 ### Phase 4: Let Expressions
@@ -111,13 +109,9 @@ Add `let` bindings. These do not need type annotations — the type of the bound
 **Test cases:**
 
 ```racket
-(check-equal? (check '(let ((x 5)) (+ x 1))) (tnum))
-(check-equal? (check '(let ((f (fun (x : Num) : Num (+ x 1)))) (f 5))) (tnum))
+(check '(let ((x 5)) (+ x 1))) -> (tnum)
+(check '(let ((f (fun (x : Num) : Num (+ x 1)))) (f 5))) -> (tnum)
 ```
-
-### Bonus: Better Error Messages
-
-For extra credit, improve your error messages to include the source location or expression that caused the error. For instance, instead of `"expected Num, got Bool"`, produce something like `"in (+ #t 1): left operand has type Bool, expected Num"`.
 
 ---
 
@@ -202,30 +196,7 @@ Each case corresponds directly to one of the typing rules above.
 3. **Test in the REPL.** Try `(check '(+ 3 4))` interactively.
 4. **Read the error messages.** Make yours clear enough that a user would know what went wrong.
 
----
 
-## Grading
-
-| Component | Points |
-|---|---|
-| Phase 1: Literals and arithmetic | 20 |
-| Phase 2: Conditionals | 15 |
-| Phase 3: Variables, functions, application | 40 |
-| Phase 4: Let expressions | 15 |
-| Code quality and documentation | 10 |
-| **Total** | **100** |
-| Bonus: Better error messages | +10 |
-
----
-
-## Submission
-
-Submit a single file `type-check.rkt` that passes the provided test suite. Your code should:
-
-1. Correctly type-check well-typed programs and return their types
-2. Raise clear errors for ill-typed programs
-3. Handle all expression forms in the language
-4. Be well-documented with comments explaining your approach
 
 ---
 
