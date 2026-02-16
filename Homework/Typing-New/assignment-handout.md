@@ -53,12 +53,12 @@ Implement type checking for the simplest expressions: numbers, booleans, additio
 - `(+ e₁ e₂)`: both operands must have type `Num`; the result is `Num`
 - `(- e₁ e₂)`: same as addition
 
-**Test cases you should pass:**
+**Test cases:**
 
 ```racket
-(check-equal? (check '5) (tnum))
-(check-equal? (check '(+ 3 4)) (tnum))
-(check-exn exn:fail? (λ () (check '(+ #t 1))))
+(check '5) -> (tnum)
+(check '(+ 3 4)) -> (tnum)
+(check '(+ #t 1)) -> Error
 ```
 
 ### Phase 2: Conditionals
