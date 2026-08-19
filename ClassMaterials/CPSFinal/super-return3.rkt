@@ -17,18 +17,27 @@
 
 (define-datatype continuation continuation?
   [init-k]
-  [step1 (nlist list?) (k continuation?)])
+  [step1 (nlist list?) (k continuation?) (return-k continuation?)])
 
 (define apply-k
   (lambda (k v)
 	(cases continuation k
           [init-k () v]
-          [step1 (nlist k)
-                 (leftmost-even-cps (cdr nlist) k)]
+          [step1 (nlist k return-k)  
+                 (leftmost-even (cdr nlist) k return-k)]
           )))
 
 
 (define leftmost-even-cps
+  (lambda (nlist k return-k) ; like an slist but for numbers
+    (cond [(null? nlist) (apply-k k #f)]
+          [(number? (car nlist))
+           (if (even? (car nlist))
+               (apply-k return-k (car nlist))
+               (leftmost-even-cps (cdr nlist) k return-k))]
+          [else
+           (leftmost-even-cps (car nlist) (step1 nlist k return-k) return-k)])))
 
-  )
-
+(define leftmost-even-2
+  (lambda (lst)
+    (leftmost-even-cps lst (init-k) (init-k))))

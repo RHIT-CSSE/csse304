@@ -1,19 +1,25 @@
 #lang racket
+(define escape #f)
+(define goto #f)
 
 (define run-pausable
   (lambda (proc)
-
-    ; just running the proc is not enough of course
-    (proc)))
+    (call/cc (lambda (escape-k)
+               (set! escape escape-k)
+               (proc)))))
 
 (define resume
   (lambda ()
-    'nyi))
+    (goto 'unpaused)))
 
 (define pause
   (lambda ()
-    'nyi))
+    (call/cc (lambda (goto-k)
+               (set! goto goto-k)
+               (escape 'paused)))
+    ))
 
+;((lambda ()
 (run-pausable (lambda ()
                 (display 1)
                 (pause)
@@ -22,4 +28,4 @@
                 ))
 (display 2)
 (resume)
-(display 4)
+(display 4);))

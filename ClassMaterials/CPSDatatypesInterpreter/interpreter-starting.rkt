@@ -181,6 +181,34 @@
 ;---------------------------------------+
 
 ; To be added in assignment 18a.
+(define-datatype continuation continuation?
+  [init-k]
+  [step1 (env environment?)
+         (then-exp expression?)
+         (else-exp expression?)
+         (k continuation?)]
+  [step2 (proc procedure?)
+         (lst list?)
+         (k continuation?)]
+  [step3 (step2-v (lambda (x) #t))
+         (k continuation?)]
+  )
+
+(define apply-k
+  (lambda (k v)
+    (cases continuation k
+      [init-k () v]
+      [step1 (env then-exp else-exp k)
+             (if v
+                  (eval-exp env then-exp k)
+                  (eval-exp env else-exp k))]
+      [step2 (proc lst k)
+             (map-cps proc (cdr lst) (step3 v k))]
+      [step3 (step2-v k)
+             (apply-k k (cons
+                    step2-v
+                    v))]
+      )))
 
 
 ;-------------------+
@@ -194,18 +222,16 @@
 (define top-level-eval
   (lambda (form)
     ; later we may add things that are not expressions.
-    (eval-exp (empty-env) form)))
+    (eval-exp (empty-env) form (init-k))))
 
 ; eval-exp is the main component of the interpreter
 
 (define eval-exp
-  (lambda (env exp)
+  (lambda (env exp k)
     (cases expression exp
-      [lit-exp (datum) datum]
+      [lit-exp (datum) (apply-k k datum)]
       [if-exp (test-exp then-exp else-exp)
-              (if (eval-exp env test-exp)
-                  (eval-exp env then-exp)
-                  (eval-exp env else-exp))]
+              (eval-exp env test-exp (step1 env then-exp else-exp k))]
       [lambda-exp (vars bodies)
                   (closure-proc vars bodies env)]
       [let-exp (vars var-exps bodies)
@@ -227,6 +253,12 @@
 (define eval-rands
   (lambda (env rands)
     (map (lambda (exp) (eval-exp env exp)) rands)))
+
+(define map-cps
+  (lambda (proc lst k)
+    (if (null? lst)
+        (apply-k k '())
+        (proc (car lst) (step2 proc lst k)))))
 
 ;  Apply a procedure to its arguments.
 ;  At this point, we only have primitive procedures.  

@@ -11,4 +11,4 @@
                    (k 1)))
         (* n (fact (- n 1))))))
 
-(trace fact)
+ (trace fact)

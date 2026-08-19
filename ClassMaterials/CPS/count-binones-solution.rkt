@@ -14,14 +14,21 @@
 
 (define-datatype continuation continuation?
   [init-k]
+  [step1 (k continuation?)]
   )
 
 (define apply-k
   (lambda (k v)
     (cases continuation k
-      [init-k () v])))
+      [init-k () v]
+      [step1 (k)
+             (apply-k k (+ 1 v))
+             ]
+      )))
 
 (define count-binones-cps
   (lambda (n k)
-    'nyi))
-
+    (cond
+      [(zero? n) (apply-k k 0)]                               ; base case
+      [(even? n) (count-binones-cps (quotient n 2) k)]       ; tail-recursive case
+      [else (count-binones-cps (quotient n 2) (step1 k))])))
