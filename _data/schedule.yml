@@ -1,452 +1,121 @@
-1:
-  reading:
-  topics:
-  materials: SchemeIntro
-  other:
-    - <a href="https://www.youtube.com/watch?v=-yNJZnZ6Nnw">YouTube video showing how to use trace in Racket</a>
-  videos:
-    - name: Zoom 1
-      id: 4a93370d-63eb-4022-96ab-ac830135248f
-    - name: Intro-1 numbers
-      id: 7a4bf126-37ab-48cb-a1fd-aab900f4673e
-    - name: Intro-2 symbols and strings
-      id: 411f321a-da33-48db-b7b9-aab900f584cf
-    - name: Intro-3 lists pairs begin
-      id: 5afcad26-2c29-41b2-942b-aabc013bdf95
-    - name: Intro-3b more lists
-      id: 975f96ea-4f26-4226-8f5b-ad95010b9c18
-    - name: Intro-4 defining procedures trace
-      id: 113e2fa0-673a-42bd-a048-aabc013e7dd9
-    - name: Intro-5 local variables recursive procedures
-      id: 330e7a63-48e4-448e-b577-aabc014061fa
-2:
-  reading:
-    - TSPL Ch. 1, 2.1-2.2
-  topics:
-    - lambda
-    - recursive procedures
-    - if, cond, case
-    - offline testing & submission
-  materials: Lambda
-  other:
-  videos:
-    - name: Zoom 2
-      id: 56b7c65a-6ca9-4144-9019-ac84014ca8a2
-    - name: Second live demo
-      id: 69e44e66-2221-4204-951b-ac2b00272027
-    - name: Lambda the Magnificent
-      id: 8f703bee-313e-4890-88e1-ac2b00b86b7e
-3:
-  reading:
-    - TSPL Section 2.2-2.8
-    - EOPL-1 2-29
-  topics:
-    - course intro
-    - assorted scheme topics
-  materials: CourseIntro
-  other:
-  videos:
-    - name: Zoom 3
-      id: 04ba6d1d-8c37-42c4-b72f-ac8601669b46
-    - name: cons_list_append
-      id: f1b58b71-4e04-4b88-81d8-ac2c00e67b83
-    - name: write some recursive procedures
-      id: ea91a9b7-4d5f-4738-b1e1-ac2d01405ef8
-    - name: Part left out in sections 2 and 3
-      id: 0166d443-57a1-407d-aa9b-ac2f014d2983
-4:
-  reading:
-    - TSPL sections 3.2, 4.1-4.4, 6.1-6.4
-    - EOPL-1 67-74
-  topics:
-    - let & and its many flavors
-    - insertion sort
-  materials: LetVariants
-  other:
-  videos:
-    - name: Zoom 4
-      id: d69064e7-13bc-401e-8afa-ac8701168955
-    - name: procedures with variable numbers of arguments
-      id: 6862e757-b97f-46ab-93d8-ac2f00057967
-    - name: map-apply procedures
-      id: d4d7ee56-df85-4acd-96b9-ac2f014dec91
-5:
-  reading:
-    - TSPL 5.1-5.4
-    - EoPL Forward & Preface
-  topics:
-    - Map & Apply
-  materials: MapApply
-  other:
-  videos:
-    - name: Zoom 5
-      id: d4d7ee56-df85-4acd-96b9-ac2f014dec91
-    - name: andmap ormap
-      id: 6a682d3c-8416-45f2-9f3c-ac3101238524
-    - name: some prob solutions
-      id: dc10d3f8-0efc-4ece-b830-ac31010e2aa2
-6:
-  reading:
-    - EoPL Section 1.1
-  topics:
-    - Procedures that produce procedures
-    - list mutation
-  materials: ProcedureProcedures
-  other:
-  videos:
-    - name: Zoom 6 (kinda outdated, unfortunately)
-      id: cbca6330-a112-4eb6-8693-ac8a014796e7
-    - name: vectors
-      id: 6f0fa604-43a5-4e0e-a717-ac32014c3e13
-    - name: list sharing and mutation
-      id: 2e5b457f-242c-41b6-a3b4-ac33010cdc86
-    - name: two more recursive procedures
-      id: 8906b276-3287-4473-83d0-ac35015870cd
-7:
-  reading:
-    - EoPL Section 1.2 1.2.1
-    - Re-read TSPL 4.1-4.4 (you'll probably get more out of it on a second reading)
-  topics:
-    - BNF Grammar Specification
-    - s-lists
-  materials: GrammarsAndLanguages
-  other:
-  videos:
-    - name: Zoom 7
-      id: d977ef6c-c00a-4d03-9a6a-ac8d018302d9
-    - name: largest-in-lists
-      id: c1b0633f-e2b5-47ad-a2e1-ac3500fbfc03
-    - name: some prob solutions
-      id: cfb94c2b-3791-46bf-ad55-ac3501431213
-8:
-  reading:
-    - EoPL Section 1.2.2-1.2.4
-  topics:
-    - Exam 1 specification
-    - s-list procedures
-  materials: ProgramsAboutSlists
-  other:
-  videos:
-    - name: Zoom 8
-      id : c78b5944-0c9f-43a7-b382-ac8e011f6983
-9:
-  reading:
-    - EoPL Section 1.3, 1.4
-    - TSPL Sections 2.9 and 3.5 (you can skip the parts that use define-syntax for now)
-  topics:
-    - compose
-    - case-lambda
-    - OO behavior
-  materials: OOP
-  other:
-  videos:
-    - name: Zoom 9
-      id: b738039b-67a3-4670-9fc8-ac910123405a
-    - name: compose and case lambda
-      id: d96be7f2-f7cc-4d1c-9450-ac370172a2a8
-10:
-  reading: EoPL 2.1
-  topics:
-    - procedural abstraction
-    - list-recur
-  materials: ProceduralAbstraction
-  other:
-  videos:
-    - name: Zoom 10
-      id: 82dcfab6-ec40-4e0a-b569-ac920170ad89
-11:
-  reading:
-    - EoPL 2.2
-  topics:
-    - snoc and efficient rotate
-    - occurs-bound?
-  materials: OccursBound
-  other: 
-  videos:
-    - name: Zoom 12
-      id: bb5fd4a6-6c70-465c-accc-ac9800ce5431
-12:
-  reading:
-  topics:
-    - Exam 1 topics, maybe some example problems
-  materials: Exam1Prep
-  other: <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EQZFUkx7QDhPhanWKIi3LpcBN4o7ujz1pE_jIK1h0MYW4Q?e=pjI4Us">Teams recording of my discussion of Exam</a>
-  videos:
-
-13:
-  reading:
-    - EoPL 2.3
-  topics:
-    - abstract datatypes
-    - composite datatypes
-    - define datatype
-  materials: DatatypesParsing
-  other:
-  videos:
-    - name: Zoom 15
-      id: f709e5ff-ecd2-4ac8-93b2-acaa00d01ad4
-14:
-  reading:
-    - EoPL 2.4
-  topics:
-    - more on define datatype
-    - parsing LcExpressions
-    - global environments, local environments
-  materials: DatatypesParsing
-  other:
-  videos:
-    - name: Zoom 16
-      id: 884e5e76-08b8-4622-8e0b-acaa0134e2f6
-15:
-  reading:
-    - Catch up on any reading assignments you're behind
-  topics:
-    - lambdas, procedures and closures
-    - environments and closures
-  materials: EnvironmentsAndClosures
-  other:
-  videos:
-    - name: Zoom 17
-      id: cd1c5ec8-12cc-4eea-a83e-acad01209e57
-
-16:
-  reading:
-  topics:
-    - Class cancelled
-  materials:
-  other:
-  videos:
-
-17:
-  reading: EoPL 2.5
-  topics:
-    - environments and closure examples
-    - environment ADT specification
-  materials: EnvironmentsAndClosures2
-  other:
-  videos:
-    - name: Zoom 18
-      id: cc7f2699-d226-45b8-9945-acaf014980fe
-    - name: complex e and c example
-      id: 607c0767-0bb5-4d3f-8de8-ac4700be7a2f
-      
-18:
-  reading: EoPL 3.1, 3.2
-  topics:
-    - A bit more E&C practice
-    - Environment ADT implementation
-  materials: EnvironmentsAndClosures3
-  other:
-  videos:
-    - name: Zoom 19
-      id: b2affba4-d3a5-4b9b-b7d6-acb10065dbed
-19:
-  reading: TSPL 5.7 (skip call/cc parts)
-  topics:
-    - Interpreter initial framework
-    - let, if, lambda
-  materials: AddLetIfLambda
-  other:
-  videos:
-    - name: Zoom 20
-      id: f6a7120b-6adf-41a7-848f-acb1015b6eb4
-20:
-  topics:
-    - idea of syntax expansion
-    - template based expansions
-  other: <a href="https://rose-hulman.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ea7b2302-c0fa-4141-9c82-b08f012bf04a">Recorded Lecture</a>
-  materials: Macros1
-21:
-  topics:
-    - macro variable capture
-    - expansion variables
-  materials: Macros2
-22:
-  reading:
-  topics:
-    - Macros 3
-  materials:
-  other:
-  videos:
-23:
-  reading: 
-  topics:
-    - Memoization
-    - Multiple return values in scheme
-  materials: Memoization
-  other:
-  videos:
-    - name: Zoom 22
-      id: 67ab0a50-2608-4a33-b716-acb501809eb1
-24:
-  reading:
-    - EoPL 3.3, 3.4
-  topics:
-    - Continuations
-  materials: CPS
-  other:
-    -<a href="https://rose-hulman.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0c6c61cb-a984-4415-ab5a-b0a10159a28a">Buffalo Solves a CPS Problem Video</a>
-  videos:
-    - name: Zoom 24
-      id: 1a6f5dc9-c3ea-431f-ad22-acb8012e4578
-25:
-  topics:
-    - More CPS
-  materials: CPS
-26:
-  reading:
-    - EoPL 3.5, 3.6
-    - Skim EoPL 6.2, 6.3
-  topics:
-    - Another CPS conversion example
-    - add letrec to interpreted language
-  materials: CPSMore2
-  other:
-  videos:
-    - name: Zoom 25
-      id: 7048d7e9-f114-4a14-a2d7-acbc011d05cf
-27:
-  reading:
-    - EoPL 4.1-4.3
-  topics:
-    - Exam Specification
-    - add set! to interpreter
-    - References apply-env-ref and implementations
-    - cells
-    - rib-cage approach to references
-    - memory model (basic idea, no details)
-    - Differences between set! and define.
-    - call/cc warm-up (if we have time)
-  materials: CPSFinal
-  other:
-  videos:
-    - name: Zoom 26
-      id: 520fabc0-50fd-4bda-931a-acbc01295d4c
-
-28:
-  reading:
-  topics:
-    - interpreter in CPS form
-  materials: CPSDatatypesInterpreter
-  other:
-  videos:
-    - name: Zoom 31
-      id: 6208d3c8-3e10-4e61-8093-acc50159d22e
-
-      
-29:
-  reading:
-    - EoPL 4.1-4.3
-  topics:
-    - Receivers
-    - Escape Procedures
-    - def of call/cc
-    - call/cc examples
-  materials: CallCC1
-  other:
-  videos:
-    - name: Zoom 27
-      id: c89f6577-8afa-48a6-8a98-acbe0130f272
-      
-30:
-  reading:
-    - EoPL 5.1, 5.2
-  topics:
-    - call/cc examples
-  materials: CallCC2
-  other:
-  videos:
-    - name: Zoom 28
-      id: d8598cd5-f46f-40ca-b376-acbf01244121
-      
-31:
-  reading:
-    - TSPL 3.3, 3.4
-  topics:
-    - call/cc examples
-  materials: CallCC3
-  other:
-  videos:
-    - name: Zoom 29
-      id: 82606a4d-c7a2-4460-ab6f-acc201343176
-
-
-32:
-  reading:
-  topics:
-    - example fact with call/cc
-    - Add call/cc to interpreted language
-  materials: CPSDatatypesInterpreter
-  other:
-  videos:
-    - name: Zoom 32
-      id: 95c83579-9fc9-4c8d-b0ef-acc900bc953a
-    - name: which procedures are substantial?
-      id: 228bf192-c1d6-4bbf-b014-ac6400ff76fa
-    - name: Add call/cc to our interprerter
-      id: 103df8b9-ec49-4a02-9d45-ac64013b8248
-    - name: factorial with call/cc
-      id: 1b6faaf7-511d-46f7-844a-ac65010cb06f
-33:
-  reading:
-  topics:
-    - Call/cc problems
-  
-34:
-  reading:
-  topics:
-    - coroutines
-  materials: Coroutines
-  other:  
-  videos:
-    - name: Zoom 37
-      id: a8863f1e-4a87-4e08-9e04-acd0012d7827
-
-      
-35:
-  reading:
-  topics:
-    - Type Checking
-  materials: Typing
-  other:
-   - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EVpKcsEHCyFLkO43KeCSVEIBg0xyic0G_dvLXF8eKv7lVg?e=cdnlqc">Video</a>
-
-36:
-  reading:
-  topics:
-    - Type Checking 2
-  materials: ImplicitTyping
-  other:
-    - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EeidE7QbsS9PguvsifCA3XwB-NCS5QiYtXOeXos1ShyWrA?e=IltbQm">Video</a>
-
-   
-37:
-  reading:
-  topics:
-    - Skipped for Exam 2
-   
-38:
-  reading:
-  topics:
-    - Implicit typing
-  materials: ImplicitTyping
-  other:
-    - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EeidE7QbsS9PguvsifCA3XwB-NCS5QiYtXOeXos1ShyWrA?e=IltbQm">Video</a>
-
-
-39:
-  reading:
-  topics:
-    - imperative form
-  materials: ImperativeForm
-  other:
-  videos:
-    - name: Zoom 34
-      id: 6675b717-b026-484a-8b26-acca011516df  
-
-40:
-  reading:
-  topics:
-    - exam prep
-  materials: ExamPreview
-  other:
+---
+- type: class_session
+  class_num: 1
+  date: 2026-09-03 08:00
+- type: class_session
+  class_num: 2
+  date: 2026-09-04 08:00
+- type: class_session
+  class_num: 3
+  date: 2026-09-07 08:00
+- type: class_session
+  class_num: 4
+  date: 2026-09-08 08:00
+- type: class_session
+  class_num: 5
+  date: 2026-09-10 08:00
+- type: class_session
+  class_num: 6
+  date: 2026-09-11 08:00
+- type: class_session
+  class_num: 7
+  date: 2026-09-14 08:00
+- type: class_session
+  class_num: 8
+  date: 2026-09-15 08:00
+- type: class_session
+  class_num: 9
+  date: 2026-09-17 08:00
+- type: class_session
+  class_num: 10
+  date: 2026-09-18 08:00
+- type: class_session
+  class_num: 11
+  date: 2026-09-21 08:00
+- type: class_session
+  class_num: 12
+  date: 2026-09-22 08:00
+- type: class_session
+  class_num: 13
+  date: 2026-09-24 08:00
+- type: class_session
+  class_num: 14
+  date: 2026-09-25 08:00
+- type: class_session
+  class_num: 15
+  date: 2026-09-28 08:00
+- type: class_session
+  class_num: 16
+  date: 2026-09-29 08:00
+- type: class_session
+  class_num: 17
+  date: 2026-10-01 08:00
+- type: class_session
+  class_num: 18
+  date: 2026-10-02 08:00
+- type: class_session
+  class_num: 19
+  date: 2026-10-05 08:00
+- type: class_session
+  class_num: 20
+  date: 2026-10-06 08:00
+- type: class_session
+  class_num: 21
+  date: 2026-10-12 08:00
+- type: class_session
+  class_num: 22
+  date: 2026-10-13 08:00
+- type: class_session
+  class_num: 23
+  date: 2026-10-15 08:00
+- type: class_session
+  class_num: 24
+  date: 2026-10-16 08:00
+- type: class_session
+  class_num: 25
+  date: 2026-10-19 08:00
+- type: class_session
+  class_num: 26
+  date: 2026-10-20 08:00
+- type: class_session
+  class_num: 27
+  date: 2026-10-22 08:00
+- type: class_session
+  class_num: 28
+  date: 2026-10-23 08:00
+- type: class_session
+  class_num: 29
+  date: 2026-10-26 08:00
+- type: class_session
+  class_num: 30
+  date: 2026-10-27 08:00
+- type: class_session
+  class_num: 31
+  date: 2026-10-29 08:00
+- type: class_session
+  class_num: 32
+  date: 2026-10-30 08:00
+- type: class_session
+  class_num: 33
+  date: 2026-11-02 08:00
+- type: class_session
+  class_num: 34
+  date: 2026-11-03 08:00
+- type: class_session
+  class_num: 35
+  date: 2026-11-05 08:00
+- type: class_session
+  class_num: 36
+  date: 2026-11-06 08:00
+- type: class_session
+  class_num: 37
+  date: 2026-11-09 08:00
+- type: class_session
+  class_num: 38
+  date: 2026-11-10 08:00
+- type: class_session
+  class_num: 39
+  date: 2026-11-12 08:00
+- type: class_session
+  class_num: 40
+  date: 2026-11-13 08:00
