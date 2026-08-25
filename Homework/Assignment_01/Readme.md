@@ -55,6 +55,19 @@ Important: Restriction on Mutation.  One of the main goals of the first several 
 
 Background for problems 1-3 A (closed) interval of real numbers includes all numbers between the endpoints (including the endpoints).  We can represent an interval in Scheme by a list of two numbers ′(first second).  This represents the interval {x :  first ≤  x ≤ second }.  We will not allow empty intervals, so first must always be less than or equal to second.  If first = second, the interval contains exactly one number.  For simplicity, your code may assume that the endpoints of all of our intervals are integers, so that you do not have to worry about floating-point “near equality”.
 
+### AI Usage in the Schemeathon
+
+For the assignments before A11, you may use AI in one specific way.
+
+1.  If you get stuck on 1 problem / problem set, you may use AI to help you.
+
+2.  By help - you can ask AI to explain approach to problems, to help
+    you debug your code.  You may not use AI to write your code.
+    
+3.  You must note in comments that you used AI for the problem you
+    used it, and what prompts you used.
+
+
 ### 1 (5 points) 
 Write a Scheme procedure (interval-contains? interval number) where interval is an interval and number is an integer.  The procedure returns a Boolean value that indicates whether number is in the closed interval.  
 Scheme forms you are likely to use: define, lambda, if or and, <=, >=

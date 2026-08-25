@@ -6,6 +6,18 @@ This is an individual assignment.  You can talk to anyone and get as much help a
 
 Assume valid inputs.  As in assignment 1, you do not have to check for illegal arguments to your procedures.
 
+### AI Usage
+
+For this assignment, you may use AI in one specific way.
+
+1.  If you get stuck on 1 problem / problem set, you may use AI to help you.
+
+2.  By help - you can ask AI to explain approach to problems, to help
+    you debug your code.  You may not use AI to write your code.
+    
+3.  You must note in comments that you used AI for the problem you
+    used it, and what prompts you used.
+
 ## Q1 (20 points)
 
 I wanted to have you do a nice mutually recursive function to practice

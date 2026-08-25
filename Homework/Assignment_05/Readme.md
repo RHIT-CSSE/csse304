@@ -5,6 +5,18 @@
 
 Problem 1 uses the definitions and representations of *intervals* that are described in assignment 1
 
+### AI Usage
+
+For this assignment, you may use AI in one specific way.
+
+1.  If you get stuck on 1 problem / problem set, you may use AI to help you.
+
+2.  By help - you can ask AI to explain approach to problems, to help
+    you debug your code.  You may not use AI to write your code.
+    
+3.  You must note in comments that you used AI for the problem you
+    used it, and what prompts you used.
+
 
 ## Q1 (20 points)
 

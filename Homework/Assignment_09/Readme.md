@@ -2,6 +2,18 @@
 
 **Same rules as the previous assignments, including the prohibition of mutation.**
 
+### AI Usage
+
+For this assignment, you may use AI in one specific way.
+
+1.  If you get stuck on 1 problem / problem set, you may use AI to help you.
+
+2.  By help - you can ask AI to explain approach to problems, to help
+    you debug your code.  You may not use AI to write your code.
+    
+3.  You must note in comments that you used AI for the problem you
+    used it, and what prompts you used.
+
 ## Q1 (60 points)
 
 snlist-recur.  I have slightly adapted the book's definition of s-lists (EoPL, p 8) to allow numbers as well as symbols in the lists.  

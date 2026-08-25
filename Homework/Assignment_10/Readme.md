@@ -6,6 +6,18 @@ Section 1.2.4 is especially relevant to this assignment.
 			
 Mutation is not allowed for this assignment.
 
+### AI Usage
+
+For this assignment, you may use AI in one specific way.
+
+1.  If you get stuck on 1 problem / problem set, you may use AI to help you.
+
+2.  By help - you can ask AI to explain approach to problems, to help
+    you debug your code.  You may not use AI to write your code.
+    
+3.  You must note in comments that you used AI for the problem you
+    used it, and what prompts you used.
+
 #1 (10 points) 
 
 This question will use our definition of the lambda calculus.

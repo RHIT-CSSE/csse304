@@ -3,6 +3,18 @@
 Same rules as the previous assignments.  In particular, mutation is not allowed, except for problem 1, whose definition requires a mutation mechanism.
 No argument error-checking is required.  You may assume that all arguments have the correct form.
 
+### AI Usage
+
+For this assignment, you may use AI in one specific way.
+
+1.  If you get stuck on 1 problem / problem set, you may use AI to help you.
+
+2.  By help - you can ask AI to explain approach to problems, to help
+    you debug your code.  You may not use AI to write your code.
+    
+3.  You must note in comments that you used AI for the problem you
+    used it, and what prompts you used.
+
 ## Q1 (40 points)
 
 -lists are defined on page 8 of EoPL, and we used them in coding examples days 9 and 10.  You are to write a procedure called make-slist-leaf-iterator.  This procedure takes an s-list as its argument, and returns an iterator “object” procedure that only has one method, 'next.  Each time next is called, it returns the next symbol from the s-list.  If the iterator is called again after all of the symbols from the s-list have been returned, it returns #f.  An example should help you to understand what an s-list leaf iterator is supposed to do

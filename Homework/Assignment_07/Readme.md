@@ -9,6 +9,19 @@ Abbreviations for the textbooks:
 
 Note Assignment 7a is problems 1-3.  7b is 4-6.
 
+### AI Usage
+
+For this assignment, you may use AI in one specific way.
+
+1.  If you get stuck on 1 problem / problem set, you may use AI to help you.
+
+2.  By help - you can ask AI to explain approach to problems, to help
+    you debug your code.  You may not use AI to write your code.
+    
+3.  You must note in comments that you used AI for the problem you
+    used it, and what prompts you used.
+
+
 ## Q1 (10 points)
 
 (group-by-two ls) takes a list ls.  It returns a list of lists: the elements of ls in groups of two.  If ls has an *odd number of elements, the last sublist of the return value will have one element*.

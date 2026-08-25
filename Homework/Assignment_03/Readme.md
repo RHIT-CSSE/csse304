@@ -18,6 +18,17 @@ The first two problems refer to the definition of sets in Scheme from Assignment
 
 We represent a set by a list of objects.  We say that such a list is a set if and only if it contains no duplicates.  By “no duplicates”, I mean that no two items in the list are equal?
 
+### AI Usage
+
+For this assignment, you may use AI in one specific way.
+
+1.  If you get stuck on 1 problem / problem set, you may use AI to help you.
+
+2.  By help - you can ask AI to explain approach to problems, to help
+    you debug your code.  You may not use AI to write your code.
+    
+3.  You must note in comments that you used AI for the problem you
+    used it, and what prompts you used.
 
 ## Q1 (10 points)
 

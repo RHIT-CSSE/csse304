@@ -17,6 +17,19 @@ Some simple examples of currying appear on pages 26 (last sentence) through 28 o
 
 Reminder:  EoPL-1 is the first edition of EoPL.  An excerpt was handed out on the first day of class.  It is also available on Moodle.
 
+### AI Usage
+
+For this assignment, you may use AI in one specific way.
+
+1.  If you get stuck on 1 problem / problem set, you may use AI to help you.
+
+2.  By help - you can ask AI to explain approach to problems, to help
+    you debug your code.  You may not use AI to write your code.
+    
+3.  You must note in comments that you used AI for the problem you
+    used it, and what prompts you used.
+
+
 ## Q1 (10 points)
 
 curry2. This is EoPL-1 Exercise 1.3.4, page 28.   Examples are on that page.
