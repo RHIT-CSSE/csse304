@@ -197,6 +197,14 @@
       id: 884e5e76-08b8-4622-8e0b-acaa0134e2f6
 15:
   reading:
+  topics:
+    - Class cancelled for Exam 1
+  materials:
+  other:
+  videos:
+
+16:
+  reading:
     - Catch up on any reading assignments you're behind
   topics:
     - lambdas, procedures and closures
@@ -206,14 +214,6 @@
   videos:
     - name: Zoom 17
       id: cd1c5ec8-12cc-4eea-a83e-acad01209e57
-
-16:
-  reading:
-  topics:
-    - Class cancelled
-  materials:
-  other:
-  videos:
 
 17:
   reading: EoPL 2.5
@@ -345,8 +345,14 @@
   videos:
     - name: Zoom 27
       id: c89f6577-8afa-48a6-8a98-acbe0130f272
-      
+
 30:
+  reading:
+  topics:
+    - Skipped for Exam 2
+
+
+31:
   reading:
     - EoPL 5.1, 5.2
   topics:
@@ -357,7 +363,7 @@
     - name: Zoom 28
       id: d8598cd5-f46f-40ca-b376-acbf01244121
       
-31:
+32:
   reading:
     - TSPL 3.3, 3.4
   topics:
@@ -369,7 +375,7 @@
       id: 82606a4d-c7a2-4460-ab6f-acc201343176
 
 
-32:
+33:
   reading:
   topics:
     - example fact with call/cc
@@ -385,12 +391,12 @@
       id: 103df8b9-ec49-4a02-9d45-ac64013b8248
     - name: factorial with call/cc
       id: 1b6faaf7-511d-46f7-844a-ac65010cb06f
-33:
+34:
   reading:
   topics:
     - Call/cc problems
   
-34:
+35:
   reading:
   topics:
     - coroutines
@@ -401,7 +407,7 @@
       id: a8863f1e-4a87-4e08-9e04-acd0012d7827
 
       
-35:
+36:
   reading:
   topics:
     - Type Checking
@@ -409,19 +415,13 @@
   other:
    - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EVpKcsEHCyFLkO43KeCSVEIBg0xyic0G_dvLXF8eKv7lVg?e=cdnlqc">Video</a>
 
-36:
+37:
   reading:
   topics:
     - Type Checking 2
   materials: ImplicitTyping
   other:
     - <a href="https://rosehulman-my.sharepoint.com/:v:/g/personal/hewner_rose-hulman_edu/EeidE7QbsS9PguvsifCA3XwB-NCS5QiYtXOeXos1ShyWrA?e=IltbQm">Video</a>
-
-   
-37:
-  reading:
-  topics:
-    - Skipped for Exam 2
    
 38:
   reading:
