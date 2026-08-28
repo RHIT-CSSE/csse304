@@ -8,7 +8,7 @@
 ; You can run a specific group of tests using (run-tests group-name)
 
 (require "../testcode-base.rkt")
-(require "A15.rkt")
+(require "CPSConversion.rkt")
 (provide get-weights get-names individual-test test)
 
 (define set-equals?  ; are these list-of-symbols equal when

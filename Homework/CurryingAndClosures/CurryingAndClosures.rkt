@@ -1,6 +1,6 @@
 #lang racket
 
-(provide curry2 curried-compose compose make-list-c reverse-it map-by-position empty-BST empty-BST? BST-insert BST-inorder BST? BST-element BST-left BST-right BST-insert-nodes BST-contains? BST-height let->application let*->let qsort sort-list-of-symbols)
+(provide curry2 curried-compose compose make-list-c reverse-it map-by-position empty-BST empty-BST? BST-insert BST-inorder BST? BST-element BST-left BST-right BST-insert-nodes BST-contains? BST-height)
 
 (define curry2
   (lambda (a)
@@ -67,22 +67,6 @@
     (nyi)))
 
 (define BST-height
-  (lambda (a)
-    (nyi)))
-
-(define let->application
-  (lambda (a)
-    (nyi)))
-
-(define let*->let
-  (lambda (a)
-    (nyi)))
-
-(define qsort
-  (lambda (a b)
-    (nyi)))
-
-(define sort-list-of-symbols
   (lambda (a)
     (nyi)))
 

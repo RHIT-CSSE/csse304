@@ -8,7 +8,7 @@
 ; You can run a specific group of tests using (run-tests group-name)
 
 (require "../testcode-base.rkt")
-(require "interpreter.rkt")
+(require "Interpreter-SyntaxExpansion.rkt")
 (provide get-weights get-names individual-test test)
 
 (define test (make-test ; (r)
