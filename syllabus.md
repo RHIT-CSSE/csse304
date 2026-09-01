@@ -1,10 +1,5 @@
 # CSSE 304 Syllabus
 
-# About this Course
-
-This course presents an implementation approach to the study of programming language concepts.  Rather than looking at several programming language features "from the outside" (only a user's perspective) We will instead get an inside view by implementing many of the features ourselves, *via* a
-series of interpreters (the languages will mostly be subsets of Racket).  We will use the Racket programming language to provide a
-laboratory environment in which to write the interpreters and to illustrate various programming paradigms and concepts.
 
 
 ## Course Engagement Policy
@@ -94,6 +89,10 @@ quickly - but it never hurts to have a discussion, however
 unsalvageable the situation may feel.  Please talk to your professor
 if you are having problems!
 
+# Attendance Policy
+
+In accordance with Rose policy—missing 10 days of class is an automatic failure REGARDLESS of how “excused” the absences are.  
+
 # Academic Integrity and CSSE Integrity Committee Procedures
 
 It is critical to maintain academic integrity. It is essential for all students to cite any and all sources of help received in completing coursework. This practice not only fosters a culture of honesty and transparency but also prevents misunderstandings that might otherwise escalate to formal proceedings. Students should also be aware of what is appropriate help on homework assignments – see <a href="https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared%20Documents/Pilot%20Integrity%20Policy/IntegrityPilotPolicy%20-%20What%20Constitutes%20Misconduct.docx?d=w72d3dc4b233d4df68e10736359a06c80&csf=1&web=1&e=QWvFcM">What Constitutes Misconduct - rev 02-10-2026.docx</a>. To ensure fairness and responsibility, any instances of suspected misconduct will be handled through the CSSE Integrity Committee.
@@ -103,6 +102,10 @@ If a case of suspected misconduct arises, it will be submitted to the CSSE Integ
 
 
 # Institute Policies
+
+## Having trouble reading/hearing?
+
+If you are having trouble reading or accessing any of the materials, please reach out to me.
 
 ## Students with Accessibility Needs:
 
