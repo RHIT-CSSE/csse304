@@ -94,33 +94,12 @@ quickly - but it never hurts to have a discussion, however
 unsalvageable the situation may feel.  Please talk to your professor
 if you are having problems!
 
-# Academic Honesty
+# Academic Integrity and CSSE Integrity Committee Procedures
 
-It is critical to maintain academic integrity. It is essential for all
-students to cite any and all sources of help received in completing
-coursework. This practice not only fosters a culture of honesty and
-transparency but also prevents misunderstandings that might otherwise
-escalate to formal proceedings. Students should also be aware of what
-is appropriate help on homework assignments – <a href="https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - What Constitutes Misconduct.docx?d=w72d3dc4b233d4df68e10736359a06c80&csf=1&web=1&e=QWvFcM">see policy here</a> ). In general, academic misconduct results in negative points on an assignment and an F in the course on exams. All the work you turn in must be your own. You may use appropriate assistance from the instructor and the TAs.
+It is critical to maintain academic integrity. It is essential for all students to cite any and all sources of help received in completing coursework. This practice not only fosters a culture of honesty and transparency but also prevents misunderstandings that might otherwise escalate to formal proceedings. Students should also be aware of what is appropriate help on homework assignments – see <a href="https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared%20Documents/Pilot%20Integrity%20Policy/IntegrityPilotPolicy%20-%20What%20Constitutes%20Misconduct.docx?d=w72d3dc4b233d4df68e10736359a06c80&csf=1&web=1&e=QWvFcM">What Constitutes Misconduct - rev 02-10-2026.docx</a>. To ensure fairness and responsibility, any instances of suspected misconduct will be handled through the CSSE Integrity Committee.
+ 
 
-If a case of suspected misconduct arises, it will be submitted to the
-CSSE Integrity Committee for review (see <a href="https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - Procedures.docx?d=wf4c70babf3ac434ba29d5518dca9f877&csf=1&web=1&e=1efwlT">policies and procedures here</a>
-and <a href="https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared Documents/Pilot Integrity Policy/IntegrityPilotPolicy - Penalties %26 Evidence.docx?d=w916e293ca31a4493bdbdd6b78ed2d3dd&csf=1&web=1&e=wCWF2K">possible penalties here</a>). The process includes an initial review
-of the evidence by the committee, a time for students to explain or
-admit to potential misconduct, and potentially a hearing to examine
-the circumstances and evidence. Students are encouraged to continue
-their studies and engage with the course material and instructor
-normally throughout the investigation.
-
-Beyond the policy of this course, the Student Handbook and
-Rose-Hulman’s Academic Rules and Procedures describe penalties and
-processes invoked as a consequence if academic misconduct (such as
-cheating, plagiarizing, or interfering with the academic progress of
-other students) takes place.  It is the responsibility of each student
-to know and follow Rose-Hulman’s rules about academic integrity.
-
-For this course, you may not use any AI tools to develop, test, or debug your code. You may use AI tools to understand concepts developed in class. Please engage with you instructor or the TAs or the SRT assigned to this course for any questions you may have or any help you may need to write the code. 
-
+If a case of suspected misconduct arises, it will be submitted to the CSSE Integrity Committee for review (see <a href="https://rosehulman.sharepoint.com/:w:/r/sites/CS/Shared%20Documents/Integrity%20Policy/Integrity%20Policy%20-%20Procedures%20-%20rev%2004-27-2026.docx?d=w919879b57499452894ee53ed1a267eac&csf=1&web=1&e=rnHf8y">Integrity Policy - Procedures - rev 04-27-2026.docx</a>  and possible penalties ​<a href="https://rosehulman.sharepoint.com/:w:/s/CS/IQA8KW6RGqOTRL291reO0tPdAfY1xviT03qG5Tcyx1hu6Ok?e=ewVAIx">IntegrityPolicy - Penalties & Evidence.docx</a>). Exceptions may be made for cases which the instructor deems minor or which arise late in the term. The instructor may choose to handle such cases directly (without CSSE Integrity Committee involvement). The process includes an initial review of the evidence by the committee, a time for students to explain or admit to potential misconduct, and potentially a hearing to examine the circumstances and evidence. Students are encouraged to continue their studies and engage with the course material and instructor normally throughout the investigation.
 
 
 # Institute Policies
