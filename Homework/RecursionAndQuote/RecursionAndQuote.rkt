@@ -1,36 +1,38 @@
 #lang racket
 
+(require racket/contract)
+
 (provide sum-of-squares range my-set? union more-positives? add-quotes get-304-quine)
 
-(define sum-of-squares
-  (lambda (a)
-    (nyi)))
+(define/contract (sum-of-squares a)
+  (-> (listof number?) number?)
+  (nyi))
 
-(define range
-  (lambda (a b)
-    (nyi)))
+(define/contract (range a b)
+  (-> integer? integer? (listof integer?))
+  (nyi))
 
-(define my-set?
-  (lambda (a)
-    (nyi)))
+(define/contract (my-set? a)
+  (-> any/c boolean?)
+  (nyi))
 
-(define union
-  (lambda (a b)
-    (nyi)))
-    
-(define more-positives?
-  (lambda (lon)
-    (nyi)))
+(define/contract (union a b)
+  (-> (listof any/c) (listof any/c) (listof any/c))
+  (nyi))
 
-(define add-quotes
-  (lambda (val num)
-    (nyi)))
-           
+(define/contract (more-positives? lon)
+  (-> (listof integer?) boolean?)
+  (nyi))
+
+(define/contract (add-quotes val num)
+  (-> (or/c symbol? list?) exact-nonnegative-integer? (or/c symbol? list?))
+  (nyi))
+
 ; Stuff for the final quine problem
 
-(define get-304-quine
-  (lambda ()
-    (nyi)))
+(define/contract (get-304-quine)
+  (-> string?)
+  (nyi))
 
 (define eval-string
   (lambda (str)
