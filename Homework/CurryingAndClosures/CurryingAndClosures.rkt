@@ -1,74 +1,85 @@
 #lang racket
 
+(require racket/contract)
+
 (provide curry2 curried-compose compose make-list-c reverse-it map-by-position empty-BST empty-BST? BST-insert BST-inorder BST? BST-element BST-left BST-right BST-insert-nodes BST-contains? BST-height)
 
-(define curry2
-  (lambda (a)
+(define (bst-rep? v)
+  (or (null? v)
+      (and (list? v)
+           (= 3 (length v))
+           (integer? (car v))
+           (bst-rep? (cadr v))
+           (bst-rep? (caddr v)))))
+
+(define/contract (curry2 f)
+  (-> procedure? procedure?)
+  (nyi))
+
+(define/contract (curried-compose f)
+  (-> procedure? procedure?)
+  (nyi))
+
+(define/contract compose
+  (->* () #:rest (listof procedure?) procedure?)
+  (lambda fns
     (nyi)))
 
-(define curried-compose
-  (lambda (a)
-    (nyi)))
+(define/contract (make-list-c n)
+  (-> exact-nonnegative-integer? procedure?)
+  (nyi))
 
-(define compose
-  (lambda a
-    (nyi)))
+(define/contract (reverse-it lst)
+  (-> (listof any/c) (listof any/c))
+  (nyi))
 
-(define make-list-c
-  (lambda (a)
-    (nyi)))
+(define/contract (map-by-position fns args)
+  (-> (listof procedure?) (listof any/c) (listof any/c))
+  (nyi))
 
-(define reverse-it
-  (lambda (a)
-    (nyi)))
+(define/contract (empty-BST)
+  (-> bst-rep?)
+  (nyi))
 
-(define map-by-position
-  (lambda (a b)
-    (nyi)))
+(define/contract (empty-BST? obj)
+  (-> any/c boolean?)
+  (nyi))
 
-(define empty-BST
-  (lambda ()
-    (nyi)))
+(define/contract (BST-insert num bst)
+  (-> integer? bst-rep? bst-rep?)
+  (nyi))
 
-(define empty-BST?
-  (lambda (a)
-    (nyi)))
+(define/contract (BST-inorder bst)
+  (-> bst-rep? (listof integer?))
+  (nyi))
 
-(define BST-insert
-  (lambda (a b)
-    (nyi)))
+(define/contract (BST? obj)
+  (-> any/c boolean?)
+  (nyi))
 
-(define BST-inorder
-  (lambda (a)
-    (nyi)))
+(define/contract (BST-element bst)
+  (-> bst-rep? integer?)
+  (nyi))
 
-(define BST?
-  (lambda (a)
-    (nyi)))
+(define/contract (BST-left bst)
+  (-> bst-rep? bst-rep?)
+  (nyi))
 
-(define BST-element
-  (lambda (a)
-    (nyi)))
+(define/contract (BST-right bst)
+  (-> bst-rep? bst-rep?)
+  (nyi))
 
-(define BST-left
-  (lambda (a)
-    (nyi)))
+(define/contract (BST-insert-nodes bst nums)
+  (-> bst-rep? (listof integer?) bst-rep?)
+  (nyi))
 
-(define BST-right
-  (lambda (a)
-    (nyi)))
+(define/contract (BST-contains? bst num)
+  (-> bst-rep? integer? boolean?)
+  (nyi))
 
-(define BST-insert-nodes
-  (lambda (a b)
-    (nyi)))
-
-(define BST-contains?
-  (lambda (a b)
-    (nyi)))
-
-(define BST-height
-  (lambda (a)
-    (nyi)))
+(define/contract (BST-height bst)
+  (-> bst-rep? integer?)
+  (nyi))
 
 ;;--------  Used by the testing mechanism   ------------------
 
