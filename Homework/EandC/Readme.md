@@ -6,7 +6,7 @@ For this diagram topic we will be using a "flipped" approach.
 
 Prior to E&C Day 1 class session you will watch a 3 part video and do 3 small practice problems.  
 
-Problems are in EandC_Homework.docx
+Problems are in EandC_Homework_Day1.docx.  Bring your solution to class.
 
 1. Watch Day 1 pt 1: https://rose-hulman.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=b6c4c444-034d-4bb2-9124-b19d00e5ebf5
 2. Do Day 1A problem
@@ -21,12 +21,7 @@ You will do and turn in Day 1 Inclass for homework credit.
 
 ## Before Day 2
 
-Prior to E&C Day 1 class session you will watch a 2 part video and do 2 small practice problems.  
-
-1. Watch Day 2 pt 1: https://rose-hulman.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=1f3cd750-698f-4aad-8b1f-b19d0100f50e
-2. Do Day 2A problem
-3. Watch Day 2 pt 2: https://rose-hulman.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=cfb65f99-ee63-4d79-a55e-b19d0100f4a9
-4. Do Day 2B problem
+You do not need to watch any videos but do EandC_Homework_Day2.docx.  Bring your solution to class.
 
 ## Day 1 In-Class
 
