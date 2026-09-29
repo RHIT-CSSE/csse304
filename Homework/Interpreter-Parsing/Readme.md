@@ -1,7 +1,5 @@
 ## Assignment 11
 
-** The initial parts of the Interpreter project are individual assignments. Please work on those portions by your self. **
-
 No mutation is allowed in your code.
 
 ## Parsing Scheme (85 Points)
