@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<indexing>
+ <paragraph index="9" node_type="writer">Name ___________________________________________________</paragraph>
+ <paragraph index="10" node_type="writer">Environments and Closures Practice In Class</paragraph>
+ <paragraph index="11" node_type="writer">DAY 2</paragraph>
+ <paragraph index="12" node_type="writer">In Racket, what order are the procedures A B C D E called?</paragraph>
+ <paragraph index="13" node_type="writer">A (1 point)</paragraph>
+ <paragraph index="14" node_type="writer">((lambda (fun1 fun2)</paragraph>
+ <paragraph index="15" node_type="writer">   (A 99)</paragraph>
+ <paragraph index="16" node_type="writer">   (fun1 99)</paragraph>
+ <paragraph index="17" node_type="writer">   (fun2 99))</paragraph>
+ <paragraph index="18" node_type="writer"> B</paragraph>
+ <paragraph index="19" node_type="writer"> (C 99))</paragraph>
+ <paragraph index="21" node_type="writer">B (1 point)</paragraph>
+ <paragraph index="22" node_type="writer">(let ([myFuncs (list A B)])</paragraph>
+ <paragraph index="23" node_type="writer">  ((cadr myFuncs)</paragraph>
+ <paragraph index="24" node_type="writer">   ((car myFuncs) 7)</paragraph>
+ <paragraph index="25" node_type="writer">   (C D)))</paragraph>
+ <paragraph index="29" node_type="writer">Draw E&amp;C Diagrams for the following code:</paragraph>
+ <paragraph index="30" node_type="writer">A (4 points)</paragraph>
+ <paragraph index="31" node_type="writer">(let ([A (lambda (x) (display 'A))]</paragraph>
+ <paragraph index="32" node_type="writer">      [B (lambda (x y) (display 'B))]</paragraph>
+ <paragraph index="33" node_type="writer">      [C (lambda (x) (display 'C))]</paragraph>
+ <paragraph index="34" node_type="writer">      [D (lambda (x) (display 'D))])</paragraph>
+ <paragraph index="35" node_type="writer">  (let ([myFuncs (list A B)])</paragraph>
+ <paragraph index="36" node_type="writer">    ((cadr myFuncs)</paragraph>
+ <paragraph index="37" node_type="writer">     ((car myFuncs) 7)</paragraph>
+ <paragraph index="38" node_type="writer">     (C D))))</paragraph>
+ <paragraph index="53" node_type="writer">B (4 points) &lt;- if you finish this and get it checked off, you can leave</paragraph>
+ <paragraph index="54" node_type="writer">(let ((make-count-down</paragraph>
+ <paragraph index="55" node_type="writer">       (lambda (starting-val)</paragraph>
+ <paragraph index="56" node_type="writer">         (let [(num starting-val)] </paragraph>
+ <paragraph index="57" node_type="writer">           (lambda (deduct)</paragraph>
+ <paragraph index="58" node_type="writer">             (set! num (- num deduct))</paragraph>
+ <paragraph index="59" node_type="writer">             num)))))</paragraph>
+ <paragraph index="60" node_type="writer">       (let ((cd1 (make-count-down 100))</paragraph>
+ <paragraph index="61" node_type="writer">             (cd2 (make-count-down 100)))</paragraph>
+ <paragraph index="62" node_type="writer">         (cd1 5)))</paragraph>
+</indexing>
