@@ -1,0 +1,18 @@
+#lang racket
+
+(define-syntax (and-or stx)
+  (let ((code (syntax->datum stx)))
+    (cond [(= (cadr code) 1) (datum->syntax stx (cons 'and (cddr code)))]
+          [(= (cadr code) 2) (datum->syntax stx (cons 'or (cddr code)))]
+          [else (raise-syntax-error #f "bad and-or value" stx)])))
+
+
+(define-syntax (and-or2 stx)
+  (let ((code (syntax->datum stx)))
+    (datum->syntax stx (list 'if
+                             (list '= 1 (cadr code))
+                             (cons 'and (cddr code))
+                             (cons 'or (cddr code))
+                             ))))
+
+(let ((mynum 1)) (and-or2 mynum #t #f))
