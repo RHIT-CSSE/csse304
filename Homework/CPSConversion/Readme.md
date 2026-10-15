@@ -2,6 +2,59 @@
 
 This is a small individual CPS conversion assignment. 
 
+For all three problems: all calls to the *substantial* procedures must be in tail
+position.  Each problem below says which procedures those are.  Each problem's
+tests end with a 5 point group that checks this, and the graders look at your
+code by hand as well.
+
+Three things to know about the code file:
+
+* The CPS procedures are declared with `define-cps-procedure` instead of
+  `define`.  It behaves exactly like `define`; it also keeps enough of the code
+  for the tail position checks to see where the procedure is called.  Declare
+  the procedures you write the same way, and leave `apply-k` declared that way.
+* The unconverted versions of the procedures are commented out, so a recursive
+  call in your conversion cannot reach them by accident: writing
+  `(slist-subst-orig ...)` inside `slist-subst-cps` reports `slist-subst-orig`
+  as unbound instead of quietly calling the original.  If you uncomment one it
+  becomes callable again, and calls to it are invisible to the tail position
+  checks, because it is not a procedure declared with `define-cps-procedure`.
+* Tracing rebinds a procedure to a wrapper, and the tail position checks look
+  procedures up by identity, so a traced procedure cannot be found.  Trace while
+  you work out a case, but leave `(trace ...)` out of the file you run the tests
+  on.
+
+## Sum Numbers (10 points, plus 5 for the tail position checks)
+
+sum-numbers takes a list that contains both numbers and symbols, and adds up the
+numbers in it, ignoring the symbols:
+
+    (sum-numbers '(1 a 2 b 3)) => 6
+
+Here is the code to convert:
+
+    (define sum-numbers
+      (lambda (lst)
+        (cond [(null? lst) 0]
+              [(symbol? (car lst)) (sum-numbers (cdr lst))]
+              [else (+ (car lst) (sum-numbers (cdr lst)))])))
+
+Convert this code as written.  Do not rewrite it into a fully tail recursive
+version first and convert that instead - a version that carries the running total
+in an accumulator is a different procedure, and converting this one is the point
+of the problem.  (Notice that the accumulator version would pass the tail
+position checks below, because it has no non-tail recursive call left to convert,
+so those checks cannot tell whether you converted the right function.  This
+problem is checked by hand as well.)
+
+Two things to notice about the code: the symbol case's recursive call is already
+in tail position, so it passes the continuation along unchanged, while the number
+case's is not, because the + still has to add (car lst) to its result.  One clause
+of each kind, and one continuation flavor that has to remember the number.
+
+Add the flavor (or flavors) this problem needs to the same continuation datatype
+and the cases to the same apply-k.
+
 ## Sublist Subst (14 points)
 
 So in this problem we're going considering a slist-subst
@@ -99,3 +152,46 @@ it a bit and get help if the answer does not present itself).
 Note that tracing isn't always 100% reliable because it only works if
 the particular text case happens to drive the code down a
 non-tail-recursive path.
+
+## Tail Position Checks (5 points per problem)
+
+Each problem's tests end with a tail position group of its own:
+
+* `sum-numbers-tail-positions`, after the Problem 1 tests, checks
+  `sum-numbers-cps` and `apply-k`, and is worth 5 points.
+* `sublist-subst-tail-positions`, after the Problem 2 tests, checks
+  `slist-subst-cps` and `apply-k`, and is worth 5 points.
+* `free-vars-remove-tail-positions`, after the Problem 3 tests, checks
+  `remove-cps`, `free-vars-cps` and `apply-k`, and is worth 5 points.
+
+A group does automatically what used to be a by-hand check: for each of its
+substantial procedures, it looks for calls to a substantial procedure from a
+non-tail position.  Run one on its own with, say,
+`(run-test sublist-subst-tail-positions)`.
+
+On a correct conversion every check prints `Yours: ()`.  A failing check prints
+the calls to move, for example
+
+    Yours: (remove-cps)
+
+Each name printed is a call whose result is used by the call it sits inside, so
+that call needs its own continuation, exactly as step 3 does for a non-tail
+recursive call.  Read a failure that way: it is not a technicality.  It means the
+conversion of that procedure is not finished, and a conversion that is not in CPS
+form is worth very little, however its answers happen to compare to the expected
+ones.  Passing the ordinary tests is not the standard; never calling a
+substantial procedure from a non-tail position is.  The two are independent --
+answers can be right while a check fails, and a check can pass while answers are
+wrong -- so both are scored.
+
+`apply-k` belongs to every problem, since all three add cases to it, so its check
+is in every group and a mistake in `apply-k` costs the points in every group.
+Everywhere else the groups are separate: a mistake in one problem's procedure
+costs only that problem's group, and a problem you have not started cannot cost
+you the others.
+
+The one thing that stops a check from finding a procedure is tracing it: `trace`
+rebinds the name to a wrapper, and the check looks procedures up by identity.
+That check then fails with a message saying the procedure was not declared with
+`define-cps-procedure` or that its binding was replaced.  Comment out the
+`(trace ...)` line and re-run.
