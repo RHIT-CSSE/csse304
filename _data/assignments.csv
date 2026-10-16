@@ -19,9 +19,9 @@ Interpreter-Evaluation,Interpreter-Evaluation,2026-10-06 23:59,,Day 20
 Macros Assignment,Macros,2026-10-12 23:59,,Day 22
 Macros2 Assignment,Macros2,2026-10-13 23:59,,Day 22
 Interpreter-SyntaxExpansion,Interpreter-SyntaxExpansion,2026-10-16 23:59,,Day 24
-CPSConversion,CPSConversion,2026-10-19 23:59,,Day 25
-Interpreter-LetrecAndNamedLet,Interpreter-LetrecAndNamedLet,2026-10-20 23:59,,Day 26
-Interpreter-DefineAndSet,Interpreter-DefineAndSet,2026-10-23 23:59,,Day 28
+CPSConversion,CPSConversion,2026-10-20 23:59,,Day 25
+Interpreter-LetrecAndNamedLet,Interpreter-LetrecAndNamedLet,2026-10-22 23:59,,Day 26
+Interpreter-DefineAndSet,Interpreter-DefineAndSet,2026-10-26 23:59,,Day 28
 Interpreter-CallCC,Interpreter-CallCC,2026-11-02 23:59,,Day 33
 CallCC Assignment,CallCC,2026-11-09 23:59,,Day 37
 Typing Assignment,Typing,2026-11-13 23:59,,Day 40
