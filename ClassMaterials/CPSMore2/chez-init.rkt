@@ -123,13 +123,17 @@
             (append
               (map (lambda (v) (cons v Type-name)) variant-names)
               define-datatype:variant-registry))
-          (cond 
-            ((memq Type-name define-datatype:type-registry) =>
-             (lambda (pair)
-               (set-car! pair Type-name)))
-            (else
-              (set! define-datatype:type-registry
-                (cons Type-name define-datatype:type-registry))))))))
+          (unless (memq Type-name define-datatype:type-registry)
+            ;; The Scheme original does (set-car! pair Type-name) when the name
+            ;; is already registered, which writes back the symbol that is
+            ;; already there -- a no-op.  Racket's set-car! (from
+            ;; rnrs/mutable-pairs-6) needs a mutable pair, so the port crashed on
+            ;; that no-op instead, and only two datatypes with the same name in
+            ;; one program could reach it.  Racket's immutable pairs make the
+            ;; no-op explicit here, so two files can each define a type called
+            ;; continuation and be required into the same program.
+            (set! define-datatype:type-registry
+              (cons Type-name define-datatype:type-registry)))))))
   
   (set! define-datatype:case-checker
     (let ((remq-or-false
