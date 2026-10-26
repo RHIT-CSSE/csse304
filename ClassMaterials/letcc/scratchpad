@@ -1,0 +1,47 @@
+#lang racket
+
+(let ((message (* 3 4)))
+  (display message)
+  (let ((num (+ 1 1))
+        (num2 3))
+    (display "world")
+    (display num2)))
+
+(define myK 'replace-me)
+(let ()
+  (display 'a)
+  (let/cc k
+    (set! myK k))
+  (display 'b))
+
+(let ()
+  (display 'a)
+  (let/cc k
+    (display 'b)
+    (set! myK k)
+    (display 'c))
+  (display 'd))
+    
+
+(display
+ (list 'buffalo
+       'says
+       (let/cc k
+         (set! myK k)
+         'hello)))
+
+(if (> (let/cc k
+         (set! myK k)
+         3)
+       10)
+    (display 'big)
+    (display 'small))
+
+(let ((topK 'replace-me))
+  (let/cc k (set! topK k))
+  (display 'hello)
+  (topK 'ignored))
+  
+    
+    
+  
