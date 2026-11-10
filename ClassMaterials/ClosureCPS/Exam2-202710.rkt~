@@ -1,0 +1,227 @@
+#lang racket
+(require "../chez-init.rkt")
+(require "cps-conversion-helper.rkt")
+(require racket/trace)
+
+(provide list-k count-sublists-cps init-k apply-k vector-let eval-one-exp)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; QUESTION 1 CPS CONVERSION - 20 points
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; count-sublists returns the number of elements of slist that are themselves
+;; lists, counting at every depth.  An empty list is a list.
+;;
+;;    (count-sublists '(a b c))        => 0
+;;    (count-sublists '(a (b c) d))    => 1
+;;    (count-sublists '((a) (b (c))))  => 3
+;;    (count-sublists '(a () b))       => 1
+;;
+;; Convert it to CPS.
+;;
+;; The unconverted code is commented out so that a recursive call in your
+;; conversion cannot reach it by accident: writing (count-sublists (cdr slist))
+;; inside count-sublists-cps reports count-sublists as unbound, instead of
+;; quietly calling the original.
+;
+; (define count-sublists
+;   (lambda (slist)
+;     (cond [(null? slist) 0]
+;           [(symbol? (car slist)) (count-sublists (cdr slist))]
+;           [else (+ 1 (count-sublists (car slist))
+;                      (count-sublists (cdr slist)))])))
+
+(define-datatype continuation continuation?
+  [init-k]
+  [list-k]
+  ; more cases here
+
+  )
+
+;; Declare the procedures you write with define-cps-procedure rather than
+;; define.  It behaves the same, and also keeps enough of the code for the tail
+;; position test, which looks for calls to count-sublists-cps and apply-k from a
+;; non-tail position.  That test looks procedures up by identity, so a plain
+;; define would not be found, and tracing rebinds a name to a wrapper -- leave
+;; the trace line commented out while the tests run.
+(define-cps-procedure (apply-k k v)
+  (cases continuation k
+    [init-k () v]
+    [list-k () (list v)] ;; for testing
+    ))
+
+(define-cps-procedure (count-sublists-cps slist k)
+  (nyi))
+
+; (trace apply-k count-sublists-cps) ; <= you can use this but it causes tail position stuff to failx
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; QUESTION 2 DEFINE SYNTAX - 20 points
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Define the macro vector-let.  It looks like this:
+;;
+;; (vector-let vec-expr ((name1 index1) (name2 index2) ...) body)
+;;
+;; vec-expr is an expression that evaluates to a vector.  Each
+;; (name index) pair binds name to the element of that vector
+;; at position index (using 0-based indexing, as in vector-ref).
+;; All of the bound names are visible in body.
+;;
+;; Reminder: use vector-ref to read an element of a vector:
+;;
+;; (vector-ref vec index)
+;;
+;; For example, (vector-ref #(10 20 30) 1) evaluates to 20.
+;;
+;; For example:
+;;
+;; (vector-let #(10 20 30) ((a 0) (b 2)) (+ a b))
+;;
+;; evaluates to 40.
+;;
+;; The index expressions can be arbitrary expressions, including
+;; variables bound by an enclosing let:
+;;
+;; (let ((i 1) (j 3))
+;;   (vector-let #(10 20 30 40) ((a i) (b j)) (- b a)))
+;;
+;; evaluates to 20.
+;;
+;; The vector expression can itself be a variable bound by an
+;; enclosing let:
+;;
+;; (let ((v #(10 20 30)))
+;;   (vector-let v ((a 0) (b 2)) (+ a b)))
+;;
+;; evaluates to 40.
+;;
+;; An empty set of bindings is allowed:
+;;
+;; (vector-let #(1 2 3) () 42)
+;;
+;; evaluates to 42.
+;;
+;; This question is worth 20 points.
+;;
+;; For full credit, ensure that vec-expr is evaluated only once, no
+;; matter how many names are bound.  A solution that evaluates vec-expr
+;; once per binding works but will receive a small overall point
+;; deduction.
+
+;; NOTE: I have included the original starting code here in the comments:
+;;
+;; (define-syntax (vector-let stx)
+;;  (syntax-case stx ()
+;;   [(vector-let _ ...) ; not a case you'd actually want, just a placeholder so the tests run
+;;     #'(nyi)]))
+;;
+;; Broken macros have a tendency to prevent the whole file from working.  This makes grading hard.
+;; If you can't solve this problem and all tests are broken please leave your solution commented 
+;; out and leave the starting code in so that the rest of the automated tests can run on your submission.
+
+(define-syntax (vector-let stx)
+  (syntax-case stx ()
+    [(vector-let _ ...) ; not a case you'd actually want, just a placeholder so the tests run
+     #'(nyi)]))
+    
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; QUESTION 3 SYNTAX EXPAND - 20 points
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Implement lambda-vec using syntax-expand.
+;;
+;; (lambda-vec args body ...)
+;;
+;; acts like the variable-arity lambda (lambda args body ...), except
+;; that args is bound to a vector of the arguments instead of a list.
+;; The parameter must be a single symbol.  As with lambda, there may
+;; be any number of body expressions, and the procedure accepts any
+;; number of arguments, including zero.
+;;
+;; For example:
+;;
+;; ((lambda-vec args (vector-ref args 0)) 10 20)   ; evaluates to 10
+;; ((lambda-vec args (vector->list args)) 1 2 3)   ; evaluates to '(1 2 3)
+;; ((lambda-vec args (vector->list args)))         ; evaluates to '()
+;;
+;; You should implement this feature exclusively using syntax-expand,
+;; i.e. you will not get credit for implementing it in eval-exp.
+;;
+;; Hint: your interpreter already provides list->vector as a primitive.
+;; You don't need to make a new kind of closure - just use the var arity
+;; list closure and convert the list to a vector in the body.
+
+;; replace this with your interpreter and implementation of eval-one-exp
+(define eval-one-exp
+  (lambda (exp)
+    (nyi)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; QUESTION 4 UNLET - 15 points
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Implement the special form
+;;
+;; (unlet body)
+;;
+;; Within body, the nearest enclosing scope does not apply.  That
+;; scope is available again in the rest of the expression outside the
+;; unlet.  This applies to variables bound by a let and to variables
+;; bound by a lambda invocation.
+;;
+;; A let with several bindings is a single scope, and a lambda with
+;; several parameters is a single scope.  For example:
+;;
+;; (let ((x 1) (y 2))
+;;   (let ((x 10) (y 20))
+;;     (unlet (+ x y))))       ; evaluates to 3
+;;
+;; ((lambda (x y)
+;;    (let ((x 10) (y 20))
+;;      (unlet (+ x y))))
+;;  1 2)                       ; evaluates to 3
+;;
+;; A let* is equivalent to nested single-binding lets, so it creates
+;; one scope per binding.  One unlet removes only the scope of the
+;; last binding, and nested unlets move outward one binding at a time:
+;;
+;; (let* ((x 1) (x 2)) (unlet x))   ; evaluates to 1
+;;
+;; (let ((x 0))
+;;   (let* ((x 1) (x 2))
+;;     (unlet (unlet x))))          ; evaluates to 0
+;;
+;; Empty scopes are ignored.  A zero-argument lambda, a begin with
+;; more than one expression (if you happened to implment it that way),
+;; or an empty let with more than one expression creates an empty
+;; scope, but unlet looks past it:
+;;
+;; (let ((x 1))
+;;   (let ((x 2))
+;;     ((lambda () (unlet x)))))        ; evaluates to 1
+;;
+;; You may nest unlet to remove more than one scope:
+;;
+;; (let ((x 1))
+;;   (let ((x 2))
+;;     (let ((x 3))
+;;       (unlet (unlet x)))))       ; evaluates to 1
+;;
+;; Within the unlet body, shadowed variables become visible again and
+;; variables that were defined only in the removed scope become
+;; undefined.
+;;
+;; None of the tests use letrec or named let, so you do not need to
+;; consider how unlet interacts with those forms.
+;;
+;; Implement this feature in your interpreter (not with syntax-expand).
+
+;;--------  Used by the testing mechanism   ------------------
+
+(define-syntax nyi
+  (syntax-rules ()
+    ([_]
+     [error "nyi"])))
